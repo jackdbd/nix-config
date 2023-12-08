@@ -1,0 +1,5 @@
+# Clojure/Babashka formatter
+.clj-kondo/
+
+# Language Server Protocol
+.lsp/
