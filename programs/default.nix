@@ -6,6 +6,7 @@ let
       broot.enable = true;
 
       # Configuration for Chromium and its extensions
+      # https://codeberg.org/davidak/nixos-config/src/branch/main/profiles/desktop.nix
       # https://github.com/gvolpe/nix-config/blob/master/home/programs/browsers/chromium.nix
       # https://github.com/gvolpe/nix-config/blob/master/home/programs/browsers/extensions.nix
       chromium = {

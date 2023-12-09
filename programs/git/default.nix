@@ -17,7 +17,8 @@
       can = "commit --amend --no-edit";
       cm = "commit --message";
       co = "checkout";
-      dt = "difftool";
+      dt = "difftool --tool difftastic";
+      dtm = "difftool --tool meld";
       fp = "fetch --prune";
       hist = "log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short";
       lg = "log --oneline --graph --decorate";
@@ -37,11 +38,24 @@
         bare = false;
         editor = "${pkgs.neovim}/bin/nvim";
       };
+      # https://git-scm.com/docs/git-difftool
+      difftool = {
+        prompt = false;
+        difftastic = {
+          cmd = "difft $LOCAL $REMOTE";
+        };
+        meld = {
+          cmd = "meld $LOCAL $REMOTE";
+        };
+      };
       github = {
         user = "jackdbd";
       };
       init = {
         defaultBranch = "main";
+      };
+      mergetool = {
+        prompt = true;
       };
     };
 

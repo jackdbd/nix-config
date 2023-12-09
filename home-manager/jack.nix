@@ -6,25 +6,23 @@ let
   configHome = "${homeDirectory}/.config";
 
   defaultPkgs = with pkgs; [
-    activitywatch        # time tracker
-    asciinema            # record the terminal
-    alacritty            # terminal emulator
-    babashka             # Clojure interpreter for scripting
-    betterlockscreen     # lock screen
-    bless                # HEX editor
-    buildah              # build OCI images (alternative to docker build)
-    calibre              # e-book reader
-    chromium             #
-    clojure              #
-    ctop                 # top-like interface for container metrics
-    difftastic           # syntax-aware diff
-    dive                 # explore the layers of a container image
-    duf
-    dunst                # notification daemon
-    emojione
-    entr
-    fd
-    feh
+    activitywatch # time tracker
+    asciinema # record the terminal
+    alacritty # terminal emulator
+    babashka # Clojure interpreter for scripting
+    betterlockscreen # lock screen
+    bless # HEX editor
+    buildah # build OCI images (alternative to docker build)
+    calibre # e-book reader
+    chromium
+    clojure
+    ctop # top-like interface for container metrics
+    darktable # virtual lighttable and darkroom for photographers
+    difftastic # syntax-aware diff
+    dive # explore the layers of a container image
+    emojione # open source emoji set
+    entr # file watcher
+    exif # read and manipulate EXIF data in digital photographs
     ffmpeg
     ffuf
     firefox
@@ -32,55 +30,48 @@ let
     fx
     gh
     gimp
-    git-cola
-    # TODO: trying to install gitFull gives me a "collision" error
-    # gitFull
-    gitg
-    glow                 # terminal markdown viewer
+    glow # terminal markdown viewer
     go
     google-chrome
-    google-cloud-sdk     # Google Cloud Platform CLI (gcloud)
-    graphviz             #
-    httpie               #
-    hyperfine            # command-line benchmarking tool
-    inkscape             #
-    jq                   #
-    killall              # kill processes by name or list PIDs
-    liferea              # RSS reader
+    google-cloud-sdk # Google Cloud Platform CLI (gcloud)
+    graphviz
+    hyperfine # command-line benchmarking tool
+    inkscape
+    jq
+    killall # kill processes by name or list PIDs
+    liferea # RSS reader
+    lsix # shows thumbnails in terminal using sixel graphics
     monolith
     neofetch
     nerdfonts
-    nitch                # minimal system information fetch
-    nix-index            # locate packages containing certain nixpkgs
-    nix-output-monitor   # nom: monitor nix commands
+    nix-index # locate packages containing certain nixpkgs
+    nix-output-monitor # nom: monitor nix commands
     nuclei
-    nyancat              # the famous rainbow cat!
-    openshot-qt
+    openshot-qt # video editor
     ncdu
     newman
     # nodejs_21
     papirus-icon-theme
     pgadmin4
     pinta
+    pitivi # video editor
     podman
     poke
     postman
-    prettyping           # a nicer ping
+    prettyping # a nicer ping
     pulumi
     qemu
     ripgrep-all
     rlwrap
     rm-improved
     rofi
-    s-tui
-    screenkey            # shows keypresses on screen
-    sd
+    s-tui # Stress-Terminal UI monitoring tool
+    screenkey # shows keypresses on screen
     silver-searcher
     simplescreenrecorder # screen recorder gui
     sqlite
     sqlitebrowser
     stripe-cli
-    sxhkd
     syncthing
     temurin-bin-18
     thunderbird
@@ -88,10 +79,11 @@ let
     tokei
     vlc
     vscode
-    yt-dlp
     wasmtime
     wget
     wireshark
+    xsv # index/slice/analyze/split/join CSV files
+    yt-dlp
     zathura
     zeal
     zig
@@ -150,7 +142,8 @@ in
       EDITOR = "nvim";
     };
 
-    # Do NOT change this value, even if you update Home Manager.
+    # Do NOT change the value of stateVersion, even if you update Home Manager.
+    # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "22.11";
   };
 
@@ -160,8 +153,14 @@ in
   manual.manpages.enable = false;
 
   # https://nix-community.github.io/home-manager/options.html#opt-nixpkgs.config
-  # I'm using a few unfree packages (e.g. postman, vscode).
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    # I prefer to explicitly list all the unfree packages I am using.
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "postman"
+    "google-chrome"
+    "vscode"
+  ];
+  };
 
   # restart services on change
   systemd.user.startServices = "sd-switch";
