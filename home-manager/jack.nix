@@ -23,7 +23,6 @@ let
     dunst                # notification daemon
     emojione
     entr
-    eza                  # a better `ls` (it's a fork of exa)
     fd
     feh
     ffmpeg
@@ -59,12 +58,12 @@ let
     openshot-qt
     ncdu
     newman
-    nodejs_21
+    # nodejs_21
+    papirus-icon-theme
     pgadmin4
     pinta
     podman
     poke
-    # TODO: trying to install postman gives me an HTTP 404
     postman
     prettyping           # a nicer ping
     pulumi
@@ -126,7 +125,17 @@ in
   home = {
     inherit username homeDirectory;
 
-    # enableNixpkgsReleaseCheck = false;
+    # don't forget to add home-manager as a nix channel
+    # https://nix-community.github.io/home-manager/index.html#sec-install-standalone
+    # I forgot to do it, and I was getting this error:
+    # error: file 'home-manager/home-manager/home-manager.nix' was not found in the Nix search path 
+    # See the solutions suggested here:
+    # https://github.com/nix-community/home-manager/issues/4060
+
+    # TODO: at the moment I have a version mismatch between Nixpkgs and Home
+    # Manager. I'm not sure whether I should pin the Nixpkgs's version, the Home
+    # Manager's one, or both.
+    enableNixpkgsReleaseCheck = false;
 
     file = {
       "${config.xdg.configHome}/neofetch/config.conf".source = ../dotfiles/neofetch.conf;
@@ -145,11 +154,14 @@ in
     stateVersion = "22.11";
   };
 
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-    };
-  };
+  # I had the same issue about home-manager manual described here. The solution
+  # looks proposed in the thread seems to work.
+  # https://discourse.nixos.org/t/starting-out-with-home-manager/31559
+  manual.manpages.enable = false;
+
+  # https://nix-community.github.io/home-manager/options.html#opt-nixpkgs.config
+  # I'm using a few unfree packages (e.g. postman, vscode).
+  nixpkgs.config.allowUnfree = true;
 
   # restart services on change
   systemd.user.startServices = "sd-switch";

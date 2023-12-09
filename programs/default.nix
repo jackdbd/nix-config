@@ -35,8 +35,6 @@ let
         nix-direnv.enable = true;
       };
 
-      eza.enable = true;
-
       feh.enable = true;
 
       htop.enable = true;
