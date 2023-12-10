@@ -65,6 +65,9 @@ let
     rlwrap
     rm-improved
     rofi
+    # TODO: I tried to use these rofi plugins but got collision errors with rofi-theme-selector
+    # rofi-calc
+    # rofi-top
     s-tui # Stress-Terminal UI monitoring tool (requires stress for some features)
     screenkey # shows keypresses on screen
     stress # workload generator for POSIX systems (required by s-tui)
@@ -77,6 +80,8 @@ let
     temurin-bin-18
     thunderbird
     tmux
+    tmuxPlugins.continuum
+    tmuxPlugins.resurrect
     tokei
     vlc
     vscode
@@ -132,7 +137,6 @@ in
 
     file = {
       "${config.xdg.configHome}/neofetch/config.conf".source = ../dotfiles/neofetch.conf;
-      "${config.xdg.configHome}/tmux/tmux.conf".source = ../dotfiles/tmux.conf;
     };
 
     packages = defaultPkgs;
