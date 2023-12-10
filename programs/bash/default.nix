@@ -19,8 +19,8 @@
       down = "cd ~/Downloads";
       gg = "gitg";
       gk = "gitk";
-      hm = "${pkgs.home-manager}/bin/home-manager -f ~/repos/nix-config/home-manager/jack.nix";
-      hms = "${pkgs.home-manager}/bin/home-manager -f ~/repos/nix-config/home-manager/jack.nix switch";
+      hm = "${pkgs.home-manager}/bin/home-manager -f ~/repos/nix-config/users/jack.nix";
+      hms = "${pkgs.home-manager}/bin/home-manager -f ~/repos/nix-config/users/jack.nix switch";
       issue = "${pkgs.gh}/bin/gh issue create -a @me -l enhancement -t"; # e.g. issue "Issue title here"
       issues = "${pkgs.gh}/bin/gh issue list";
       l = "${pkgs.exa}/bin/exa --all --long";
@@ -31,7 +31,7 @@
       loc = "tokei";
       myip = "curl http://ipecho.net/plain; echo";
       pics = "cd ~/Pictures";
-      pk = "pkill --signal SIGTERM --echo --count"; # e.g. pkill tmux
+      pk = "pkill --signal SIGTERM --echo --count"; # e.g. pk liferea
       repl = "rlwrap bb --repl";
       repos = "cd ~/repos";
       snr = "sudo nixos-rebuild";
