@@ -10,10 +10,6 @@ in
 {
   programs.tmux = {
     enable = true;
-    # nice Tmux configurations:
-    # https://gist.github.com/TheCedarPrince/07f6f8f79b1451ec436ff8dee236ccdd
-    # https://github.com/jackdbd/dotfiles/blob/main/tmux/.config/tmux/tmux.conf
-    # https://github.com/gvolpe/nix-config/tree/master/home/programs/tmux
 
     # https://nix-community.github.io/home-manager/options.html#opt-programs.tmux.aggressiveResize
     aggressiveResize = false;

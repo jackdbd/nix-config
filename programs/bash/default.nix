@@ -23,7 +23,7 @@
       hms = "${pkgs.home-manager}/bin/home-manager -f ~/repos/nix-config/users/jack.nix switch";
       issue = "${pkgs.gh}/bin/gh issue create -a @me -l enhancement -t"; # e.g. issue "Issue title here"
       issues = "${pkgs.gh}/bin/gh issue list";
-      l = "${pkgs.exa}/bin/exa --all --long";
+      l = "${pkgs.eza}/bin/eza --all --long";
       lg = "lazygit";
       ll = "ls -l";
       lock = "xflock4";
@@ -36,8 +36,8 @@
       repos = "cd ~/repos";
       snr = "sudo nixos-rebuild";
       # https://the.exa.website/features/tree-view
-      "t2" = "${pkgs.exa}/bin/exa --tree --ignore-glob=node_modules --level=2";
-      "t3" = "${pkgs.exa}/bin/exa --tree --ignore-glob=node_modules --level=3";
+      "t2" = "${pkgs.eza}/bin/eza --tree --ignore-glob=node_modules --level=2";
+      "t3" = "${pkgs.eza}/bin/eza --tree --ignore-glob=node_modules --level=3";
       # download only audio (no video), in mp3 format
       "ytmp3" = "yt-dlp --ignore-errors --extract-audio --audio-format mp3";
     };

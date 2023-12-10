@@ -18,6 +18,7 @@ let
           "commands/custom/<Super>k"= "xkill";
           "commands/custom/<Super>l"= "xflock4";
           "commands/custom/<Super>m"= "thunar Music";
+          "commands/custom/<Super>n"= "xfce4-notes";
           "commands/custom/<Super>p"= "thunar Pictures";
           "commands/custom/<Super>s"= "${pkgs.flameshot}/bin/flameshot gui";
           "commands/custom/<Super>t"= "${pkgs.alacritty}/bin/alacritty";

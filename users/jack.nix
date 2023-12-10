@@ -8,7 +8,6 @@ let
   defaultPkgs = with pkgs; [
     activitywatch # time tracker
     asciinema # record the terminal
-    alacritty # terminal emulator
     babashka # Clojure interpreter for scripting
     betterlockscreen # lock screen
     bless # HEX editor
@@ -35,6 +34,7 @@ let
     google-chrome
     google-cloud-sdk # Google Cloud Platform CLI (gcloud)
     graphviz
+    haskellPackages.boring-game
     hyperfine # command-line benchmarking tool
     inkscape
     jq
@@ -48,7 +48,6 @@ let
     nix-output-monitor # nom: monitor nix commands
     nuclei
     openshot-qt # video editor
-    ncdu
     newman
     # nodejs_21
     papirus-icon-theme
@@ -57,7 +56,7 @@ let
     pitivi # video editor
     podman
     poke
-    postman
+    # postman # https://github.com/NixOS/nixpkgs/issues/259147
     prettyping # a nicer ping
     pulumi
     qemu
@@ -68,6 +67,7 @@ let
     # TODO: I tried to use these rofi plugins but got collision errors with rofi-theme-selector
     # rofi-calc
     # rofi-top
+    sameboy # Game Boy emulator
     s-tui # Stress-Terminal UI monitoring tool (requires stress for some features)
     screenkey # shows keypresses on screen
     stress # workload generator for POSIX systems (required by s-tui)
@@ -75,6 +75,7 @@ let
     simplescreenrecorder # screen recorder gui
     sqlite
     sqlitebrowser
+    stegseek # tool to crack steganography
     stripe-cli
     syncthing
     temurin-bin-18
@@ -161,10 +162,10 @@ in
   nixpkgs.config = {
     # I prefer to explicitly list all the unfree packages I am using.
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "postman"
-    "google-chrome"
-    "vscode"
-  ];
+      "postman"
+      "google-chrome"
+      "vscode"
+    ];
   };
 
   # restart services on change
