@@ -65,8 +65,9 @@ let
     rlwrap
     rm-improved
     rofi
-    s-tui # Stress-Terminal UI monitoring tool
+    s-tui # Stress-Terminal UI monitoring tool (requires stress for some features)
     screenkey # shows keypresses on screen
+    stress # workload generator for POSIX systems (required by s-tui)
     silver-searcher
     simplescreenrecorder # screen recorder gui
     sqlite
@@ -87,7 +88,7 @@ let
     zathura
     zeal
     zig
-    # zls
+    zls
 
     # note: there is no config.home.configHome because in this file I let `home` inherit only username and homeDirectory
     (writeShellScriptBin "debug-args" ''

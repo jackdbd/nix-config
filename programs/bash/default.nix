@@ -20,6 +20,7 @@
       gg = "gitg";
       gk = "gitk";
       hm = "${pkgs.home-manager}/bin/home-manager -f ~/repos/nix-config/home-manager/jack.nix";
+      hms = "${pkgs.home-manager}/bin/home-manager -f ~/repos/nix-config/home-manager/jack.nix switch";
       issue = "${pkgs.gh}/bin/gh issue create -a @me -l enhancement -t"; # e.g. issue "Issue title here"
       issues = "${pkgs.gh}/bin/gh issue list";
       l = "${pkgs.exa}/bin/exa --all --long";
