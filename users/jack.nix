@@ -41,6 +41,7 @@ let
     killall # kill processes by name or list PIDs
     liferea # RSS reader
     lsix # shows thumbnails in terminal using sixel graphics
+    luajitPackages.fennel
     monolith
     neofetch
     nerdfonts

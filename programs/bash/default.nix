@@ -34,7 +34,8 @@
       pk = "pkill --signal SIGTERM --echo --count"; # e.g. pk liferea
       repl = "rlwrap bb --repl";
       repos = "cd ~/repos";
-      snr = "sudo nixos-rebuild";
+      # nixos-rebuild seems to require an absolute path for nixos-config
+      snr = "sudo nixos-rebuild switch -I nixos-config=/home/jack/repos/nix-config/machines/x220/configuration.nix";
       # https://the.exa.website/features/tree-view
       "t2" = "${pkgs.eza}/bin/eza --tree --ignore-glob=node_modules --level=2";
       "t3" = "${pkgs.eza}/bin/eza --tree --ignore-glob=node_modules --level=3";
