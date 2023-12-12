@@ -166,6 +166,7 @@ in
       "postman"
       "google-chrome"
       "vscode"
+      "vscode-extension-github-copilot"
     ];
   };
 

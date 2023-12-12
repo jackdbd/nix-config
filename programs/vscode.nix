@@ -9,26 +9,28 @@
     # Instead, search `vscode-extensions` on NixOS Search.
     # https://search.nixos.org/packages
     # https://github.com/NixOS/nixpkgs/tree/master/pkgs/applications/editors/vscode
-      # VS Code themes
-      # https://mynixos.com/search?q=vscode+theme
-    extensions = with pkgs; [
+    # VS Code themes
+    # https://mynixos.com/search?q=vscode+theme
+    extensions = with pkgs.vscode-extensions; [
       # Nix language support for Visual Studio Code.
-      vscode-extensions.bbenoist.nix
+      bbenoist.nix
       # Clojure & ClojureScript Interactive Programming for VS Code
-      vscode-extensions.betterthantomorrow.calva
-      vscode-extensions.christian-kohler.path-intellisense
-      vscode-extensions.coolbear.systemd-unit-file
-      vscode-extensions.davidanson.vscode-markdownlint
-      vscode-extensions.eamodio.gitlens
-      vscode-extensions.esbenp.prettier-vscode
-      # vscode-extensions.github.copilot
-      vscode-extensions.github.vscode-github-actions
-      # https://marketplace.visualstudio.com/items?itemName=jdinhlife.gruvbox
-      vscode-extensions.jdinhlife.gruvbox
-      vscode-extensions.mechatroner.rainbow-csv
-      vscode-extensions.mhutchie.git-graph
-      vscode-extensions.tamasfe.even-better-toml
-      vscode-extensions.usernamehw.errorlens
+      betterthantomorrow.calva
+      christian-kohler.path-intellisense
+      coolbear.systemd-unit-file
+      davidanson.vscode-markdownlint
+      eamodio.gitlens
+      esbenp.prettier-vscode
+      github.copilot
+      github.vscode-github-actions
+      github.vscode-pull-request-github
+      jdinhlife.gruvbox
+      mechatroner.rainbow-csv
+      mhutchie.git-graph
+      ms-azuretools.vscode-docker
+      # TODO: https://github.com/mtxr/vscode-sqltools
+      tamasfe.even-better-toml
+      usernamehw.errorlens
     ];
 
     # https://nix-community.github.io/home-manager/options.html#opt-programs.vscode.userSettings
