@@ -1,172 +1,82 @@
-" make use of terminal colors
-set termguicolors
+""" GENERIC CONFIG
 
-colorscheme NeoSolarized
+set autoindent " auto indentation
+set expandtab " replace tabs with spaces
+set colorcolumn=80 " show ruler at specific column
+set cursorline " highlight current line
+set noswapfile  
+set number " show line numbers
+set showcmd " show command in bottom bar
+set softtabstop=4 " number of spaces in tab when editing
+set tabstop=4 " number of visual spaces per TAB
+
+""" PLUGIN CONFIG
+
+"" CoC
+" Accept the completion suggestion by pressing Enter
+" https://superuser.com/questions/1734914/neovim-coc-nvim-enter-key-doesnt-work-to-autocomplete
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+" TextEdit might fail if hidden is not set.
+set hidden
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+" Give more space for displaying messages.
+set cmdheight=3
+
+"" ctrl.vim
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_show_hidden = 1
+
+"" far.vim
+" improve scrolling performance when navigating through large results
+set lazyredraw
+
+"" Limelight
+let g:limelight_conceal_ctermfg = 'gray'
+
+"" NERD Commenter
+let g:NERDCreateDefaultMappings = 1
+
+"" NERDTree
+let NERDTreeShowHidden = 1
+let g:NERDTreeIgnore = ['^\.git$', '^node_modules$', '^zig-cache$']
+
+"" gruvbox
+if (has("termguicolors"))
+ set termguicolors
+endif
+colorscheme gruvbox
 set background=dark
 
-set hidden
+"" vim-airline
+let g:airline#extensions#tabline#enabled = 1
 
-let mapleader=","
-let maplocalleader=","
+"" vim-floaterm
+let g:floaterm_keymap_new = '<Leader>ft'
+let g:floaterm_keymap_toggle = '<Leader>t'
 
-" use X clipboard
-set clipboard=unnamed
-set clipboard=unnamedplus
+"" vim-highlightyank
+let g:highlightedyank_highlight_duration = 1000 " in ms
 
-" detect file type for plugins and indentation
-filetype plugin indent on
-syntax enable
+"" vim-move (C means Ctrl => C-k, C-j, C-h, C-l)
+let g:move_key_modifier = 'C' 
 
-" do not display mode line
-set nomodeline
+"" vim-signify
+" default updatetime 4000ms is not good for async update
+set updatetime=100
 
-" convert tabs to two spaces
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
+"" zig.vim
+let g:zig_fmt_autosave = 1
 
-" text display settings
-set wrap
-set textwidth=0
-set wrapmargin=0
-set formatoptions=qrn1
-set linebreak
-set number
-set scrolloff=15
-
-nmap <leader>N :set number!<CR>
-
-" auto-completion for menu commands
-set wildmenu
-set wildmode=list:longest
-
-" do not use terminal bell, only display visual
-set visualbell
-
-" highlight line under cursor
-set cursorline
-
-" search settings
-set hlsearch
-set ignorecase
-set smartcase
-set gdefault
-set incsearch
-set showmatch
-
-" complete % to current file
-nnoremap <tab> %
-vnoremap <tab> %
-
-" toggle search highlight
-nmap <silent>H :set hls!<CR>
-
-" toggle invisible characters
-nmap <silent>L :set list!<CR>
-set listchars=tab:▸\ ,eol:¬,space:·
-
-" fix movement on wrapped lines
-nnoremap j gj
-nnoremap k gk
-nnoremap 0 g0
-nnoremap $ g$
-" TODO: fix movement on wrapped lines also in visual mode
-
-" TODO: simplify split movement
-
-" easy motion
-" prefix
-map <Leader> <Plug>(easymotion-prefix)
-
-" search
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
-
-" fuzzy search
-function! s:config_easyfuzzymotion(...) abort
-  return extend(copy({
-  \   'converters': [incsearch#config#fuzzyword#converter()],
-  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
-  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
-  \   'is_expr': 0,
-  \   'is_stay': 1
-  \ }), get(a:, 1, {}))
-endfunction
-
-noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
-
-" move to character
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
-
-" move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
-
-" move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
-
-" enhance hjkl
-map <Leader>l <Plug>(easymotion-lineforward)
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-map <Leader>h <Plug>(easymotion-linebackward)
-
-let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
-" auto completion
-let g:deoplete#enable_at_startup = 1
-set completeopt=menu,noselect
-let g:UltiSnipsExpandTrigger='<c-space>'
-let g:UltiSnipsJumpForwardTrigger='<tab>'
-let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
-
-inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><s-tab> pumvisible() ? "\<C-p>" : "\<TAB>"
-
-" IDE
-let g:LanguageClient_serverCommands = {
-\  'python': ['pyls'],
-\  'go': ['gopls'],
-\ }
-
-let g:LanguageClient_diagnosticsList = "Disabled"
-
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> gh :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent>gt :call LanguageClient#textDocument_typeDefinition()<CR>
-nnoremap <silent> gr :call LanguageClient_textDocument_references()<CR>
-nnoremap <silent> gs :call LanguageClient_textDocument_documentSymbol()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-nnoremap <silent> gf :call LanguageClient_textDocument_formatting()<CR>
-
-" also run `goimports` when formatting in `vim-go`
-let g:go_fmt_command = "goimports"
-
-" format on file save, workaround for
-" <https://github.com/fatih/vim-go/issues/2471>
-autocmd BufWritePre,FileWritePre *.go :GoFmt
-autocmd BufWritePre,FileWritePre *.go :GoMetaLinter
-
-" go back
-nnoremap gb <C-o>
-
-augroup autoformat_settings
-  autocmd FileType nix AutoFormatBuffer nixpkgs-fmt
-  autocmd FileType bzl AutoFormatBuffer buildifier
-  autocmd FileType c,cpp AutoFormatBuffer cpplint
-  autocmd FileType proto,javascript,arduino AutoFormatBuffer clang-format
-  autocmd FileType dart AutoFormatBuffer dartfmt
-  autocmd FileType go AutoFormatBuffer gofmt
-  autocmd FileType gn AutoFormatBuffer gn
-  autocmd FileType html,css,sass,scss,less,json AutoFormatBuffer js-beautify
-  autocmd FileType java AutoFormatBuffer google-java-format
-  autocmd FileType python AutoFormatBuffer yapf
-  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
-  autocmd FileType rust AutoFormatBuffer rustfmt
-  autocmd FileType vue AutoFormatBuffer prettier
-augroup END
+""" Custom mappings
+let mapleader=" "
+nmap <leader>g :Goyo<CR>
+nmap <leader>l :Limelight!!<CR>
+xmap <leader>l :Limelight!!<CR>
+nmap <leader>mk :MarkdownPreview<CR>
+nmap <leader>q :NERDTreeToggle<CR>
+" map ++ to call NERD Commenter in normal mode and visual mode
+nmap ++ <plug>NERDCommenterToggle
+xmap ++ <plug>NERDCommenterToggle

@@ -1,15 +1,41 @@
 { pkgs, ... }:
+
 {
   programs.neovim = {
     enable = true;
-    viAlias = true;
-    vimAlias = true;
+
+    # https://nix-community.github.io/home-manager/options.html#opt-programs.neovim.coc.settings
+    coc = {
+      enable = true;
+      settings = {
+        # https://github.com/neoclide/coc-tsserver?tab=readme-ov-file#configuration-options
+        javascript = {
+          format = {
+            enable = true;
+          };
+          showUnused = true;
+        };
+        # https://github.com/neoclide/coc-json?tab=readme-ov-file#configuration-options
+        json = {
+          enable = true;
+          validate.enable = true;
+        };
+        languageserver = {
+          zls = {
+            command = "zls";
+            filetypes = ["zig"];
+          };
+        };
+      };
+    };
+
     extraConfig = "${builtins.readFile ./init.vim}";
+
+    # https://nix-community.github.io/home-manager/options.html#opt-programs.neovim.plugins
     plugins =
-      with pkgs;
-      with vimPlugins;
+      with pkgs.vimPlugins;
       let
-        incsearch-fuzzy = vimUtils.buildVimPlugin {
+        incsearch-fuzzy = pkgs.vimUtils.buildVimPlugin {
           pname = "incsearch-fuzzy";
           version = "2016-12-15";
           src = fetchGit {
@@ -17,50 +43,41 @@
             ref = "master";
           };
         };
-        vim-pdf = vimUtils.buildVimPlugin {
-          pname = "vim-pdf";
-          version = "2017-05-21";
-          src = fetchGit {
-            url = "https://github.com/makerj/vim-pdf";
-            ref = "master";
-          };
-        };
       in
       [
-        vim-fish
-        fugitive
-        vim-pdf
-        vim-nix
-        vim-surround
-        vim-repeat
-        lexima-vim
+        coc-json # validation support for CoC
+        coc-nvim # autocompletion
+        coc-tsserver
         ctrlp-vim
-        vim-abolish
-        vim-better-whitespace
-        nerdcommenter
-        ultisnips
-        vim-snippets
-        deoplete-nvim
-        easymotion
-        incsearch-vim
+        emmet-vim
+        far-vim
+        goyo-vim
+        gruvbox
         incsearch-fuzzy
-        incsearch-easymotion-vim
-        echodoc
-        vim-jinja
+        limelight-vim
+        markdown-preview-nvim
+        nerdcommenter
+        nerdtree
+        vim-abolish
         vim-airline
         vim-airline-themes
-        NeoSolarized
-        LanguageClient-neovim
-        vim-codefmt
-        vim-go
-        vim-isort
+        vim-better-whitespace
+        vim-easymotion
+        vim-floaterm
+        vim-highlightedyank
+        vim-move
+        vim-nerdtree-syntax-highlight
+        vim-nix
+        vim-signify
+        vim-startify
+        zig-vim
       ];
+
     extraPackages = with pkgs; [
-      gotools
-      go
-      golangci-lint
       nixpkgs-fmt
-      cpplint
     ];
+    
+    viAlias = true;
+    vimAlias = true;
   };
 }
