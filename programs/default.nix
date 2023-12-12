@@ -70,15 +70,15 @@ let
   };
 in
 [
-  ./alacritty
-  ./atuin
-  ./bash
+  ./alacritty.nix
+  ./atuin.nix
+  ./bash.nix
   ./chromium
-  ./git
+  ./git.nix
   ./neovim
-  ./rofi
-  ./starship
+  ./rofi.nix
+  ./starship.nix
   ./tmux
-  ./vscode
+  ./vscode.nix
   more
 ]

@@ -11,24 +11,24 @@
     # https://github.com/NixOS/nixpkgs/tree/master/pkgs/applications/editors/vscode
       # VS Code themes
       # https://mynixos.com/search?q=vscode+theme
-    extensions = [
+    extensions = with pkgs; [
       # Nix language support for Visual Studio Code.
-      pkgs.vscode-extensions.bbenoist.nix
+      vscode-extensions.bbenoist.nix
       # Clojure & ClojureScript Interactive Programming for VS Code
-      pkgs.vscode-extensions.betterthantomorrow.calva
-      pkgs.vscode-extensions.christian-kohler.path-intellisense
-      pkgs.vscode-extensions.coolbear.systemd-unit-file
-      pkgs.vscode-extensions.davidanson.vscode-markdownlint
-      pkgs.vscode-extensions.eamodio.gitlens
-      pkgs.vscode-extensions.esbenp.prettier-vscode
-      # pkgs.vscode-extensions.github.copilot
-      pkgs.vscode-extensions.github.vscode-github-actions
+      vscode-extensions.betterthantomorrow.calva
+      vscode-extensions.christian-kohler.path-intellisense
+      vscode-extensions.coolbear.systemd-unit-file
+      vscode-extensions.davidanson.vscode-markdownlint
+      vscode-extensions.eamodio.gitlens
+      vscode-extensions.esbenp.prettier-vscode
+      # vscode-extensions.github.copilot
+      vscode-extensions.github.vscode-github-actions
       # https://marketplace.visualstudio.com/items?itemName=jdinhlife.gruvbox
-      pkgs.vscode-extensions.jdinhlife.gruvbox
-      pkgs.vscode-extensions.mechatroner.rainbow-csv
-      pkgs.vscode-extensions.mhutchie.git-graph
-      pkgs.vscode-extensions.tamasfe.even-better-toml
-      pkgs.vscode-extensions.usernamehw.errorlens
+      vscode-extensions.jdinhlife.gruvbox
+      vscode-extensions.mechatroner.rainbow-csv
+      vscode-extensions.mhutchie.git-graph
+      vscode-extensions.tamasfe.even-better-toml
+      vscode-extensions.usernamehw.errorlens
     ];
 
     # https://nix-community.github.io/home-manager/options.html#opt-programs.vscode.userSettings

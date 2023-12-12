@@ -50,7 +50,7 @@ let
     nuclei
     openshot-qt # video editor
     newman
-    # nodejs_21
+    nodejs_21
     papirus-icon-theme
     pgadmin4
     pinta
