@@ -3,7 +3,7 @@
 let
   username = "jack";
   homeDirectory = "/home/${username}";
-  configHome = "${homeDirectory}/.config";
+  configHome = "${homeDirectory}/.config"; # equivalent to config.xdg.configHome
 
   defaultPkgs = with pkgs; [
     activitywatch # time tracker
@@ -139,6 +139,7 @@ in
 
     file = {
       "${config.xdg.configHome}/neofetch/config.conf".source = ../dotfiles/neofetch.conf;
+      "${homeDirectory}/.npmrc".source = ../dotfiles/npmrc.ini;
     };
 
     packages = defaultPkgs;
