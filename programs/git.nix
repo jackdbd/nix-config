@@ -17,6 +17,7 @@
       can = "commit --amend --no-edit";
       cm = "commit --message";
       co = "checkout";
+      dh = "difftool --tool difftastic HEAD~";
       dt = "difftool --tool difftastic";
       dtm = "difftool --tool meld";
       fp = "fetch --prune";
