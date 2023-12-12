@@ -7,7 +7,7 @@
     
     # https://starship.rs/config/#prompt
     settings = {
-      add_newline = true;
+      add_newline = false;
       # https://starship.rs/config/#default-prompt-format
       format = lib.concatStrings [
         "$all"
