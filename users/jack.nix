@@ -64,10 +64,6 @@ let
     ripgrep-all
     rlwrap
     rm-improved
-    rofi
-    # TODO: I tried to use these rofi plugins but got collision errors with rofi-theme-selector
-    # rofi-calc
-    # rofi-top
     sameboy # Game Boy emulator
     s-tui # Stress-Terminal UI monitoring tool (requires stress for some features)
     screenkey # shows keypresses on screen
@@ -115,7 +111,7 @@ in
   # https://github.com/Misterio77/nix-starter-configs/tree/main/standard
   programs.home-manager.enable = true;
 
-  imports = lib.concatMap import [
+  imports = [] ++ lib.concatMap import [
     ../programs
     ../scripts
     ../services

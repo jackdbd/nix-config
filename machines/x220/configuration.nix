@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, inputs, lib, pkgs, ... }:
 
 let
   matePackages = with pkgs; [
@@ -19,7 +19,7 @@ in
     [
       <nixos-hardware/lenovo/thinkpad/x220>
       ./hardware-configuration.nix
-      # <home-manager/nixos>
+      ./secrets.nix
     ];
 
   # TODO: how to import all the home-manager configuration defined in users/jack.nix?
@@ -70,6 +70,32 @@ in
     bandwhich # display network utilization by process, connection and remote IP/hostname
     baobab # disk usage utility
     binutils # tools for manipulating binaries (nm, objdump, strip, etc...)
+
+    (writeShellScriptBin "debug-secrets" ''
+      printf "=== DEBUG SECRETS ===\n"
+      echo "defaultSopsFile is at ${config.sops.defaultSopsFile}"
+      
+      printf "\ngithub_token_workflow_developer\n"
+      echo "secret found at ${config.sops.secrets.github_token_workflow_developer.path}"
+      echo "secret is $(cat ${config.sops.secrets.github_token_workflow_developer.path})"
+      
+      printf "\nnpm_token_read_all_packages\n"
+      echo "secret found at ${config.sops.secrets."nested_secret/npm_token_read_all_packages".path}"
+      echo "secret is $(cat ${config.sops.secrets."nested_secret/npm_token_read_all_packages".path})"
+
+      printf "\ndeeply-nested\n"
+      echo "secret found at ${config.sops.secrets."abc/def/ghi/deeply-nested".path}"
+      echo "secret is $(cat ${config.sops.secrets."abc/def/ghi/deeply-nested".path})"
+    '')
+
+    (writeShellApplication {
+      name = "show-nixos-org";
+      runtimeInputs = [ curl w3m ];
+      text = ''
+        curl -s 'https://nixos.org' | w3m -dump -T text/html
+      '';
+    })
+
     duf # disk usage utility
     eza # fork of exa, a better `ls`
     fd # a better `find`
@@ -91,6 +117,7 @@ in
     procs # a better `ps`
     pstree # show the set of running processes as a tree
     remmina # remote desktop client
+    rofi
     sakura # terminal emulator
     sd # a better `sed`
     sops # editor for encrypting/decrypting JSON, YAML, ini, etc
@@ -109,8 +136,8 @@ in
   # environment.variables = {};
 
   # introduced in NixOS 23.11
-  environment.xfce.excludePackages = [
-    # pkgs.xfce.ristretto # image viewer. I prefer feh.
+  environment.xfce.excludePackages = with pkgs.xfce; [
+    ristretto # image viewer. I prefer feh.
   ];
 
   # https://nixos.wiki/wiki/Bluetooth
@@ -148,7 +175,8 @@ in
   # Enable flakes, so we can avoid adding the flag --extra-experimental-features
   # every time we use the nix CLI (e.g. nix build, nix run, etc)
   # https://nixos.wiki/wiki/Flakes#Enable_flakes_permanently_in_NixOS
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # nix.settings.experimental-features = [ "nix-command" ];
 
   # I prefer to explicitly list all the unfree packages I am using.
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [

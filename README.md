@@ -16,6 +16,8 @@ From **this directory**, apply user-wide configuration with Home Manager [standa
 home-manager -f ./users/jack.nix switch
 ```
 
+TODO: use nix flakes instead of nix channels!
+
 ## Useful commands
 
 Delete all `/nix/store` paths older than 7 days:

@@ -1,7 +1,7 @@
 keys:
   - &x220_age age1wepxydgqnud4keawpf3ge3ylck8cjeewu4h6y34jtkg5urz5k3pq9dasm9
 creation_rules:
-  - path_regex: secrets/secrets.yaml$
+  - path_regex: secrets/[^/]+\.(json|env|ini|json|yaml|yml)$
     key_groups:
     - age:
       - *x220_age
