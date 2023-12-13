@@ -15,12 +15,11 @@ let
   ];
 in
 {
-  imports =
-    [
-      <nixos-hardware/lenovo/thinkpad/x220>
-      ./hardware-configuration.nix
-      ./secrets.nix
-    ];
+  imports = [
+    <nixos-hardware/lenovo/thinkpad/x220>
+    ./hardware-configuration.nix
+    ./secrets.nix
+  ];
 
   # TODO: how to import all the home-manager configuration defined in users/jack.nix?
   # In alternative I could define the entire home manager configuration for a single user as a nix flake.
@@ -71,6 +70,9 @@ in
     baobab # disk usage utility
     binutils # tools for manipulating binaries (nm, objdump, strip, etc...)
 
+    (callPackage ../../scripts/ghi.nix { inherit config pkgs; })
+    (callPackage ../../scripts/ghw.nix { inherit config pkgs; })
+
     (writeShellScriptBin "debug-secrets" ''
       printf "=== DEBUG SECRETS ===\n"
       echo "defaultSopsFile is at ${config.sops.defaultSopsFile}"
@@ -78,6 +80,10 @@ in
       printf "\ngithub_token_workflow_developer\n"
       echo "secret found at ${config.sops.secrets.github_token_workflow_developer.path}"
       echo "secret is $(cat ${config.sops.secrets.github_token_workflow_developer.path})"
+
+      echo "gh auth status (to check that GITHUB_TOKEN is set)"
+      export GITHUB_TOKEN=$(cat ${config.sops.secrets.github_token_workflow_developer.path})
+      gh auth status
       
       printf "\nnpm_token_read_all_packages\n"
       echo "secret found at ${config.sops.secrets."nested_secret/npm_token_read_all_packages".path}"
