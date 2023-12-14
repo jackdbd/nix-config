@@ -2,26 +2,17 @@
 
 [NixOS](https://nixos.org/) and [Home Manager](https://nixos.wiki/wiki/Home_Manager) configuration for my machines.
 
-From **this directory**, apply system-wide changes:
+From **this directory**, apply **both** the NixOS configuration and the Home Manager configuration:
 
 ```sh
-sudo nixos-rebuild switch -I nixos-config=./machines/x220/configuration.nix --verbose
+sudo nixos-rebuild switch --flake ./#x220-nixos --show-trace --verbose
 ```
 
-Almost all user-wide configuration is managed by Home Manager. At the moment (TODO) I am **not** using [Home Manager as a NixOS module](https://nix-community.github.io/home-manager/index.xhtml#sec-install-nixos-module).
-
-From **this directory**, apply user-wide configuration with Home Manager [standalone installation](https://nix-community.github.io/home-manager/index.xhtml#sec-install-standalone) (which does not require `sudo`):
+From **this directory**, apply **only** the Home Manager configuration:
 
 ```sh
-home-manager -f ./users/jack.nix switch
-```
-
-TODO: use nix flakes instead of nix channels!
-
-## Useful commands
-
-Delete all `/nix/store` paths older than 7 days:
-
-```sh
-sudo nix-collect-garbage --delete-older-than 7d
+home-manager switch \
+  --extra-experimental-features nix-command \
+  --extra-experimental-features flakes \
+  --flake .#jack@x220-nixos
 ```

@@ -19,8 +19,7 @@
       down = "cd ~/Downloads";
       gg = "gitg";
       gk = "gitk";
-      hm = "${pkgs.home-manager}/bin/home-manager -f ~/repos/nix-config/users/jack.nix";
-      hms = "${pkgs.home-manager}/bin/home-manager -f ~/repos/nix-config/users/jack.nix switch";
+      hms = "${pkgs.home-manager}/bin/home-manager switch --extra-experimental-features nix-command --extra-experimental-features flakes --flake ~/repos/nix-config#jack@x220-nixos";
       issue = "${pkgs.gh}/bin/gh issue create -a @me -l enhancement -t"; # e.g. issue "Issue title here"
       issues = "${pkgs.gh}/bin/gh issue list";
       l = "${pkgs.eza}/bin/eza --all --long";
@@ -34,8 +33,7 @@
       pk = "pkill --signal SIGTERM --echo --count"; # e.g. pk liferea
       repl = "rlwrap bb --repl";
       repos = "cd ~/repos";
-      # nixos-rebuild seems to require an absolute path for nixos-config
-      snr = "sudo nixos-rebuild switch -I nixos-config=/home/jack/repos/nix-config/machines/x220/configuration.nix";
+      snr = "sudo nixos-rebuild switch --flake ./#x220-nixos --show-trace --verbose";
       # https://the.exa.website/features/tree-view
       "t2" = "${pkgs.eza}/bin/eza --tree --ignore-glob=node_modules --level=2";
       "t3" = "${pkgs.eza}/bin/eza --tree --ignore-glob=node_modules --level=3";

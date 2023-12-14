@@ -44,6 +44,7 @@
       "[nix]"."editor.formatOnSave" = true;
       "[typescript]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
       "[typescript]"."editor.formatOnSave" = true;
+      "editor.minimap.enabled" = false;
       "editor.rulers" = [80 120];
       # The extension pflannery.vscode-versionlens works only if the file type
       # associated to package.json is json, not jsonc.

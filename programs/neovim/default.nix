@@ -53,7 +53,7 @@
         far-vim
         goyo-vim
         gruvbox
-        incsearch-fuzzy
+        # incsearch-fuzzy
         limelight-vim
         markdown-preview-nvim
         nerdcommenter

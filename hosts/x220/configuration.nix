@@ -1,4 +1,14 @@
-{ config, inputs, lib, pkgs, ... }:
+{
+  allowed-unfree-packages,
+  config,
+  inputs,
+  lib,
+  nixos-hardware,
+  pkgs,
+  sops-nix,
+  user,
+  ...
+}:
 
 let
   matePackages = with pkgs; [
@@ -16,10 +26,16 @@ let
 in
 {
   imports = [
-    <nixos-hardware/lenovo/thinkpad/x220>
+    nixos-hardware.nixosModules.lenovo-thinkpad-x220
     ./hardware-configuration.nix
     ./secrets.nix
   ];
+
+  # option declarations
+  # options = { };
+
+  # option definitions
+  # config = { };
 
   # TODO: how to import all the home-manager configuration defined in users/jack.nix?
   # In alternative I could define the entire home manager configuration for a single user as a nix flake.
@@ -185,9 +201,11 @@ in
   # nix.settings.experimental-features = [ "nix-command" ];
 
   # I prefer to explicitly list all the unfree packages I am using.
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "vscode"
-  ];
+  # nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+  #   "google-chrome"
+  #   "vscode"
+  # ];
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
 
   # On XFCE, there is no configuration tool for NetworkManager by default: by
   # enabling programs.nm-applet.enable, the graphical applet will be installed

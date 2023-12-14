@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
-# Usage: ghi list
+# Usage:
+# ghi list
+# ghi create -a @me -l enhancement -t "My issue title"
+# ghi status
+# ghi view --web 15
+
 # See: gh issue --help
 
 let

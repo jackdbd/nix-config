@@ -1,4 +1,11 @@
-{ config, lib, pkgs, ... }:
+{
+  allowed-unfree-packages,
+  config,
+  favorite-browser,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   username = "jack";
@@ -16,6 +23,7 @@ let
     chromium
     clojure
     ctop # top-like interface for container metrics
+    curl
     darktable # virtual lighttable and darkroom for photographers
     difftastic # syntax-aware diff
     dive # explore the layers of a container image
@@ -83,6 +91,7 @@ let
     tokei
     vlc
     vscode
+    w3m
     wasmtime
     wget
     wireshark
@@ -93,45 +102,43 @@ let
     zig
     zls
 
-    # note: there is no config.home.configHome because in this file I let `home` inherit only username and homeDirectory
-    (writeShellScriptBin "debug-args" ''
-      printf "Nix arguments:
-      config.home.username is ${config.home.username}
-      config.home.homeDirectory is ${config.home.homeDirectory}
-      username is ${username}
-      homeDirectory is ${homeDirectory}
-      configHome is ${configHome}"
+    (writeShellApplication {
+      name = "show-nixos-org";
+      runtimeInputs = [ curl w3m ];
+      text = ''
+        curl -s 'https://nixos.org' | w3m -dump -T text/html
+      '';
+    })
+
+    (writeShellScriptBin "debug-home-manager" ''
+      printf "=== DEBUG HOME MANAGER ===\n"
+      echo "favorite-browser is ${favorite-browser}"
+      echo "config.home.username is ${config.home.username}"
+      echo "config.home.homeDirectory is ${config.home.homeDirectory}"
+      echo "username is ${username}"
+      echo "homeDirectory is ${homeDirectory}"
+      echo "configHome is ${configHome}"
     '')
   ];
 in
 {
-  # Let Home Manager install and manage itself.
-  # Here are a few nice Home Manager configurations:
-  # https://github.com/gvolpe/nix-config/tree/master/home
-  # https://github.com/Misterio77/nix-starter-configs/tree/main/standard
-  programs.home-manager.enable = true;
-
-  imports = [] ++ lib.concatMap import [
+  imports = [ ] ++ lib.concatMap import [
     ../programs
     ../scripts
     ../services
     ../xfconf
   ];
 
-  home = {
-    inherit username homeDirectory;
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
 
-    # don't forget to add home-manager as a nix channel
-    # https://nix-community.github.io/home-manager/index.html#sec-install-standalone
-    # I forgot to do it, and I was getting this error:
-    # error: file 'home-manager/home-manager/home-manager.nix' was not found in the Nix search path 
-    # See the solutions suggested here:
-    # https://github.com/nix-community/home-manager/issues/4060
+  home = {
+    inherit homeDirectory username;
 
     # TODO: at the moment I have a version mismatch between Nixpkgs and Home
     # Manager. I'm not sure whether I should pin the Nixpkgs's version, the Home
     # Manager's one, or both.
-    enableNixpkgsReleaseCheck = false;
+    # enableNixpkgsReleaseCheck = false;
 
     file = {
       "${config.xdg.configHome}/neofetch/config.conf".source = ../dotfiles/neofetch.conf;
@@ -158,13 +165,13 @@ in
 
   # https://nix-community.github.io/home-manager/options.html#opt-nixpkgs.config
   nixpkgs.config = {
+    # allowUnfree = true;
     # I prefer to explicitly list all the unfree packages I am using.
-    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-      "postman"
-      "google-chrome"
-      "vscode"
-      "vscode-extension-github-copilot"
-    ];
+    # allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    #   "google-chrome"
+    #   "vscode"
+    # ];
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
   };
 
   # restart services on change
