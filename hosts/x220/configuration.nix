@@ -31,15 +31,6 @@ in
     ./secrets.nix
   ];
 
-  # option declarations
-  # options = { };
-
-  # option definitions
-  # config = { };
-
-  # TODO: how to import all the home-manager configuration defined in users/jack.nix?
-  # In alternative I could define the entire home manager configuration for a single user as a nix flake.
-
   boot.initrd.luks.devices."luks-318ded24-f80a-41ea-96ec-c12aacb3f155".keyFile = "/crypto_keyfile.bin";
   boot.initrd.luks.devices."luks-8b9b15ff-cf4a-4e4a-8564-b577e7099437".keyFile = "/crypto_keyfile.bin";
   boot.initrd.luks.devices."luks-8b9b15ff-cf4a-4e4a-8564-b577e7099437".device = "/dev/disk/by-uuid/8b9b15ff-cf4a-4e4a-8564-b577e7099437";
@@ -85,10 +76,6 @@ in
     bandwhich # display network utilization by process, connection and remote IP/hostname
     baobab # disk usage utility
     binutils # tools for manipulating binaries (nm, objdump, strip, etc...)
-
-    (callPackage ../../scripts/ghi.nix { inherit config pkgs; })
-    (callPackage ../../scripts/ghw.nix { inherit config pkgs; })
-
     (writeShellScriptBin "debug-secrets" ''
       printf "=== DEBUG SECRETS ===\n"
       echo "defaultSopsFile is at ${config.sops.defaultSopsFile}"
@@ -109,46 +96,26 @@ in
       echo "secret found at ${config.sops.secrets."abc/def/ghi/deeply-nested".path}"
       echo "secret is $(cat ${config.sops.secrets."abc/def/ghi/deeply-nested".path})"
     '')
-
-    (writeShellApplication {
-      name = "show-nixos-org";
-      runtimeInputs = [ curl w3m ];
-      text = ''
-        curl -s 'https://nixos.org' | w3m -dump -T text/html
-      '';
-    })
-
     duf # disk usage utility
     eza # fork of exa, a better `ls`
     fd # a better `find`
     feh # image viewer
-    gparted # partition editor
-    git-cola # git GUI
     gitFull # git + graphical tools like gitk (see https://nixos.wiki/wiki/Git)
     gitg # git GUI
     glxinfo # show information about the GLX implementation
+    gparted # partition editor
     home-manager # Nix-based user environment configurator
-    kitty # GPU-based terminal emulator
     libnotify # send desktop notifications to a notification daemon
     lm_sensors # tools for reading hardware sensors
-    meld # visual diff and merge tool
     mtr # network diagnostics tool (basically traceroute + ping)
     ncdu # disk usage utility
-    ouch #  compress/decompress files and directories
-    plano-theme
+    # nerdfonts
     procs # a better `ps`
     pstree # show the set of running processes as a tree
-    remmina # remote desktop client
     rofi
-    sakura # terminal emulator
-    sd # a better `sed`
     sops # editor for encrypting/decrypting JSON, YAML, ini, etc
-    st # terminal emulator
-    starship # customizable prompt for any shell
-    steghide # steganography program
     stow # symlink tool
     tailscale # mesh VPN built on WireGuard
-    wabt # WebAssembly binary toolkit
     winetricks # script to install DLLs needed to work around problems in Wine
     wineWowPackages.stable # https://nixos.wiki/wiki/Wine
   ] ++ matePackages ++ xfcePackages ++ xorgPackages;
@@ -160,6 +127,11 @@ in
   # introduced in NixOS 23.11
   environment.xfce.excludePackages = with pkgs.xfce; [
     ristretto # image viewer. I prefer feh.
+  ];
+
+  # https://nixos.wiki/wiki/Fonts#Installing_specific_fonts_from_nerdfonts
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "DroidSansMono" "FiraCode" "JetBrainsMono" ]; })
   ];
 
   # https://nixos.wiki/wiki/Bluetooth
@@ -197,10 +169,11 @@ in
   # Enable flakes, so we can avoid adding the flag --extra-experimental-features
   # every time we use the nix CLI (e.g. nix build, nix run, etc)
   # https://nixos.wiki/wiki/Flakes#Enable_flakes_permanently_in_NixOS
-  # nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  # nix.settings.experimental-features = [ "nix-command" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # I prefer to explicitly list all the unfree packages I am using.
+  # Instead of setting allowUnfree to true, I prefer explicitly list all the
+  # unfree packages I am using.
+  # nixpkgs.config.allowUnfree = true;
   # nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
   #   "google-chrome"
   #   "vscode"
@@ -240,9 +213,9 @@ in
   # TODO: should this service be defined here or with Home Manager?
   services.syncthing = {
     enable = true;
-    user = "jack";
-    dataDir = "/home/jack/Documents";    # Default folder for new synced folders
-    configDir = "/home/jack/.config/syncthing";   # Folder for Syncthing's settings and keys
+    user = user;
+    dataDir = "/home/${user}/Documents";    # Default folder for new synced folders
+    configDir = "/home/${user}/.config/syncthing";   # Folder for Syncthing's settings and keys
     guiAddress = "0.0.0.0:8384";
   };
 
@@ -290,14 +263,36 @@ in
   time.timeZone = "Europe/Rome";
 
   # https://nixpkgs-manual-sphinx-markedown-example.netlify.app/configuration/user-mgmt.xml
-  users.users.jack = {
+  users.users.${user} = {
     isNormalUser = true;
     description = "Giacomo Debidda";
     # Beware that the docker group membership is effectively equivalent to being root!
     # https://github.com/moby/moby/issues/9976
     extraGroups = [ "docker" "networkmanager" "wheel" ];
-    # Leave this list empty and let Home Manager handle all user-level packages.
-    packages = with pkgs; [ ];
+    # Add to this list only the packages that you would like to install at the
+    # user-level, but that are not available in Home Manager.
+    packages = with pkgs; [
+      (callPackage ../../scripts/ghi.nix { inherit config pkgs; })
+      (callPackage ../../scripts/ghw.nix { inherit config pkgs; })
+      git-cola # git GUI
+      kitty # GPU-based terminal emulator
+      meld # visual diff and merge tool
+      ouch #  compress/decompress files and directories
+      plano-theme # flat theme for GNOME and Xfce
+      remmina # remote desktop client
+      sakura # terminal emulator
+      sd # a better `sed`
+      (writeShellApplication {
+        name = "show-nixos-org";
+        runtimeInputs = [ curl w3m ];
+        text = ''
+          curl -s 'https://nixos.org' | w3m -dump -T text/html
+        '';
+      })
+      starship # customizable prompt for any shell
+      steghide # steganography program
+      wabt # WebAssembly binary toolkit
+    ];
   };
 
   virtualisation.docker = {

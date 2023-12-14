@@ -1,6 +1,6 @@
 # hosts
 
-- x220: ThinkPad X220
+- [x220](./x220/configuration.nix): ThinkPad X220
 
 ## Reference
 

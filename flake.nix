@@ -36,15 +36,16 @@
   }:
     let
       system = "x86_64-linux";
-      # TODO: I'm not sure what legacyPackages actually is...
-      pkgs = nixpkgs.legacyPackages.${system};
       user = "jack";
+      # define the list of allowed unfree here, so I can pass it to both
+      # `sudo nixos-rebuild` and `home-manager`
       allowed-unfree-packages = [
         "google-chrome"
         "postman"
         "vscode"
         "vscode-extension-github-copilot"
       ];
+      # TODO: define the font stack available to a specific user on a specific system
       favorite-browser = "google-chrome";
     in {
       # TODO: consider writing a function like this one:
@@ -77,7 +78,7 @@
     # Available through 'home-manager --flake .#your-username@your-hostname'
     homeConfigurations."${user}@x220-nixos" = home-manager.lib.homeManagerConfiguration {
       # Home-manager requires 'pkgs' instance
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      pkgs = nixpkgs.legacyPackages.${system};
       extraSpecialArgs = { inherit allowed-unfree-packages favorite-browser; };
       modules = [
         ./home-manager/${user}.nix

@@ -27,9 +27,6 @@ in
     sops-nix.nixosModules.sops
   ];
 
-  # options = { };
-  # config = { };
-
   # sops-nix configuration options
   # https://github.com/Mic92/sops-nix/blob/d806e546f96c88cd9f7d91c1c19ebc99ba6277d9/modules/sops/default.nix#L160
 

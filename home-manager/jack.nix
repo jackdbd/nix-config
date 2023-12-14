@@ -52,7 +52,6 @@ let
     luajitPackages.fennel
     monolith
     neofetch
-    nerdfonts
     nix-index # locate packages containing certain nixpkgs
     nix-output-monitor # nom: monitor nix commands
     nuclei
@@ -135,9 +134,8 @@ in
   home = {
     inherit homeDirectory username;
 
-    # TODO: at the moment I have a version mismatch between Nixpkgs and Home
-    # Manager. I'm not sure whether I should pin the Nixpkgs's version, the Home
-    # Manager's one, or both.
+    # In case of a version mismatch between Nixpkgs and Home Manager, you can
+    # silence it with this.
     # enableNixpkgsReleaseCheck = false;
 
     file = {
@@ -161,19 +159,13 @@ in
   # I had the same issue about home-manager manual described here. The solution
   # looks proposed in the thread seems to work.
   # https://discourse.nixos.org/t/starting-out-with-home-manager/31559
-  manual.manpages.enable = false;
+  # manual.manpages.enable = false;
 
   # https://nix-community.github.io/home-manager/options.html#opt-nixpkgs.config
   nixpkgs.config = {
-    # allowUnfree = true;
-    # I prefer to explicitly list all the unfree packages I am using.
-    # allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    #   "google-chrome"
-    #   "vscode"
-    # ];
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
   };
 
-  # restart services on change
+  # restart systemd services on change
   systemd.user.startServices = "sd-switch";
 }
