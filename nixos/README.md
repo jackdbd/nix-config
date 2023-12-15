@@ -1,6 +1,14 @@
 # nixos
 
-System-wide configuration for all of my hosts.
+System-wide configuration for all of my hosts. This configuration consist of:
+
+- configuring [initrd](https://en.wikipedia.org/wiki/Initial_ramdisk);
+- configuring disk encryption with [LUKS](https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup);
+- configuring the boot loader (e.g. GRUB);
+- making a package available system-wide, namely all users on the host will be able to use that package;
+- configuring a service at the system level.
+
+## Hosts
 
 - [x220](./x220/configuration.nix): ThinkPad X220
 

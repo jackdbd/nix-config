@@ -117,7 +117,6 @@ in
     lm_sensors # tools for reading hardware sensors
     mtr # network diagnostics tool (basically traceroute + ping)
     ncdu # disk usage utility
-    # nerdfonts
     procs # a better `ps`
     pstree # show the set of running processes as a tree
     rofi
