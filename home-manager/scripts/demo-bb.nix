@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-let
+{pkgs, ...}: let
   bb = "${pkgs.babashka}/bin/bb";
   bbScript = pkgs.copyPathToStore ./some-babashka-script.clj;
 in

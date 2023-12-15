@@ -8,9 +8,7 @@
   sops-nix,
   user,
   ...
-}:
-
-let
+}: let
   matePackages = with pkgs; [
     mate.atril # PDF viewer (it's a fork of evince)
   ];
@@ -23,8 +21,7 @@ let
   xorgPackages = with pkgs; [
     xorg.xkill
   ];
-in
-{
+in {
   imports = [
     nixos-hardware.nixosModules.lenovo-thinkpad-x220
     ./hardware-configuration.nix
@@ -42,7 +39,7 @@ in
   boot.initrd.secrets = {
     "/crypto_keyfile.bin" = null;
   };
-  
+
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.enable = true;
   boot.loader.grub.enableCryptodisk = true;
@@ -54,17 +51,17 @@ in
 
   # https://nixos.wiki/wiki/Debug_Symbols
   environment.enableDebugInfo = true;
-  
+
   # Bluetooth configuration for PipeWire
   # https://nixos.wiki/wiki/PipeWire#Bluetooth_Configuration
   environment.etc = {
     "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
-      bluez_monitor.properties = {
-			  ["bluez5.enable-sbc-xq"] = true,
-			  ["bluez5.enable-msbc"] = true,
-			  ["bluez5.enable-hw-volume"] = true,
-			  ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
-		  }
+        bluez_monitor.properties = {
+       ["bluez5.enable-sbc-xq"] = true,
+       ["bluez5.enable-msbc"] = true,
+       ["bluez5.enable-hw-volume"] = true,
+       ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
+      }
     '';
   };
 
@@ -78,54 +75,58 @@ in
   # packages available to all users, and automatically updated every time you
   # rebuild the system configuration.
   # https://nixpkgs-manual-sphinx-markedown-example.netlify.app/generated/options-db.xml#environment-systempackages
-  environment.systemPackages = with pkgs; [
-    age # encryption tool
-    alacritty # Open GL terminal emulator
-    bandwhich # display network utilization by process, connection and remote IP/hostname
-    baobab # disk usage utility
-    binutils # tools for manipulating binaries (nm, objdump, strip, etc...)
-    (writeShellScriptBin "debug-secrets" ''
-      printf "=== DEBUG SECRETS ===\n"
-      echo "defaultSopsFile is at ${config.sops.defaultSopsFile}"
-      
-      printf "\ngithub_token_workflow_developer\n"
-      echo "secret found at ${config.sops.secrets.github_token_workflow_developer.path}"
-      echo "secret is $(cat ${config.sops.secrets.github_token_workflow_developer.path})"
+  environment.systemPackages = with pkgs;
+    [
+      age # encryption tool
+      alacritty # Open GL terminal emulator
+      bandwhich # display network utilization by process, connection and remote IP/hostname
+      baobab # disk usage utility
+      binutils # tools for manipulating binaries (nm, objdump, strip, etc...)
+      (writeShellScriptBin "debug-secrets" ''
+        printf "=== DEBUG SECRETS ===\n"
+        echo "defaultSopsFile is at ${config.sops.defaultSopsFile}"
 
-      echo "gh auth status (to check that GITHUB_TOKEN is set)"
-      export GITHUB_TOKEN=$(cat ${config.sops.secrets.github_token_workflow_developer.path})
-      gh auth status
-      
-      printf "\nnpm_token_read_all_packages\n"
-      echo "secret found at ${config.sops.secrets."nested_secret/npm_token_read_all_packages".path}"
-      echo "secret is $(cat ${config.sops.secrets."nested_secret/npm_token_read_all_packages".path})"
+        printf "\ngithub_token_workflow_developer\n"
+        echo "secret found at ${config.sops.secrets.github_token_workflow_developer.path}"
+        echo "secret is $(cat ${config.sops.secrets.github_token_workflow_developer.path})"
 
-      printf "\ndeeply-nested\n"
-      echo "secret found at ${config.sops.secrets."abc/def/ghi/deeply-nested".path}"
-      echo "secret is $(cat ${config.sops.secrets."abc/def/ghi/deeply-nested".path})"
-    '')
-    duf # disk usage utility
-    eza # fork of exa, a better `ls`
-    fd # a better `find`
-    feh # image viewer
-    gitFull # git + graphical tools like gitk (see https://nixos.wiki/wiki/Git)
-    gitg # git GUI
-    glxinfo # show information about the GLX implementation
-    gparted # partition editor
-    home-manager # Nix-based user environment configurator
-    libnotify # send desktop notifications to a notification daemon
-    lm_sensors # tools for reading hardware sensors
-    mtr # network diagnostics tool (basically traceroute + ping)
-    ncdu # disk usage utility
-    procs # a better `ps`
-    pstree # show the set of running processes as a tree
-    rofi
-    sops # editor for encrypting/decrypting JSON, YAML, ini, etc
-    stow # symlink tool
-    tailscale # mesh VPN built on WireGuard
-    winetricks # script to install DLLs needed to work around problems in Wine
-    wineWowPackages.stable # https://nixos.wiki/wiki/Wine
-  ] ++ matePackages ++ xfcePackages ++ xorgPackages;
+        echo "gh auth status (to check that GITHUB_TOKEN is set)"
+        export GITHUB_TOKEN=$(cat ${config.sops.secrets.github_token_workflow_developer.path})
+        gh auth status
+
+        printf "\nnpm_token_read_all_packages\n"
+        echo "secret found at ${config.sops.secrets."nested_secret/npm_token_read_all_packages".path}"
+        echo "secret is $(cat ${config.sops.secrets."nested_secret/npm_token_read_all_packages".path})"
+
+        printf "\ndeeply-nested\n"
+        echo "secret found at ${config.sops.secrets."abc/def/ghi/deeply-nested".path}"
+        echo "secret is $(cat ${config.sops.secrets."abc/def/ghi/deeply-nested".path})"
+      '')
+      duf # disk usage utility
+      eza # fork of exa, a better `ls`
+      fd # a better `find`
+      feh # image viewer
+      gitFull # git + graphical tools like gitk (see https://nixos.wiki/wiki/Git)
+      gitg # git GUI
+      glxinfo # show information about the GLX implementation
+      gparted # partition editor
+      home-manager # Nix-based user environment configurator
+      libnotify # send desktop notifications to a notification daemon
+      lm_sensors # tools for reading hardware sensors
+      mtr # network diagnostics tool (basically traceroute + ping)
+      ncdu # disk usage utility
+      procs # a better `ps`
+      pstree # show the set of running processes as a tree
+      rofi
+      sops # editor for encrypting/decrypting JSON, YAML, ini, etc
+      stow # symlink tool
+      tailscale # mesh VPN built on WireGuard
+      winetricks # script to install DLLs needed to work around problems in Wine
+      wineWowPackages.stable # https://nixos.wiki/wiki/Wine
+    ]
+    ++ matePackages
+    ++ xfcePackages
+    ++ xorgPackages;
 
   # environment variables set at shell initialisation
   # https://nixos.org/manual/nixos/stable/options#opt-environment.variables
@@ -138,7 +139,7 @@ in
 
   # https://nixos.wiki/wiki/Fonts#Installing_specific_fonts_from_nerdfonts
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "DroidSansMono" "FiraCode" "JetBrainsMono" ]; })
+    (nerdfonts.override {fonts = ["DroidSansMono" "FiraCode" "JetBrainsMono"];})
   ];
 
   # https://nixos.wiki/wiki/Bluetooth
@@ -192,7 +193,7 @@ in
   # Enable flakes, so we can avoid adding the flag --extra-experimental-features
   # every time we use the nix CLI (e.g. nix build, nix run, etc)
   # https://nixos.wiki/wiki/Flakes#Enable_flakes_permanently_in_NixOS
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Instead of setting allowUnfree to true, I prefer explicitly list all the
   # unfree packages I am using.
@@ -237,12 +238,12 @@ in
     description = "Giacomo Debidda";
     # Beware that the docker group membership is effectively equivalent to being root!
     # https://github.com/moby/moby/issues/9976
-    extraGroups = [ "docker" "networkmanager" "wheel" ];
+    extraGroups = ["docker" "networkmanager" "wheel"];
     # Add to this list only the packages that you would like to install at the
     # user-level, but that are not available in Home Manager.
     packages = with pkgs; [
-      (callPackage ../../scripts/ghi.nix { inherit config pkgs; })
-      (callPackage ../../scripts/ghw.nix { inherit config pkgs; })
+      (callPackage ../../scripts/ghi.nix {inherit config pkgs;})
+      (callPackage ../../scripts/ghw.nix {inherit config pkgs;})
       git-cola # git GUI
       kitty # GPU-based terminal emulator
       meld # visual diff and merge tool
@@ -253,7 +254,7 @@ in
       sd # a better `sed`
       (writeShellApplication {
         name = "show-nixos-org";
-        runtimeInputs = [ curl w3m ];
+        runtimeInputs = [curl w3m];
         text = ''
           curl -s 'https://nixos.org' | w3m -dump -T text/html
         '';

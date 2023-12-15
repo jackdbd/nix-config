@@ -5,9 +5,7 @@
   lib,
   pkgs,
   ...
-}:
-
-let
+}: let
   username = "jack";
   homeDirectory = "/home/${username}";
   configHome = "${homeDirectory}/.config"; # equivalent to config.xdg.configHome
@@ -103,7 +101,7 @@ let
 
     (writeShellApplication {
       name = "show-nixos-org";
-      runtimeInputs = [ curl w3m ];
+      runtimeInputs = [curl w3m];
       text = ''
         curl -s 'https://nixos.org' | w3m -dump -T text/html
       '';
@@ -119,16 +117,17 @@ let
       echo "configHome is ${configHome}"
     '')
   ];
-in
-{
-  imports = [
-    ../modules/chromium-wrapper.nix
-    ../modules/xfconf.nix
-  ] ++ lib.concatMap import [
-    ../programs
-    ../scripts
-    ../services
-  ];
+in {
+  imports =
+    [
+      ../modules/chromium-wrapper.nix
+      ../modules/xfconf.nix
+    ]
+    ++ lib.concatMap import [
+      ../programs
+      ../scripts
+      ../services
+    ];
 
   home = {
     inherit homeDirectory username;

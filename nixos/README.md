@@ -14,4 +14,5 @@ System-wide configuration for all of my hosts. This configuration consist of:
 
 ## Reference
 
+- [NixOS options](https://search.nixos.org/options)
 - [Nix modules provided by nixos-hardware](https://github.com/NixOS/nixos-hardware/blob/master/flake.nix)

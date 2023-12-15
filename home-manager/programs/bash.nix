@@ -1,11 +1,13 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Home Manager is only able to set session variables automatically if it manages your shell.
   # https://nix-community.github.io/home-manager/index.html#_why_are_the_session_variables_not_set
   programs.bash = {
     enable = true;
-    
+
     enableCompletion = true;
 
     # https://nix-community.github.io/home-manager/options.html#opt-programs.bash.shellAliases

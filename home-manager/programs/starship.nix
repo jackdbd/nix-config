@@ -1,10 +1,8 @@
-{ lib, ... }:
-
-{
+{lib, ...}: {
   programs.starship = {
     enable = true;
     enableBashIntegration = true;
-    
+
     # https://starship.rs/config/#prompt
     settings = {
       add_newline = true; # add a blank line between shell prompts

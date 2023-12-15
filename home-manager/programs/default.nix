@@ -1,5 +1,9 @@
 let
-  more = { lib, pkgs, ... }: {
+  more = {
+    lib,
+    pkgs,
+    ...
+  }: {
     programs = {
       bat.enable = true;
 
@@ -68,8 +72,7 @@ let
       zoxide.enable = true;
     };
   };
-in
-[
+in [
   ./alacritty.nix
   ./atuin.nix
   ./bash.nix

@@ -1,13 +1,15 @@
-{ fetchFromGitHub, lib, pkgs, ... }:
-
+{
+  fetchFromGitHub,
+  lib,
+  pkgs,
+  ...
+}:
 # See how mkTmuxPlugin is used in nixpkgs
 # https://github.com/NixOS/nixpkgs/blob/master/pkgs/misc/tmux-plugins/default.nix
-
 let
   buildTmuxPlugin = pkgs.tmuxPlugins.mkTmuxPlugin;
   revision = "v0.3.0";
-in
-{
+in {
   nord = buildTmuxPlugin {
     pluginName = "nord";
     version = revision;

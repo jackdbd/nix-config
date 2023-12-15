@@ -1,7 +1,9 @@
-{ config, sops-nix, user, ... }:
-
-
-let
+{
+  config,
+  sops-nix,
+  user,
+  ...
+}: let
   # The secret's owner. It can be either a user ID or a username.
   # To avoid misconfiguration, prefer using `config.users.users.<?name>.name`
   # instead of hardcoding it.
@@ -23,8 +25,7 @@ let
   # 1 - execute only (--x)
   # 0 - none (---)
   mode = "0400";
-in
-{
+in {
   imports = [
     sops-nix.nixosModules.sops
   ];

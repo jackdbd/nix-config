@@ -1,5 +1,5 @@
 let
-  more = { pkgs, ... }: {
+  more = {pkgs, ...}: {
     services = {
       # betterlockscreen = {
       #   enable = true;
@@ -7,7 +7,7 @@ let
       #   inactiveInterval = 15; # in minutes
       # };
 
-      # For the Blueman applet to work, the blueman service must be enabled system-wide. 
+      # For the Blueman applet to work, the blueman service must be enabled system-wide.
       blueman-applet.enable = true;
 
       flameshot = {
@@ -33,7 +33,6 @@ let
       xidlehook.not-when-audio = true;
     };
   };
-in
-[
+in [
   more
 ]

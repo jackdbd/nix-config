@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-
+{pkgs, ...}:
 # https://www.linkedin.com/pulse/how-identify-kill-zombiedefunct-processes-linux-without-george-gabra/
 pkgs.writeShellScriptBin "show-zombie-parents" ''
   # Show all zombie processes

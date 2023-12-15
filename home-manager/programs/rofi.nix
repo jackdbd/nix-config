@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.rofi = {
     enable = true;
     # https://nix-community.github.io/home-manager/options.html#opt-programs.rofi.extraConfig
@@ -10,7 +8,7 @@
       show-icons = true;
     };
     font = "JetBrainsMono Nerd Font 14";
-    
+
     # https://nix-community.github.io/home-manager/options.html#opt-programs.rofi.plugins
     plugins = [
       # pkgs.rofi-calc

@@ -27,6 +27,12 @@ home-manager switch --flake .#jack@x220-nixos
 
 ## Useful commands
 
+Format all nix code with [alejandra](https://github.com/kamadorueda/alejandra):
+
+```sh
+alejandra .
+```
+
 Perform garbage collection on the Nix store:
 
 ```sh

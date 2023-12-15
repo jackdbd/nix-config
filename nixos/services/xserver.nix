@@ -1,8 +1,11 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [];
-  
+
   options = {};
 
   # X11 window system
@@ -27,4 +30,3 @@
 
   meta = {};
 }
-

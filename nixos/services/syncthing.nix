@@ -1,10 +1,14 @@
-{ config, lib, pkgs, user, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  user,
+  ...
+}: {
   imports = [];
-  
+
   options = {};
-  
+
   config = {
     # peer-to-peer file synchronization
     # https://nixos.wiki/wiki/Syncthing

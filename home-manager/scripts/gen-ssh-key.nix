@@ -1,8 +1,6 @@
-{ pkgs, ...}:
-
-let
-  add    = "${pkgs.openssh}/bin/ssh-add";
-  agent  = "${pkgs.openssh}/bin/ssh-agent";
+{pkgs, ...}: let
+  add = "${pkgs.openssh}/bin/ssh-add";
+  agent = "${pkgs.openssh}/bin/ssh-agent";
   keygen = "${pkgs.openssh}/bin/ssh-keygen";
 in
   pkgs.writeShellScriptBin "gen-ssh-key" ''

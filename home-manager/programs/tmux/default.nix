@@ -1,19 +1,21 @@
-{ lib, pkgs, ... }:
-
+{
+  lib,
+  pkgs,
+  ...
+}:
 # Use // (i.e. update operator) to merge the Tmux plugins defined in Nixpkgs
 # with the ones defined in custom-plugins.nix
 # https://nixos.org/manual/nix/stable/language/operators#update
 let
-  plugins = pkgs.tmuxPlugins // pkgs.callPackage ./custom-plugins.nix { };
+  plugins = pkgs.tmuxPlugins // pkgs.callPackage ./custom-plugins.nix {};
   tmuxExtraConfig = lib.readFile ./extra.conf;
-in
-{
+in {
   programs.tmux = {
     enable = true;
 
     # Set first window and pane to index 1 (not 0) to be more convenient for my keyboard layout
     baseIndex = 1;
-    
+
     clock24 = false;
     escapeTime = 500;
     extraConfig = tmuxExtraConfig;

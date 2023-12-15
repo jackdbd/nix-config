@@ -1,9 +1,7 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.alacritty = {
     enable = true;
-    
+
     # https://nix-community.github.io/home-manager/options.html#opt-programs.alacritty.settings
     # https://github.com/alacritty/alacritty/tree/master#configuration
     settings = {
@@ -46,7 +44,10 @@
         decorations = "none";
         dynamic_padding = true;
         opacity = 0.95;
-        padding = { x = 5; y = 5; };
+        padding = {
+          x = 5;
+          y = 5;
+        };
         startup_mode = "Maximized";
       };
     };

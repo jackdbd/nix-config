@@ -1,10 +1,13 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [];
-  
+
   options = {};
-  
+
   config = {
     # The PipeWire daemon can be configured to be both an audio server (with
     # PulseAudio and JACK features) and a video capture server.

@@ -1,8 +1,6 @@
-{ pkgs, ...}:
-
-let
+{pkgs, ...}: let
   xkbmap = "${pkgs.xorg.setxkbmap}/bin/setxkbmap";
-  rg     = "${pkgs.ripgrep}/bin/rg";
+  rg = "${pkgs.ripgrep}/bin/rg";
 in
   pkgs.writeShellScriptBin "kls" ''
     # Switch keyboard layout
