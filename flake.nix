@@ -2,9 +2,10 @@
   description = "NixOS & Home Manager configuration for all of jackdbd's hosts";
 
   inputs = {
-    # Pin the nixpkgs repository to its stable release.
+    # Pin the nixpkgs repository to its latest stable release.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
-    # Some packages (e.g. Home Manager) follow nixpkgs's unstable release.
+    # Some packages might contain fixes/features that are available only in the
+    # nixpkgs unstable release.
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     
     home-manager = {
@@ -15,17 +16,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-hardware = {
-      url = "github:NixOS/nixos-hardware/master";
-    };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  # Define the alias `inputs` to let all configuration access all inputs.
+  # Define the alias `inputs` to let all Nix modules access all inputs.
   outputs = inputs@{
     home-manager,
     nixos-hardware,

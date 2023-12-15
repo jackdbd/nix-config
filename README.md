@@ -38,5 +38,3 @@ Optimize the Nix store (this takes some time):
 ```sh
 nix-store --optimise
 ```
-
-TODO: Consider running the garbage collection automatically and auto-optimising the Nix store [as described here](https://nixos-and-flakes.thiscute.world/nixos-with-flakes/other-useful-tips#reducing-disk-usage).

@@ -4,9 +4,9 @@ This directory contains all my encrypted secrets.
 
 Any sensitive piece of configuration in this repository is encrypted with [age](https://github.com/FiloSottile/age).
 
-Whenever I need to edit an secret (e.g. rotate a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) every 3 months) I decrypt it on the fly using [SOPS](https://github.com/getsops/sops), which also takes are of re-encrypting it when I close it. The `.sops.yaml` file controls how SOPS behaves.
+Whenever I need to edit a secret in `secrets.yaml` (e.g. rotate a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) every 3 months) I decrypt that file on the fly using [SOPS](https://github.com/getsops/sops), which also takes are of re-encrypting the `secrets.yaml` when I close it. The SOPS configuration file `.sops.yaml` specifies which age public keys to use for encryption.
 
-The Nix package [sops-nix](https://github.com/Mic92/sops-nix) takes care of provisioning these secrets on my machines.
+The Nix package [sops-nix](https://github.com/Mic92/sops-nix) takes care of provisioning the secrets on my machines.
 
 ## ThinkPad X220
 
@@ -21,7 +21,13 @@ The age **private** key is deployed on my ThinkPad X220 and stored at `~/.config
 
 ## Create an age keypair
 
-TODO: explain. Do it for each one of my machines.
+Generate a keypair (public key + private key).
+
+```sh
+age-keygen -o ~/.config/sops/age/keys.txt
+```
+
+TODO: add explanation.
 
 ## Edit a secret
 
