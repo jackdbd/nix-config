@@ -73,7 +73,6 @@ in
   ./alacritty.nix
   ./atuin.nix
   ./bash.nix
-  ./chromium
   ./git.nix
   ./neovim
   ./rofi.nix

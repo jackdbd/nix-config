@@ -122,15 +122,13 @@ let
 in
 {
   imports = [
-    ../xfconf.nix
+    ../modules/chromium-wrapper.nix
+    ../modules/xfconf.nix
   ] ++ lib.concatMap import [
     ../programs
     ../scripts
     ../services
   ];
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
 
   home = {
     inherit homeDirectory username;
@@ -156,6 +154,12 @@ in
     # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "22.11";
   };
+
+  programs.chromium-wrapper.enable = true;
+  programs.chromium-wrapper.should-install-extensions = true;
+
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
 
   # I had the same issue about home-manager manual described here. The solution
   # looks proposed in the thread seems to work.

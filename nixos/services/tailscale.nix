@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [];
+  imports = [ ];
   
-  options = {};
+  options = { };
 
   # https://nixos.wiki/wiki/Tailscale
   # https://tailscale.com/blog/nixos-minecraft/
@@ -16,6 +16,6 @@
     };
   };
 
-  meta = {};
+  meta = { };
 }
 
