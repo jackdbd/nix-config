@@ -28,7 +28,8 @@ in
   imports = [
     nixos-hardware.nixosModules.lenovo-thinkpad-x220
     ./hardware-configuration.nix
-    ./secrets.nix
+    ../secrets.nix
+    ../../services/pipewire.nix
     ../../services/syncthing.nix
     ../../services/tailscale.nix
     ../../services/xserver.nix
@@ -46,6 +47,10 @@ in
   boot.loader.grub.enable = true;
   boot.loader.grub.enableCryptodisk = true;
   boot.loader.grub.useOSProber = true;
+
+  # Limit the number of NixOS generations to keep (and that show up in GRUB)
+  # https://search.nixos.org/options?channel=23.11&show=boot.loader.grub.configurationLimit&from=0&size=50&sort=relevance&type=packages&query=configurationLimit
+  boot.loader.grub.configurationLimit = 50;
 
   # https://nixos.wiki/wiki/Debug_Symbols
   environment.enableDebugInfo = true;
@@ -169,6 +174,22 @@ in
   # https://nixpkgs-manual-sphinx-markedown-example.netlify.app/configuration/network-manager.xml.html#networkmanager
   networking.networkmanager.enable = true;
 
+  # Perform garbage collection weekly to maintain low disk usage
+  # https://nixos-and-flakes.thiscute.world/nixos-with-flakes/other-useful-tips#reducing-disk-usage
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 1w";
+  };
+
+  # Optimize storage
+  # You can also manually optimize the store via:
+  #    nix-store --optimise
+  # Refer to the following link for more details:
+  # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
+  # TODO: Explain what the downsides of auto optimising the nix store are.
+  nix.settings.auto-optimise-store = true;
+
   # Enable flakes, so we can avoid adding the flag --extra-experimental-features
   # every time we use the nix CLI (e.g. nix build, nix run, etc)
   # https://nixos.wiki/wiki/Flakes#Enable_flakes_permanently_in_NixOS
@@ -190,22 +211,6 @@ in
 
   # When PipeWire is enabled, rtkit is optional but recommended
   security.rtkit.enable = true;
-
-  # The PipeWire daemon can be configured to be both an audio server (with
-  # PulseAudio and JACK features) and a video capture server.
-  # https://nixos.wiki/wiki/PipeWire
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    # jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    # media-session.enable = true;
-  };
 
   # CUPS to print documents
   # https://nixos.wiki/wiki/Printing

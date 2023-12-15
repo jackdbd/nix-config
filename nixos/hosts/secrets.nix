@@ -2,18 +2,18 @@
 
 
 let
-  # Either a user id or group name representation of the secret owner
-  # It is recommended to get the user name from
-  # `config.users.users.<?name>.name` to avoid misconfiguration
+  # The secret's owner. It can be either a user ID or a username.
+  # To avoid misconfiguration, prefer using `config.users.users.<?name>.name`
+  # instead of hardcoding it.
   owner = config.users.users.${user}.name;
-  
-  # Either the group id or group name representation of the secret group
-  # It is recommended to get the group name from
-  # `config.users.users.<?name>.group` to avoid misconfiguration
+
+  # The secret's group. It can be either a group ID or a group name.
+  # To avoid misconfiguration, prefer using `config.users.users.<?name>.group`
+  # instead of hardcoding it.
   group = config.users.users.${user}.group;
 
-  # Permission modes are in octal representation (same as chmod),
-  # the digits represent: user|group|owner
+  # Permission modes are in octal representation (same as chmod).
+  # The digits represent: user|group|owner
   # 7 - full (rwx)
   # 6 - read and write (rw-)
   # 5 - read and execute (r-x)
@@ -32,11 +32,11 @@ in
   options = {};
 
   config = {
-    # sops-nix configuration options
-    # https://github.com/Mic92/sops-nix/blob/d806e546f96c88cd9f7d91c1c19ebc99ba6277d9/modules/sops/default.nix#L160
+    # The sops module of sops-nix has these configuration options:
+    # https://github.com/Mic92/sops-nix/blob/master/modules/sops/default.nix
 
     # https://github.com/Mic92/sops-nix?tab=readme-ov-file#deploy-example
-    sops.defaultSopsFile = ../../../sops/secrets.yaml;
+    sops.defaultSopsFile = ../../sops/secrets.yaml;
     sops.defaultSopsFormat = "yaml";
     # This will be at /run/secrets.d/age-keys.txt
     # sudo ls -la /run/secrets.d/

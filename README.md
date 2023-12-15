@@ -19,7 +19,7 @@ home-manager switch \
   --flake .#jack@x220-nixos
 ```
 
-As long as there is `nix.settings.experimental-features = [ "nix-command" "flakes" ];` in `configuration.nix`, you can omit the `--extra-experimental-features` flag.
+> ℹ️ As long as the configuration of a host (e.g. `nixos/hosts/x220/configuration.nix`) includes `nix.settings.experimental-features = [ "nix-command" "flakes" ];` the `--extra-experimental-features` flags can be omitted.
 
 ```sh
 home-manager switch --flake .#jack@x220-nixos
