@@ -1,5 +1,12 @@
-let
-  more = { pkgs, ... }: {
+{ pkgs, ... }:
+
+{
+
+  imports = [];
+
+  options = {};
+  
+  config = {
     xfconf = {
       # Use the xfconf-query CLI for accessing configuration data stored in Xfconf.
       # https://docs.xfce.org/xfce/xfconf/xfconf-query
@@ -60,8 +67,9 @@ let
         # xfconf-query --channel xsettings --list --verbose
       };
     };
+
   };
-in
-[
-  more
-]
+  
+  meta = {};
+
+}

@@ -54,7 +54,7 @@
         inherit system;
         
         modules = [
-          ./hosts/x220/configuration.nix
+          ./nixos/hosts/x220/configuration.nix
 
           # Install home-manager as a module of nixos, so that home-manager
           # configuration will be deployed automatically when executing
@@ -63,7 +63,7 @@
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.${user} = import ./home-manager/${user}.nix;
+            home-manager.users.${user} = import ./home-manager/users/${user}.nix;
             home-manager.extraSpecialArgs = { inherit favorite-browser; };
           }
         ];
@@ -81,7 +81,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
       extraSpecialArgs = { inherit allowed-unfree-packages favorite-browser; };
       modules = [
-        ./home-manager/${user}.nix
+        ./home-manager/users/${user}.nix
       ];
     };
   };

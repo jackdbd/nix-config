@@ -121,11 +121,12 @@ let
   ];
 in
 {
-  imports = [ ] ++ lib.concatMap import [
+  imports = [
+    ../xfconf.nix
+  ] ++ lib.concatMap import [
     ../programs
     ../scripts
     ../services
-    ../xfconf
   ];
 
   # Let Home Manager install and manage itself.
@@ -135,12 +136,12 @@ in
     inherit homeDirectory username;
 
     # In case of a version mismatch between Nixpkgs and Home Manager, you can
-    # silence it with this.
-    # enableNixpkgsReleaseCheck = false;
+    # silence it by setting enableNixpkgsReleaseCheck to false.
+    enableNixpkgsReleaseCheck = true;
 
     file = {
-      "${config.xdg.configHome}/neofetch/config.conf".source = ../dotfiles/neofetch.conf;
-      "${homeDirectory}/.npmrc".source = ../dotfiles/npmrc.ini;
+      "${config.xdg.configHome}/neofetch/config.conf".source = ../../dotfiles/neofetch.conf;
+      "${homeDirectory}/.npmrc".source = ../../dotfiles/npmrc.ini;
     };
 
     packages = defaultPkgs;

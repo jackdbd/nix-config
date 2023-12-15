@@ -29,6 +29,9 @@ in
     nixos-hardware.nixosModules.lenovo-thinkpad-x220
     ./hardware-configuration.nix
     ./secrets.nix
+    ../../services/syncthing.nix
+    ../../services/tailscale.nix
+    ../../services/xserver.nix
   ];
 
   boot.initrd.luks.devices."luks-318ded24-f80a-41ea-96ec-c12aacb3f155".keyFile = "/crypto_keyfile.bin";
@@ -207,44 +210,6 @@ in
   # CUPS to print documents
   # https://nixos.wiki/wiki/Printing
   services.printing.enable = true;
-  
-  # peer-to-peer file synchronization
-  # https://nixos.wiki/wiki/Syncthing
-  # TODO: should this service be defined here or with Home Manager?
-  services.syncthing = {
-    enable = true;
-    user = user;
-    dataDir = "/home/${user}/Documents";    # Default folder for new synced folders
-    configDir = "/home/${user}/.config/syncthing";   # Folder for Syncthing's settings and keys
-    guiAddress = "0.0.0.0:8384";
-  };
-
-  # https://nixos.wiki/wiki/Tailscale
-  # https://tailscale.com/blog/nixos-minecraft/
-  # https://mynixos.com/nixpkgs/options/services.tailscale
-  services.tailscale = {
-    enable = true;
-    # introduced in NixOS 23.11
-    extraUpFlags = [ "--ssh" ];
-  };
-
-  # X11 window system
-  # https://nixpkgs-manual-sphinx-markedown-example.netlify.app/configuration/x-windows.xml.html
-  services.xserver = {
-    enable = true;
-    # XFCE desktop environment
-    # https://nixpkgs-manual-sphinx-markedown-example.netlify.app/configuration/xfce.xml
-    desktopManager.xfce.enable = true;
-    # LightDM display manager
-    displayManager.lightdm.enable = true;
-    # https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/services/x11/display-managers/lightdm.nix
-    # displayManager.lightdm.greeters.gtk.enable = true;
-    # displayManager.lightdm.greeters.slick.enable = true;
-    layout = "us";
-    # Enable touchpad support (enabled default in most desktopManager).
-    # libinput.enable = true;
-    xkbVariant = "";
-  };
 
   # Remove sound.enable or set it to false if you had it set previously, as
   # sound.enable is only meant for ALSA-based configurations
