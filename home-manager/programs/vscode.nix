@@ -23,6 +23,7 @@
       github.vscode-github-actions
       github.vscode-pull-request-github
       jdinhlife.gruvbox
+      kamadorueda.alejandra
       mechatroner.rainbow-csv
       mhutchie.git-graph
       ms-azuretools.vscode-docker
@@ -38,10 +39,12 @@
       "[javascript]"."editor.formatOnSave" = true;
       "[json]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
       "[json]"."editor.formatOnSave" = true;
+      "[nix]"."editor.defaultFormatter" = "kamadorueda.alejandra";
       "[nix]"."editor.tabSize" = 2;
       "[nix]"."editor.formatOnSave" = true;
       "[typescript]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
       "[typescript]"."editor.formatOnSave" = true;
+      "alejandra.program" = "alejandra";
       "editor.minimap.enabled" = false;
       "editor.rulers" = [80 120];
       # The extension pflannery.vscode-versionlens works only if the file type
