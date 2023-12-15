@@ -22,7 +22,7 @@ let
   # 2 - write only (-w-)
   # 1 - execute only (--x)
   # 0 - none (---)
-  permissions = "0440";
+  mode = "0400";
 in
 {
   imports = [
@@ -48,21 +48,15 @@ in
     # This secret will be at /run/secrets/github_token_workflow_developer
     # sudo ls -la /run/secrets.d/1
     sops.secrets.github_token_workflow_developer = {
-      owner = owner;
-      group = group;
-      mode = permissions;
+      inherit group mode owner;
     };
 
     sops.secrets."nested_secret/npm_token_read_all_packages" = {
-      owner = owner;
-      group = group;
-      mode = permissions;
+      inherit group mode owner;
     };
 
     sops.secrets."abc/def/ghi/deeply-nested" = {
-      owner = owner;
-      group = group;
-      mode = permissions;
+      inherit group mode owner;
     };
   };
 
