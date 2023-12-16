@@ -56,12 +56,18 @@ in {
 
   environment.homeBinInPath = true;
 
-  # environment variables set by Linux PAM
+  # Pretty cool that NixOS allows to use different memory allocators from the
+  # one provided by libc. If you feel adventurous try scudo, a memory allocator
+  # based on LLVM Sanitizer's CombinedAllocator.
+  # https://nixos.org/manual/nixos/stable/options#opt-environment.memoryAllocator.provider
+  # environment.memoryAllocator.provider = "scudo";
+
+  # Environment variables set by Linux PAM
   # https://en.wikipedia.org/wiki/Linux_PAM
   # https://nixos.org/manual/nixos/stable/options#opt-environment.sessionVariables
   # environment.sessionVariables = {};
 
-  # packages available to all users, and automatically updated every time you
+  # Packages available to all users, and automatically updated every time you
   # rebuild the system configuration.
   # https://nixpkgs-manual-sphinx-markedown-example.netlify.app/generated/options-db.xml#environment-systempackages
   environment.systemPackages = with pkgs;
@@ -131,8 +137,6 @@ in {
   fonts.packages = with pkgs; [
     (nerdfonts.override {fonts = ["DroidSansMono" "FiraCode" "JetBrainsMono"];})
   ];
-
-  hardware.pulseaudio.enable = false;
 
   i18n.defaultLocale = "en_US.UTF-8";
 

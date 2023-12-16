@@ -9,6 +9,8 @@
   options = {};
 
   config = {
+    hardware.pulseaudio.enable = false;
+
     # The PipeWire daemon can be configured to be both an audio server (with
     # PulseAudio and JACK features) and a video capture server.
     # https://nixos.wiki/wiki/PipeWire
