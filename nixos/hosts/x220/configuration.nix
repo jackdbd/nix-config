@@ -26,11 +26,11 @@ in {
     nixos-hardware.nixosModules.lenovo-thinkpad-x220
     ./hardware-configuration.nix
     ../../modules/bluetooth.nix
+    ../../modules/pipewire.nix
     ../../modules/secrets.nix
-    ../../services/pipewire.nix
-    ../../services/syncthing.nix
-    ../../services/tailscale.nix
-    ../../services/xserver.nix
+    ../../modules/syncthing.nix
+    ../../modules/tailscale.nix
+    ../../modules/xserver.nix
   ];
 
   boot.initrd.luks.devices."luks-318ded24-f80a-41ea-96ec-c12aacb3f155".keyFile = "/crypto_keyfile.bin";
@@ -189,8 +189,7 @@ in {
   # and will launch automatically when the graphical session is started.
   programs.nm-applet.enable = true;
 
-  # When PipeWire is enabled, rtkit is optional but recommended
-  security.rtkit.enable = true;
+  programs.syncthing-wrapper.guiAddress = "127.0.0.1:8384";
 
   # CUPS to print documents
   # https://nixos.wiki/wiki/Printing

@@ -79,7 +79,6 @@
     sqlitebrowser
     stegseek # tool to crack steganography
     stripe-cli
-    syncthing
     temurin-bin-18
     thunderbird
     tmux
