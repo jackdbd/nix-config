@@ -49,7 +49,7 @@
   in {
     # TODO: consider writing a function like this one:
     # https://github.com/mitchellh/nixos-config/blob/main/lib/mksystem.nix
-    nixosConfigurations."x220-nixos" = nixpkgs.lib.nixosSystem rec {
+    nixosConfigurations."l390-nixos" = nixpkgs.lib.nixosSystem rec {
       inherit system;
 
       modules = [
@@ -57,11 +57,11 @@
           # nix code formatter
           environment.systemPackages = [alejandra.defaultPackage.${system}];
         }
-        ./nixos/hosts/x220/configuration.nix
+        ./nixos/hosts/l390/configuration.nix
 
         # Install home-manager as a module of nixos, so that home-manager
         # configuration will be deployed automatically when executing
-        # `sudo nixos-rebuild switch --flake ./#x220-nixos`
+        # `sudo nixos-rebuild switch --flake ./#l390-nixos`
         # https://nixos-and-flakes.thiscute.world/nixos-with-flakes/start-using-home-manager#getting-started-with-home-manager
         home-manager.nixosModules.home-manager
         {
@@ -78,10 +78,40 @@
       specialArgs = {inherit allowed-unfree-packages inputs nixos-hardware nixpkgs sops-nix user;};
     };
 
+    nixosConfigurations."x220-nixos" = nixpkgs.lib.nixosSystem rec {
+      inherit system;
+
+      modules = [
+        {
+          # nix code formatter
+          environment.systemPackages = [alejandra.defaultPackage.${system}];
+        }
+        ./nixos/hosts/x220/configuration.nix
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.${user} = import ./home-manager/users/${user}.nix;
+          home-manager.extraSpecialArgs = {inherit favorite-browser;};
+        }
+      ];
+
+      specialArgs = {inherit allowed-unfree-packages inputs nixos-hardware nixpkgs sops-nix user;};
+    };
+
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations."${user}@x220-nixos" = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations."${user}@l390-nixos" = home-manager.lib.homeManagerConfiguration {
       # Home-manager requires 'pkgs' instance
+      pkgs = nixpkgs.legacyPackages.${system};
+      extraSpecialArgs = {inherit allowed-unfree-packages favorite-browser;};
+      modules = [
+        ./home-manager/users/${user}.nix
+      ];
+    };
+
+    homeConfigurations."${user}@x220-nixos" = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
       extraSpecialArgs = {inherit allowed-unfree-packages favorite-browser;};
       modules = [
