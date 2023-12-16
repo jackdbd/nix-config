@@ -27,7 +27,7 @@ home-manager switch --flake .#jack@x220-nixos
 
 ## Useful commands
 
-Format all nix code with [alejandra](https://github.com/kamadorueda/alejandra):
+Format all nix code with [alejandra](https://github.com/kamadorueda/alejandra) (keep in mind that the [kamadorueda.alejandra](https://marketplace.visualstudio.com/items?itemName=kamadorueda.alejandra) VS Code extension formats a nix file on save):
 
 ```sh
 alejandra .
@@ -44,3 +44,7 @@ Optimize the Nix store (this takes some time):
 ```sh
 nix-store --optimise
 ```
+
+## Docs
+
+- [Setup a new NixOS machine](./docs/setup-new-nixos-machine.md)

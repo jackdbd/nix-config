@@ -10,7 +10,8 @@ System-wide configuration for all of my hosts. This configuration consist of:
 
 ## Hosts
 
-- [x220](./x220/configuration.nix): ThinkPad X220
+- [l390](./hosts/l390/configuration.nix): ThinkPad L390
+- [x220](./hosts/x220/configuration.nix): ThinkPad X220
 
 ## Reference
 
