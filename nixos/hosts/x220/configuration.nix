@@ -134,9 +134,14 @@ in {
   ];
 
   # https://nixos.wiki/wiki/Fonts#Installing_specific_fonts_from_nerdfonts
-  fonts.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["DroidSansMono" "FiraCode" "JetBrainsMono"];})
-  ];
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      # https://nixos.wiki/wiki/Fonts#Installing_specific_fonts_from_nerdfonts
+      (nerdfonts.override {fonts = ["DroidSansMono" "FiraCode" "JetBrainsMono"];})
+      ubuntu_font_family
+    ];
+  };
 
   i18n.defaultLocale = "en_US.UTF-8";
 
