@@ -82,6 +82,7 @@ in {
       bandwhich # display network utilization by process, connection and remote IP/hostname
       baobab # disk usage utility
       binutils # tools for manipulating binaries (nm, objdump, strip, etc...)
+      bluez # bluetooth support for Linux
       (writeShellScriptBin "debug-secrets" ''
         printf "=== DEBUG SECRETS ===\n"
         echo "defaultSopsFile is at ${config.sops.defaultSopsFile}"
@@ -121,6 +122,7 @@ in {
       sops # editor for encrypting/decrypting JSON, YAML, ini, etc
       stow # symlink tool
       tailscale # mesh VPN built on WireGuard
+      usbutils # tools for working with USB devices, such as lsusb
       winetricks # script to install DLLs needed to work around problems in Wine
       wineWowPackages.stable # https://nixos.wiki/wiki/Wine
     ]
@@ -142,15 +144,56 @@ in {
     (nerdfonts.override {fonts = ["DroidSansMono" "FiraCode" "JetBrainsMono"];})
   ];
 
+  ### bluetooth config start ###
   # https://nixos.wiki/wiki/Bluetooth
   # https://github.com/NixOS/nixpkgs/issues/170573
   hardware.bluetooth = {
     enable = true; # enables support for Bluetooth
+    # package = pkgs.bluez; # on Linux, BlueZ is the default bluetooth stack
     powerOnBoot = true; # powers up the default Bluetooth controller on boot
+    # Set configuration for system-wide bluetooth (/etc/bluetooth/main.conf)
+    settings = {
+      General = {
+        ControllerMode = "dual";
+        # The --experimental flag enables experimental D-Bus interfaces
+        # https://github.com/balsoft/nixos-config/blob/master/profiles/bluetooth.nix
+        Experimental = true;
+      };
+      Policy = {
+        AutoEnable = true;
+      };
+    };
   };
+
+  # Configure the bluetooth.service systemd unit file overriding some of its fields
+  systemd.services.bluetooth = {
+    # The NixOS documentation seems to suggest we MUST specifiy overrideStrategy
+    # if we want to use systemd template units.
+    # The "asDropin" overrideStrategy creates a drop-in file named overrides.conf.
+    overrideStrategy = "asDropin";
+
+    # We add some links to ensure that we are actually overriding the [Unit]
+    # section of the generated systemd unit file.
+    unitConfig.Documentation = [
+      "https://bluez-cheat-sheet.readthedocs.io/en/latest/"
+      "https://github.com/NixOS/nixpkgs/issues/63703"
+      "https://nixos.wiki/wiki/Bluetooth"
+    ];
+
+    # The --experimental flag enables experimental D-Bus interfaces
+    # https://github.com/balsoft/nixos-config/blob/master/profiles/bluetooth.nix
+    serviceConfig.ExecStart = lib.mkForce [
+      ""
+      "${pkgs.bluez}/libexec/bluetooth/bluetoothd -f /etc/bluetooth/main.conf --debug --experimental"
+    ];
+  };
+
+  # persist.state.directories = ["/var/lib/bluetooth"];
+
   # For the Blueman applet to work, the blueman service must be enabled system-wide.
   # https://nixos.wiki/wiki/Bluetooth#Pairing_Bluetooth_devices
   services.blueman.enable = true;
+  ### bluetooth config end ###
 
   hardware.pulseaudio.enable = false;
 
