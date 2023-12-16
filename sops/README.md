@@ -8,6 +8,17 @@ Whenever I need to edit a secret in `secrets.yaml` (e.g. rotate a [GitHub person
 
 The Nix package [sops-nix](https://github.com/Mic92/sops-nix) takes care of provisioning the secrets on my machines.
 
+## ThinkPad L390
+
+age **public** key:
+
+```txt
+created: 2023-12-16T21:04:21+01:00
+public key: age1r5aen49ta9z55u3qutlass5zgru6w7xekdpvtz0v24qa9qexxszqy26pdk
+```
+
+The age **private** key is deployed on my ThinkPad L390 and stored at `~/.config/sops/age/keys.txt`.
+
 ## ThinkPad X220
 
 age **public** key:

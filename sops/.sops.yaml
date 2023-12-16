@@ -1,7 +1,9 @@
 keys:
+  - &l390_age age1r5aen49ta9z55u3qutlass5zgru6w7xekdpvtz0v24qa9qexxszqy26pdk
   - &x220_age age1wepxydgqnud4keawpf3ge3ylck8cjeewu4h6y34jtkg5urz5k3pq9dasm9
 creation_rules:
   - path_regex: .+\.(json|env|ini|json|yaml|yml)$
     key_groups:
     - age:
+      - *l390_age
       - *x220_age
