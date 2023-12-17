@@ -38,6 +38,5 @@ in [
   ./rofi.nix
   ./starship.nix
   ./tmux
-  ./vscode.nix
   more
 ]

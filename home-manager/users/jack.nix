@@ -16,6 +16,7 @@ in {
       ../modules/chromium-wrapper.nix
       ../modules/flameshot.nix
       ../modules/lockscreen.nix
+      ../modules/vscode.nix
       ../modules/xfconf.nix
     ]
     ++ lib.concatMap import [
@@ -129,7 +130,6 @@ in {
       tmuxPlugins.resurrect
       tokei
       vlc
-      vscode
       w3m
       wasmtime
       wget

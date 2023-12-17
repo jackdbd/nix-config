@@ -90,6 +90,4 @@ in {
 
   # TODO: launchd service for MacOS
   # https://github.com/nix-community/home-manager/blob/e4dba0bd01956170667458be7b45f68170a63651/modules/services/syncthing.nix#L100C7-L100C14
-
-  # TODO: systemd service for the system tray on Linux
 }
