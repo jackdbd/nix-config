@@ -102,8 +102,16 @@
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations."${user}@l390-nixos" = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations."${user}@l380" = home-manager.lib.homeManagerConfiguration {
       # Home-manager requires 'pkgs' instance
+      pkgs = nixpkgs.legacyPackages.${system};
+      extraSpecialArgs = {inherit allowed-unfree-packages favorite-browser user;};
+      modules = [
+        ./home-manager/users/${user}.nix
+      ];
+    };
+
+    homeConfigurations."${user}@l390-nixos" = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
       extraSpecialArgs = {inherit allowed-unfree-packages favorite-browser user;};
       modules = [
