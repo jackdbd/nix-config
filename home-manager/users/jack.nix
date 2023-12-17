@@ -29,6 +29,10 @@ in {
     enableNixpkgsReleaseCheck = true;
 
     file = {
+      "${config.xdg.configHome}/gcloud/configurations/config_calderone".source = ../../dotfiles/gcloud-configurations/config_calderone.ini;
+      "${config.xdg.configHome}/gcloud/configurations/config_virtual_machines".source = ../../dotfiles/gcloud-configurations/config_virtual_machines.ini;
+      "${config.xdg.configHome}/gcloud/configurations/config_website_audit".source = ../../dotfiles/gcloud-configurations/config_website_audit.ini;
+      "${config.xdg.configHome}/liferea/feedlist.opml".source = ../../dotfiles/liferea/feedlist.opml;
       "${config.xdg.configHome}/neofetch/config.conf".source = ../../dotfiles/neofetch.conf;
       "${homeDirectory}/.npmrc".source = ../../dotfiles/npmrc.ini;
     };

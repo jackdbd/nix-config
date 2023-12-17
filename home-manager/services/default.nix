@@ -1,5 +1,9 @@
 let
-  more = {pkgs, ...}: {
+  more = {
+    pkgs,
+    user,
+    ...
+  }: {
     services = {
       # betterlockscreen = {
       #   enable = true;
@@ -16,7 +20,11 @@ let
         # https://nix-community.github.io/home-manager/options.html#opt-services.flameshot.settings
         settings = {
           General = {
+            checkForUpdates = true;
+            drawColor = "#000000";
+            drawThickness = 6;
             uiColor = "#740096";
+            savePath = "/home/${user}/Pictures";
           };
         };
       };

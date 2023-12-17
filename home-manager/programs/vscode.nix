@@ -35,6 +35,8 @@
     # https://nix-community.github.io/home-manager/options.html#opt-programs.vscode.userSettings
     userSettings = {
       "[git-commit]"."editor.rulers" = [50];
+      "[css]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
+      "[css]"."editor.formatOnSave" = true;
       "[javascript]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
       "[javascript]"."editor.formatOnSave" = true;
       "[json]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
@@ -60,6 +62,10 @@
       };
       "workbench.colorTheme" = "Gruvbox Dark Medium";
     };
+
+    # TODO: configure stylelint and stylelint rules
+    # https://github.com/stylelint/vscode-stylelint
+    # https://github.com/stylelint/stylelint/blob/main/docs/user-guide/rules.md
 
     userTasks = {
       version = "2.0.0";
