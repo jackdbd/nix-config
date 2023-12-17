@@ -4,9 +4,15 @@
   user,
   ...
 }: {
-  imports = [];
-  options = {};
   meta = {};
+
+  imports = [];
+
+  options = {};
+
+  config.home.packages = [
+    pkgs.flameshot # screenshot tool
+  ];
 
   config.services.flameshot = {
     enable = true;

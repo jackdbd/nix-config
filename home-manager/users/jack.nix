@@ -15,6 +15,7 @@ in {
       ../modules/activitywatch.nix
       ../modules/chromium-wrapper.nix
       ../modules/flameshot.nix
+      ../modules/liferea.nix
       ../modules/lockscreen.nix
       ../modules/vscode.nix
       ../modules/xfconf.nix
@@ -35,7 +36,6 @@ in {
       "${config.xdg.configHome}/gcloud/configurations/config_calderone".source = ../../dotfiles/gcloud-configurations/config_calderone.ini;
       "${config.xdg.configHome}/gcloud/configurations/config_virtual_machines".source = ../../dotfiles/gcloud-configurations/config_virtual_machines.ini;
       "${config.xdg.configHome}/gcloud/configurations/config_website_audit".source = ../../dotfiles/gcloud-configurations/config_website_audit.ini;
-      "${config.xdg.configHome}/liferea/feedlist.opml".source = ../../dotfiles/liferea/feedlist.opml;
       "${config.xdg.configHome}/neofetch/config.conf".source = ../../dotfiles/neofetch.conf;
       "${homeDirectory}/.npmrc".source = ../../dotfiles/npmrc.ini;
     };
@@ -67,29 +67,30 @@ in {
       ffmpeg
       ffuf
       firefox
-      flameshot
       fx
       gh
       gimp
+      git-cola # git GUI
       glow # terminal markdown viewer
       go
       google-chrome
       google-cloud-sdk # Google Cloud Platform CLI (gcloud)
       graphviz
-      haskellPackages.boring-game
       hyperfine # command-line benchmarking tool
       inkscape
       jq
       killall # kill processes by name or list PIDs
-      liferea # RSS reader
+      kitty # GPU-based terminal emulator
       lsix # shows thumbnails in terminal using sixel graphics
       luajitPackages.fennel
+      meld # visual diff and merge tool
       monolith
       neofetch
       nix-index # locate packages containing certain nixpkgs
-      nix-output-monitor # nom: monitor nix commands
+      nix-output-monitor # nom: monitor nix commands https://github.com/maralorn/nix-output-monitor
       nuclei
       openshot-qt # video editor
+      ouch #  compress/decompress files and directories
       newman
       nodejs_21
       papirus-icon-theme
@@ -102,12 +103,15 @@ in {
       prettyping # a nicer ping
       pulumi
       qemu
+      remmina # remote desktop client
       ripgrep-all
       rlwrap
       rm-improved
-      sameboy # Game Boy emulator
       s-tui # Stress-Terminal UI monitoring tool (requires stress for some features)
+      sakura # terminal emulator
+      sameboy # Game Boy emulator
       screenkey # shows keypresses on screen
+      sd # a better `sed`
       (writeShellApplication {
         name = "show-nixos-org";
         runtimeInputs = [curl w3m];
@@ -119,6 +123,8 @@ in {
       simplescreenrecorder # screen recorder gui
       sqlite
       sqlitebrowser
+      starship # customizable prompt for any shell
+      steghide # steganography program
       stegseek # tool to crack steganography
       stress # workload generator for POSIX systems (required by s-tui)
       stripe-cli
@@ -129,7 +135,8 @@ in {
       tmuxPlugins.resurrect
       tokei
       vlc
-      w3m
+      w3m # text-based web browser
+      wabt # WebAssembly binary toolkit
       wasmtime
       wget
       wireshark
@@ -168,7 +175,7 @@ in {
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
   };
 
-  services.activitywatch.extraOptions = ["--verbose"];
+  # services.activitywatch.extraOptions = ["--verbose"];
 
   # For blueman-applet to work, the blueman service must be enabled system-wide.
   # https://nixos.wiki/wiki/Bluetooth#Pairing_Bluetooth_devices
