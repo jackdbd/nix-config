@@ -41,8 +41,11 @@ in {
     };
 
     packages = with pkgs; [
+      age # encryption tool
+      alacritty # Open GL terminal emulator
       asciinema # record the terminal
       babashka # Clojure interpreter for scripting
+      baobab # disk usage utility
       bless # HEX editor
       buildah # build OCI images (alternative to docker build)
       calibre # e-book reader
@@ -64,12 +67,15 @@ in {
       emojione # open source emoji set
       entr # file watcher
       exif # read and manipulate EXIF data in digital photographs
+      eza # fork of exa, a better `ls`
+      fd # a better `find`
+      feh # image viewer
       ffmpeg
-      ffuf
+      ffuf # tool for web fuzzing and content discovery
       firefox
-      fx
-      gh
-      gimp
+      fx # JSON viewer
+      gh # GitHub CLI
+      gimp # image editor
       git-cola # git GUI
       glow # terminal markdown viewer
       go
@@ -77,41 +83,48 @@ in {
       google-cloud-sdk # Google Cloud Platform CLI (gcloud)
       graphviz
       hyperfine # command-line benchmarking tool
-      inkscape
-      jq
+      inkscape # vector graphics editor
+      jq # JSON processor
       killall # kill processes by name or list PIDs
       kitty # GPU-based terminal emulator
+      lm_sensors # tools for reading hardware sensors
+      lshw # detailed information on the hardware configuration of the machine
       lsix # shows thumbnails in terminal using sixel graphics
-      luajitPackages.fennel
+      luajitPackages.fennel # Lisp that compiles to Lua
       meld # visual diff and merge tool
-      monolith
+      monolith # save a web page as a single HTML file
+      mtr # network diagnostics tool (basically traceroute + ping)
+      ncdu # disk usage utility
       neofetch
       nix-index # locate packages containing certain nixpkgs (TODO: does it work with flakes?)
       nix-output-monitor # nom: monitor nix commands (TODO: does it work with flakes?)
-      nuclei
+      nuclei # vulnerability scanner
       openshot-qt # video editor
       ouch #  compress/decompress files and directories
-      newman
+      newman # Postman collection runner
       nodejs_21
       papirus-icon-theme
       pgadmin4
-      pinta
+      pinta # image editor
       pitivi # video editor
-      podman
-      poke
+      podman # docker run alternative
+      poke # editor for binary data
       # postman # https://github.com/NixOS/nixpkgs/issues/259147
       prettyping # a nicer ping
-      pulumi
-      qemu
+      procs # a better `ps`
+      pstree # show the set of running processes as a tree
+      pulumi # infrastructure as code
+      qemu # machine & userspace emulator and virtualizer
       remmina # remote desktop client
-      ripgrep-all
+      ripgrep-all # ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc
       rlwrap
       rm-improved
+      rofi # application launcher & window switcher
       s-tui # Stress-Terminal UI monitoring tool (requires stress for some features)
       sakura # terminal emulator
       sameboy # Game Boy emulator
       screenkey # shows keypresses on screen
-      sd # a better `sed`
+      sd # sed alternative
       (writeShellApplication {
         name = "show-nixos-org";
         runtimeInputs = [curl w3m];
@@ -119,33 +132,34 @@ in {
           curl -s 'https://nixos.org' | w3m -dump -T text/html
         '';
       })
-      silver-searcher
+      silver-searcher # grep alternative
       simplescreenrecorder # screen recorder gui
       sqlite
       sqlitebrowser
       starship # customizable prompt for any shell
-      steghide # steganography program
+      steghide # steganography tool for images and audio files
       stegseek # tool to crack steganography
       stress # workload generator for POSIX systems (required by s-tui)
       stripe-cli
-      temurin-bin-18
-      thunderbird
+      temurin-bin-18 # OpenJDK
+      thunderbird # email client
       tmux
       tmuxPlugins.continuum
       tmuxPlugins.resurrect
-      tokei
+      tokei # display statistics about your code
+      usbutils # tools for working with USB devices, such as lsusb
       vlc
       w3m # text-based web browser
       wabt # WebAssembly binary toolkit
-      wasmtime
+      wasmtime # WASI runtime
       wget
       wireshark
       xsv # index/slice/analyze/split/join CSV files
       yt-dlp
-      zathura
-      zeal
+      zathura # PDF viewer
+      zeal # offline documentation browser
       zig
-      zls
+      zls # Zig language server
     ];
 
     # Environment variables
@@ -164,11 +178,6 @@ in {
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  # I had the same issue about home-manager manual described here. The solution
-  # looks proposed in the thread seems to work.
-  # https://discourse.nixos.org/t/starting-out-with-home-manager/31559
-  # manual.manpages.enable = false;
 
   # https://nix-community.github.io/home-manager/options.html#opt-nixpkgs.config
   nixpkgs.config = {

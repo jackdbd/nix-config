@@ -20,10 +20,11 @@ let
 
       vim.enable = true;
 
-      # https://github.com/iAmMrinal0/nix-config/blob/master/config/zathura.nix
-      zathura.enable = true;
-
-      zoxide.enable = true;
+      # https://mipmip.github.io/home-manager-option-search/?query=zoxide
+      zoxide = {
+        enable = true;
+        enableBashIntegration = true;
+      };
     };
   };
 in [
@@ -38,5 +39,6 @@ in [
   ./rofi.nix
   ./starship.nix
   ./tmux
+  ./zathura.nix
   more
 ]

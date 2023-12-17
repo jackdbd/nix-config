@@ -66,6 +66,8 @@
   ];
 
   # https://nixos.wiki/wiki/Fonts#Installing_specific_fonts_from_nerdfonts
+  # Maybe also enable Source Code Pro. See here:
+  # https://github.com/search?q=repo%3AiAmMrinal0%2Fnix-config%20Source%20Code%20Pro&type=code
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
