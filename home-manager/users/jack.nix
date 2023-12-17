@@ -46,7 +46,6 @@ in {
       bless # HEX editor
       buildah # build OCI images (alternative to docker build)
       calibre # e-book reader
-      chromium
       clojure
       ctop # top-like interface for container metrics
       curl

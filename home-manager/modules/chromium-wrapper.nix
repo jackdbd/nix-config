@@ -7,6 +7,8 @@
 with lib; let
   cfg = config.programs.chromium-wrapper;
 in {
+  meta = {};
+
   imports = [];
 
   options.programs.chromium-wrapper = {
@@ -14,7 +16,7 @@ in {
     should-install-extensions = mkEnableOption "Whether to install Chrome extensions";
   };
 
-  meta = {};
+  config.home.packages = [pkgs.chromium];
 
   # Configuration for Chromium and its extensions
   # https://codeberg.org/davidak/nixos-config/src/branch/main/profiles/desktop.nix

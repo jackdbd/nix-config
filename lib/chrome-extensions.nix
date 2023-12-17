@@ -1,4 +1,6 @@
 [
+  # ActivityWatch Web Watcher
+  {id = "nglaklhklhcoonedhgnpgddginnjdadi";}
   # Consent-O-Matic
   {id = "mdjildafknihdffpkfmmpnpoiajfjnjd";}
   # Google Arts & Culture
