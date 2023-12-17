@@ -6,13 +6,13 @@
 
 ### NixOS hosts
 
-From **this directory**, apply **both** the NixOS configuration and the Home Manager configuration:
+From **the root of this repository**, apply **both** the NixOS configuration and the Home Manager configuration:
 
 ```sh
 sudo nixos-rebuild switch --flake ./#x220-nixos --show-trace --verbose
 ```
 
-From **this directory**, apply **only** the Home Manager configuration:
+From **the root of this repository**, apply **only** the Home Manager configuration:
 
 ```sh
 home-manager switch \
@@ -41,7 +41,7 @@ Install Home Manager (read [here if you have any issues on Ubuntu](https://disco
 nix-env --install home-manager
 ```
 
-From **this directory**, apply **only** the Home Manager configuration:
+From **the root of this repository**, apply **only** the Home Manager configuration:
 
 ```sh
 home-manager switch \

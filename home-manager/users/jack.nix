@@ -51,6 +51,15 @@ in {
       ctop # top-like interface for container metrics
       curl
       darktable # virtual lighttable and darkroom for photographers
+      (writeShellScriptBin "debug-home-manager" ''
+        printf "=== DEBUG HOME MANAGER ===\n"
+        echo "favorite-browser is ${favorite-browser}"
+        echo "config.home.username is ${config.home.username}"
+        echo "config.home.homeDirectory is ${config.home.homeDirectory}"
+        echo "username is ${username}"
+        echo "homeDirectory is ${homeDirectory}"
+        echo "configHome is ${configHome}"
+      '')
       difftastic # syntax-aware diff
       dive # explore the layers of a container image
       emojione # open source emoji set
@@ -100,12 +109,19 @@ in {
       sameboy # Game Boy emulator
       s-tui # Stress-Terminal UI monitoring tool (requires stress for some features)
       screenkey # shows keypresses on screen
-      stress # workload generator for POSIX systems (required by s-tui)
+      (writeShellApplication {
+        name = "show-nixos-org";
+        runtimeInputs = [curl w3m];
+        text = ''
+          curl -s 'https://nixos.org' | w3m -dump -T text/html
+        '';
+      })
       silver-searcher
       simplescreenrecorder # screen recorder gui
       sqlite
       sqlitebrowser
       stegseek # tool to crack steganography
+      stress # workload generator for POSIX systems (required by s-tui)
       stripe-cli
       temurin-bin-18
       thunderbird
@@ -125,24 +141,6 @@ in {
       zeal
       zig
       zls
-
-      (writeShellApplication {
-        name = "show-nixos-org";
-        runtimeInputs = [curl w3m];
-        text = ''
-          curl -s 'https://nixos.org' | w3m -dump -T text/html
-        '';
-      })
-
-      (writeShellScriptBin "debug-home-manager" ''
-        printf "=== DEBUG HOME MANAGER ===\n"
-        echo "favorite-browser is ${favorite-browser}"
-        echo "config.home.username is ${config.home.username}"
-        echo "config.home.homeDirectory is ${config.home.homeDirectory}"
-        echo "username is ${username}"
-        echo "homeDirectory is ${homeDirectory}"
-        echo "configHome is ${configHome}"
-      '')
     ];
 
     # Environment variables
@@ -173,6 +171,10 @@ in {
   };
 
   services.activitywatch.extraOptions = ["--verbose"];
+
+  # For blueman-applet to work, the blueman service must be enabled system-wide.
+  # https://nixos.wiki/wiki/Bluetooth#Pairing_Bluetooth_devices
+  services.blueman-applet.enable = true;
 
   services.lockscreen.not-when-audio = true;
   services.lockscreen.not-when-fullscreen = true;
