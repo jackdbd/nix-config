@@ -22,26 +22,8 @@ in {
   # https://github.com/gvolpe/nix-config/blob/master/home/programs/browsers/extensions.nix
   config.programs.chromium = mkIf cfg.enable {
     enable = true;
-
-    # https://nix-community.github.io/home-manager/options.html#opt-programs.chromium.commandLineArgs
+    # https://rycee.gitlab.io/home-manager/options.html#opt-programs.chromium.commandLineArgs
     commandLineArgs = [];
-
-    # https://nix-community.github.io/home-manager/options.html#opt-programs.chromium.extensions
-    extensions = mkIf cfg.should-install-extensions [
-      # Consent-O-Matic
-      {id = "mdjildafknihdffpkfmmpnpoiajfjnjd";}
-      # Google Arts & Culture
-      {id = "akimgimeeoiognljlfchpbkpfbmeapkh";}
-      # Lastpass
-      {id = "hdokiejnpimakedhajhdlcegeplioahd";}
-      # SponsorBlock for YouTube
-      {id = "mnjggcdmjocbbbhaepdhchncahnbgone";}
-      # Terms of Service; Didn't Read
-      {id = "hjdoplcnndgiblooccencgcggcoihigg";}
-      # Tmetric (time tracker)
-      {id = "ffijoclmniipjbhecddgkfpdafpbdnen";}
-      # Vimium
-      {id = "dbepggeogbaibhgnhhndojpepiihcmeb";}
-    ];
+    extensions = mkIf cfg.should-install-extensions (import ../../lib/chrome-extensions.nix);
   };
 }
