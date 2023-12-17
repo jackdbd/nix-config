@@ -1,0 +1,56 @@
+{
+  "categories": [
+    {
+      "id": 0,
+      "name": ["Work"],
+      "rule": {
+        "type": "none"
+      },
+      "data": { "color": "#FF0000" }
+    },
+    {
+      "id": 1,
+      "name": ["Work", "Programming"],
+      "rule": {
+        "type": "regex",
+        "regex": "Alacritty|GitHub|Gitlab|Stack Overflow"
+      },
+      "data": {
+        "color": "#C80815"
+      }
+    },
+    {
+      "id": 2,
+      "name": ["Work", "Tools"],
+      "rule": {
+        "type": "regex",
+        "regex": "ActivityWatch|nix"
+      },
+      "data": {
+        "color": "#B7410E"
+      }
+    },
+    {
+      "id": 3,
+      "name": ["Work", "Image editing"],
+      "rule": {
+        "type": "regex",
+        "regex": "Gimp|Inkscape"
+      },
+      "data": {
+        "color": "#663399"
+      }
+    },
+    {
+      "id": 4,
+      "name": ["Work", "Video editing"],
+      "rule": {
+        "type": "regex",
+        "regex": "Filmora|OpenShot|DaVinci Resolve"
+      },
+      "data": {
+        "color": "#7B64FF"
+      }
+    }
+  ]
+}

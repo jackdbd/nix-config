@@ -12,6 +12,7 @@
 in {
   imports =
     [
+      ../modules/activitywatch.nix
       ../modules/chromium-wrapper.nix
       ../modules/flameshot.nix
       ../modules/lockscreen.nix
@@ -39,7 +40,6 @@ in {
     };
 
     packages = with pkgs; [
-      activitywatch # time tracker
       asciinema # record the terminal
       babashka # Clojure interpreter for scripting
       betterlockscreen # lock screen
@@ -171,6 +171,8 @@ in {
   nixpkgs.config = {
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
   };
+
+  services.activitywatch.extraOptions = ["--verbose"];
 
   services.lockscreen.not-when-audio = true;
   services.lockscreen.not-when-fullscreen = true;

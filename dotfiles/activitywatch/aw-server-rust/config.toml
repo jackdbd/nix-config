@@ -1,0 +1,6 @@
+### DEFAULT SETTINGS ###
+#address = "127.0.0.1"
+#port = 5600
+#cors = []
+#
+#[custom_static]
