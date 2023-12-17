@@ -14,6 +14,8 @@ in {
     should-install-extensions = mkEnableOption "Whether to install Chrome extensions";
   };
 
+  meta = {};
+
   # Configuration for Chromium and its extensions
   # https://codeberg.org/davidak/nixos-config/src/branch/main/profiles/desktop.nix
   # https://github.com/gvolpe/nix-config/blob/master/home/programs/browsers/chromium.nix

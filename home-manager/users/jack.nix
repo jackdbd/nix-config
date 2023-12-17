@@ -13,12 +13,13 @@ in {
   imports =
     [
       ../modules/chromium-wrapper.nix
+      ../modules/flameshot.nix
+      ../modules/lockscreen.nix
       ../modules/xfconf.nix
     ]
     ++ lib.concatMap import [
       ../programs
       ../scripts
-      ../services
     ];
 
   home = {
@@ -170,6 +171,9 @@ in {
   nixpkgs.config = {
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
   };
+
+  services.lockscreen.not-when-audio = true;
+  services.lockscreen.not-when-fullscreen = false;
 
   # Restart systemd services on change
   systemd.user.startServices = "sd-switch";

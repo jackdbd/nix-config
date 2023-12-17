@@ -74,4 +74,5 @@ with lib; {
   # For the Blueman applet to work, the blueman service must be enabled system-wide.
   # https://nixos.wiki/wiki/Bluetooth#Pairing_Bluetooth_devices
   config.services.blueman.enable = true;
+  config.services.blueman-applet.enable = true;
 }

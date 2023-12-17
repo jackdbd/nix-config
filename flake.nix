@@ -68,7 +68,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.${user} = import ./home-manager/users/${user}.nix;
-          home-manager.extraSpecialArgs = {inherit favorite-browser;};
+          home-manager.extraSpecialArgs = {inherit favorite-browser user;};
         }
       ];
 
@@ -93,7 +93,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.${user} = import ./home-manager/users/${user}.nix;
-          home-manager.extraSpecialArgs = {inherit favorite-browser;};
+          home-manager.extraSpecialArgs = {inherit favorite-browser user;};
         }
       ];
 
@@ -105,7 +105,7 @@
     homeConfigurations."${user}@l390-nixos" = home-manager.lib.homeManagerConfiguration {
       # Home-manager requires 'pkgs' instance
       pkgs = nixpkgs.legacyPackages.${system};
-      extraSpecialArgs = {inherit allowed-unfree-packages favorite-browser;};
+      extraSpecialArgs = {inherit allowed-unfree-packages favorite-browser user;};
       modules = [
         ./home-manager/users/${user}.nix
       ];
@@ -113,7 +113,7 @@
 
     homeConfigurations."${user}@x220-nixos" = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
-      extraSpecialArgs = {inherit allowed-unfree-packages favorite-browser;};
+      extraSpecialArgs = {inherit allowed-unfree-packages favorite-browser user;};
       modules = [
         ./home-manager/users/${user}.nix
       ];
