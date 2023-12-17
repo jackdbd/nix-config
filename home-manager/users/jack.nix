@@ -42,7 +42,6 @@ in {
     packages = with pkgs; [
       asciinema # record the terminal
       babashka # Clojure interpreter for scripting
-      betterlockscreen # lock screen
       bless # HEX editor
       buildah # build OCI images (alternative to docker build)
       calibre # e-book reader
