@@ -86,8 +86,8 @@ in {
       meld # visual diff and merge tool
       monolith
       neofetch
-      nix-index # locate packages containing certain nixpkgs
-      nix-output-monitor # nom: monitor nix commands https://github.com/maralorn/nix-output-monitor
+      nix-index # locate packages containing certain nixpkgs (TODO: does it work with flakes?)
+      nix-output-monitor # nom: monitor nix commands (TODO: does it work with flakes?)
       nuclei
       openshot-qt # video editor
       ouch #  compress/decompress files and directories

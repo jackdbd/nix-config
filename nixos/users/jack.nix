@@ -14,6 +14,7 @@
   packages = with pkgs; [
     # These scripts use the sops NixOS module exposed by sops-nix. Since it's a
     # NixOS module, these scripts cannot be managed by Home Manager.
+    (callPackage ../scripts/debug-secrets.nix {inherit config pkgs;})
     (callPackage ../scripts/ghi.nix {inherit config pkgs;})
     (callPackage ../scripts/ghw.nix {inherit config pkgs;})
   ];
