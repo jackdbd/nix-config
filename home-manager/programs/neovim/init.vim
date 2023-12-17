@@ -24,52 +24,6 @@ set nowritebackup
 " Give more space for displaying messages.
 set cmdheight=3
 
-"" ctrl.vim
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_show_hidden = 1
-
-"" far.vim
-" improve scrolling performance when navigating through large results
-set lazyredraw
-
-"" Limelight
-let g:limelight_conceal_ctermfg = 'gray'
-
-"" NERD Commenter
-let g:NERDCreateDefaultMappings = 1
-
-"" NERDTree
-let NERDTreeShowHidden = 1
-let g:NERDTreeIgnore = ['^\.git$', '^node_modules$', '^zig-cache$']
-
-"" gruvbox
-if (has("termguicolors"))
- set termguicolors
-endif
-colorscheme gruvbox
-set background=dark
-
-"" vim-airline
-let g:airline#extensions#tabline#enabled = 1
-
-"" vim-floaterm
-let g:floaterm_keymap_new = '<Leader>ft'
-let g:floaterm_keymap_toggle = '<Leader>t'
-
-"" vim-highlightyank
-let g:highlightedyank_highlight_duration = 1000 " in ms
-
-"" vim-move (C means Ctrl => C-k, C-j, C-h, C-l)
-let g:move_key_modifier = 'C' 
-
-"" vim-signify
-" default updatetime 4000ms is not good for async update
-set updatetime=100
-
-"" zig.vim
-let g:zig_fmt_autosave = 1
-
 """ Custom mappings
 let mapleader=" "
 nmap <leader>g :Goyo<CR>

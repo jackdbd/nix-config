@@ -29,7 +29,7 @@
 
     extraConfig = "${builtins.readFile ./init.vim}";
 
-    # https://nix-community.github.io/home-manager/options.html#opt-programs.neovim.plugins
+    # https://rycee.gitlab.io/home-manager/options.html#opt-programs.neovim.plugins
     plugins = with pkgs.vimPlugins; let
       incsearch-fuzzy = pkgs.vimUtils.buildVimPlugin {
         pname = "incsearch-fuzzy";
@@ -43,29 +43,74 @@
       coc-json # validation support for CoC
       coc-nvim # autocompletion
       coc-tsserver
-      ctrlp-vim
+      {
+        plugin = ctrlp-vim;
+        config = ''
+          let g:ctrlp_map = '<c-p>'
+          let g:ctrlp_cmd = 'CtrlP'
+          let g:ctrlp_show_hidden = 1
+        '';
+      }
       emmet-vim
-      far-vim
+      {
+        plugin = far-vim;
+        # improve scrolling performance when navigating through large results
+        config = "set lazyredraw";
+      }
       goyo-vim
       gruvbox
       # incsearch-fuzzy
-      limelight-vim
+      {
+        plugin = limelight-vim;
+        config = "let g:limelight_conceal_ctermfg = 'gray'";
+      }
       markdown-preview-nvim
-      nerdcommenter
-      nerdtree
+      {
+        plugin = nerdcommenter;
+        config = "let g:NERDCreateDefaultMappings = 1";
+      }
+      {
+        plugin = nerdtree;
+        config = ''
+          let NERDTreeShowHidden = 1
+          let g:NERDTreeIgnore = ['^\.git$', '^node_modules$', '^zig-cache$']
+        '';
+      }
       vim-abolish
-      vim-airline
+      {
+        plugin = vim-airline;
+        config = "let g:airline#extensions#tabline#enabled = 1";
+      }
       vim-airline-themes
       vim-better-whitespace
       vim-easymotion
-      vim-floaterm
-      vim-highlightedyank
-      vim-move
+      {
+        plugin = vim-floaterm;
+        config = ''
+          let g:floaterm_keymap_new = '<Leader>ft'
+          let g:floaterm_keymap_toggle = '<Leader>t'
+        '';
+      }
+      {
+        plugin = vim-highlightedyank;
+        config = "let g:highlightedyank_highlight_duration = 1000"; # in ms
+      }
+      {
+        plugin = vim-move;
+        config = "let g:move_key_modifier = 'C'"; # C means Ctrl => C-k, C-j, C-h, C-l
+      }
       vim-nerdtree-syntax-highlight
       vim-nix
-      vim-signify
+      {
+        plugin = vim-signify;
+        # default updatetime 4000ms is not good for async update
+        config = "set updatetime=100";
+      }
       vim-startify
-      zig-vim
+      {
+        plugin = zig-vim;
+        config = "let g:zig_fmt_autosave = 1";
+      }
     ];
 
     extraPackages = with pkgs; [
