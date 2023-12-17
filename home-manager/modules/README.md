@@ -1,5 +1,9 @@
 # home-manager modules
 
+## lockscreen
+
+Configuration for [betterlockscreen](https://github.com/betterlockscreen/betterlockscreen) and [xidlehook](https://github.com/jD91mZM2/xidlehook).
+
 ## xfconf
 
 Configuration for the [Xfconf](https://docs.xfce.org/xfce/xfconf/start), the configuration storage system used by [Xfce](https://wiki.archlinux.org/title/xfce).

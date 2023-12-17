@@ -173,7 +173,7 @@ in {
   };
 
   services.lockscreen.not-when-audio = true;
-  services.lockscreen.not-when-fullscreen = false;
+  services.lockscreen.not-when-fullscreen = true;
 
   # Restart systemd services on change
   systemd.user.startServices = "sd-switch";

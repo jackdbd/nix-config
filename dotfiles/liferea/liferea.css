@@ -65,7 +65,7 @@
 
 /* 2nd <td> of feed/item table display containing title */
 td.head_title {
-    color: rebeccapurple;
+  color: rebeccapurple;
 }
 
 /* Metadata display table (inside header table) */

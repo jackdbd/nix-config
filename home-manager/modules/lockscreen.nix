@@ -6,13 +6,16 @@
 }:
 with lib; let
   cfg = config.services.lockscreen;
-  inactiveInterval = 1; # in minutes
+  inactiveInterval = 10; # in minutes
+  effect = "pixel";
+  lockCmd = "${pkgs.betterlockscreen}/bin/betterlockscreen --lock ${effect}";
+  # lockCmd = "xflock4";
 in {
   imports = [];
 
   options.services.lockscreen = {
-    not-when-audio = mkEnableOption "Disable lockscreen when some audio is playing";
-    not-when-fullscreen = mkEnableOption "Disable lockscreen when in full screen";
+    not-when-audio = mkEnableOption "Don't lock the screen when there's some audio playing";
+    not-when-fullscreen = mkEnableOption "Don't lock when there's a fullscreen application";
   };
 
   meta = {};
@@ -21,15 +24,14 @@ in {
   config.services.betterlockscreen = {
     inherit inactiveInterval;
     enable = true;
-    arguments = ["pixel"];
+    arguments = [effect];
   };
 
   config.services.screen-locker = {
-    inherit inactiveInterval;
+    inherit inactiveInterval lockCmd;
     enable = true;
-    # lockCmd = "${pkgs.betterlockscreen}/bin/betterlockscreen --lock pixel";
-    lockCmd = "xflock4";
-    xautolock.enable = true;
+    # we disable xautolock because we use xidlehook instead
+    xautolock.enable = false;
   };
 
   # https://github.com/nix-community/home-manager/blob/master/modules/services/xidlehook.nix
