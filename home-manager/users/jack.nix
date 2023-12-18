@@ -164,6 +164,7 @@ in {
       zeal # offline documentation browser
       zig
       zls # Zig language server
+      zx # Tool for writing scripts using JavaScript
     ];
 
     # Environment variables
