@@ -149,6 +149,7 @@ in {
       tokei # display statistics about your code
       usbutils # tools for working with USB devices, such as lsusb
       vlc
+      volta # avaScript Tool Manager (nvm alternative)
       w3m # text-based web browser
       wabt # WebAssembly binary toolkit
       wasmtime # WASI runtime
