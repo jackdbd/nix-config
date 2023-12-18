@@ -99,6 +99,7 @@ in {
       neofetch
       nix-index # locate packages containing certain nixpkgs (TODO: does it work with flakes?)
       nix-output-monitor # nom: monitor nix commands (TODO: does it work with flakes?)
+      nodePackages.node-gyp # Node.js native addon build tool
       nuclei # vulnerability scanner
       openshot-qt # video editor
       ouch #  compress/decompress files and directories
