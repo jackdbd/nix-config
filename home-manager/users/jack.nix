@@ -114,6 +114,7 @@ in {
       procs # a better `ps`
       pstree # show the set of running processes as a tree
       pulumi # infrastructure as code
+      python3
       qemu # machine & userspace emulator and virtualizer
       remmina # remote desktop client
       ripgrep-all # ripgrep, but also search in PDFs, E-Books, Office documents, zip, tar.gz, etc
