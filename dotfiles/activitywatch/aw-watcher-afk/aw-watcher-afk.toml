@@ -1,7 +1,8 @@
-#[aw-watcher-afk]
-#timeout = 180
-#poll_time = 5
-#
-#[aw-watcher-afk-testing]
-#timeout = 20
-#poll_time = 1
+[aw-watcher-afk]
+timeout = 180
+poll_time = 5
+
+[aw-watcher-afk-testing]
+timeout = 20
+poll_time = 1
+verbose = true
