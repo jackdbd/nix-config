@@ -78,6 +78,7 @@ in {
       gimp # image editor
       git-cola # git GUI
       glow # terminal markdown viewer
+      gnumake # GNU Make (build tool)
       go
       google-chrome
       google-cloud-sdk # Google Cloud Platform CLI (gcloud)
