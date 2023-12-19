@@ -14,6 +14,7 @@
     ./hardware-configuration.nix
     ../../modules/bluetooth.nix
     ../../modules/pipewire.nix
+    ../../modules/printing.nix
     ../../modules/secrets.nix
     ../../modules/syncthing.nix
     ../../modules/tailscale.nix
@@ -134,8 +135,6 @@
 
   programs.syncthing-wrapper.guiAddress = "127.0.0.1:8384";
 
-  # CUPS to print documents
-  # https://nixos.wiki/wiki/Printing
   services.printing.enable = true;
 
   # Remove sound.enable or set it to false if you had it set previously, as

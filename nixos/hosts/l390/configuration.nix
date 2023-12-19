@@ -15,6 +15,7 @@
     ./hardware-configuration.nix
     ../../modules/bluetooth.nix
     ../../modules/pipewire.nix
+    ../../modules/printing.nix
     ../../modules/secrets.nix
     ../../modules/syncthing.nix
     ../../modules/tailscale.nix
@@ -86,7 +87,6 @@
 
   programs.syncthing-wrapper.guiAddress = "127.0.0.1:8384";
 
-  # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # This value determines the NixOS release from which the default
