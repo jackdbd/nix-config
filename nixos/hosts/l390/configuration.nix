@@ -13,6 +13,7 @@
     # There is no Nix module for the ThinkPad L390. Maybe find a similar model.
     # nixos-hardware.nixosModules.lenovo-thinkpad-l390
     ./hardware-configuration.nix
+    ../../modules/activitywatch.nix
     ../../modules/bluetooth.nix
     ../../modules/pipewire.nix
     ../../modules/printing.nix
@@ -87,7 +88,18 @@
 
   programs.syncthing-wrapper.guiAddress = "127.0.0.1:8384";
 
+  services.activitywatch = {
+    enable = true;
+    user = user;
+    group = "users";
+  };
+
   services.printing.enable = true;
+
+  # TODO: enable automatic upgrades as soon as I know more about them
+  # https://nixos.wiki/wiki/Automatic_system_upgrades
+  # https://www.reddit.com/r/NixOS/comments/yultt3/what_has_your_experience_been_with/
+  system.autoUpgrade.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

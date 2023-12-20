@@ -12,7 +12,6 @@
 in {
   imports =
     [
-      ../modules/activitywatch.nix
       ../modules/chromium-wrapper.nix
       ../modules/flameshot.nix
       ../modules/liferea.nix

@@ -12,6 +12,7 @@
   imports = [
     nixos-hardware.nixosModules.lenovo-thinkpad-x220
     ./hardware-configuration.nix
+    ../../modules/activitywatch.nix
     ../../modules/bluetooth.nix
     ../../modules/pipewire.nix
     ../../modules/printing.nix
@@ -134,6 +135,11 @@
   programs.nm-applet.enable = true;
 
   programs.syncthing-wrapper.guiAddress = "127.0.0.1:8384";
+
+  services.activitywatch = {
+    enable = true;
+    user = user;
+  };
 
   services.printing.enable = true;
 
