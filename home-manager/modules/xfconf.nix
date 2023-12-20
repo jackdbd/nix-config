@@ -29,7 +29,9 @@
           "commands/custom/<Super>v" = "thunar Videos";
           "commands/default/Print" = "${pkgs.flameshot}/bin/flameshot gui";
           "xfwm4/custom/<Super>Left" = "tile_left_key";
+          "xfwm4/custom/<Super>KP_Left" = "tile_left_key";
           "xfwm4/custom/<Super>Right" = "tile_right_key";
+          "xfwm4/custom/<Super>KP_Right" = "tile_right_key";
           "xfwm4/default/<Alt>F11" = "fullscreen_key";
           "xfwm4/default/<Primary><Alt>d" = "show_desktop_key";
         };
