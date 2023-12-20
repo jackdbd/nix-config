@@ -9,6 +9,8 @@
   {id = "hdokiejnpimakedhajhdlcegeplioahd";}
   # Modern for Hacker News
   {id = "dabkegjlekdcmefifaolmdhnhdcplklo";}
+  # Octotree (GitHub code tree)
+  {id = "bkhaagjahfmjljalopjnoealnfndnagc";}
   # SponsorBlock for YouTube
   {id = "mnjggcdmjocbbbhaepdhchncahnbgone";}
   # Terms of Service; Didn't Read
