@@ -191,7 +191,7 @@ in {
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
   };
 
-  # services.activitywatch.extraOptions = ["--verbose"];
+  services.activitywatch.enable = true;
 
   # For blueman-applet to work, the blueman service must be enabled system-wide.
   # https://nixos.wiki/wiki/Bluetooth#Pairing_Bluetooth_devices
