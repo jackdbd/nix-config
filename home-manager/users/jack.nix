@@ -184,6 +184,8 @@ in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  programs.vscode.enable = true;
+
   # https://nix-community.github.io/home-manager/options.html#opt-nixpkgs.config
   nixpkgs.config = {
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
