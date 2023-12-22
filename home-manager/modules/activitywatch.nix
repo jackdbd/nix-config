@@ -79,6 +79,14 @@ with lib; let
   defaultQtConfig = {
     # should I call bin/aw-server or bin/.aw-server-wrapped (i.e. the Qt library wrapped in the aw-server binary I think)
     "aw-qt" = {
+      # ActivityWatch modules must be declared like this: autostart_modules = ["aw-watcher-afk"]
+      # Not like this: autostart_modules = ["${pkgs.aw-watcher-afk}/bin/aw-watcher-afk"]
+      #
+      # At the moment only the [autostart_modules] section is extracted from the
+      # aw-qt.toml file. If you want to set other configuration parameters (e.g.
+      # verbose), you have to do it via the CLI. This seems a (small) aw-qt bug to me.
+      # https://github.com/ActivityWatch/aw-qt/blob/master/aw_qt/main.py
+      # https://github.com/ActivityWatch/aw-qt/blob/master/aw_qt/config.py
       autostart_modules = [
         "aw-server"
         "aw-watcher-afk"
@@ -87,15 +95,10 @@ with lib; let
     };
     "aw-qt-testing" = {
       autostart_modules = [
-        "${pkgs.aw-server-rust}/bin/aw-server" # there is no pkgs.aw-server
-        "${pkgs.aw-server-rust}/bin/.aw-server-wrapped" # there is no pkgs.aw-server
-        "${pkgs.aw-watcher-afk}/bin/aw-watcher-afk"
-        "${pkgs.aw-watcher-window}/bin/aw-watcher-window"
-        # just to check the filepath
-        "${pkgs.aw-qt}/bin/.aw-qt-wrapped"
-        "${pkgs.aw-qt}/bin/aw-qt"
+        "aw-server"
+        "aw-watcher-afk"
+        "aw-watcher-window"
       ];
-      verbose = true;
     };
   };
 in {
@@ -200,6 +203,9 @@ in {
           Configuration for aw-qt (application that starts ActivityWatch and creates a tray icon).
 
           It will generate {file}`$XDG_CONFIG_HOME/activitywatch/aw-qt/aw-qt.toml`.
+
+          See <https://github.com/ActivityWatch/aw-qt/blob/6bf7c08ec99354817defc53142a659583450e162/aw_qt/main.py#L20>
+          for details on the configuration parameters.
         '';
       };
 
@@ -353,7 +359,10 @@ in {
 
         # See here for a good example of configuration.
         # https://github.com/nix-community/home-manager/blob/master/modules/services/xidlehook.nix
-        ExecStart = escapeShellArgs ["${pkgs.aw-qt}/bin/aw-qt"];
+        # ExecStartPre = "${pkgs.coreutils-full}/bin/sleep 3s";
+        ExecStart = escapeShellArgs ["${pkgs.aw-qt}/bin/aw-qt" "--no-gui"];
+        # ExecStart = escapeShellArgs ["${pkgs.aw-qt}/bin/aw-qt" "--no-gui" "--testing" "--verbose"];
+        # ExecStart = escapeShellArgs ["${pkgs.aw-qt}/bin/.aw-qt-wrapped"];
         Restart = "on-failure";
         # SuccessExitStatus = [3 4];
         # RestartForceExitStatus = [3 4];
