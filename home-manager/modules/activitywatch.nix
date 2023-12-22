@@ -7,9 +7,97 @@
 with lib; let
   cfg = config.services.activitywatch;
 
-  defaultActivityWatchArgs = ["${lib.getExe pkgs.aw-qt}"];
+  tomlFormat = pkgs.formats.toml {};
 
-  activityWatchArgs = defaultActivityWatchArgs ++ cfg.extraOptions;
+  # attrs util that removes entries containing a null value
+  compactAttrs = lib.filterAttrs (_: val: !isNull val);
+
+  defaultServerHostname = "127.0.0.1";
+  defaultServerHostnameTesting = "127.0.0.1";
+  defaultServerPort = 5600;
+  defaultServerPortTesting = 5666;
+
+  defaultServerConfig = {
+    address = defaultServerHostname;
+    port = defaultServerPort;
+    cors = [];
+    # aw-server-rust does not support the experimental custom_static feature (see aw-server PR #83).
+    # https://github.com/ActivityWatch/aw-server/pull/83
+    # "custom_static" = {};
+  };
+
+  defaultServerConfigTesting = {
+    address = defaultServerHostnameTesting;
+    port = defaultServerPortTesting;
+    cors = [];
+  };
+
+  defaultClientConfig = {
+    client = {
+      # How often to commit events to the server (in seconds).
+      commit_interval = 10;
+    };
+    "client-testing" = {
+      commit_interval = 5;
+    };
+    server = {
+      hostname = defaultServerHostname;
+      port = defaultServerPort;
+    };
+    "server-testing" = {
+      hostname = defaultServerHostnameTesting;
+      port = defaultServerPortTesting;
+    };
+  };
+
+  defaultWatcherAfkConfig = {
+    "aw-watcher-afk" = {
+      # Time in seconds after which a period without keyboard or mouse activity
+      # is considered to be AFK (away from keyboard).
+      timeout = 180;
+      # Time in seconds between checks for activity.
+      poll_time = 5;
+    };
+    "aw-watcher-afk-testing" = {
+      timeout = 20;
+      poll_time = 1;
+    };
+  };
+
+  defaultWatcherWindowConfig = {
+    "aw-watcher-window" = {
+      # Don’t track window titles
+      exclude_title = false;
+      # Time in seconds between window checks.
+      poll_time = 1.0;
+      # The strategy to use on macOS to fetch the active window, can be "swift",
+      # "jxa" or "applescript". Swift strategy is preferred.
+      strategy_macos = "swift";
+    };
+  };
+
+  defaultQtConfig = {
+    # should I call bin/aw-server or bin/.aw-server-wrapped (i.e. the Qt library wrapped in the aw-server binary I think)
+    "aw-qt" = {
+      autostart_modules = [
+        "aw-server"
+        "aw-watcher-afk"
+        "aw-watcher-window"
+      ];
+    };
+    "aw-qt-testing" = {
+      autostart_modules = [
+        "${pkgs.aw-server-rust}/bin/aw-server" # there is no pkgs.aw-server
+        "${pkgs.aw-server-rust}/bin/.aw-server-wrapped" # there is no pkgs.aw-server
+        "${pkgs.aw-watcher-afk}/bin/aw-watcher-afk"
+        "${pkgs.aw-watcher-window}/bin/aw-watcher-window"
+        # just to check the filepath
+        "${pkgs.aw-qt}/bin/.aw-qt-wrapped"
+        "${pkgs.aw-qt}/bin/aw-qt"
+      ];
+      verbose = true;
+    };
+  };
 in {
   meta = {};
 
@@ -27,34 +115,144 @@ in {
           Package providing most of the ActivityWatch modules:
 
           - `aw-qt`
-          - `aw-server` (I think it's an alias for `aw-server-rust`)
+          - `aw-server-rust`
           - `aw-watcher-afk`
           - `aw-watcher-window`
         '';
       };
 
-      extraOptions = mkOption {
-        type = types.listOf types.str;
-        # comma-separated list of modules to autostart (e.g. "aw-server,aw-watcher-afk,aw-watcher-window")
-        # Explain whether these extraOptions override the ones defined in the TOML
-        # files (e.g. aw-qt.toml, aw-watcher-afk.toml)
-        default = [];
-        example = [
-          "--autostart-modules=aw-server,aw-watcher-afk,aw-watcher-window"
-          "--testing"
-          "--verbose"
-        ];
+      client = mkOption {
+        type = tomlFormat.type;
+        default = defaultClientConfig;
+        example = literalExpression ''
+          client = {
+            commit_interval = 10;
+          };
+          "client-testing" = {
+            commit_interval = 5;
+          };
+          server = {
+            hostname = "127.0.0.1";
+            port = 5600;
+          };
+          "server-testing" = {
+            hostname = "127.0.0.1";
+            port = 5666;
+          };
+        '';
         description = ''
-          Extra command-line arguments to pass to {command}`aw-qt`.
+          Configuration for the ActivityWatch client.
+
+          It will generate {file}`$XDG_CONFIG_HOME/activitywatch/aw-client/aw-client.toml`.
+
+          See <https://docs.activitywatch.net/en/latest/configuration.html#aw-client>
+          for details on the configuration parameters.
+        '';
+      };
+
+      server-rust = mkOption {
+        type = tomlFormat.type;
+        default = defaultServerConfig;
+        example = literalExpression ''
+          address = "127.0.0.1";
+          port = 5600;
+        '';
+        description = ''
+          Configuration for the ActivityWatch server.
+
+          It will generate {file}`$XDG_CONFIG_HOME/activitywatch/aw-server-rust/config.toml`.
+
+          See <https://docs.activitywatch.net/en/latest/configuration.html#aw-server-rust>
+          for details on the configuration parameters.
+        '';
+      };
+
+      server-rust-testing = mkOption {
+        type = tomlFormat.type;
+        default = defaultServerConfigTesting;
+        example = literalExpression ''
+          address = "127.0.0.1";
+          port = 5666;
+        '';
+        description = ''
+          Configuration for the ActivityWatch server (testing).
+
+          It will generate {file}`$XDG_CONFIG_HOME/activitywatch/aw-server-rust/config-testing.toml`.
+
+          See <https://docs.activitywatch.net/en/latest/configuration.html#aw-server-rust>
+          for details on the configuration parameters.
+        '';
+      };
+
+      qt = mkOption {
+        type = tomlFormat.type;
+        default = defaultQtConfig;
+        example = literalExpression ''
+          aw-qt = {
+            autostart_modules = ["aw-server" "aw-watcher-afk" "aw-watcher-window"];
+          };
+          aw-qt-testing = {
+            autostart_modules = ["aw-server" "aw-watcher-afk" "aw-watcher-window"];
+            verbose = true;
+          };
+        '';
+        description = ''
+          Configuration for aw-qt (application that starts ActivityWatch and creates a tray icon).
+
+          It will generate {file}`$XDG_CONFIG_HOME/activitywatch/aw-qt/aw-qt.toml`.
+        '';
+      };
+
+      # Maybe an option like this one would be better?
+      # watchers = [
+      #   {id = "afk"; config={}};
+      #   {id = "window"; config={}};
+      # ]
+
+      watcher-afk = mkOption {
+        type = tomlFormat.type;
+        default = defaultWatcherAfkConfig;
+        example = literalExpression ''
+          aw-watcher-afk = {
+            timeout = 180;
+            poll_time = 5;
+          };
+          aw-watcher-afk-testing = {
+            timeout = 20;
+            poll_time = 1;
+            verbose = true;
+          };
+        '';
+        description = ''
+          Configuration for aw-watcher-afk.
+
+          See <https://docs.activitywatch.net/en/latest/configuration.html#aw-watcher-afk>
+          for details.
+        '';
+      };
+
+      watcher-window = mkOption {
+        type = tomlFormat.type;
+        default = defaultWatcherWindowConfig;
+        example = literalExpression ''
+          aw-watcher-window = {
+            exclude_title = false;
+            poll_time = 1.0;
+          };
+        '';
+        description = ''
+          Configuration for aw-watcher-window.
+
+          See <https://docs.activitywatch.net/en/latest/configuration.html#aw-watcher-window>
+          for details.
         '';
       };
     };
   };
 
   config = mkIf cfg.enable {
-    # TODO: should I allow configuration of the ActivityWatch modules via TOML files?
+    # Should I allow configuration of the ActivityWatch modules via TOML files?
     home.file = {
-      # TODO: https://github.com/jackdbd/nix-config/issues/3
       # Almost all of these TOML files are loaded by the load_config function of
       # the aw-core library, which requires these files to be named {appname}/{appname}.toml
       # https://github.com/ActivityWatch/aw-core
@@ -62,16 +260,48 @@ in {
       # aw-server-rust/config.toml
       # aw-server-rust/config-testing.toml
       # https://github.com/ActivityWatch/aw-server-rust/blob/b87e32e84873793004d40649a21b49f024663a45/aw-sync/src/dirs.rs#L17
-      "${config.xdg.configHome}/activitywatch/aw-client/aw-client.toml".source = ../../dotfiles/activitywatch/aw-client/aw-client.toml;
-      "${config.xdg.configHome}/activitywatch/aw-qt/aw-qt.toml".source = ../../dotfiles/activitywatch/aw-qt/aw-qt.toml;
-      "${config.xdg.configHome}/activitywatch/aw-server/aw-server.toml".source = ../../dotfiles/activitywatch/aw-server/aw-server.toml;
-      "${config.xdg.configHome}/activitywatch/aw-server-rust/config.toml".source = ../../dotfiles/activitywatch/aw-server-rust/config.toml;
-      "${config.xdg.configHome}/activitywatch/aw-server-rust/config-testing.toml".source = ../../dotfiles/activitywatch/aw-server-rust/config-testing.toml;
-      "${config.xdg.configHome}/activitywatch/aw-watcher-afk/aw-watcher-afk.toml".source = ../../dotfiles/activitywatch/aw-watcher-afk/aw-watcher-afk.toml;
-      "${config.xdg.configHome}/activitywatch/aw-watcher-window/aw-watcher-window.toml".source = ../../dotfiles/activitywatch/aw-watcher-window/aw-watcher-window.toml;
+      # "${config.xdg.configHome}/activitywatch/aw-qt/aw-qt.toml".source = ../../dotfiles/activitywatch/aw-qt/aw-qt.toml;
     };
 
     home.packages = [cfg.package];
+
+    # Recursively merge the provided config into the default one.
+
+    xdg.configFile."activitywatch/aw-client/aw-client.toml".source = let
+      userConfig = compactAttrs cfg.client;
+      mergedConfig = lib.recursiveUpdate defaultClientConfig userConfig;
+    in
+      tomlFormat.generate "aw-client/aw-client.toml" mergedConfig;
+
+    xdg.configFile."activitywatch/aw-server-rust/config.toml".source = let
+      userConfig = compactAttrs cfg.server-rust;
+      mergedConfig = lib.recursiveUpdate defaultServerConfig userConfig;
+    in
+      tomlFormat.generate "aw-server-rust/config.toml" mergedConfig;
+
+    xdg.configFile."activitywatch/aw-server-rust/config-testing.toml".source = let
+      userConfig = compactAttrs cfg.server-rust-testing;
+      mergedConfig = lib.recursiveUpdate defaultServerConfigTesting userConfig;
+    in
+      tomlFormat.generate "aw-server-rust/config-testing.toml" mergedConfig;
+
+    xdg.configFile."activitywatch/aw-watcher-afk/aw-watcher-afk.toml".source = let
+      userConfig = compactAttrs cfg.watcher-afk;
+      mergedConfig = lib.recursiveUpdate defaultWatcherAfkConfig userConfig;
+    in
+      tomlFormat.generate "aw-watcher-afk/aw-watcher-afk.toml" mergedConfig;
+
+    xdg.configFile."activitywatch/aw-watcher-window/aw-watcher-window.toml".source = let
+      userConfig = compactAttrs cfg.watcher-window;
+      mergedConfig = lib.recursiveUpdate defaultWatcherWindowConfig userConfig;
+    in
+      tomlFormat.generate "aw-watcher-window/aw-watcher-window.toml" mergedConfig;
+
+    xdg.configFile."activitywatch/aw-qt/aw-qt.toml".source = let
+      userConfig = compactAttrs cfg.qt;
+      mergedConfig = lib.recursiveUpdate defaultQtConfig userConfig;
+    in
+      tomlFormat.generate "aw-qt/aw-qt.toml" mergedConfig;
 
     # The GUI is online at http://{address}:${port} (see aw-client/aw-client.toml and aw-server-rust/config.toml)
 
@@ -121,15 +351,9 @@ in {
         # Environment = with pkgs; "PATH=${makeBinPath cfg.extraPackages}";
         # Environment = "PATH=${config.home.profileDirectory}/bin";
 
-        # TODO: improve configuration for the arguments to pass to aw-qt. Maybe
-        # use something like this for ActivityWatch watchers:
-        # [
-        #   {id = "aw-watcher-afk"; config = {}};
-        #   {id = "aw-watcher-window"; config = {}};
-        # ]
         # See here for a good example of configuration.
         # https://github.com/nix-community/home-manager/blob/master/modules/services/xidlehook.nix
-        ExecStart = escapeShellArgs activityWatchArgs;
+        ExecStart = escapeShellArgs ["${pkgs.aw-qt}/bin/aw-qt"];
         Restart = "on-failure";
         # SuccessExitStatus = [3 4];
         # RestartForceExitStatus = [3 4];

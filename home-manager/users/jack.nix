@@ -182,6 +182,7 @@ in {
   programs.chromium-wrapper.should-install-extensions = true;
 
   # Let Home Manager install and manage itself.
+  # https://github.com/nix-community/home-manager/blob/master/modules/programs/home-manager.nix
   programs.home-manager.enable = true;
 
   programs.vscode.enable = true;
@@ -191,7 +192,14 @@ in {
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
   };
 
-  services.activitywatch.enable = true;
+  services.activitywatch = {
+    enable = true;
+    client = {
+      client = {
+        commit_interval = 15;
+      };
+    };
+  };
 
   # For blueman-applet to work, the blueman service must be enabled system-wide.
   # https://nixos.wiki/wiki/Bluetooth#Pairing_Bluetooth_devices
@@ -202,4 +210,8 @@ in {
 
   # Restart systemd services on change
   systemd.user.startServices = "sd-switch";
+
+  # https://mipmip.github.io/home-manager-option-search/?query=xsession
+  # https://github.com/nix-community/home-manager/blob/8b797c8eea1eba7dfb47f6964103e6e0d134255f/modules/xsession.nix#L165
+  # xsession.enable = true;
 }
