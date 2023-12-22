@@ -6,14 +6,14 @@
       "rule": {
         "type": "none"
       },
-      "data": { "color": "#FF0000" }
+      "data": { "color": "#345559" }
     },
     {
       "id": 1,
       "name": ["Work", "Programming"],
       "rule": {
         "type": "regex",
-        "regex": "Alacritty|GitHub|Gitlab|Stack Overflow"
+        "regex": "Alacritty|Code|GitHub|Gitlab|Stack Overflow|Visual Studio Code"
       },
       "data": {
         "color": "#C80815"
@@ -32,6 +32,17 @@
     },
     {
       "id": 3,
+      "name": ["Work", "Calls"],
+      "rule": {
+        "type": "regex",
+        "regex": "Meet|https://meet.google.com/.*"
+      },
+      "data": {
+        "color": "#04961a"
+      }
+    },
+    {
+      "id": 4,
       "name": ["Work", "Image editing"],
       "rule": {
         "type": "regex",
@@ -42,7 +53,7 @@
       }
     },
     {
-      "id": 4,
+      "id": 5,
       "name": ["Work", "Video editing"],
       "rule": {
         "type": "regex",
@@ -50,6 +61,63 @@
       },
       "data": {
         "color": "#7B64FF"
+      }
+    },
+    {
+      "id": 6,
+      "name": ["Work", "Tools"],
+      "rule": {
+        "type": "regex",
+        "regex": "colordesigner|Random Color Generator|regex101"
+      },
+      "data": {
+        "color": "#9e9891"
+      }
+    },
+    {
+      "id": 7,
+      "name": ["Linux"],
+      "rule": {
+        "type": "regex",
+        "regex": "linux|NixOS Search"
+      },
+      "data": {
+        "color": "##2e4f84"
+      }
+    },
+    {
+      "id": 8,
+      "name": ["YouTube"],
+      "rule": {
+        "type": "regex",
+        "regex": "YouTube"
+      },
+      "data": {
+        "color": "#FF0000"
+      }
+    },
+    {
+      "id": 9,
+      "name": ["YouTube", "Fun"],
+      "rule": {
+        "type": "regex",
+        "regex": "Peter Zeihan.*YouTube|warhammer.*YouTube",
+        "ignore_case": true
+      },
+      "data": {
+        "color": "#00ff00"
+      }
+    },
+    {
+      "id": 10,
+      "name": ["YouTube", "Work"],
+      "rule": {
+        "type": "regex",
+        "regex": "lenovo.*YouTube|linux.*YouTube|thinkpad.*YouTube",
+        "ignore_case": true
+      },
+      "data": {
+        "color": "#0000ff"
       }
     }
   ]
