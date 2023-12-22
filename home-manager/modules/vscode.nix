@@ -25,6 +25,21 @@ with lib; let
     };
   };
 
+  bierner.color-info = buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      name = "color-info";
+      publisher = "bierner"; # Matt Bierner
+      version = "0.7.2";
+      sha256 = "sha256-Bf0thdt4yxH7OsRhIXeqvaxD1tbHTrUc4QJcju7Hv90=";
+    };
+    meta = {
+      changelog = "https://marketplace.visualstudio.com/items/bierner.color-info/changelog";
+      downloadPage = "https://marketplace.visualstudio.com/items?itemName=bierner.color-info";
+      homepage = "https://github.com/mattbierner/vscode-color-info#readme";
+      license = lib.licenses.mit;
+    };
+  };
+
   chakrounanas.turbo-console-log = buildVscodeMarketplaceExtension {
     mktplcRef = {
       name = "turbo-console-log";
@@ -36,6 +51,36 @@ with lib; let
       changelog = "https://marketplace.visualstudio.com/items/ChakrounAnas.turbo-console-log/changelog";
       downloadPage = "https://marketplace.visualstudio.com/items?itemName=ChakrounAnas.turbo-console-log";
       homepage = "https://github.com/Chakroun-Anas/turbo-console-log#readme";
+      license = lib.licenses.mit;
+    };
+  };
+
+  dtsvet.vscode-wasm = buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      name = "vscode-wasm";
+      publisher = "dtsvet"; # WebAssembly Foundation
+      version = "1.4.1";
+      sha256 = "sha256-zs7E3pxf4P8kb3J+5zLoAO2dvTeepuCuBJi5s354k0I=";
+    };
+    meta = {
+      changelog = "https://marketplace.visualstudio.com/items/dtsvet.vscode-wasm/changelog";
+      downloadPage = "https://marketplace.visualstudio.com/items?itemName=dtsvet.vscode-wasm";
+      homepage = "https://github.com/wasmerio/vscode-wasm";
+      license = lib.licenses.mit;
+    };
+  };
+
+  stylelint.vscode-stylelint = buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      name = "vscode-stylelint";
+      publisher = "Stylelint";
+      version = "1.3.0";
+      sha256 = "sha256-JoCa2d0ayBEuCcQi3Z/90GJ4AIECVz8NCpd+i+9uMeA=";
+    };
+    meta = {
+      changelog = "https://marketplace.visualstudio.com/items/stylelint.vscode-stylelint/changelog";
+      downloadPage = "https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint";
+      homepage = "https://github.com/stylelint/vscode-stylelint#readme";
       license = lib.licenses.mit;
     };
   };
@@ -92,10 +137,12 @@ in {
         activitywatch.aw-watcher-vscode
         bbenoist.nix # Nix language support for VS Code
         betterthantomorrow.calva # Clojure/Script interactive programming for VS Code
+        bierner.color-info # Provides quick information about css colors
         chakrounanas.turbo-console-log
         christian-kohler.path-intellisense
         coolbear.systemd-unit-file # syntax highlighting for systemd unit files
         davidanson.vscode-markdownlint
+        dtsvet.vscode-wasm # WebAssembly Toolkit for VSCode
         eamodio.gitlens
         esbenp.prettier-vscode
         github.copilot
@@ -108,6 +155,7 @@ in {
         ms-azuretools.vscode-docker
         # at the moment mtxr.sqltools is not available on nixpkgs (not even on
         # nixpkgs unstable) https://github.com/mtxr/vscode-sqltools
+        stylelint.vscode-stylelint
         tamasfe.even-better-toml
         usernamehw.errorlens
         yoavbls.pretty-ts-errors
@@ -171,9 +219,12 @@ in {
         "[nix]"."editor.defaultFormatter" = "kamadorueda.alejandra";
         "[nix]"."editor.formatOnSave" = true;
         "[nix]"."editor.tabSize" = 2;
+        "[postcss]"."editor.defaultFormatter" = "stylelint.vscode-stylelint";
+        "[postcss]"."editor.formatOnSave" = true;
         "[typescript]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
         "[typescript]"."editor.formatOnSave" = true;
         "alejandra.program" = "alejandra";
+        "editor.inlineSuggest.enabled" = true;
         "editor.minimap.enabled" = false;
         "editor.rulers" = [80 120];
         # The extension pflannery.vscode-versionlens works only if the file type
@@ -186,6 +237,41 @@ in {
         "files.exclude".".clj-kondo/" = true;
         "files.exclude".".lsp/" = true;
         "files.exclude"."**/node_modules/" = true;
+        "github.copilot.enable" = {
+          "*" = true;
+          plaintext = false;
+          markdown = true;
+        };
+        "githubIssues.queries" = [
+          {
+            label = "Bugs";
+            query = ''repo:''${owner}/''${repository} sort:created-desc state:open label:bug'';
+          }
+          {
+            label = "Created By Me";
+            query = ''author:''${user} state:open repo:''${owner}/''${repository} sort:created-desc'';
+          }
+        ];
+        "githubPullRequests.queries" = [
+          {
+            label = "Assigned To Me";
+            query = ''is:open assignee:''${user}'';
+          }
+          {
+            label = "Created By Me";
+            query = ''is:open author:''${user}'';
+          }
+          {
+            label = "Waiting For My Review";
+            query = ''is:open review-requested:''${user}'';
+          }
+          {
+            label = "WIP PRs";
+            query = "is:open";
+          }
+        ];
+        # "security.workspace.trust.untrustedFiles" = "open";
+        "turboConsoleLog.includeFileNameAndLineNum" = false;
         # Open all NEW VS Code windows in full screen mode. The first window will
         # always restore the size and location as you left it before closing.
         "window.newWindowDimensions" = "fullscreen";
