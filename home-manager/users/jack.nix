@@ -53,6 +53,8 @@ in {
       ctop # top-like interface for container metrics
       curl
       darktable # virtual lighttable and darkroom for photographers
+      ddrescue # data recovery tool (I also use it to burn an ISO to a USB flash drive)
+      ddrescueview # Graphical viewer for GNU ddrescue mapfiles
       (writeShellScriptBin "debug-home-manager" ''
         printf "=== DEBUG HOME MANAGER ===\n"
         echo "favorite-browser is ${favorite-browser}"
@@ -150,6 +152,7 @@ in {
       tmuxPlugins.continuum
       tmuxPlugins.resurrect
       tokei # display statistics about your code
+      transmission # BitTorrent client
       usbutils # tools for working with USB devices, such as lsusb
       vlc
       volta # avaScript Tool Manager (nvm alternative)
