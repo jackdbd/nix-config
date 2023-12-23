@@ -13,7 +13,7 @@
       "name": ["Work", "Programming"],
       "rule": {
         "type": "regex",
-        "regex": "Alacritty|Code|GitHub|Gitlab|Stack Overflow|Visual Studio Code"
+        "regex": "Alacritty|Code|GitHub|github.com|Gitlab|Stack Overflow|Visual Studio Code"
       },
       "data": {
         "color": "#C80815"
@@ -24,7 +24,7 @@
       "name": ["Work", "Tools"],
       "rule": {
         "type": "regex",
-        "regex": "ActivityWatch|nix"
+        "regex": "ActivityWatch"
       },
       "data": {
         "color": "#B7410E"
@@ -35,7 +35,7 @@
       "name": ["Work", "Calls"],
       "rule": {
         "type": "regex",
-        "regex": "Meet|https://meet.google.com/.*"
+        "regex": "Meet|meet.google.com"
       },
       "data": {
         "color": "#04961a"
@@ -82,7 +82,7 @@
         "regex": "linux|NixOS Search"
       },
       "data": {
-        "color": "##2e4f84"
+        "color": "#2e4f84"
       }
     },
     {
@@ -90,7 +90,7 @@
       "name": ["YouTube"],
       "rule": {
         "type": "regex",
-        "regex": "YouTube"
+        "regex": "YouTube|youtube.com"
       },
       "data": {
         "color": "#FF0000"
@@ -118,6 +118,61 @@
       },
       "data": {
         "color": "#0000ff"
+      }
+    },
+    {
+      "id": 11,
+      "name": ["Docs"],
+      "rule": {
+        "type": "regex",
+        "regex": "home-manager-option-search|nixos.wiki|search.nixos.org"
+      },
+      "data": {
+        "color": "#7988c4"
+      }
+    },
+    {
+      "id": 12,
+      "name": ["Notes"],
+      "rule": {
+        "type": "regex",
+        "regex": "Google Keep|notion.so"
+      },
+      "data": {
+        "color": "#a4ea41"
+      }
+    },
+    {
+      "id": 13,
+      "name": ["Translate"],
+      "rule": {
+        "type": "regex",
+        "regex": "translate.google.com"
+      },
+      "data": {
+        "color": "#d19883"
+      }
+    },
+    {
+      "id": 14,
+      "name": ["AI"],
+      "rule": {
+        "type": "regex",
+        "regex": "Chat with GPT"
+      },
+      "data": {
+        "color": "#420b4c"
+      }
+    },
+    {
+      "id": 15,
+      "name": ["Browse internet"],
+      "rule": {
+        "type": "regex",
+        "regex": "Google Chrome"
+      },
+      "data": {
+        "color": "#cdeac7"
       }
     }
   ]
