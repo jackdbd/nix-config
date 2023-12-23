@@ -28,6 +28,7 @@ in {
     # All plugins declared here are included at the end of the tmux configuration.
     # I guess Tmux Plugin Manager is always installed by Nix?
     plugins = with plugins; [
+      aw-watcher-tmux
       nord # theme
       {
         # Save/restore the tmux environment
