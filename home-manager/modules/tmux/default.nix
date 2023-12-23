@@ -29,11 +29,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = [
-      cfg.package
-      # pkgs.tmuxPlugins.continuum
-      # pkgs.tmuxPlugins.resurrect
-    ];
+    home.packages = [cfg.package];
 
     programs.tmux = {
       # Set first window and pane to index 1 (not 0) to be more convenient for my keyboard layout

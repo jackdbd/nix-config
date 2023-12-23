@@ -25,6 +25,7 @@ Set `@continuum-boot` and `@continuum-systemd-start-cmd` if you want to let a sy
 - [iAmMrinal0's tmux configuration](https://github.com/iAmMrinal0/nix-config/blob/master/config/tmux.nix)
 - [tmuxp](https://github.com/tmux-python/tmuxp): define tmux sessions in YAML files.
 - [catppuccin theme](https://github.com/catppuccin/tmux)
+- [dracula theme](https://github.com/dracula/tmux)
 - [nord theme](https://github.com/nordtheme/tmux)
 - [tmux-themes](https://github.com/topics/tmux-themes)
 - [awesome-tmux](https://github.com/rothgar/awesome-tmux)

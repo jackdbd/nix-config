@@ -5,7 +5,7 @@
 }: let
   # See how mkTmuxPlugin is used in nixpkgs
   # https://github.com/NixOS/nixpkgs/blob/master/pkgs/misc/tmux-plugins/default.nix
-  inherit (pkgs.tmuxPlugins) mkTmuxPlugin continuum dracula resurrect;
+  inherit (pkgs.tmuxPlugins) mkTmuxPlugin catppuccin continuum dracula nord resurrect;
 
   aw-watcher-tmux = mkTmuxPlugin {
     pluginName = "aw-watcher-tmux";
@@ -20,31 +20,40 @@
     };
   };
 
+  catppuccin-theme = {
+    plugin = catppuccin;
+    # https://github.com/catppuccin/tmux
+    extraConfig = ''
+      set -g @catppuccin_status_modules_right "application session user host date_time"
+      set -g @catppuccin_date_time_text "%Y-%m-%d %H:%M:%S"
+    '';
+  };
+
   dracula-theme = {
     plugin = dracula;
     # https://draculatheme.com/tmux
     extraConfig = ''
-      set -g @dracula-show-battery false
-      set -g @dracula-show-powerline true
+      set -g @dracula-fixed-location "Hyrule"
       set -g @dracula-refresh-rate 10
+      set -g @dracula-show-battery false
+      set -g @dracula-show-fahrenheit false
+      set -g @dracula-show-powerline true
     '';
   };
 
-  nord-theme = mkTmuxPlugin {
-    pluginName = "nord";
-    version = "v0.3.0";
+  nord-theme = {
+    plugin = nord;
     # https://github.com/nordtheme/tmux
-    src = fetchFromGitHub {
-      owner = "nordtheme";
-      repo = "tmux";
-      rev = "v0.3.0";
-      sha256 = "sha256-s/rimJRGXzwY9zkOp9+2bAF1XCT9FcyZJ1zuHxOBsJM=";
-    };
+    # https://www.nordtheme.com/docs/ports/tmux/configuration
+    extraConfig = ''
+      set -g @nord_tmux_date_format "%Y-%m-%d %H:%M"
+    '';
   };
 in [
   aw-watcher-tmux
-  dracula-theme
-  # nord-theme
+  # catppuccin-theme
+  # dracula-theme
+  nord-theme
   {
     # Save/restore the tmux environment
     # save:    prefix + C-s
@@ -55,12 +64,13 @@ in [
       set -g @resurrect-pane-contents-area 'full'
     '';
   }
-  {
-    # Save the tmux environment every X minutes and automatically restore it
-    plugin = continuum;
-    extraConfig = ''
-      set -g @continuum-restore 'on'
-      set -g @continuum-save-interval '15' # in minutes
-    '';
-  }
+  # temporarily disable continuum to try out tmux themes.
+  # {
+  #   # Save the tmux environment every X minutes and automatically restore it
+  #   plugin = continuum;
+  #   extraConfig = ''
+  #     set -g @continuum-restore 'on'
+  #     set -g @continuum-save-interval '15' # in minutes
+  #   '';
+  # }
 ]
