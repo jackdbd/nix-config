@@ -9,6 +9,9 @@ with lib; let
 
   tomlFormat = pkgs.formats.toml {};
 
+  # tmuxExtraPlugins = pkgs.callPackage ../programs/tmux/custom-plugins.nix {};
+  # aw-watcher-tmux = tmuxExtraPlugins.aw-watcher-tmux;
+
   # attrs util that removes entries containing a null value
   compactAttrs = lib.filterAttrs (_: val: !isNull val);
 
@@ -87,10 +90,29 @@ with lib; let
       # verbose), you have to do it via the CLI. This seems a (small) aw-qt bug to me.
       # https://github.com/ActivityWatch/aw-qt/blob/master/aw_qt/main.py
       # https://github.com/ActivityWatch/aw-qt/blob/master/aw_qt/config.py
+      #
+      # aw-qt comes with some `aw-` modules (e.g. aw-watcher-afk). These are
+      # called bundled modules.
+      # In addition, aw-qt searches for other `aw-` modules in PATH. These are
+      # called system modules.
+      # https://github.com/ActivityWatch/aw-qt/blob/6bf7c08ec99354817defc53142a659583450e162/aw_qt/manager.py#L90
       autostart_modules = [
         "aw-server"
         "aw-watcher-afk"
         "aw-watcher-window"
+        #
+        # This watcher is available only when installing https://github.com/akohlbecker/aw-watcher-tmux
+        # The tmux config should be correct, but it seems that aw-qt can't still
+        # find this watcher. I'm getting this error: Manager tried to start nonexistent module aw-watcher-tmux
+        # "aw-watcher-tmux"
+        # By inspecting ~/.config/tmux/tmux.conf I've seen the location of
+        # aw-watcher-tmux in the Nix store:
+        # "${aw-watcher-tmux}/share/tmux-plugins/aw-watcher-tmux/scripts/monitor-session-activity.sh"
+        # I think I need to add this filepath (or maybe the parent folder) to PATH.
+        #
+        # This watcher would be cool, but installing it on NixOS requires some work.
+        # https://github.com/Alwinator/aw-watcher-utilization
+        # "aw-watcher-utilization"
       ];
     };
     "aw-qt-testing" = {
@@ -157,8 +179,7 @@ in {
         type = tomlFormat.type;
         default = defaultServerConfig;
         example = literalExpression ''
-          address = "127.0.0.1";
-          port = 5600;
+          ${defaultServerConfig}
         '';
         description = ''
           Configuration for the ActivityWatch server.
@@ -209,10 +230,11 @@ in {
         '';
       };
 
-      # Maybe an option like this one would be better?
+      # Probably an option like this one would be better. It would allow to
+      # configure new AW watchers without altering the existing code.
       # watchers = [
-      #   {id = "afk"; config={}};
-      #   {id = "window"; config={}};
+      #   {id = "aw-watcher-afk"; config={}};
+      #   {id = "aw-watcher-window"; config={}};
       # ]
 
       watcher-afk = mkOption {
@@ -265,8 +287,6 @@ in {
       # aw-server-rust is an exception. It can have 2 config files:
       # aw-server-rust/config.toml
       # aw-server-rust/config-testing.toml
-      # https://github.com/ActivityWatch/aw-server-rust/blob/b87e32e84873793004d40649a21b49f024663a45/aw-sync/src/dirs.rs#L17
-      # "${config.xdg.configHome}/activitywatch/aw-qt/aw-qt.toml".source = ../../dotfiles/activitywatch/aw-qt/aw-qt.toml;
     };
 
     home.packages = [cfg.package];
@@ -341,10 +361,8 @@ in {
       Unit = {
         Description = "ActivityWatch - Open Source Time Tracker";
         Documentation = ["https://docs.activitywatch.net/en/latest/"];
-        # A few systemd user unit implemented in Home Manager (e.g.
-        # blueman-applet, network-manager-applet) require "tray.target", but if
-        # I do, aw-qt crashes. No idea why this occurs.
         # Requires = ["tray.target"];
+        # After = ["graphical-session-pre.target" "tray.target"];
         After = ["graphical-session-pre.target"];
         PartOf = ["graphical-session.target"];
       };
@@ -352,20 +370,12 @@ in {
       Install = {WantedBy = ["graphical-session.target"];};
 
       Service = {
-        # I have seen these Environment directives in other systemd user units,
-        # but until I know what they actually do I can't just write them here.
-        # Environment = with pkgs; "PATH=${makeBinPath cfg.extraPackages}";
-        # Environment = "PATH=${config.home.profileDirectory}/bin";
+        # Environment = "PATH=${aw-watcher-tmux}/share/tmux-plugins/aw-watcher-tmux";
 
-        # See here for a good example of configuration.
-        # https://github.com/nix-community/home-manager/blob/master/modules/services/xidlehook.nix
-        # ExecStartPre = "${pkgs.coreutils-full}/bin/sleep 3s";
         ExecStart = escapeShellArgs ["${pkgs.aw-qt}/bin/aw-qt" "--no-gui"];
         # ExecStart = escapeShellArgs ["${pkgs.aw-qt}/bin/aw-qt" "--no-gui" "--testing" "--verbose"];
         # ExecStart = escapeShellArgs ["${pkgs.aw-qt}/bin/.aw-qt-wrapped"];
         Restart = "on-failure";
-        # SuccessExitStatus = [3 4];
-        # RestartForceExitStatus = [3 4];
 
         # TODO: add some documentation about systemd service hardening, and why
         # the systemd directives used here make sense for this systemd unit.
