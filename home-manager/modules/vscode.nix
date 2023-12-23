@@ -124,7 +124,7 @@ in {
     # https://mipmip.github.io/home-manager-option-search/?query=vscode
     programs.vscode = {
       enableExtensionUpdateCheck = true;
-      enableUpdateCheck = true;
+      enableUpdateCheck = false;
 
       # Do NOT declare VS Code extensions like this:
       # extensions = [ "esbenp.prettier-vscode" ];
