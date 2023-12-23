@@ -38,7 +38,6 @@ in [
   ./neovim
   ./rofi.nix
   ./starship.nix
-  ./tmux
   ./zathura.nix
   more
 ]

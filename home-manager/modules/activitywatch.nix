@@ -372,6 +372,13 @@ in {
       Service = {
         # Environment = "PATH=${aw-watcher-tmux}/share/tmux-plugins/aw-watcher-tmux";
 
+        # aw-qt sometimes starts fine, some other times it cannot find any modules
+        # (e.g. aw-server, aw-watcher-afk). Could the reason behind this flaky behavior
+        # the same as the one described in this issue?
+        # https://github.com/nix-community/home-manager/issues/3599#issuecomment-1387233002
+        # Consider dropping aw-qt and creating a shell script that starts
+        # aw-server and all watchers like this one:
+        # https://docs.activitywatch.net/en/latest/running-on-gnome.html
         ExecStart = escapeShellArgs ["${pkgs.aw-qt}/bin/aw-qt" "--no-gui"];
         # ExecStart = escapeShellArgs ["${pkgs.aw-qt}/bin/aw-qt" "--no-gui" "--testing" "--verbose"];
         # ExecStart = escapeShellArgs ["${pkgs.aw-qt}/bin/.aw-qt-wrapped"];

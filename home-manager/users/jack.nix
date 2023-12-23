@@ -17,6 +17,7 @@ in {
       ../modules/flameshot.nix
       ../modules/liferea.nix
       ../modules/lockscreen.nix
+      ../modules/tmux
       ../modules/vscode.nix
       ../modules/xfconf.nix
     ]
@@ -148,9 +149,6 @@ in {
       stripe-cli
       temurin-bin-18 # OpenJDK
       thunderbird # email client
-      tmux
-      tmuxPlugins.continuum
-      tmuxPlugins.resurrect
       tokei # display statistics about your code
       transmission # BitTorrent client
       usbutils # tools for working with USB devices, such as lsusb
@@ -187,6 +185,8 @@ in {
   # Let Home Manager install and manage itself.
   # https://github.com/nix-community/home-manager/blob/master/modules/programs/home-manager.nix
   programs.home-manager.enable = true;
+
+  programs.tmux.enable = true;
 
   programs.vscode.enable = true;
 
