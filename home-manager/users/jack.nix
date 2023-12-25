@@ -126,6 +126,7 @@ in {
       rlwrap
       rm-improved
       rofi # application launcher & window switcher
+      rssguard # RSS/Atom feed reader with online synchronization
       s-tui # Stress-Terminal UI monitoring tool (requires stress for some features)
       sakura # terminal emulator
       sameboy # Game Boy emulator
@@ -160,6 +161,7 @@ in {
       wget
       wireshark
       xsv # index/slice/analyze/split/join CSV files
+      yarr # Yet another rss reader
       yt-dlp
       zathura # PDF viewer
       zeal # offline documentation browser
