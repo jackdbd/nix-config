@@ -4,29 +4,38 @@
   pkgs,
   ...
 }: {
+  meta = {};
+
   imports = [];
 
-  options = {};
+  options = {
+    services.xserver = {
+      # already declared in nixos/modules/xserver.nix
+      # enable = lib.mkEnableOption "Whether to enable the X server.";
+    };
+  };
 
   # X11 window system
   # https://nixpkgs-manual-sphinx-markedown-example.netlify.app/configuration/x-windows.xml.html
   config = {
+    # https://github.com/NixOS/nixpkgs/blob/nixos-23.11/nixos/modules/services/x11/xserver.nix
     services.xserver = {
-      enable = true;
       # XFCE desktop environment
       # https://nixpkgs-manual-sphinx-markedown-example.netlify.app/configuration/xfce.xml
+      # https://github.com/NixOS/nixpkgs/blob/nixos-23.11/nixos/modules/services/x11/desktop-managers/xfce.nix
       desktopManager.xfce.enable = true;
+      desktopManager.xfce.enableScreensaver = false;
+      desktopManager.xfce.enableXfwm = true;
+
       # LightDM display manager
+      # https://github.com/NixOS/nixpkgs/blob/nixos-23.11/nixos/modules/services/x11/display-managers/lightdm.nix
       displayManager.lightdm.enable = true;
       # https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/services/x11/display-managers/lightdm.nix
       # displayManager.lightdm.greeters.gtk.enable = true;
       # displayManager.lightdm.greeters.slick.enable = true;
-      layout = "us";
-      # Enable touchpad support (enabled default in most desktopManager).
-      # libinput.enable = true;
-      xkbVariant = "";
+
+      xkb.layout = "us,it";
+      xkb.options = "grp:alt_space_toggle";
     };
   };
-
-  meta = {};
 }
