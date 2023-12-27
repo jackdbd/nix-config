@@ -40,6 +40,7 @@
     # `sudo nixos-rebuild` and `home-manager`
     allowed-unfree-packages = [
       "google-chrome"
+      "obsidian"
       "postman"
       "vscode"
       "vscode-extension-github-copilot"

@@ -104,6 +104,7 @@ in {
       nix-output-monitor # nom: monitor nix commands (TODO: does it work with flakes?)
       nodePackages.node-gyp # Node.js native addon build tool
       nuclei # vulnerability scanner
+      obsidian # notes / knowledge base
       openshot-qt # video editor
       ouch #  compress/decompress files and directories
       newman # Postman collection runner
@@ -195,6 +196,11 @@ in {
   # https://nix-community.github.io/home-manager/options.html#opt-nixpkgs.config
   nixpkgs.config = {
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
+
+    # Obsidian is build on Electron. I don't know why NixOS marks Electron as insecure.
+    permittedInsecurePackages = [
+      "electron-25.9.0"
+    ];
   };
 
   services.activitywatch = {

@@ -115,7 +115,13 @@
   #   "google-chrome"
   #   "vscode"
   # ];
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
+  nixpkgs.config = {
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
+    # Obsidian is build on Electron. I don't know why NixOS marks Electron as insecure.
+    config.permittedInsecurePackages = [
+      "electron-25.9.0"
+    ];
+  };
 
   # On XFCE, there is no configuration tool for NetworkManager by default: by
   # enabling programs.nm-applet.enable, the graphical applet will be installed
