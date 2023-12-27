@@ -6,19 +6,25 @@
 }:
 with lib; let
   cfg = config.services.activitywatch;
+  cfgQt = cfg.qt or {};
 
   tomlFormat = pkgs.formats.toml {};
 
   # tmuxExtraPlugins = pkgs.callPackage ../programs/tmux/custom-plugins.nix {};
   # aw-watcher-tmux = tmuxExtraPlugins.aw-watcher-tmux;
 
-  # attrs util that removes entries containing a null value
+  # util that removes entries containing a null value
   compactAttrs = lib.filterAttrs (_: val: !isNull val);
+  # util that removes empty and null element in a list
+  notEmpty = list: filter (x: x != "" && x != null) (flatten list);
 
   defaultServerHostname = "127.0.0.1";
   defaultServerHostnameTesting = "127.0.0.1";
   defaultServerPort = 5600;
   defaultServerPortTesting = 5666;
+
+  # TODO: define a schema for each config, like this one:
+  # https://github.com/nix-community/home-manager/blob/458544594ba7f0333cf5718045ee7a8eaf5de433/modules/programs/kakoune.nix#L134
 
   defaultServerConfig = {
     address = defaultServerHostname;
@@ -379,10 +385,14 @@ in {
         # Consider dropping aw-qt and creating a shell script that starts
         # aw-server and all watchers like this one:
         # https://docs.activitywatch.net/en/latest/running-on-gnome.html
-        ExecStart = "${pkgs.aw-qt}/bin/aw-qt";
-        # ExecStart = escapeShellArgs ["${pkgs.aw-qt}/bin/aw-qt" "--no-gui"];
-        # ExecStart = escapeShellArgs ["${pkgs.aw-qt}/bin/aw-qt" "--no-gui" "--testing" "--verbose"];
-        # ExecStart = escapeShellArgs ["${pkgs.aw-qt}/bin/.aw-qt-wrapped"];
+
+        ExecStart = concatStringsSep " " (notEmpty [
+          "${pkgs.aw-qt}/bin/aw-qt"
+          "${optionalString (cfgQt.no-gui or false) "--no-gui"}"
+          "${optionalString (cfgQt.testing or false) "--testing"}"
+          "${optionalString (cfgQt.verbose or false) "--verbose"}"
+        ]);
+
         Restart = "on-failure";
 
         # TODO: add some documentation about systemd service hardening, and why
