@@ -379,7 +379,8 @@ in {
         # Consider dropping aw-qt and creating a shell script that starts
         # aw-server and all watchers like this one:
         # https://docs.activitywatch.net/en/latest/running-on-gnome.html
-        ExecStart = escapeShellArgs ["${pkgs.aw-qt}/bin/aw-qt" "--no-gui"];
+        ExecStart = "${pkgs.aw-qt}/bin/aw-qt";
+        # ExecStart = escapeShellArgs ["${pkgs.aw-qt}/bin/aw-qt" "--no-gui"];
         # ExecStart = escapeShellArgs ["${pkgs.aw-qt}/bin/aw-qt" "--no-gui" "--testing" "--verbose"];
         # ExecStart = escapeShellArgs ["${pkgs.aw-qt}/bin/.aw-qt-wrapped"];
         Restart = "on-failure";
