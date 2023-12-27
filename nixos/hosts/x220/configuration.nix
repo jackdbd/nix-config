@@ -14,6 +14,7 @@
     ./hardware-configuration.nix
     ../../modules/bluetooth.nix
     ../../modules/fonts.nix
+    ../../modules/nix.nix
     ../../modules/pipewire.nix
     ../../modules/printing.nix
     ../../modules/secrets.nix
@@ -87,27 +88,6 @@
   # https://nixpkgs-manual-sphinx-markedown-example.netlify.app/configuration/network-manager.xml.html#networkmanager
   networking.networkmanager.enable = true;
 
-  # Perform garbage collection weekly to maintain low disk usage
-  # https://nixos-and-flakes.thiscute.world/nixos-with-flakes/other-useful-tips#reducing-disk-usage
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 1w";
-  };
-
-  # Optimize storage
-  # You can also manually optimize the store via:
-  #    nix-store --optimise
-  # Refer to the following link for more details:
-  # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
-  # TODO: Explain what the downsides of auto optimising the nix store are.
-  nix.settings.auto-optimise-store = true;
-
-  # Enable flakes, so we can avoid adding the flag --extra-experimental-features
-  # every time we use the nix CLI (e.g. nix build, nix run, etc)
-  # https://nixos.wiki/wiki/Flakes#Enable_flakes_permanently_in_NixOS
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
   # Instead of setting allowUnfree to true, I prefer explicitly list all the
   # unfree packages I am using.
   # nixpkgs.config.allowUnfree = true;
@@ -118,7 +98,7 @@
   nixpkgs.config = {
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
     # Obsidian is build on Electron. I don't know why NixOS marks Electron as insecure.
-    config.permittedInsecurePackages = [
+    permittedInsecurePackages = [
       "electron-25.9.0"
     ];
   };

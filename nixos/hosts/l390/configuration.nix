@@ -15,6 +15,7 @@
     ./hardware-configuration.nix
     ../../modules/bluetooth.nix
     ../../modules/fonts.nix
+    ../../modules/nix.nix
     ../../modules/pipewire.nix
     ../../modules/printing.nix
     ../../modules/secrets.nix
@@ -57,23 +58,10 @@
 
   networking.networkmanager.enable = true;
 
-  # Perform garbage collection weekly to maintain low disk usage
-  # https://nixos-and-flakes.thiscute.world/nixos-with-flakes/other-useful-tips#reducing-disk-usage
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 1w";
-  };
-
-  nix.settings.auto-optimise-store = true;
-
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
   nixpkgs.config = {
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
     # Obsidian is build on Electron. I don't know why NixOS marks Electron as insecure.
-    config.permittedInsecurePackages = [
+    permittedInsecurePackages = [
       "electron-25.9.0"
     ];
   };
