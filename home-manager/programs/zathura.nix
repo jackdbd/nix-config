@@ -9,7 +9,8 @@
   programs.zathura = {
     enable = true;
     extraConfig = ''
-      set font  "JetBrainsMono Nerd Font 14"
+      # set font  "JetBrainsMono Nerd Font 14"
+      set font  "FiraCode Nerd Font 14"
 
       # keybindings
       map [fullscreen] a adjust_window best-fit

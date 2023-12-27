@@ -13,6 +13,7 @@
     nixos-hardware.nixosModules.lenovo-thinkpad-x220
     ./hardware-configuration.nix
     ../../modules/bluetooth.nix
+    ../../modules/fonts.nix
     ../../modules/pipewire.nix
     ../../modules/printing.nix
     ../../modules/secrets.nix
@@ -65,18 +66,6 @@
   environment.xfce.excludePackages = with pkgs.xfce; [
     ristretto # image viewer. I prefer feh.
   ];
-
-  # https://nixos.wiki/wiki/Fonts#Installing_specific_fonts_from_nerdfonts
-  # Maybe also enable Source Code Pro. See here:
-  # https://github.com/search?q=repo%3AiAmMrinal0%2Fnix-config%20Source%20Code%20Pro&type=code
-  fonts = {
-    enableDefaultPackages = true;
-    packages = with pkgs; [
-      # https://nixos.wiki/wiki/Fonts#Installing_specific_fonts_from_nerdfonts
-      (nerdfonts.override {fonts = ["DroidSansMono" "FiraCode" "JetBrainsMono"];})
-      ubuntu_font_family
-    ];
-  };
 
   i18n.defaultLocale = "en_US.UTF-8";
 
