@@ -64,9 +64,9 @@
   # environment.variables = {};
 
   # introduced in NixOS 23.11
-  environment.xfce.excludePackages = with pkgs.xfce; [
-    ristretto # image viewer. I prefer feh.
-  ];
+  # environment.xfce.excludePackages = with pkgs.xfce; [
+  #   ristretto # image viewer.
+  # ];
 
   i18n.defaultLocale = "en_US.UTF-8";
 

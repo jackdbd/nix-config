@@ -31,7 +31,6 @@ in [
   ./alacritty.nix
   ./atuin.nix
   ./bash.nix
-  ./direnv.nix
   ./feh.nix
   ./git.nix
   ./lazygit.nix

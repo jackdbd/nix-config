@@ -36,9 +36,9 @@
 
   environment.systemPackages = import ../../../lib/system-packages.nix {inherit config pkgs;};
 
-  environment.xfce.excludePackages = with pkgs.xfce; [
-    ristretto # image viewer. I prefer feh.
-  ];
+  # environment.xfce.excludePackages = with pkgs.xfce; [
+  #   ristretto # image viewer.
+  # ];
 
   i18n.defaultLocale = "en_US.UTF-8";
 

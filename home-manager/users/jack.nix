@@ -13,7 +13,8 @@ in {
   imports =
     [
       ../modules/activitywatch.nix
-      ../modules/chromium-wrapper.nix
+      ../modules/chromium.nix
+      ../modules/direnv.nix
       ../modules/flameshot.nix
       ../modules/liferea.nix
       ../modules/lockscreen.nix
@@ -182,8 +183,12 @@ in {
     stateVersion = "22.11";
   };
 
-  programs.chromium-wrapper.enable = true;
-  programs.chromium-wrapper.should-install-extensions = true;
+  programs.chromium = {
+    enable = true;
+    should-install-extensions = true;
+  };
+
+  programs.direnv.enable = true;
 
   # Let Home Manager install and manage itself.
   # https://github.com/nix-community/home-manager/blob/master/modules/programs/home-manager.nix
