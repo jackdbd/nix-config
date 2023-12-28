@@ -212,17 +212,13 @@ in {
         "[git-commit]"."editor.rulers" = [50];
         "[css]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
         "[css]"."editor.formatOnSave" = true;
-        "[javascript]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
-        "[javascript]"."editor.formatOnSave" = true;
-        "[json]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
-        "[json]"."editor.formatOnSave" = true;
+        "[javascript][json][typescript]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
+        "[javascript][json][typescript]"."editor.formatOnSave" = true;
         "[nix]"."editor.defaultFormatter" = "kamadorueda.alejandra";
         "[nix]"."editor.formatOnSave" = true;
         "[nix]"."editor.tabSize" = 2;
         "[postcss]"."editor.defaultFormatter" = "stylelint.vscode-stylelint";
         "[postcss]"."editor.formatOnSave" = true;
-        "[typescript]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
-        "[typescript]"."editor.formatOnSave" = true;
         "alejandra.program" = "alejandra";
         "editor.inlineSuggest.enabled" = true;
         "editor.minimap.enabled" = false;
@@ -270,6 +266,11 @@ in {
             query = "is:open";
           }
         ];
+        # Git Graph settings
+        # https://github.com/mhutchie/vscode-git-graph/wiki/Extension-Settings
+        # GitLens settings
+        # https://help.gitkraken.com/gitlens/gitlens-settings/
+        "gitlens.ai.experimental.provider" = "openai";
         # "security.workspace.trust.untrustedFiles" = "open";
         "turboConsoleLog.includeFileNameAndLineNum" = false;
         # Open all NEW VS Code windows in full screen mode. The first window will
