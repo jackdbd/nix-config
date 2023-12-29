@@ -3,7 +3,10 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+with lib; let
+  cfg = config.services.xserver;
+in {
   meta = {};
 
   imports = [];
@@ -17,7 +20,7 @@
 
   # X11 window system
   # https://nixpkgs-manual-sphinx-markedown-example.netlify.app/configuration/x-windows.xml.html
-  config = {
+  config = mkIf cfg.enable {
     # https://github.com/NixOS/nixpkgs/blob/nixos-23.11/nixos/modules/services/x11/xserver.nix
     services.xserver = {
       # XFCE desktop environment
