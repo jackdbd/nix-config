@@ -19,6 +19,9 @@
       dk = "${pkgs.docker}/bin/docker";
       docs = "cd ~/Documents";
       down = "cd ~/Downloads";
+      dvt-clojure = "nix flake new --template github:the-nix-way/dev-templates#clojure";
+      dvt-node = "nix flake new --template github:the-nix-way/dev-templates#node";
+      dvt-zig = "nix flake new --template github:the-nix-way/dev-templates#zig";
       gg = "gitg";
       gk = "gitk";
       hms = "${pkgs.home-manager}/bin/home-manager switch --extra-experimental-features nix-command --extra-experimental-features flakes --flake $HOME/repos/nix-config#$(whoami)@$(hostname)";
