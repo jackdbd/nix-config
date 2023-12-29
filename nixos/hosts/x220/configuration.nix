@@ -110,6 +110,7 @@
 
   services.printing.enable = true;
   services.syncthing.enable = true;
+  services.tailscale.enable = true;
   services.xserver.enable = true;
 
   # Remove sound.enable or set it to false if you had it set previously, as

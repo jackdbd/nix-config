@@ -30,7 +30,6 @@ in
       libnotify # send desktop notifications to a notification daemon
       sops # editor for encrypting/decrypting JSON, YAML, ini, etc
       stow # symlink tool
-      tailscale # mesh VPN built on WireGuard
       winetricks # script to install DLLs needed to work around problems in Wine
       wineWowPackages.stable # https://nixos.wiki/wiki/Wine
     ]
