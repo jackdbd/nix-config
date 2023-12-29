@@ -3,33 +3,38 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+with lib; let
+  cfg = config.services.pipewire;
+in {
+  meta = {};
+
   imports = [];
 
-  options = {};
+  options = {
+    services.pipewire = {
+      # already declared in nixos/modules/pipewire.nix
+      # enable = mkEnableOption "Whether to enable pipewire service.";
+    };
+  };
 
-  config = {
+  config = mkIf cfg.enable {
     hardware.pulseaudio.enable = false;
 
     # The PipeWire daemon can be configured to be both an audio server (with
     # PulseAudio and JACK features) and a video capture server.
     # https://nixos.wiki/wiki/PipeWire
     services.pipewire = {
-      enable = true;
+      # Enable ALSA support
       alsa.enable = true;
       alsa.support32Bit = true;
-      pulse.enable = true;
-      # If you want to use JACK applications, uncomment this
+      # Enable JACK audio emulation
       # jack.enable = true;
-
-      # use the example session manager (no others are packaged yet so this is enabled by default,
-      # no need to redefine it in your config for now)
-      # media-session.enable = true;
+      # Enable PulseAudio server emulation
+      pulse.enable = true;
     };
 
-    # When PipeWire is enabled, rtkit is optional but recommended
+    # When PipeWire is enabled, the docs recommend to enable a RealtimeKit system service.
     security.rtkit.enable = true;
   };
-
-  meta = {};
 }

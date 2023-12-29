@@ -108,6 +108,7 @@
   # and will launch automatically when the graphical session is started.
   programs.nm-applet.enable = true;
 
+  services.pipewire.enable = true;
   services.printing.enable = true;
   services.syncthing.enable = true;
   services.tailscale.enable = true;
