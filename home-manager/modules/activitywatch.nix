@@ -136,7 +136,7 @@ with lib; let
   printf = "${pkgs.coreutils-full}/bin/printf";
   rm = "${pkgs.coreutils-full}/bin/rm";
   xargs = "${pkgs.findutils}/bin/xargs";
-  logBase = "/home/${user}/.cache/activitywatch/log";
+  logBase = "${config.xdg.cacheHome}/activitywatch/log";
 
   cleanup-activitywatch-logs = pkgs.writeShellScriptBin "cleanup-activitywatch-logs" ''
     set -euo pipefail
