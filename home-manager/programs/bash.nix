@@ -35,7 +35,7 @@
       pk = "pkill --signal SIGTERM --echo --count"; # e.g. pk liferea
       repl = "rlwrap bb --repl";
       repos = "cd ~/repos";
-      snr = "sudo nixos-rebuild switch --flake $HOME/repos/nix-config#$(hostname) --verbose";
+      snr = "sudo nixos-rebuild switch --flake $HOME/repos/nix-config#$(hostname)";
       # https://the.exa.website/features/tree-view
       "t2" = "${pkgs.eza}/bin/eza --tree --ignore-glob=node_modules --level=2";
       "t3" = "${pkgs.eza}/bin/eza --tree --ignore-glob=node_modules --level=3";

@@ -6,41 +6,39 @@
   ...
 }:
 with lib; let
-  cfg = config.programs.syncthing-wrapper;
+  cfg = config.services.syncthing;
+  laptops = ["ThinkPad L380" "ThinkPad L390" "ThinkPad X220"];
 in {
+  meta = {};
+
   imports = [];
 
-  # https://search.nixos.org/options?channel=23.11&from=0&size=50&sort=relevance&type=packages&query=syncthing
-  options.programs.syncthing-wrapper = {
-    guiAddress = mkOption {
-      type = types.str;
-      description = mdDoc ''
-        The address of the Syncthing graphical user interface.
-      '';
-      default = "0.0.0.0:8384";
-      example = "127.0.0.1:8384";
+  options = {
+    services.syncthing = {
+      # already declared in nixos/modules/syncthing.nix
+      # enable = mkEnableOption "Enable  (peer-to-peer file synchronization)";
     };
   };
 
-  config = {
-    environment.systemPackages = with pkgs; [
-      syncthing # peer-to-peer file synchronization
-    ];
+  config = mkIf cfg.enable {
+    environment.systemPackages = [cfg.package];
 
+    # The systemd unit for the Syncthing service can be found at:
+    # /etc/systemd/system/syncthing.service
+    #
+    # Useful commands:
+    # systemctl --system status --user syncthing.service
+    # journalctl --system --unit=syncthing.service --follow
+    # systemd-analyze security --system
+    # systemd-analyze security --system syncthing.service
     services.syncthing = {
       inherit user;
 
-      enable = true;
-      configDir = "/home/${user}/.config/syncthing"; # Folder for Syncthing's settings and keys
-      dataDir = "/home/${user}/Documents"; # Default folder for new synced folders
+      # Folder for Syncthing's settings and keys
+      configDir = "/home/${user}/.config/syncthing";
 
-      settings.devices = {
-        "Redmi Note 9S" = {id = "7WJ47ZP-O776CHO-OELIPNH-GUOZHA4-UYYZ3WS-PL5BE6L-INDDN3D-FHKDDQQ";};
-        "ThinkPad L380" = {id = "ENRVVVG-BKZ3LJH-ZHKXKPH-JW2HUF7-BNPWHFF-YDNPR2Z-UCNJBEL-T6C45AV";};
-        "ThinkPad L390" = {id = "ZUVYNEP-4CMUUH5-6P75652-VYIEQLU-COK4UYC-4RUIO4F-7GAOYDE-BVDP7AM";};
-        "ThinkPad X220" = {id = "WQ2BV2F-VOYX4RT-WBBI26I-U3KCTCV-JRGRQUZ-MNT44DV-COAMMYQ-JPF5EAN";};
-      };
-      # services.syncthing.settings.devices.<name>.autoAcceptFolders = true;
+      # Default folder for new synced folders. Can I disable it?
+      dataDir = "/home/${user}/Documents";
 
       # Consider using a secret for the Syncthing GUI. But how does a non-NixOS
       # host (e.g. a laptop running Xubuntu) decrypt this secret? I think I would
@@ -50,44 +48,82 @@ in {
       #   password = "password";
       # };
 
+      # This causes an infinite recursion. Why?
+      # guiAddress = cfg.guiAddress;
+
+      # Override any devices added or deleted through the WebUI
+      overrideDevices = true;
+      # Overrides any folders added or deleted through the WebUI
+      overrideFolders = true;
+
+      settings.devices = {
+        "Redmi Note 9S" = {
+          id = "7WJ47ZP-O776CHO-OELIPNH-GUOZHA4-UYYZ3WS-PL5BE6L-INDDN3D-FHKDDQQ";
+        };
+        "ThinkPad L380" = {
+          id = "ENRVVVG-BKZ3LJH-ZHKXKPH-JW2HUF7-BNPWHFF-YDNPR2Z-UCNJBEL-T6C45AV";
+        };
+        "ThinkPad L390" = {
+          id = "ZUVYNEP-4CMUUH5-6P75652-VYIEQLU-COK4UYC-4RUIO4F-7GAOYDE-BVDP7AM";
+        };
+        "ThinkPad X220" = {
+          id = "WQ2BV2F-VOYX4RT-WBBI26I-U3KCTCV-JRGRQUZ-MNT44DV-COAMMYQ-JPF5EAN";
+          # autoAcceptFolders = true;
+        };
+      };
+
       settings.folders = {
         # Folder ID in Syncthing
-        "mihyn-ggmuw" = {
+        "ipxyn-ow6d6" = {
           # Folder name in Syncthing
-          label = "Shared Docs";
+          label = "Calibre Library";
           # Which folder to add to Syncthing
-          path = "/home/${user}/Documents/shared-documents";
+          path = "/home/${user}/Documents/calibre-library";
           # Which devices to share the folder with
-          devices = ["Redmi Note 9S" "ThinkPad L380" "ThinkPad L390" "ThinkPad X220"];
+          devices = laptops;
+          # versioning.type = "simple"; # one of "external", "simple", "staggered", "trashcan"
+        };
+        "mihyn-ggmuw" = {
+          label = "Shared Docs";
+          path = "/home/${user}/Documents/shared-documents";
+          devices = laptops ++ ["Redmi Note 9S"];
         };
         "prz5n-egjgc" = {
           label = "Shared Music";
           path = "/home/${user}/Music/shared-music";
-          devices = ["Redmi Note 9S" "ThinkPad L380" "ThinkPad L390" "ThinkPad X220"];
+          devices = laptops ++ ["Redmi Note 9S"];
         };
         "ewwca-actnr" = {
           label = "Shared Pics";
           path = "/home/${user}/Pictures/shared-pictures";
-          devices = ["ThinkPad L380" "ThinkPad L390" "ThinkPad X220"];
+          devices = laptops;
         };
         "bjahe-fyok2" = {
           label = "Shared Videos";
           path = "/home/${user}/Videos/shared-videos";
-          devices = ["ThinkPad L380" "ThinkPad L390" "ThinkPad X220"];
+          devices = laptops;
+        };
+        "uusn3-urfng" = {
+          label = "Redmi Note 9S Camera";
+          path = "/home/${user}/Pictures/redmi-note-9s-camera";
+          devices = laptops ++ ["Redmi Note 9S"];
         };
         "mid9i-b3h7v" = {
           label = "Redmi Note 9S Screenshots";
           path = "/home/${user}/Pictures/redmi-note-9s-screenshots";
-          devices = ["Redmi Note 9S" "ThinkPad L380" "ThinkPad L390" "ThinkPad X220"];
+          devices = laptops ++ ["Redmi Note 9S"];
+        };
+        "hjshj-uh7fa" = {
+          label = "Redmi Note 9S Movies";
+          path = "/home/${user}/Videos/redmi-note-9s-movies";
+          devices = laptops ++ ["Redmi Note 9S"];
         };
       };
 
-      guiAddress = cfg.guiAddress;
-
-      overrideDevices = true; # overrides any devices added or deleted through the WebUI
-      overrideFolders = true; # overrides any folders added or deleted through the WebUI
+      # Create a systemd unit for the syncthing service in the systemd system
+      # instance, and auto launch it at system startup.
+      # https://github.com/NixOS/nixpkgs/blob/d02d818f22c777aa4e854efc3242ec451e5d462a/nixos/modules/services/networking/syncthing.nix#L648
+      systemService = true;
     };
   };
-
-  meta = {};
 }

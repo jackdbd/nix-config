@@ -108,10 +108,8 @@
   # and will launch automatically when the graphical session is started.
   programs.nm-applet.enable = true;
 
-  programs.syncthing-wrapper.guiAddress = "127.0.0.1:8384";
-
   services.printing.enable = true;
-
+  services.syncthing.enable = true;
   services.xserver.enable = true;
 
   # Remove sound.enable or set it to false if you had it set previously, as
