@@ -149,6 +149,7 @@ in {
         github.vscode-github-actions
         github.vscode-pull-request-github
         jdinhlife.gruvbox # Gruvbox theme
+        jnoortheen.nix-ide # Nix language support with formatting and error report
         kamadorueda.alejandra # Nix formatter
         mechatroner.rainbow-csv
         mhutchie.git-graph
@@ -271,6 +272,20 @@ in {
         # GitLens settings
         # https://help.gitkraken.com/gitlens/gitlens-settings/
         "gitlens.ai.experimental.provider" = "openai";
+        # Configure vscode-nix-ide to use nil as the language server for Nix expressions.
+        # https://github.com/oxalica/nil?tab=readme-ov-file#vscodevscodium-with-nix-ide
+        "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nil";
+        "nix.serverSettings" = {
+          nil = {
+            diagnostics = {
+              ignored = ["unused_binding" "unused_with"];
+            };
+            formatting = {
+              command = ["alejandra"];
+            };
+          };
+        };
         # "security.workspace.trust.untrustedFiles" = "open";
         "turboConsoleLog.includeFileNameAndLineNum" = false;
         # Open all NEW VS Code windows in full screen mode. The first window will

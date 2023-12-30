@@ -28,6 +28,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Language Server for Nix expression.
+    # https://github.com/oxalica/nil
+    # nil is not the only one Language Server available for Nix. There are also:
+    # https://github.com/nix-community/nixd
+    # https://github.com/nix-community/rnix-lsp
+    nil.url = "github:oxalica/nil";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     sops-nix.url = "github:Mic92/sops-nix";
@@ -38,6 +45,7 @@
     alejandra,
     fh,
     home-manager,
+    nil,
     nixos-hardware,
     nixpkgs,
     nixpkgs-unstable,
@@ -68,9 +76,6 @@
         {
           environment.systemPackages = [alejandra.defaultPackage.${system}];
         }
-        {
-          environment.systemPackages = [fh.packages.${system}.default];
-        }
         ./nixos/hosts/l390/configuration.nix
         # Declare home-manager as a NixOS module, so that all the home-manager
         # configuration will be deployed automatically when executing:
@@ -88,7 +93,7 @@
       # Nix modules automatically receive as inputs: config, lib, modulesPath,
       # options, pkgs. If you want to pass additional inputs to Nix modules,
       # you need to do it explicitly using these specialArgs.
-      specialArgs = {inherit allowed-unfree-packages inputs nixos-hardware nixpkgs sops-nix user;};
+      specialArgs = {inherit allowed-unfree-packages fh inputs nil nixos-hardware nixpkgs sops-nix user;};
     };
 
     nixosConfigurations."x220-nixos" = nixpkgs.lib.nixosSystem rec {
@@ -97,9 +102,6 @@
       modules = [
         {
           environment.systemPackages = [alejandra.defaultPackage.${system}];
-        }
-        {
-          environment.systemPackages = [fh.packages.${system}.default];
         }
         ./nixos/hosts/x220/configuration.nix
         home-manager.nixosModules.home-manager
@@ -111,7 +113,7 @@
         }
       ];
 
-      specialArgs = {inherit allowed-unfree-packages inputs nixos-hardware nixpkgs sops-nix user;};
+      specialArgs = {inherit allowed-unfree-packages fh inputs nil nixos-hardware nixpkgs sops-nix user;};
     };
 
     # Standalone home-manager configuration entrypoint
