@@ -2,14 +2,23 @@
   description = "NixOS & Home Manager configuration for all of jackdbd's hosts";
 
   inputs = {
-    # Pin the nixpkgs repository to its latest stable release.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    # Get the current stable Nixpkgs from GitHub
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    # Get the current stable Nixpkgs from FlakeHub
+    # https://flakehub.com/flake/NixOS/nixpkgs
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/*.tar.gz";
+
     # Some packages might contain fixes/features that are available only in the
-    # nixpkgs unstable release.
+    # Nixpkgs unstable release. So instead of using the Nixpkgs unstable release
+    # for everything, we use it only for such packages.
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    alejandra.url = "github:kamadorueda/alejandra/3.0.0";
-    alejandra.inputs.nixpkgs.follows = "nixpkgs";
+    alejandra = {
+      url = "github:kamadorueda/alejandra/3.0.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    fh.url = "https://flakehub.com/f/DeterminateSystems/fh/*.tar.gz";
 
     home-manager = {
       # Home Manager is developed against nixpkgs-unstable branch. If we want
@@ -25,15 +34,17 @@
   };
 
   # Define the alias `inputs` to let all Nix modules access all inputs.
-  outputs = inputs @ {
+  outputs = {
     alejandra,
+    fh,
     home-manager,
     nixos-hardware,
     nixpkgs,
+    nixpkgs-unstable,
     self,
     sops-nix,
     ...
-  }: let
+  } @ inputs: let
     system = "x86_64-linux";
     user = "jack";
     # define the list of allowed unfree here, so I can pass it to both
@@ -55,13 +66,14 @@
 
       modules = [
         {
-          # nix code formatter
           environment.systemPackages = [alejandra.defaultPackage.${system}];
         }
+        {
+          environment.systemPackages = [fh.packages.${system}.default];
+        }
         ./nixos/hosts/l390/configuration.nix
-
-        # Install home-manager as a module of nixos, so that home-manager
-        # configuration will be deployed automatically when executing
+        # Declare home-manager as a NixOS module, so that all the home-manager
+        # configuration will be deployed automatically when executing:
         # `sudo nixos-rebuild switch --flake ./#l390-nixos`
         # https://nixos-and-flakes.thiscute.world/nixos-with-flakes/start-using-home-manager#getting-started-with-home-manager
         home-manager.nixosModules.home-manager
@@ -84,11 +96,12 @@
 
       modules = [
         {
-          # nix code formatter
           environment.systemPackages = [alejandra.defaultPackage.${system}];
         }
+        {
+          environment.systemPackages = [fh.packages.${system}.default];
+        }
         ./nixos/hosts/x220/configuration.nix
-
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
