@@ -272,13 +272,18 @@ in {
         # GitLens settings
         # https://help.gitkraken.com/gitlens/gitlens-settings/
         "gitlens.ai.experimental.provider" = "openai";
-        # https://github.com/nix-community/vscode-nix-ide
+        # Configure vscode-nix-ide to use nil as the language server for Nix expressions.
         # https://github.com/oxalica/nil?tab=readme-ov-file#vscodevscodium-with-nix-ide
-        "nix.enableLanguageServer" = true; # Enable LSP
-        "nix.serverPath" = "nil"; # The path to the LSP server executable
+        "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nil";
         "nix.serverSettings" = {
           nil = {
-            formatting = {command = ["alejandra"];};
+            diagnostics = {
+              ignored = ["unused_binding" "unused_with"];
+            };
+            formatting = {
+              command = ["alejandra"];
+            };
           };
         };
         # "security.workspace.trust.untrustedFiles" = "open";

@@ -1,8 +1,10 @@
 {
   allowed-unfree-packages,
   config,
+  fh,
   inputs,
   lib,
+  nil,
   nixos-hardware,
   pkgs,
   sops-nix,
@@ -12,6 +14,12 @@
   imports = [
     nixos-hardware.nixosModules.lenovo-thinkpad-x220
     ./hardware-configuration.nix
+    {
+      environment.systemPackages = [fh.packages.x86_64-linux.default];
+    }
+    {
+      environment.systemPackages = [nil.packages.x86_64-linux.default];
+    }
     ../../modules/bluetooth.nix
     ../../modules/fonts.nix
     ../../modules/nix.nix

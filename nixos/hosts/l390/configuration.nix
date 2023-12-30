@@ -1,8 +1,10 @@
 {
   allowed-unfree-packages,
   config,
+  fh,
   inputs,
   lib,
+  nil,
   nixos-hardware,
   pkgs,
   sops-nix,
@@ -13,6 +15,12 @@
     # There is no Nix module for the ThinkPad L390. Maybe find a similar model.
     # nixos-hardware.nixosModules.lenovo-thinkpad-l390
     ./hardware-configuration.nix
+    {
+      environment.systemPackages = [fh.packages.x86_64-linux.default];
+    }
+    {
+      environment.systemPackages = [nil.packages.x86_64-linux.default];
+    }
     ../../modules/bluetooth.nix
     ../../modules/fonts.nix
     ../../modules/nix.nix
