@@ -28,6 +28,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Language Server for Nix expression.
+    # https://github.com/oxalica/nil
+    # nil is not the only one Language Server available for Nix. There are also:
+    # https://github.com/nix-community/nixd
+    # https://github.com/nix-community/rnix-lsp
+    nil.url = "github:oxalica/nil";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     sops-nix.url = "github:Mic92/sops-nix";
@@ -38,6 +45,7 @@
     alejandra,
     fh,
     home-manager,
+    nil,
     nixos-hardware,
     nixpkgs,
     nixpkgs-unstable,
@@ -70,6 +78,9 @@
         }
         {
           environment.systemPackages = [fh.packages.${system}.default];
+        }
+        {
+          environment.systemPackages = [nil.packages.${system}.default];
         }
         ./nixos/hosts/l390/configuration.nix
         # Declare home-manager as a NixOS module, so that all the home-manager

@@ -149,6 +149,7 @@ in {
         github.vscode-github-actions
         github.vscode-pull-request-github
         jdinhlife.gruvbox # Gruvbox theme
+        jnoortheen.nix-ide # Nix language support with formatting and error report
         kamadorueda.alejandra # Nix formatter
         mechatroner.rainbow-csv
         mhutchie.git-graph
@@ -271,6 +272,15 @@ in {
         # GitLens settings
         # https://help.gitkraken.com/gitlens/gitlens-settings/
         "gitlens.ai.experimental.provider" = "openai";
+        # https://github.com/nix-community/vscode-nix-ide
+        # https://github.com/oxalica/nil?tab=readme-ov-file#vscodevscodium-with-nix-ide
+        "nix.enableLanguageServer" = true; # Enable LSP
+        "nix.serverPath" = "nil"; # The path to the LSP server executable
+        "nix.serverSettings" = {
+          nil = {
+            formatting = {command = ["alejandra"];};
+          };
+        };
         # "security.workspace.trust.untrustedFiles" = "open";
         "turboConsoleLog.includeFileNameAndLineNum" = false;
         # Open all NEW VS Code windows in full screen mode. The first window will
