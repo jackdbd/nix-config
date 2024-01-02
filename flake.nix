@@ -24,6 +24,7 @@
       # Home Manager is developed against nixpkgs-unstable branch. If we want
       # Home Manager to follow the latest nixpkgs stable release, we need to
       # specify the nixos-23.11 branch.
+      # url = "github:nix-community/home-manager";
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };

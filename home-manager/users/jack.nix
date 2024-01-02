@@ -46,6 +46,7 @@ in {
       age # encryption tool
       alacritty # Open GL terminal emulator
       asciinema # record the terminal
+      atuin
       babashka # Clojure interpreter for scripting
       baobab # disk usage utility
       bless # HEX editor
