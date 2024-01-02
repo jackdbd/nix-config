@@ -29,7 +29,6 @@ let
   };
 in [
   ./alacritty.nix
-  ./atuin.nix
   ./bash.nix
   ./feh.nix
   ./git.nix

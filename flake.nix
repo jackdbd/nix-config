@@ -119,7 +119,7 @@
 
     # Standalone home-manager configuration entrypoint
     # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations."${user}@l380" = home-manager.lib.homeManagerConfiguration {
+    homeConfigurations."${user}@L380" = home-manager.lib.homeManagerConfiguration {
       # Home-manager requires 'pkgs' instance
       pkgs = nixpkgs.legacyPackages.${system};
       extraSpecialArgs = {inherit allowed-unfree-packages favorite-browser user;};

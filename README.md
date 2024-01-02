@@ -49,7 +49,7 @@ home-manager switch \
   --extra-experimental-features flakes \
   --extra-experimental-features auto-allocate-uids \
   --extra-experimental-features configurable-impure-env \
-  --flake .#jack@l380
+  --flake .#jack@L380
 ```
 
 ## Docs
