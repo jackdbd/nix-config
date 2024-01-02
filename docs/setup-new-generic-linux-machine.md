@@ -103,4 +103,4 @@ sudo mv alejandra-x86_64-unknown-linux-musl /usr/bin/alejandra
 
 ## OpenGL issues
 
-If alacritty and kitty have some OpenGL issues, you might have to install/update [Mesa drivers](https://itsfoss.com/install-mesa-ubuntu/).
+If alacritty and kitty have some OpenGL issues, you might have to install/update [Mesa drivers](https://itsfoss.com/install-mesa-ubuntu/). It might be necessary to install [these libraries](https://github.com/alacritty/alacritty/issues/4744#issuecomment-1288973352).

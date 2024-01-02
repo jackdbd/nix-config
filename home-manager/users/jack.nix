@@ -12,7 +12,7 @@
 in {
   imports =
     [
-      ../modules/activitywatch.nix
+      ../modules/activitywatch
       ../modules/atuin
       ../modules/chromium.nix
       ../modules/direnv.nix

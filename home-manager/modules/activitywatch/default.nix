@@ -7,6 +7,7 @@
 }:
 with lib; let
   cfg = config.services.activitywatch;
+
   cfgQt = cfg.qt or {};
 
   tomlFormat = pkgs.formats.toml {};
@@ -165,8 +166,6 @@ with lib; let
   '';
 in {
   meta = {};
-
-  imports = [];
 
   options = {
     services.activitywatch = {
