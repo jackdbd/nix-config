@@ -4,10 +4,18 @@ This document assumes that you have already [installed NixOS](https://nixos.wiki
 
 ## SSH keypair
 
-Generate an SSH keypair.
+Generate an SSH keypair, start the SSH agent and store both public/private key on the computer.
 
 ```sh
 ssh-keygen -t ed25519 -C "john.smith@acme.com"
+eval $(ssh-agent -s)
+ssh-add $HOME/.ssh/id_ed25519
+```
+
+Double check that the SSH agent has loaded the SSH key you have just generated.
+
+```sh
+ssh-add -l
 ```
 
 ## Git repository
@@ -27,7 +35,7 @@ git config --global user.email "john.smith@acme.com"
 
 Optional: create a directory for all of your repositories (e.g. `mkdir ~/repos/`).
 
-Clone the [nix-config](https://github.com/jackdbd/nix-config) repository from GitHub.
+Clone the [nix-config](https://github.com/jackdbd/nix-config) repository from GitHub using SSH.
 
 ```sh
 git clone git@github.com:jackdbd/nix-config.git
@@ -39,9 +47,9 @@ Remove git using nix-env, to prevent conflicts with the one declared in the NixO
 nix-env -e git
 ```
 
-## NixOS configuration
+## NixOS + Home Manager configuration
 
-Apply the NixOS configuration for this host.
+From **the root of this repository**, apply **both** the NixOS configuration and the Home Manager for this host.
 
 ```sh
 sudo nixos-rebuild switch \

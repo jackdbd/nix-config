@@ -27,34 +27,16 @@ home-manager switch \
 home-manager switch --flake .#jack@x220-nixos
 ```
 
+See also: [Setup a new NixOS machine](./docs/setup-new-nixos-machine.md).
+
 ### Non-NixOS hosts
 
-Install [Nix: the package manager](https://nixos.org/download).
-
-```sh
-sh <(curl -L https://nixos.org/nix/install) --daemon
-```
-
-Install Home Manager (read [here if you have any issues on Ubuntu](https://discourse.nixos.org/t/installing-home-manager-on-ubuntu/25957/)).
-
-```sh
-nix-env --install home-manager
-```
-
-From **the root of this repository**, apply **only** the Home Manager configuration:
-
-```sh
-home-manager switch \
-  --extra-experimental-features nix-command \
-  --extra-experimental-features flakes \
-  --extra-experimental-features auto-allocate-uids \
-  --extra-experimental-features configurable-impure-env \
-  --flake .#jack@L380
-```
+See: [Setup a new generic Linux machine](./docs/setup-new-generic-linux-machine.md).
 
 ## Docs
 
 - [Setup a new NixOS machine](./docs/setup-new-nixos-machine.md)
+- [Setup a new generic Linux machine](./docs/setup-new-generic-linux-machine.md)
 - [Useful commands](./docs//useful-commands.md)
 
 ## Credits
