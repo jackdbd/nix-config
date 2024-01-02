@@ -373,32 +373,12 @@ in {
 
     # The GUI is online at http://{address}:${port} (see aw-client/aw-client.toml and aw-server-rust/config.toml)
 
-    # https://github.com/NixOS/nixpkgs/tree/master/pkgs/applications/office/activitywatch
-
-    # https://github.com/nix-community/home-manager/blob/e4dba0bd01956170667458be7b45f68170a63651/modules/services/syncthing.nix#L57
-    # https://github.com/figsoda/cfg/blob/main/src/systemd/services/lockscreen.nix
-    # https://neuron.zettel.page/install-systemd
-
     # TODO: Can I put an assertion like this one, but JUST for the systemd service?
     # And also another assertion that ensures that the launchd configuration applies only to macos?
     # assertions = [
     #   (lib.hm.assertions.assertPlatform "services.activitywatch" pkgs lib.platforms.linux)
     # ];
 
-    # This creates a systemd user unit at this location:
-    # ~/.config/systemd/user/activitywatch.service
-    #
-    # Useful commands:
-    # systemctl status --user activitywatch.service
-    # journalctl --user --unit=activitywatch.service --follow
-    # systemctl --user daemon-reload
-    # systemd-analyze security --user
-    # systemd-analyze security --user activitywatch.service
-    #
-    # See also:
-    # https://wiki.archlinux.org/title/systemd/User
-    # https://github.com/nix-community/home-manager/blob/master/modules/systemd.nix
-    # https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html
     systemd.user.services.activitywatch = {
       Unit = {
         Description = "ActivityWatch - Open Source Time Tracker";
@@ -452,10 +432,6 @@ in {
         Type = "simple";
       };
     };
-
-    # TODO: Implement launchd service for MacOS (systemd is available only on Linux).
-    # Have a look at the launchd service implemented for syncthing.
-    # https://github.com/nix-community/home-manager/blob/e4dba0bd01956170667458be7b45f68170a63651/modules/services/syncthing.nix#L100C7-L100C14
 
     systemd.user.services.activitywatch-cleanup-logs = {
       Unit = {

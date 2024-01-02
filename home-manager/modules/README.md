@@ -1,10 +1,4 @@
-# home-manager modules
-
-## activitywatch
-
-Configuration for [ActivityWatch](https://docs.activitywatch.net/en/latest/), an open source time tracker.
-
-At the moment I need to manually re-import into the [ActivityWatch web UI](https://github.com/ActivityWatch/aw-webui) the [categorization rules](https://docs.activitywatch.net/en/latest/features/categorization.html) that I defined in [categorization-rules.json](../../dotfiles/activitywatch/categorization-rules.json).
+# Home Manager modules
 
 ## lockscreen
 
