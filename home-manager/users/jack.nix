@@ -222,6 +222,12 @@ in {
   # https://nixos.wiki/wiki/Bluetooth#Pairing_Bluetooth_devices
   services.blueman-applet.enable = true;
 
+  # https://nixos.wiki/wiki/Visual_Studio_Code#Error_after_Sign_On
+  services.gnome-keyring = {
+    enable = true;
+    components = ["pkcs11" "secrets" "ssh"];
+  };
+
   services.lockscreen.not-when-audio = true;
   services.lockscreen.not-when-fullscreen = true;
 
