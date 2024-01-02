@@ -5,11 +5,8 @@
   pkgs,
   ...
 }:
-# Use // (i.e. update operator) to merge the Tmux plugins defined in Nixpkgs
-# with the ones defined in custom-plugins.nix
-# https://nixos.org/manual/nix/stable/language/operators#update
 with lib; let
-  cfg = config.programs.tmux;
+  cfg = config.programs.atuin;
 in {
   meta = {};
 
