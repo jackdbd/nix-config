@@ -221,6 +221,11 @@ in {
         "[postcss]"."editor.defaultFormatter" = "stylelint.vscode-stylelint";
         "[postcss]"."editor.formatOnSave" = true;
         "alejandra.program" = "alejandra";
+        # https://calva.io/customizing/
+        # https://calva.io/emacs-keybindings/
+        # https://calva.io/paredit/#about-the-keyboard-shortcuts
+        "calva.paredit.hijackVSCodeDefaults" = true;
+        "calva.showCalvaSaysOnStart" = false;
         "editor.inlineSuggest.enabled" = true;
         "editor.minimap.enabled" = false;
         "editor.rulers" = [80 120];
