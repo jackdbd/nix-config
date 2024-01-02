@@ -83,6 +83,7 @@ in {
       gimp # image editor
       git-cola # git GUI
       glow # terminal markdown viewer
+      gnome.seahorse # GUI for GNOME keyring (aka Passwords and Keys)
       gnumake # GNU Make (build tool)
       go
       google-chrome
