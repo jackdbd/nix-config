@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<opml xmlns:rssguard="https://github.com/martinrotter/rssguard" version="2.0">
+  <head>
+    <title>RSS Guard</title>
+    <dateCreated>Wed, 03 Jan 2024 17:16:01 GMT</dateCreated>
+  </head>
+  <body>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="CSS Wizardry" type="rss" xmlUrl="http://feeds.feedburner.com/csswizardry" title="CSS Wizardry" rssguard:xmlUrlType="0" version="RSS" description="&amp;ndash; Harry Roberts &amp;ndash; Web Performance Consultant"/>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="Eleventy Blog" type="rss" xmlUrl="https://www.11ty.dev/blog/feed.xml" title="Eleventy Blog" rssguard:xmlUrlType="0" version="ATOM" description="News and updates about the Eleventy project, a simpler static site generator."/>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="Dan Luu" type="rss" xmlUrl="https://danluu.com/atom.xml" title="Dan Luu" rssguard:xmlUrlType="0" version="RSS" description="Recent content on "/>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="Fabien Sanglard" type="rss" xmlUrl="https://fabiensanglard.net/rss.xml" title="Fabien Sanglard" rssguard:xmlUrlType="0" version="RSS" description="Chronicles of software wizardry"/>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="Frontend Web Developer, Oxfordshire, UK - Matt Hobbs" type="rss" xmlUrl="https://nooshu.com/feed.xml" title="Frontend Web Developer, Oxfordshire, UK - Matt Hobbs" rssguard:xmlUrlType="0" version="ATOM" description="The virtual notebook of Matt Hobbs, about web development and any other subject that interests him. UI / Frontend Developer.&#xa;"/>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="Scattered Thoughts" type="rss" xmlUrl="https://www.scattered-thoughts.net/atom.xml" title="Scattered Thoughts" rssguard:xmlUrlType="0" version="ATOM" description=""/>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="Simon Willison" type="rss" xmlUrl="https://fedi.simonwillison.net/@simon.rss" title="Simon Willison" rssguard:xmlUrlType="0" version="RSS" description="Public posts from @simon@simonwillison.net"/>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="Zig monthly" type="rss" xmlUrl="https://zigmonthly.org/index.xml" title="Zig monthly" rssguard:xmlUrlType="0" version="RSS" description="Recent content on Zig monthly"/>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="swyx's site RSS Feed" type="rss" xmlUrl="https://www.swyx.io/rss.xml" title="swyx's site RSS Feed" rssguard:xmlUrlType="0" version="RSS" description="swyx's site RSS Feed"/>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="Martin Kleppmann's blog" type="rss" xmlUrl="http://feeds.feedburner.com/martinkl?format=xml" title="Martin Kleppmann's blog" rssguard:xmlUrlType="0" version="RSS" description=""/>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="TIL | Stefan Judis Web Development" type="rss" xmlUrl="https://www.stefanjudis.com/feeds/til.xml" title="TIL | Stefan Judis Web Development" rssguard:xmlUrlType="0" version="ATOM" description="&#xa;    Today I learned posts&#xa;  "/>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="Xe Iaso's blog" type="rss" xmlUrl="https://xeiaso.net/blog.rss" title="Xe Iaso's blog" rssguard:xmlUrlType="0" version="RSS" description="Thoughts and musings from Xe Iaso"/>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="Nick Fitzgerald" type="rss" xmlUrl="https://fitzgeraldnick.com/feed.xml" title="Nick Fitzgerald" rssguard:xmlUrlType="0" version="RSS" description=""/>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="DYNOMIGHT" type="rss" xmlUrl="https://dynomight.net/feed.xml" title="DYNOMIGHT" rssguard:xmlUrlType="0" version="ATOM" description="science and existential angst"/>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="Datasette News" type="rss" xmlUrl="https://datasette.io/content/feed.atom" title="Datasette News" rssguard:xmlUrlType="0" version="ATOM" description=""/>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="Draconian Overlord" type="rss" xmlUrl="https://feeds.feedburner.com/draconianoverlord?format=xml" title="Draconian Overlord" rssguard:xmlUrlType="0" version="RSS" description="Recent content on Draconian Overlord"/>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="DaedTech" type="rss" xmlUrl="https://feeds.feedblitz.com/daedtech/www&amp;x=1" title="DaedTech" rssguard:xmlUrlType="0" version="RSS" description="Stories about Software"/>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="Venam's Blog" type="rss" xmlUrl="https://venam.nixers.net/blog/feed.xml" title="Venam's Blog" rssguard:xmlUrlType="0" version="RSS" description="A blog consisting of well researched articles about Unix, philosophy, and more. From deep dives to well-rounded overviews that remove mysticism, everything is easily explained in a consumable way. Every article tries to take a new point of view, to link ideas together, and to tackle topics that haven't been before.&#xa;"/>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="mark nottingham" type="rss" xmlUrl="https://www.mnot.net/blog/index.atom" title="mark nottingham" rssguard:xmlUrlType="0" version="ATOM" description=""/>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="WebPageTest Blog" type="rss" xmlUrl="https://blog.webpagetest.org/feed.xml" title="WebPageTest Blog" rssguard:xmlUrlType="0" version="ATOM" description=""/>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="Zig Embedded Group" type="rss" xmlUrl="https://zeg.random-projects.net/feed.atom" title="Zig Embedded Group" rssguard:xmlUrlType="0" version="ATOM" description=""/>
+    <outline rssguard:postProcess="" encoding="ISO-8859-1" text="JavaPerformanceTuning.com News" type="rss" xmlUrl="http://www.javaperformancetuning.com/newsletters.rss" title="JavaPerformanceTuning.com News" rssguard:xmlUrlType="0" version="RSS" description="JavaPerformanceTuning.com lists all the information and resources available for Java performance tuning"/>
+    <outline rssguard:postProcess="" encoding="UTF-8" text="WebAssembly Weekly" type="rss" xmlUrl="https://wasmweekly.news/feed.xml" title="WebAssembly Weekly" rssguard:xmlUrlType="0" version="ATOM" description="A community-driven weekly newsletter about WebAssembly"/>
+  </body>
+</opml>

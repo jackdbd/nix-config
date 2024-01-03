@@ -19,6 +19,7 @@ in {
       ../modules/flameshot.nix
       ../modules/liferea.nix
       ../modules/lockscreen.nix
+      ../modules/rssguard
       ../modules/tmux
       ../modules/vscode.nix
       ../modules/xfconf.nix
@@ -130,7 +131,6 @@ in {
       rlwrap
       rm-improved
       rofi # application launcher & window switcher
-      rssguard # RSS/Atom feed reader with online synchronization
       s-tui # Stress-Terminal UI monitoring tool (requires stress for some features)
       sakura # terminal emulator
       sameboy # Game Boy emulator
@@ -195,6 +195,8 @@ in {
   # Let Home Manager install and manage itself.
   # https://github.com/nix-community/home-manager/blob/master/modules/programs/home-manager.nix
   programs.home-manager.enable = true;
+
+  programs.rssguard.enable = true;
 
   programs.tmux.enable = true;
 
