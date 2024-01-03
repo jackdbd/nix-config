@@ -21,7 +21,11 @@ in
     echo "secret found at ${secrets."nested_secret/npm_token_read_all_packages".path}"
     echo "secret is $(cat ${secrets."nested_secret/npm_token_read_all_packages".path})"
 
-    printf "\sa-storage-uploader\n"
+    printf "\gcp/prj-kitchen-sink/sa-storage-uploader\n"
     echo "secret found at ${secrets."gcp/prj-kitchen-sink/sa-storage-uploader".path}"
     echo "secret is $(cat ${secrets."gcp/prj-kitchen-sink/sa-storage-uploader".path})"
+
+    printf "\telegram/personal_bot\n"
+    echo "secret found at ${secrets."telegram/personal_bot".path}"
+    echo "secret is $(cat ${secrets."telegram/personal_bot".path})"
   ''

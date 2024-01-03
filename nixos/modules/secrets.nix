@@ -61,5 +61,9 @@ in {
     sops.secrets."gcp/prj-kitchen-sink/sa-storage-uploader" = {
       inherit group mode owner;
     };
+
+    sops.secrets."telegram/personal_bot" = {
+      inherit group mode owner;
+    };
   };
 }
