@@ -17,7 +17,6 @@ in {
       ../modules/chromium.nix
       ../modules/direnv.nix
       ../modules/flameshot.nix
-      ../modules/liferea.nix
       ../modules/lockscreen.nix
       ../modules/rssguard
       ../modules/tmux

@@ -35,7 +35,7 @@
       loc = "tokei";
       myip = "curl http://ipecho.net/plain; echo";
       pics = "cd ~/Pictures";
-      pk = "pkill --signal SIGTERM --echo --count"; # e.g. pk liferea
+      pk = "pkill --signal SIGTERM --echo --count"; # e.g. pk chromium-browser
       repl = "rlwrap bb --repl";
       repos = "cd ~/repos";
       snr = "sudo nixos-rebuild switch --flake $HOME/repos/nix-config#$(hostname)";
