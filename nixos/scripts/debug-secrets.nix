@@ -21,7 +21,7 @@ in
     echo "secret found at ${secrets."nested_secret/npm_token_read_all_packages".path}"
     echo "secret is $(cat ${secrets."nested_secret/npm_token_read_all_packages".path})"
 
-    printf "\ndeeply-nested\n"
-    echo "secret found at ${secrets."abc/def/ghi/deeply-nested".path}"
-    echo "secret is $(cat ${secrets."abc/def/ghi/deeply-nested".path})"
+    printf "\sa-storage-uploader\n"
+    echo "secret found at ${secrets."gcp/prj-kitchen-sink/sa-storage-uploader".path}"
+    echo "secret is $(cat ${secrets."gcp/prj-kitchen-sink/sa-storage-uploader".path})"
   ''

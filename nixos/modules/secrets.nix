@@ -26,6 +26,8 @@
   # 0 - none (---)
   mode = "0400";
 in {
+  meta = {};
+
   imports = [
     sops-nix.nixosModules.sops
   ];
@@ -56,10 +58,8 @@ in {
       inherit group mode owner;
     };
 
-    sops.secrets."abc/def/ghi/deeply-nested" = {
+    sops.secrets."gcp/prj-kitchen-sink/sa-storage-uploader" = {
       inherit group mode owner;
     };
   };
-
-  meta = {};
 }
