@@ -35,7 +35,6 @@ in [
   ./lazygit.nix
   ./neovim
   ./rofi.nix
-  ./starship.nix
   ./zathura.nix
   more
 ]

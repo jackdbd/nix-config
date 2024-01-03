@@ -19,6 +19,7 @@ in {
       ../modules/flameshot.nix
       ../modules/lockscreen.nix
       ../modules/rssguard
+      ../modules/starship.nix
       ../modules/tmux
       ../modules/vscode.nix
       ../modules/xfconf.nix
@@ -146,7 +147,6 @@ in {
       simplescreenrecorder # screen recorder gui
       sqlite
       sqlitebrowser
-      starship # customizable prompt for any shell
       steghide # steganography tool for images and audio files
       stegseek # tool to crack steganography
       stress # workload generator for POSIX systems (required by s-tui)
@@ -196,6 +196,8 @@ in {
   programs.home-manager.enable = true;
 
   programs.rssguard.enable = true;
+
+  programs.starship.enable = true;
 
   programs.tmux.enable = true;
 
