@@ -184,6 +184,8 @@ in {
     stateVersion = "22.11";
   };
 
+  programs.atuin.enable = true;
+
   programs.chromium = {
     enable = true;
     should-install-extensions = true;
