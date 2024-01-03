@@ -13,9 +13,6 @@ set tabstop=4 " number of visual spaces per TAB
 """ PLUGIN CONFIG
 
 "" CoC
-" Accept the completion suggestion by pressing Enter
-" https://superuser.com/questions/1734914/neovim-coc-nvim-enter-key-doesnt-work-to-autocomplete
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 " TextEdit might fail if hidden is not set.
 set hidden
 " Some servers have issues with backup files, see #649.
