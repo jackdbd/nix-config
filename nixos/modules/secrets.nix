@@ -73,5 +73,9 @@ in {
     sops.secrets."telegram/personal_bot" = {
       inherit group mode owner;
     };
+
+    sops.secrets."webmentions_io_token" = {
+      inherit group mode owner;
+    };
   };
 }

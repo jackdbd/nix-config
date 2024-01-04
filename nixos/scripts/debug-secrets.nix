@@ -36,4 +36,8 @@ in
     printf "\ntelegram/personal_bot\n"
     echo "secret found at ${secrets."telegram/personal_bot".path}"
     echo "secret is $(cat ${secrets."telegram/personal_bot".path})"
+
+    printf "\nwebmentions_io_token\n"
+    echo "secret found at ${secrets."webmentions_io_token".path}"
+    echo "secret is $(cat ${secrets."webmentions_io_token".path})"
   ''
