@@ -36,6 +36,9 @@ with lib; {
           "SpaceMono"
         ];
       })
+      noto-fonts
+      noto-fonts-cjk # Chinese, Japanese, Korean
+      noto-fonts-emoji # color emojis
       source-code-pro
       ubuntu_font_family
       weather-icons
