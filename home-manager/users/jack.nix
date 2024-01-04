@@ -21,7 +21,7 @@ in {
       ../modules/rssguard
       ../modules/starship.nix
       ../modules/tmux
-      ../modules/vscode.nix
+      ../modules/vscode
       ../modules/xfconf.nix
     ]
     ++ lib.concatMap import [

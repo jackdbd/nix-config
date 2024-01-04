@@ -291,6 +291,12 @@ in {
             };
           };
         };
+        "search.exclude" = {
+          "**/.git" = true;
+          "**/flake-inputs" = true;
+          "**/node_modules" = true;
+          "**/tmp" = true;
+        };
         # "security.workspace.trust.untrustedFiles" = "open";
         "turboConsoleLog.includeFileNameAndLineNum" = false;
         # Open all NEW VS Code windows in full screen mode. The first window will
