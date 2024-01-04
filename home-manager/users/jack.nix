@@ -17,6 +17,7 @@ in {
       ../modules/chromium.nix
       ../modules/direnv.nix
       ../modules/flameshot.nix
+      ../modules/git.nix
       ../modules/lockscreen.nix
       ../modules/rssguard
       ../modules/starship.nix
@@ -82,7 +83,6 @@ in {
       fx # JSON viewer
       gh # GitHub CLI
       gimp # image editor
-      git-cola # git GUI
       glow # terminal markdown viewer
       gnome.seahorse # GUI for GNOME keyring (aka Passwords and Keys)
       gnumake # GNU Make (build tool)
@@ -192,6 +192,7 @@ in {
   };
 
   programs.direnv.enable = true;
+  programs.git.enable = true;
 
   # Let Home Manager install and manage itself.
   # https://github.com/nix-community/home-manager/blob/master/modules/programs/home-manager.nix

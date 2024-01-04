@@ -31,8 +31,6 @@ in [
   ./alacritty.nix
   ./bash.nix
   ./feh.nix
-  ./git.nix
-  ./lazygit.nix
   ./neovim
   ./rofi.nix
   ./zathura.nix
