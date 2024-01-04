@@ -163,42 +163,7 @@ in {
       ];
 
       # https://github.com/jackdbd/dotfiles/tree/main/Code/.config/Code/User/snippets
-      globalSnippets = {
-        fixme = {
-          body = ["$LINE_COMMENT FIXME: $0"];
-          description = "Insert a FIXME remark";
-          prefix = ["fixme"];
-        };
-        todo = {
-          body = ["$LINE_COMMENT TODO: $0"];
-          description = "Insert a TODO remark";
-          prefix = ["todo"];
-        };
-        "define zig struct" = {
-          "prefix" = "str";
-          "body" = "const Foo = struct {\n    x: f64,\n};";
-          "description" = "Define a struct";
-        };
-        "import esm/ts module" = {
-          prefix = "im";
-          body = "import { $0 } from \"$1\";";
-        };
-        "import zig std library" = {
-          prefix = "std";
-          body = "const std = @import(\"std\");";
-          description = "Import Zig standard library";
-        };
-        "log.debug variable and type in zig" = {
-          "prefix" = "ld";
-          "body" = "std.log.debug(\"$0: {} type: {}\", .{$0, @typeInfo(@TypeOf($0))});";
-          "description" = "Log a variable and its type to stdout";
-        };
-        "while loop in zig" = {
-          "prefix" = "wh";
-          "body" = "var i: usize = 0;\nwhile (i < 10) : (i += 1) {\n    $0\n}";
-          "description" = "while loop skeleton";
-        };
-      };
+      globalSnippets = import ./global-snippets.nix;
 
       keybindings = [
         {
@@ -209,107 +174,7 @@ in {
 
       # https://code.visualstudio.com/docs/getstarted/settings
       # https://github.com/jackdbd/dotfiles/blob/main/Code/.config/Code/User/settings.json
-      userSettings = {
-        "[git-commit]"."editor.rulers" = [50];
-        "[css]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
-        "[css]"."editor.formatOnSave" = true;
-        "[javascript][json][typescript]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
-        "[javascript][json][typescript]"."editor.formatOnSave" = true;
-        "[nix]"."editor.defaultFormatter" = "kamadorueda.alejandra";
-        "[nix]"."editor.formatOnSave" = true;
-        "[nix]"."editor.tabSize" = 2;
-        "[postcss]"."editor.defaultFormatter" = "stylelint.vscode-stylelint";
-        "[postcss]"."editor.formatOnSave" = true;
-        "alejandra.program" = "alejandra";
-        # https://calva.io/customizing/
-        # https://calva.io/emacs-keybindings/
-        # https://calva.io/paredit/#about-the-keyboard-shortcuts
-        "calva.paredit.hijackVSCodeDefaults" = true;
-        "calva.showCalvaSaysOnStart" = false;
-        "editor.inlineSuggest.enabled" = true;
-        "editor.minimap.enabled" = false;
-        "editor.rulers" = [80 120];
-        # The extension pflannery.vscode-versionlens works only if the file type
-        # associated to package.json is json, not jsonc.
-        # For tsconfig files we can use jsonc without any issues.
-        # https://marketplace.visualstudio.com/items?itemName=pflannery.vscode-versionlens
-        "files.associations"."*.json" = "json";
-        "files.associations"."tsconfig*.json" = "jsonc";
-        # hide a few folders
-        "files.exclude".".clj-kondo/" = true;
-        "files.exclude".".lsp/" = true;
-        "files.exclude"."**/node_modules/" = true;
-        "github.copilot.enable" = {
-          "*" = true;
-          plaintext = false;
-          markdown = true;
-        };
-        "githubIssues.queries" = [
-          {
-            label = "Bugs";
-            query = ''repo:''${owner}/''${repository} sort:created-desc state:open label:bug'';
-          }
-          {
-            label = "Created By Me";
-            query = ''author:''${user} state:open repo:''${owner}/''${repository} sort:created-desc'';
-          }
-        ];
-        "githubPullRequests.queries" = [
-          {
-            label = "Assigned To Me";
-            query = ''is:open assignee:''${user}'';
-          }
-          {
-            label = "Created By Me";
-            query = ''is:open author:''${user}'';
-          }
-          {
-            label = "Waiting For My Review";
-            query = ''is:open review-requested:''${user}'';
-          }
-          {
-            label = "WIP PRs";
-            query = "is:open";
-          }
-        ];
-        # Git Graph settings
-        # https://github.com/mhutchie/vscode-git-graph/wiki/Extension-Settings
-        # GitLens settings
-        # https://help.gitkraken.com/gitlens/gitlens-settings/
-        "gitlens.ai.experimental.provider" = "openai";
-        # Configure vscode-nix-ide to use nil as the language server for Nix expressions.
-        # https://github.com/oxalica/nil?tab=readme-ov-file#vscodevscodium-with-nix-ide
-        "nix.enableLanguageServer" = true;
-        "nix.serverPath" = "nil";
-        "nix.serverSettings" = {
-          nil = {
-            diagnostics = {
-              ignored = ["unused_binding" "unused_with"];
-            };
-            formatting = {
-              command = ["alejandra"];
-            };
-          };
-        };
-        "search.exclude" = {
-          "**/.direnv" = true;
-          "**/.git" = true;
-          "**/flake-inputs" = true;
-          "**/node_modules" = true;
-          "**/tmp" = true;
-        };
-        # "security.workspace.trust.untrustedFiles" = "open";
-        "turboConsoleLog.includeFileNameAndLineNum" = false;
-        # Open all NEW VS Code windows in full screen mode. The first window will
-        # always restore the size and location as you left it before closing.
-        "window.newWindowDimensions" = "fullscreen";
-        "window.restoreFullscreen" = true;
-        # https://code.visualstudio.com/api/references/theme-color
-        "workbench.colorCustomizations" = {
-          "editorRuler.foreground" = "#d3d3d3";
-        };
-        "workbench.colorTheme" = "Gruvbox Dark Medium";
-      };
+      userSettings = import ./user-settings.nix;
 
       # TODO: configure stylelint and stylelint rules
       # https://github.com/stylelint/vscode-stylelint
