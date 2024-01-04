@@ -146,6 +146,7 @@ in {
         eamodio.gitlens
         esbenp.prettier-vscode
         github.copilot
+        github.copilot-chat
         github.vscode-github-actions
         github.vscode-pull-request-github
         jdinhlife.gruvbox # Gruvbox theme

@@ -64,6 +64,7 @@
       "postman"
       "vscode"
       "vscode-extension-github-copilot"
+      "vscode-extension-github-copilot-chat"
     ];
     # TODO: define the font stack available to a specific user on a specific system
     favorite-browser = "google-chrome";
