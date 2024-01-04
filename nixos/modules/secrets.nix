@@ -62,6 +62,10 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."reddit/trusted_client" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."telegram/personal_bot" = {
       inherit group mode owner;
     };
