@@ -25,11 +25,15 @@ in
     echo "secret found at ${secrets."gcp/prj-kitchen-sink/sa-storage-uploader".path}"
     echo "secret is $(cat ${secrets."gcp/prj-kitchen-sink/sa-storage-uploader".path})"
 
-    printf "\ntelegram/personal_bot\n"
-    echo "secret found at ${secrets."telegram/personal_bot".path}"
-    echo "secret is $(cat ${secrets."telegram/personal_bot".path})"
-
     printf "\nreddit/trusted_client\n"
     echo "secret found at ${secrets."reddit/trusted_client".path}"
     echo "secret is $(cat ${secrets."reddit/trusted_client".path})"
+
+    printf "\nstripe/personal/test\n"
+    echo "secret found at ${secrets."stripe/personal/test".path}"
+    echo "secret is $(cat ${secrets."stripe/personal/test".path})"
+
+    printf "\ntelegram/personal_bot\n"
+    echo "secret found at ${secrets."telegram/personal_bot".path}"
+    echo "secret is $(cat ${secrets."telegram/personal_bot".path})"
   ''
