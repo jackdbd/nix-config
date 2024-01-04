@@ -292,6 +292,7 @@ in {
           };
         };
         "search.exclude" = {
+          "**/.direnv" = true;
           "**/.git" = true;
           "**/flake-inputs" = true;
           "**/node_modules" = true;
