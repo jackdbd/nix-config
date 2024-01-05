@@ -39,27 +39,25 @@ in {
     # https://github.com/Mic92/sops-nix/blob/master/modules/sops/default.nix
 
     # https://github.com/Mic92/sops-nix?tab=readme-ov-file#deploy-example
-    sops.defaultSopsFile = ../../sops/secrets.yaml;
+    sops.defaultSopsFile = ../../secrets/secrets.sops.yaml;
     sops.defaultSopsFormat = "yaml";
     # This will be at /run/secrets.d/age-keys.txt
     # sudo ls -la /run/secrets.d/
     sops.age.keyFile = "/home/${user}/.config/sops/age/keys.txt";
 
-    # sops-nix does not allow string interpolation in a secret's identifier,
-    # since it would be a security concern. TODO: add link as a reference.
-
-    # This secret will be at /run/secrets/github_token_workflow_developer
-    # sudo ls -la /run/secrets.d/1
-    sops.secrets.github_token_workflow_developer = {
+    # The unencrypted value of this secret will be available at runtime at:
+    # /run/secrets/github-tokens/workflow_developer
+    sops.secrets."github-tokens/workflow_developer" = {
       inherit group mode owner;
     };
 
-    sops.secrets."nested_secret/npm_token_read_all_packages" = {
+    sops.secrets."npm-tokens/read_all_packages" = {
       inherit group mode owner;
     };
 
-    sops.secrets."gcp/prj-kitchen-sink/sa-storage-uploader" = {
+    sops.secrets."prj-kitchen-sink/sa-storage-uploader" = {
       inherit group mode owner;
+      sopsFile = ../../secrets/gcp/prj-kitchen-sink.sops.yaml;
     };
 
     sops.secrets."reddit/trusted_client" = {

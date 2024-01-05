@@ -12,7 +12,7 @@ let
   gh = "${pkgs.gh}/bin/gh";
 in
   pkgs.writeShellScriptBin "ghw" ''
-    export GITHUB_TOKEN=$(cat ${config.sops.secrets.github_token_workflow_developer.path})
+    export GITHUB_TOKEN=$(cat ${config.sops.secrets."github-tokens/workflow_developer".path})
 
     exec ${gh} workflow "$@"
   ''
