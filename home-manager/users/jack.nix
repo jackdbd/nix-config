@@ -3,8 +3,8 @@
   config,
   favorite-browser,
   lib,
+  permitted-insecure-pakages,
   pkgs,
-  pkgs-unstable,
   ...
 }: let
   username = "jack";
@@ -209,12 +209,9 @@ in {
 
   # https://mipmip.github.io/home-manager-option-search/?query=nixpkgs
   nixpkgs.config = {
+    # allowUnfree = true;
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
-
-    # Obsidian is built on Electron. I don't know why NixOS marks Electron as insecure.
-    permittedInsecurePackages = [
-      "electron-25.9.0"
-    ];
+    permittedInsecurePackages = permitted-insecure-pakages;
   };
 
   services.activitywatch = {

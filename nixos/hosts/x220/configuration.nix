@@ -6,6 +6,7 @@
   lib,
   nil,
   nixos-hardware,
+  permitted-insecure-pakages,
   pkgs,
   user,
   ...
@@ -99,17 +100,10 @@
 
   # Instead of setting allowUnfree to true, I prefer explicitly list all the
   # unfree packages I am using.
-  # nixpkgs.config.allowUnfree = true;
-  # nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-  #   "google-chrome"
-  #   "vscode"
-  # ];
   nixpkgs.config = {
+    # allowUnfree = true;
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
-    # Obsidian is build on Electron. I don't know why NixOS marks Electron as insecure.
-    permittedInsecurePackages = [
-      "electron-25.9.0"
-    ];
+    permittedInsecurePackages = permitted-insecure-pakages;
   };
 
   # On XFCE, there is no configuration tool for NetworkManager by default: by
