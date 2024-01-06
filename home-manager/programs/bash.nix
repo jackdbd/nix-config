@@ -24,16 +24,15 @@
       dvt-zig = "nix flake new --template github:the-nix-way/dev-templates#zig";
       gg = "gitg";
       gk = "gitk";
-      hmn = "${pkgs.home-manager}/bin/home-manager news --flake $HOME/repos/nix-config#$(whoami)@$(hostname)";
-      hms = "${pkgs.home-manager}/bin/home-manager switch --extra-experimental-features nix-command --extra-experimental-features flakes --flake $HOME/repos/nix-config#$(whoami)@$(hostname)";
+      hm = "${pkgs.home-manager}/bin/home-manager --flake $HOME/repos/nix-config#$(whoami)@$(hostname)";
+      hms = "${pkgs.home-manager}/bin/home-manager --extra-experimental-features nix-command --extra-experimental-features flakes --flake $HOME/repos/nix-config#$(whoami)@$(hostname) switch";
       issue = "${pkgs.gh}/bin/gh issue create -a @me -l enhancement -t"; # e.g. issue "Issue title here"
       issues = "${pkgs.gh}/bin/gh issue list";
       l = "${pkgs.eza}/bin/eza --all --long";
       lg = "lazygit";
       ll = "ls -l";
       lock = "xflock4";
-      # count line of code
-      loc = "tokei";
+      loc = "tokei"; # count lines of code
       myip = "curl http://ipecho.net/plain; echo";
       pics = "cd ~/Pictures";
       pk = "pkill --signal SIGTERM --echo --count"; # e.g. pk chromium-browser

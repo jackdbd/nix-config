@@ -31,8 +31,8 @@ in {
     # https://mipmip.github.io/home-manager-option-search/?query=vscode
     programs.vscode = {
       enableExtensionUpdateCheck = true;
-      enableUpdateCheck = false;
-      # with pkgs.vscode-extensions;
+      enableUpdateCheck = true;
+
       # Do NOT declare VS Code extensions using a string: "esbenp.prettier-vscode"
       # Instead, search `vscode-extensions` on NixOS Search.
       # https://search.nixos.org/packages
@@ -66,7 +66,9 @@ in {
           tamasfe.even-better-toml
           usernamehw.errorlens
         ]
-        ++ import ./extra-vscode-extensions.nix {inherit lib pkgs;};
+        ++ import ./extra-vscode-extensions.nix {
+          inherit lib pkgs;
+        };
 
       # https://github.com/jackdbd/dotfiles/tree/main/Code/.config/Code/User/snippets
       globalSnippets = import ./global-snippets.nix;

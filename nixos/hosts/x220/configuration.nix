@@ -7,7 +7,6 @@
   nil,
   nixos-hardware,
   pkgs,
-  sops-nix,
   user,
   ...
 }: {

@@ -23,3 +23,9 @@ Optimize the Nix store (this takes some time):
 ```sh
 nix-store --optimise
 ```
+
+Remove Home-Manager generations older than a given date:
+
+```sh
+home-manager expire-generations "2023-12-31 23:59"
+```
