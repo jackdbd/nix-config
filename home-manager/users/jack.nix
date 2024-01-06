@@ -19,6 +19,7 @@ in {
       ../modules/direnv.nix
       ../modules/flameshot.nix
       ../modules/git.nix
+      ../modules/gnome-keyring.nix
       ../modules/lockscreen.nix
       ../modules/rssguard
       ../modules/starship.nix
@@ -85,7 +86,6 @@ in {
       gh # GitHub CLI
       gimp # image editor
       glow # terminal markdown viewer
-      gnome.seahorse # GUI for GNOME keyring (aka Passwords and Keys)
       gnumake # GNU Make (build tool)
       go
       google-chrome
@@ -230,11 +230,7 @@ in {
   # https://nixos.wiki/wiki/Bluetooth#Pairing_Bluetooth_devices
   services.blueman-applet.enable = true;
 
-  # https://nixos.wiki/wiki/Visual_Studio_Code#Error_after_Sign_On
-  services.gnome-keyring = {
-    enable = true;
-    components = ["pkcs11" "secrets" "ssh"];
-  };
+  services.gnome-keyring.enable = true;
 
   services.lockscreen.not-when-audio = true;
   services.lockscreen.not-when-fullscreen = true;
