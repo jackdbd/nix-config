@@ -83,10 +83,8 @@
     pkgs = nixpkgs.legacyPackages.${system};
     pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
 
-    # All NixOS modules automatically receive as inputs: config, lib, modulesPath, options, pkgs.
     # We can pass additional inputs to all NixOS modules using specialArgs.
     specialArgs = {inherit allowed-unfree-packages fh inputs nil nixos-hardware sops-nix user;};
-    # All Home Manager modules automatically receive as inputs: config, lib, pkgs.
     # We can pass additional inputs to all Home Manager modules using extraSpecialArgs.
     extraSpecialArgs = {inherit allowed-unfree-packages favorite-browser user;};
   in {
