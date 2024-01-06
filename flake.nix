@@ -3,10 +3,10 @@
 
   inputs = {
     # Get the current stable Nixpkgs from GitHub
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     # Get the current stable Nixpkgs from FlakeHub
     # https://flakehub.com/flake/NixOS/nixpkgs
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/*.tar.gz";
+    # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/*.tar.gz";
 
     # Some packages might contain fixes/features that are available only in the
     # Nixpkgs unstable release. So instead of using the Nixpkgs unstable release
@@ -21,10 +21,11 @@
     fh.url = "https://flakehub.com/f/DeterminateSystems/fh/*.tar.gz";
 
     home-manager = {
-      # Home Manager is developed against nixpkgs-unstable branch. If we want
-      # Home Manager to follow the latest nixpkgs stable release, we need to
-      # specify the nixos-23.11 branch.
+      # Home Manager is developed against nixpkgs-unstable branch.
       # url = "github:nix-community/home-manager";
+      # inputs.nixpkgs.follows = "nixpkgs-unstable";
+      # If we want Home Manager to follow the latest nixpkgs stable release, we
+      # need to specify the nixos-23.11 branch.
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
