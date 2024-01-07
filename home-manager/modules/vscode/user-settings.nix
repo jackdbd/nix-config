@@ -81,7 +81,9 @@
   # https://github.com/mhutchie/vscode-git-graph/wiki/Extension-Settings
   # GitLens settings
   # https://help.gitkraken.com/gitlens/gitlens-settings/
-  "gitlens.ai.experimental.provider" = "openai";
+  # Prevent Gitlens from hijacking the "Generate Commit Message with Copilot" button.
+  # https://github.com/microsoft/vscode/issues/200375#issuecomment-1847411013
+  "gitlens.ai.experimental.generateCommitMessage.enabled" = false;
   # Configure vscode-nix-ide to use nil as the language server for Nix expressions.
   # https://github.com/oxalica/nil?tab=readme-ov-file#vscodevscodium-with-nix-ide
   "nix.enableLanguageServer" = true;
