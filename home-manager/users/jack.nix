@@ -189,7 +189,6 @@ in {
 
   programs.chromium = {
     enable = true;
-    should-install-extensions = true;
   };
 
   programs.direnv.enable = true;

@@ -9,6 +9,8 @@
   {id = "hdokiejnpimakedhajhdlcegeplioahd";}
   # Modern for Hacker News
   {id = "dabkegjlekdcmefifaolmdhnhdcplklo";}
+  # Notion Boost
+  {id = "eciepnnimnjaojlkcpdpcgbfkpcagahd";}
   # Octotree (GitHub code tree)
   {id = "bkhaagjahfmjljalopjnoealnfndnagc";}
   # SponsorBlock for YouTube
