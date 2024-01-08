@@ -189,6 +189,7 @@ in {
 
   programs.chromium = {
     enable = true;
+    enable-octotree = false;
   };
 
   programs.direnv.enable = true;

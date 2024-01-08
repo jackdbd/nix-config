@@ -13,9 +13,8 @@ in {
 
   options = {
     programs.chromium = {
-      # already declared in home-manager/modules/chromium.nix
       # enable = mkEnableOption "Install Chromium";
-      # should-install-extensions = mkEnableOption "Whether to install Chrome extensions";
+      enable-octotree = mkEnableOption "Whether to enable the Octotree Chrome extension";
     };
   };
 
@@ -29,7 +28,9 @@ in {
     # https://rycee.gitlab.io/home-manager/options.html#opt-programs.chromium.commandLineArgs
     programs.chromium = {
       commandLineArgs = [];
-      extensions = import ../../lib/chrome-extensions.nix {};
+      extensions = import ../../lib/chrome-extensions.nix {
+        enable-octotree = cfg.enable-octotree;
+      };
     };
   };
 }
