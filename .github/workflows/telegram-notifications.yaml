@@ -1,0 +1,55 @@
+name: 'Telegram notifications'
+
+on:
+  issues:
+    # https://docs.github.com/en/webhooks/webhook-events-and-payloads#issues
+    types:
+      # - assigned
+      - closed
+      # - deleted
+      # - demilestoned
+      # - edited
+      # - labeled
+      - locked
+      # - milestoned
+      - opened
+      # - pinned
+      - reopened
+      # - transferred
+      # - unassigned
+      # - unlabeled
+      - unlocked
+      # - unpinned
+  issue_comment:
+    # https://docs.github.com/en/webhooks/webhook-events-and-payloads#issue_comment
+    types: [created, deleted]
+  pull_request:
+    # https://docs.github.com/en/webhooks/webhook-events-and-payloads#pull_request
+    types: [closed, opened, reopened]
+
+jobs:
+  telegram-notifications:
+    name: 💬 Telegram notifications
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛎️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: 💬 Send notification to Telegram chat
+        # https://github.com/EverythingSuckz/github-telegram-notify
+        uses: EverythingSuckz/github-telegram-notify@main
+        with:
+          bot_token: ${{ fromJSON(secrets.TELEGRAM).token }}
+          chat_id: ${{ fromJSON(secrets.TELEGRAM).chat_id }}
+
+      # - name: 💬 Send notification to Telegram chat (broken?)
+      #   # https://github.com/naiw1023/notify-telegram
+      #   uses: naiw1023/notify-telegram@v0.0.2
+      #   if: always()
+      #   with:
+      #     chat: ${{ fromJSON(secrets.TELEGRAM).chat_id }}
+      #     token: ${{ fromJSON(secrets.TELEGRAM).token }}
+      #     status: ${{ job.status }} # do not modify this line
+      #     message: "Custom Message"
+
