@@ -156,6 +156,7 @@ in {
       thunderbird # email client
       tokei # display statistics about your code
       transmission # BitTorrent client
+      unzrip # unzip replacement with parallel decompression
       usbutils # tools for working with USB devices, such as lsusb
       vlc
       volta # avaScript Tool Manager (nvm alternative)
