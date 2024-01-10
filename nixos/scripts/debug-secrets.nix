@@ -17,6 +17,10 @@ in
     export GITHUB_TOKEN=$(cat ${secrets."github-tokens/workflow_developer".path})
     gh auth status
 
+    printf "\nhacker-news/credentials\n"
+    echo "secret found at ${secrets."hacker-news/credentials".path}"
+    echo "secret is $(cat ${secrets."hacker-news/credentials".path})"
+
     printf "\nnpm-tokens/read_all_packages\n"
     echo "secret found at ${secrets."npm-tokens/read_all_packages".path}"
     echo "secret is $(cat ${secrets."npm-tokens/read_all_packages".path})"

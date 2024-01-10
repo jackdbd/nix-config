@@ -51,6 +51,10 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."hacker-news/credentials" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."npm-tokens/read_all_packages" = {
       inherit group mode owner;
     };
