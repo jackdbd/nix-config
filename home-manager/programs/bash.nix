@@ -24,7 +24,7 @@
       dvt-zig = "nix flake new --template github:the-nix-way/dev-templates#zig";
       gg = "gitg";
       gk = "gitk";
-      hm = "${pkgs.home-manager}/bin/home-manager --flake $HOME/repos/nix-config#$(whoami)@$(hostname)";
+      hm = "home-manager --flake $HOME/repos/nix-config#$(whoami)@$(hostname)";
       hms = "${pkgs.home-manager}/bin/home-manager --extra-experimental-features nix-command --extra-experimental-features flakes --flake $HOME/repos/nix-config#$(whoami)@$(hostname) switch";
       issue = "${pkgs.gh}/bin/gh issue create -a @me -l enhancement -t"; # e.g. issue "Issue title here"
       issues = "${pkgs.gh}/bin/gh issue list";

@@ -40,7 +40,7 @@ in {
       # Default folder for new synced folders. Can I disable it?
       dataDir = "/home/${user}/Documents";
 
-      # Consider using a secret for the Syncthing GUI. But how does a non-NixOS
+      # Consider using a secret for the Syncthing GUI. But how can a non-NixOS
       # host (e.g. a laptop running Xubuntu) decrypt this secret? I think I would
       # need to use the sops-nix Home Manager module, not the sops-nix NixOS module.
       # extraOptions.gui = {
@@ -61,7 +61,7 @@ in {
           id = "7WJ47ZP-O776CHO-OELIPNH-GUOZHA4-UYYZ3WS-PL5BE6L-INDDN3D-FHKDDQQ";
         };
         "ThinkPad L380" = {
-          id = "ENRVVVG-BKZ3LJH-ZHKXKPH-JW2HUF7-BNPWHFF-YDNPR2Z-UCNJBEL-T6C45AV";
+          id = "RGLRUTM-3O5S3PW-UNMJ67Q-Y5U4LLT-SVNRUNM-6HIOYEC-TKLRFCM-ZCBBAQO";
         };
         "ThinkPad L390" = {
           id = "ZUVYNEP-4CMUUH5-6P75652-VYIEQLU-COK4UYC-4RUIO4F-7GAOYDE-BVDP7AM";
