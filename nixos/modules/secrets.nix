@@ -59,6 +59,10 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."plausible/test_site" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."prj-kitchen-sink/sa-storage-uploader" = {
       inherit group mode owner;
       sopsFile = ../../secrets/gcp/prj-kitchen-sink.sops.yaml;

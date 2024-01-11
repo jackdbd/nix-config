@@ -25,6 +25,10 @@ in
     echo "secret found at ${secrets."npm-tokens/read_all_packages".path}"
     echo "secret is $(cat ${secrets."npm-tokens/read_all_packages".path})"
 
+    printf "\nplausible/test_site\n"
+    echo "secret found at ${secrets."plausible/test_site".path}"
+    echo "secret is $(cat ${secrets."plausible/test_site".path})"
+
     printf "\nreddit/trusted_client\n"
     echo "secret found at ${secrets."reddit/trusted_client".path}"
     echo "secret is $(cat ${secrets."reddit/trusted_client".path})"
