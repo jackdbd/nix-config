@@ -72,6 +72,14 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."syncthing/api_key" = {
+      inherit group mode owner;
+    };
+
+    sops.secrets."syncthing/gui_credentials" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."telegram/personal_bot" = {
       inherit group mode owner;
     };

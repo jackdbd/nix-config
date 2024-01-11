@@ -37,6 +37,14 @@ in
     echo "secret found at ${secrets."stripe/personal/test".path}"
     echo "secret is $(cat ${secrets."stripe/personal/test".path})"
 
+    printf "\nsyncthing/api_key\n"
+    echo "secret found at ${secrets."syncthing/api_key".path}"
+    echo "secret is $(cat ${secrets."syncthing/api_key".path})"
+
+    printf "\nsyncthing/gui_credentials\n"
+    echo "secret found at ${secrets."syncthing/gui_credentials".path}"
+    echo "secret is $(cat ${secrets."syncthing/gui_credentials".path})"
+
     printf "\ntelegram/personal_bot\n"
     echo "secret found at ${secrets."telegram/personal_bot".path}"
     echo "secret is $(cat ${secrets."telegram/personal_bot".path})"
