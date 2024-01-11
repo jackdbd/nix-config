@@ -82,7 +82,7 @@ in {
 
       # https://code.visualstudio.com/docs/getstarted/settings
       # https://github.com/jackdbd/dotfiles/blob/main/Code/.config/Code/User/settings.json
-      userSettings = import ./user-settings.nix;
+      userSettings = import ./user-settings.nix {inherit lib pkgs;};
 
       # TODO: configure stylelint and stylelint rules
       # https://github.com/stylelint/vscode-stylelint

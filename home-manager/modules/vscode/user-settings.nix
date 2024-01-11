@@ -1,10 +1,17 @@
 {
+  lib,
+  pkgs,
+}: {
   "[git-commit]"."editor.rulers" = [50];
   "[css]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
   "[css]"."editor.formatOnSave" = true;
   "[html]"."editor.defaultFormatter" = "vscode.html-language-features";
+  # This seems not to work.
+  # "[javascript][json][typescript]"."editor.defaultFormatter" = pkgs.vscode-extensions.esbenp.prettier-vscode;
+  # This works.
   "[javascript][json][typescript]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
   "[javascript][json][typescript]"."editor.formatOnSave" = true;
+  "[markdown]"."editor.suggestOnTriggerCharacters" = false;
   "[markdown][nunjucks]"."editor.wordWrap" = "bounded";
   "[markdown][nunjucks]"."editor.wordWrapColumn" = 120;
   "[nix]"."editor.defaultFormatter" = "kamadorueda.alejandra";
