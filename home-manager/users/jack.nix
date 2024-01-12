@@ -15,6 +15,7 @@ in {
     [
       ../modules/activitywatch
       ../modules/atuin
+      ../modules/bash.nix
       ../modules/chromium.nix
       ../modules/direnv.nix
       ../modules/flameshot.nix
@@ -190,6 +191,7 @@ in {
   };
 
   programs.atuin.enable = true;
+  programs.bash.enable = true;
 
   programs.chromium = {
     enable = true;

@@ -49,7 +49,6 @@ let
   };
 in [
   ./alacritty.nix
-  ./bash.nix
   ./feh.nix
   ./neovim
   ./rofi.nix
