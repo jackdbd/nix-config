@@ -39,6 +39,7 @@
       pk = "pkill --signal SIGTERM --echo --count"; # e.g. pk chromium-browser
       repl = "rlwrap bb --repl";
       repos = "cd ~/repos";
+      rm = "${pkgs.trash-cli}/bin/trash-put";
       snr = "sudo nixos-rebuild switch --flake $HOME/repos/nix-config#$(hostname)";
       # https://the.exa.website/features/tree-view
       "t2" = "${pkgs.eza}/bin/eza --tree --ignore-glob=node_modules --level=2";

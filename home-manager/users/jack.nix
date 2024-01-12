@@ -81,6 +81,7 @@ in {
       feh # image viewer
       ffmpeg
       ffuf # tool for web fuzzing and content discovery
+      file # show the type of files
       firefox
       fx # JSON viewer
       gh # GitHub CLI
@@ -156,6 +157,8 @@ in {
       thunderbird # email client
       tokei # display statistics about your code
       transmission # BitTorrent client
+      trash-cli # alternative to rm
+      # trashy # alternative to rm and trash-cli (not working?)
       unzrip # unzip replacement with parallel decompression
       usbutils # tools for working with USB devices, such as lsusb
       vlc
