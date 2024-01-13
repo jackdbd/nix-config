@@ -96,6 +96,11 @@
 
   time.timeZone = "Europe/Rome";
 
+  # First, define extra groups. Then, declare users as members of those groups.
+  # https://superuser.com/a/1352988
+  users.groups.adbusers = {};
+  users.groups.plugdev = {};
+  users.groups.skaters = {};
   users.users.${user} = import ../../users/jack.nix {inherit config pkgs;};
 
   virtualisation.docker = {

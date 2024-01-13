@@ -6,13 +6,22 @@
   isNormalUser = true;
 
   extraGroups = [
+    # In order to use ADB and have the necessary permissions to operate on the
+    # connected Android device, the user must be a member of these groups.
+    # https://wiki.archlinux.org/title/Android_Debug_Bridge
+    # https://developer.android.com/studio/run/device
+    "adbusers"
+    "plugdev"
+
     # Beware that the docker group membership is effectively equivalent to being root!
     # https://github.com/moby/moby/issues/9976
     "docker"
+
     "networkmanager"
-    # Each user that wants to use ADB needs to be in the plugdev group.
-    # https://developer.android.com/studio/run/device
-    "plugdev"
+
+    # group I use for testing
+    "skaters"
+
     "wheel"
   ];
 
