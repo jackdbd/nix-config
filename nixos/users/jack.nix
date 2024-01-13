@@ -5,9 +5,16 @@
   description = "Giacomo Debidda";
   isNormalUser = true;
 
-  # Beware that the docker group membership is effectively equivalent to being root!
-  # https://github.com/moby/moby/issues/9976
-  extraGroups = ["docker" "networkmanager" "wheel"];
+  extraGroups = [
+    # Beware that the docker group membership is effectively equivalent to being root!
+    # https://github.com/moby/moby/issues/9976
+    "docker"
+    "networkmanager"
+    # Each user that wants to use ADB needs to be in the plugdev group.
+    # https://developer.android.com/studio/run/device
+    "plugdev"
+    "wheel"
+  ];
 
   # Add to this list only the packages that you would like to install at the
   # user-level, but that cannot be managed by Home Manager.

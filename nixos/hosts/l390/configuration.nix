@@ -21,6 +21,7 @@
     {
       environment.systemPackages = [nil.packages.x86_64-linux.default];
     }
+    ../../modules/android.nix
     ../../modules/bluetooth.nix
     ../../modules/fonts.nix
     ../../modules/nix.nix
