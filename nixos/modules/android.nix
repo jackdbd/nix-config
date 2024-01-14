@@ -22,6 +22,10 @@
       # A tool for reverse engineering Android apk files
       apktool
 
+      edl # Qualcomm EDL tool
+
+      payload-dumper-go # Tool for extracting all .img files from an Android OTA payload.bin file
+
       # Non-decompiling Android vulnerability scanner
       trueseeing
     ];
