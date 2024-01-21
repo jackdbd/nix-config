@@ -9,6 +9,14 @@ in
     printf "=== DEBUG SECRETS ===\n"
     echo "defaultSopsFile is at ${config.sops.defaultSopsFile}"
 
+    printf "\ncloudflare_r2/personal\n"
+    echo "secret found at ${secrets."cloudflare_r2/personal".path}"
+    echo "secret is $(cat ${secrets."cloudflare_r2/personal".path})"
+
+    printf "\nelevenlabs/api_key\n"
+    echo "secret found at ${secrets."elevenlabs/api_key".path}"
+    echo "secret is $(cat ${secrets."elevenlabs/api_key".path})"
+
     printf "\ngithub-tokens/workflow_developer\n"
     echo "secret found at ${secrets."github-tokens/workflow_developer".path}"
     echo "secret is $(cat ${secrets."github-tokens/workflow_developer".path})"

@@ -37,7 +37,7 @@
           # family = "JetBrainsMono Nerd Font";
           style = "Regular";
         };
-        size = 10.0;
+        size = 11.0;
       };
       scrolling.history = 10000;
       selection.save_to_clipboard = true;

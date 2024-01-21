@@ -45,8 +45,16 @@ in {
     # sudo ls -la /run/secrets.d/
     sops.age.keyFile = "/home/${user}/.config/sops/age/keys.txt";
 
+    sops.secrets."cloudflare_r2/personal" = {
+      inherit group mode owner;
+    };
+
     # The unencrypted value of this secret will be available at runtime at:
-    # /run/secrets/github-tokens/workflow_developer
+    # /run/secrets/elevenlabs/api_key
+    sops.secrets."elevenlabs/api_key" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."github-tokens/workflow_developer" = {
       inherit group mode owner;
     };
