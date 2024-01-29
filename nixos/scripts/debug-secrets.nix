@@ -17,6 +17,10 @@ in
     echo "secret found at ${secrets."elevenlabs/api_key".path}"
     echo "secret is $(cat ${secrets."elevenlabs/api_key".path})"
 
+    printf "\ngithub-tokens/semantic_release_bot\n"
+    echo "secret found at ${secrets."github-tokens/semantic_release_bot".path}"
+    echo "secret is $(cat ${secrets."github-tokens/semantic_release_bot".path})"
+
     printf "\ngithub-tokens/workflow_developer\n"
     echo "secret found at ${secrets."github-tokens/workflow_developer".path}"
     echo "secret is $(cat ${secrets."github-tokens/workflow_developer".path})"
@@ -32,6 +36,10 @@ in
     printf "\nnpm-tokens/read_all_packages\n"
     echo "secret found at ${secrets."npm-tokens/read_all_packages".path}"
     echo "secret is $(cat ${secrets."npm-tokens/read_all_packages".path})"
+
+    printf "\nnpm-tokens/semantic_release_bot\n"
+    echo "secret found at ${secrets."npm-tokens/semantic_release_bot".path}"
+    echo "secret is $(cat ${secrets."npm-tokens/semantic_release_bot".path})"
 
     printf "\nplausible/test_site\n"
     echo "secret found at ${secrets."plausible/test_site".path}"

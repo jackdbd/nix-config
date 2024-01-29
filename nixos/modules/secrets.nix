@@ -55,6 +55,10 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."github-tokens/semantic_release_bot" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."github-tokens/workflow_developer" = {
       inherit group mode owner;
     };
@@ -64,6 +68,10 @@ in {
     };
 
     sops.secrets."npm-tokens/read_all_packages" = {
+      inherit group mode owner;
+    };
+
+    sops.secrets."npm-tokens/semantic_release_bot" = {
       inherit group mode owner;
     };
 
