@@ -94,6 +94,20 @@
     };
   };
 
+  ronnidc.nunjucks = buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      name = "nunjucks";
+      publisher = "ronnidc";
+      version = "0.3.1";
+      sha256 = "sha256-7YfmRMhC+HFmYgYtyHWrzSi7PZS3tdDHly9S1kDMmjY=";
+    };
+    meta = {
+      downloadPage = "https://marketplace.visualstudio.com/items?itemName=ronnidc.nunjucks";
+      homepage = "https://github.com/ronnidc/vscode-nunjucks#readme";
+      # license = null; // no license!
+    };
+  };
+
   ryan-heybourn.headwind = buildVscodeMarketplaceExtension {
     mktplcRef = {
       name = "headwind";
@@ -162,6 +176,7 @@ in
     dtsvet.vscode-wasm # WebAssembly Toolkit for VSCode
     pflannery.vscode-versionlens
     pranaygp.vscode-css-peek
+    ronnidc.nunjucks
     ryan-heybourn.headwind
     stylelint.vscode-stylelint
     yoavbls.pretty-ts-errors
