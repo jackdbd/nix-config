@@ -13,6 +13,10 @@ in
     echo "secret found at ${secrets."cloudflare_r2/personal".path}"
     echo "secret is $(cat ${secrets."cloudflare_r2/personal".path})"
 
+    printf "\ncloudinary\n"
+    echo "secret found at ${secrets."cloudinary".path}"
+    echo "secret is $(cat ${secrets."cloudinary".path})"
+
     printf "\nelevenlabs/api_key\n"
     echo "secret found at ${secrets."elevenlabs/api_key".path}"
     echo "secret is $(cat ${secrets."elevenlabs/api_key".path})"
