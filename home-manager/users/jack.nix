@@ -52,6 +52,9 @@ in {
       age # encryption tool
       alacritty # Open GL terminal emulator
       asciinema # record the terminal
+      awscli2 # AWS CLI
+      awsls # list command for AWS resources
+      awsume # utility for assuming AWS IAM roles from the command line
       babashka # Clojure interpreter for scripting
       baobab # disk usage utility
       bless # HEX editor
