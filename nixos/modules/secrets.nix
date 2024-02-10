@@ -88,6 +88,10 @@ in {
       sopsFile = ../../secrets/gcp/prj-kitchen-sink.sops.yaml;
     };
 
+    sops.secrets."pulumi/access_token" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."reddit/trusted_client" = {
       inherit group mode owner;
     };

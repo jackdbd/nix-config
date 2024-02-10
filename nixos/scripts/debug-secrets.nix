@@ -49,6 +49,10 @@ in
     echo "secret found at ${secrets."plausible/test_site".path}"
     echo "secret is $(cat ${secrets."plausible/test_site".path})"
 
+    printf "\npulumi/access_token\n"
+    echo "secret found at ${secrets."pulumi/access_token".path}"
+    echo "secret is $(cat ${secrets."pulumi/access_token".path})"
+
     printf "\nreddit/trusted_client\n"
     echo "secret found at ${secrets."reddit/trusted_client".path}"
     echo "secret is $(cat ${secrets."reddit/trusted_client".path})"
