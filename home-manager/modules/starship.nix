@@ -27,6 +27,8 @@ in {
       # https://starship.rs/config/#prompt
       settings = {
         add_newline = true; # add a blank line between shell prompts
+        # https://starship.rs/config/#aws
+        aws.disabled = true;
         # https://starship.rs/config/#default-prompt-format
         format = concatStrings [
           "$all"
