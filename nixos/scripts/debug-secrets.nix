@@ -9,6 +9,10 @@ in
     printf "=== DEBUG SECRETS ===\n"
     echo "defaultSopsFile is at ${config.sops.defaultSopsFile}"
 
+    printf "\n AWS configuration profile: default\n"
+    echo "secret found at ${secrets."aws/default".path}"
+    echo "secret is $(cat ${secrets."aws/default".path})"
+
     printf "\ncloudflare_r2/personal\n"
     echo "secret found at ${secrets."cloudflare_r2/personal".path}"
     echo "secret is $(cat ${secrets."cloudflare_r2/personal".path})"

@@ -45,6 +45,11 @@ in {
     # sudo ls -la /run/secrets.d/
     sops.age.keyFile = "/home/${user}/.config/sops/age/keys.txt";
 
+    sops.secrets."aws/default" = {
+      inherit group mode owner;
+      sopsFile = ../../secrets/aws/default.sops.yaml;
+    };
+
     sops.secrets."cloudflare_r2/personal" = {
       inherit group mode owner;
     };
