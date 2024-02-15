@@ -65,7 +65,7 @@
     LC_TIME = "it_IT.UTF-8";
   };
 
-  networking.hostName = "l390-nixos"; # Define your hostname.
+  networking.hostName = "l390-nixos";
 
   networking.networkmanager.enable = true;
 
@@ -85,6 +85,13 @@
   services.syncthing.enable = true;
   services.tailscale.enable = true;
   services.xserver.enable = true;
+
+  # Don't set sound.enable to true, as sound.enable is only meant for ALSA-based configurations
+
+  # https://nixos.wiki/wiki/Automatic_system_upgrades
+  # https://mynixos.com/nixpkgs/option/system.autoUpgrade.enable
+  # https://www.reddit.com/r/NixOS/comments/yultt3/what_has_your_experience_been_with/
+  system.autoUpgrade.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

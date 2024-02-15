@@ -118,13 +118,12 @@
   services.tailscale.enable = true;
   services.xserver.enable = true;
 
-  # Remove sound.enable or set it to false if you had it set previously, as
-  # sound.enable is only meant for ALSA-based configurations
+  # Don't set sound.enable to true, as sound.enable is only meant for ALSA-based configurations
 
-  # TODO: enable automatic upgrades as soon as I know more about them
   # https://nixos.wiki/wiki/Automatic_system_upgrades
+  # https://mynixos.com/nixpkgs/option/system.autoUpgrade.enable
   # https://www.reddit.com/r/NixOS/comments/yultt3/what_has_your_experience_been_with/
-  system.autoUpgrade.enable = false;
+  system.autoUpgrade.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
