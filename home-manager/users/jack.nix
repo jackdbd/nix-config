@@ -167,7 +167,7 @@ in {
       unzrip # unzip replacement with parallel decompression
       usbutils # tools for working with USB devices, such as lsusb
       vlc
-      volta # avaScript Tool Manager (nvm alternative)
+      volta # JavaScript Tool Manager (nvm alternative)
       w3m # text-based web browser
       wabt # WebAssembly binary toolkit
       wasmtime # WASI runtime
