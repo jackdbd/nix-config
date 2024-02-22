@@ -28,6 +28,7 @@ in
       gparted # partition editor
       home-manager # Nix-based user environment configurator
       libnotify # send desktop notifications to a notification daemon
+      nmap # tool for network discovery and security auditing
       sops # editor for encrypting/decrypting JSON, YAML, ini, etc
       stow # symlink tool
       winetricks # script to install DLLs needed to work around problems in Wine

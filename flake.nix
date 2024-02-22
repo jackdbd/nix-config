@@ -6,9 +6,9 @@
     # https://flakehub.com/flake/NixOS/nixpkgs
     # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/*.tar.gz";
     # Get the current stable release of nixpkgs from GitHub
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     # Get the current unstable release of nixpkgs from GitHub
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     # alejandra depends on nixos-unstable-small.
@@ -58,7 +58,7 @@
       "vscode-extension-github-copilot-chat"
     ];
     permitted-insecure-pakages = [
-      # Obsidian is build on Electron. I don't know why NixOS marks Electron as insecure.
+      # Obsidian is built on Electron. I don't know why NixOS marks Electron as insecure.
       "electron-25.9.0"
     ];
 
