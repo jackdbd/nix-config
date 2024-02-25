@@ -24,8 +24,7 @@ in {
     # https://nixos.wiki/wiki/Printing#Enable_autodiscovery_of_network_printers
     services.avahi = {
       enable = true;
-      nssmdns = true;
-      # nssmdns4 = true;
+      nssmdns4 = true;
       openFirewall = true;
     };
 

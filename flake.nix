@@ -2,32 +2,37 @@
   description = "NixOS & Home Manager configuration for all of jackdbd's hosts";
 
   inputs = {
-    # Get the current stable release of Nixpkgs from FlakeHub
+    # Option 1: Get a release of nixpkgs from FlakeHub
     # https://flakehub.com/flake/NixOS/nixpkgs
     # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/*.tar.gz";
-    # Get the current stable release of nixpkgs from GitHub
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
-    # Get the current unstable release of nixpkgs from GitHub
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # Option 2: Get a release of nixpkgs from GitHub (see active branches)
+    # https://github.com/NixOS/nixpkgs/branches
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
 
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
-    # alejandra depends on nixos-unstable-small.
+    # alejandra follows nixos-unstable-small
+    # https://github.com/kamadorueda/alejandra/blob/e53c2c6c6c103dc3f848dbd9fbd93ee7c69c109f/flake.nix#L11C41-L11C61
     alejandra.inputs.nixpkgs.follows = "nixpkgs";
 
     fh.url = "https://flakehub.com/f/DeterminateSystems/fh/*.tar.gz";
 
     home-manager.url = "github:nix-community/home-manager";
-    # home-manager depends on nixos-unstable.
+    # home-manager follows nixos-unstable
+    # https://github.com/nix-community/home-manager/blob/4ee704cb13a5a7645436f400b9acc89a67b9c08a/flake.nix#L4C10-L4C17
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nil.url = "github:oxalica/nil";
-    # nil (Language Server for Nix expression) depends on nixos-unstable.
+    # nil follows nixpkgs-unstable
+    # https://github.com/oxalica/nil/blob/059d33a24bb76d2048740bcce936362bf54b5bc9/flake.nix#L6
     nil.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     sops-nix.url = "github:Mic92/sops-nix";
-    # sops-nix depends on nixos-unstable.
+    # sops-nix follows nixpkgs-unstable.
+    # https://github.com/Mic92/sops-nix/blob/2874fbbe4a65bd2484b0ad757d27a16107f6bc17/flake.nix#L3
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
