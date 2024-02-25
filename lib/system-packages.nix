@@ -21,7 +21,6 @@ in
     [
       bandwhich # display network utilization by process, connection and remote IP/hostname
       binutils # tools for manipulating binaries (nm, objdump, strip, etc...)
-      bruno # IDE for exploring/testing APIs (Postman/Insomnia alternative)
       duf # disk usage utility
       gitFull # git + graphical tools like gitk (see https://nixos.wiki/wiki/Git)
       gitg # git GUI

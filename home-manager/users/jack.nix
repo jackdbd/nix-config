@@ -59,6 +59,7 @@ in {
       baobab # disk usage utility
       bless # HEX editor
       buildah # build OCI images (alternative to docker build)
+      bruno # IDE for exploring/testing APIs (Postman/Insomnia alternative)
       calibre # e-book reader
       clojure
       ctop # top-like interface for container metrics
@@ -87,6 +88,7 @@ in {
       ffuf # tool for web fuzzing and content discovery
       file # show the type of files
       firefox
+      flyctl # Fly.io CLI
       fx # JSON viewer
       gh # GitHub CLI
       gimp # image editor
