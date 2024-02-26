@@ -160,6 +160,7 @@ in {
       stegseek # tool to crack steganography
       stress # workload generator for POSIX systems (required by s-tui)
       stripe-cli
+      supabase-cli
       temurin-bin-18 # OpenJDK
       thunderbird # email client
       tokei # display statistics about your code
