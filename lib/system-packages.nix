@@ -28,6 +28,7 @@ in
       gparted # partition editor
       home-manager # Nix-based user environment configurator
       libnotify # send desktop notifications to a notification daemon
+      linuxKernel.packages.linux_6_1.perf # Linux tools to profile with performance counters
       nmap # tool for network discovery and security auditing
       sops # editor for encrypting/decrypting JSON, YAML, ini, etc
       stow # symlink tool
