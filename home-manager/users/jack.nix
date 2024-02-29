@@ -169,6 +169,7 @@ in {
       # trashy # alternative to rm and trash-cli (not working?)
       unzrip # unzip replacement with parallel decompression
       usbutils # tools for working with USB devices, such as lsusb
+      v8 # JavaScript engine used in Node.js, Chromium, etc
       vlc
       volta # JavaScript Tool Manager (nvm alternative)
       w3m # text-based web browser
