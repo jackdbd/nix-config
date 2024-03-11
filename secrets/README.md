@@ -1,40 +1,20 @@
 # Secrets
 
-This directory contains all my encrypted secrets.
-
 Any sensitive piece of configuration in this repository is encrypted with [age](https://github.com/FiloSottile/age).
 
 Whenever I need to edit a secret (e.g. rotate a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) every 3 months), I decrypt that file on the fly using the [SOPS](https://github.com/getsops/sops) CLI, which also takes are of re-encrypting the file when I close it. The SOPS configuration file `.sops.yaml` specifies which age public keys to use for encryption.
 
 The Nix package [sops-nix](https://github.com/Mic92/sops-nix) takes care of provisioning the secrets on my machines (it decrypts all secrets every time I run `nixos-rebuild`, then it stores them unencrypted on the target machine's filesystem).
 
-## ThinkPad L390
-
-age **public** key:
-
-```txt
-created: 2023-12-16T21:04:21+01:00
-public key: age1r5aen49ta9z55u3qutlass5zgru6w7xekdpvtz0v24qa9qexxszqy26pdk
-```
-
-The age **private** key is deployed on my ThinkPad L390 and stored at `~/.config/sops/age/keys.txt`.
-
-## ThinkPad X220
-
-age **public** key:
-
-```txt
-created: 2023-12-07T18:47:18+01:00
-public key: age1wepxydgqnud4keawpf3ge3ylck8cjeewu4h6y34jtkg5urz5k3pq9dasm9
-```
-
-The age **private** key is deployed on my ThinkPad X220 and stored at `~/.config/sops/age/keys.txt`.
+On each one of my computers, my age public/private keys are stored at `~/.config/sops/age/keys.txt`. I'm considering [storing my age private keys on my Trezor](https://trezor.io/learn/a/public-private-keys).
 
 ## Create an age keypair
 
 Generate a keypair (public key + private key).
 
 ```sh
+mkdir -p ~/.config/sops/age
+
 age-keygen -o ~/.config/sops/age/keys.txt
 ```
 
@@ -69,11 +49,17 @@ sops --config secrets/.sops.yaml --decrypt secrets/secrets.sops.yaml > secrets.u
 
 ## Update keys allowed to decrypt a SOPS file
 
-Whenever a new **private** key should be allowed to decrypt a SOPS file (e.g. `secrets.sops.yaml`), we need to add the corresponding **public** key in `.sops.yaml`. We also have to run this command from the directory containing the `.sops.yaml` file (this command does not support passing a `--config` flag).
+Whenever a new **private** key should be allowed to decrypt a SOPS file (e.g. `secrets.sops.yaml`), we need to add the corresponding **public** key in `.sops.yaml`.
+
+We also have to run `sops updatekeys` on that file.
 
 ```sh
+cd ~/repos/nix-config/secrets
+
 sops updatekeys secrets.sops.yaml
 ```
+
+> ⚠️ The `sops updatekeys` command does not support passing a `--config` flag.
 
 The file `secrets.sops.yaml` will now contain the updated keys. Here is an example with age keys.
 
@@ -90,6 +76,13 @@ sops:
             -----BEGIN AGE ENCRYPTED FILE-----
             encrypted string that only my ThinkPad X220 can decrypt
             -----END AGE ENCRYPTED FILE-----
+```
+
+Repeat for each `.sops.yaml` file containing age-encrypted secrets.
+
+```sh
+sops updatekeys aws/default.sops.yaml
+sops updatekeys gcp/prj-kitchen-sink.sops.yaml
 ```
 
 ## Reference
