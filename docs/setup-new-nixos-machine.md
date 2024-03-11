@@ -6,7 +6,7 @@ This document will guide in configuring NixOS, starting from a fresh new NixOS i
 
 A fresh NixOS installation should have Firefox as the default browser. Install a password manager like LastPass as a Firefox extension.
 
-## Generate SSH keypair
+## Generate an SSH keypair
 
 In order to clone the git repo [nix-config](https://github.com/jackdbd/nix-config) from GitHub, you will need to generate an SSH keypair and upload the SSH public key to GitHub.
 
@@ -30,7 +30,23 @@ Copy the SSH public key and paste it on GitHub, in `Settings` > `SSH and GPG key
 cat $HOME/.ssh/id_ed25519.pub
 ```
 
-If you trust your password manager, you can also copy your SSH public key and private key to your password manager.
+> ℹ️ If you have an hardware device like the Trezor, you can [store your SSH private key/s](https://trezor.io/learn/a/ssh-with-trezor) there.
+>
+> If you trust your password manager, you can also store your SSH private key on it.
+
+## Generate an age keypair
+
+In order to decrypt the [age](https://github.com/FiloSottile/age)-encrypted [secrets](../secrets/README.md) found in this repository, you will need to generate an age keypair, copy the age **public** key and paste it in [this .sops.yaml file](../secrets/.sops.yaml).
+
+```sh
+mkdir -p ~/.config/sops/age
+
+age-keygen -o ~/.config/sops/age/keys.txt
+```
+
+> ℹ️ If you have an hardware device like the Trezor, you can store your age private key there.
+>
+> If you trust your password manager, you can also store your age private key on it.
 
 ## Clone git repository
 
