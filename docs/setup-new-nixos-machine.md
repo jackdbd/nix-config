@@ -94,3 +94,10 @@ You are now ready to rebuild the NixOS configuration and switch to it. From **th
 sudo nixos-rebuild switch \
   --flake $HOME/repos/nix-config#l390-nixos
 ```
+
+Uninstall all packages installed with `nix-env`, since they are now available in the NixOS / Home Manager configuration.
+
+```sh
+nix-env -e code
+nix-env -e git
+```
