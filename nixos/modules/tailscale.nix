@@ -13,7 +13,7 @@ in {
 
   options = {
     services.tailscale = {
-      # already declared in nixos/modules/tailscale.nix
+      # already declared in nixos/modules/services/networking/tailscale.nix
       # enable = mkEnableOption "Enable Tailscale (mesh VPN built on WireGuard)";
     };
   };

@@ -29,6 +29,7 @@
     ../../modules/secrets.nix
     ../../modules/syncthing.nix
     ../../modules/tailscale.nix
+    ../../modules/trezor.nix
     ../../modules/xserver.nix
   ];
 
