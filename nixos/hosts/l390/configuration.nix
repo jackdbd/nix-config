@@ -85,6 +85,7 @@
   services.printing.enable = true;
   services.syncthing.enable = true;
   services.tailscale.enable = true;
+  services.trezord.enable = true;
   services.xserver.enable = true;
 
   # Don't set sound.enable to true, as sound.enable is only meant for ALSA-based configurations
