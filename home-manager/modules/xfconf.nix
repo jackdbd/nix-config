@@ -27,8 +27,9 @@
           "commands/custom/<Super>s" = "${pkgs.flameshot}/bin/flameshot gui";
           "commands/custom/<Super>t" = "${pkgs.alacritty}/bin/alacritty";
           "commands/custom/<Super>v" = "thunar Videos";
+          # On XFCE this shortcut would call xflock4. I use it for other things, so I set it to null to remove it.
+          "commands/default/<Primary><Alt>l" = null;
           "commands/default/Print" = "${pkgs.flameshot}/bin/flameshot gui";
-          # "xfwm4/custom/<Super>Left" = "tile_left_key";
           "xfwm4/default/<Super>Left" = "tile_left_key";
           "xfwm4/default/<Super>KP_Left" = "tile_left_key";
           "xfwm4/default/<Super>Right" = "tile_right_key";
