@@ -29,6 +29,7 @@ in
       home-manager # Nix-based user environment configurator
       libnotify # send desktop notifications to a notification daemon
       linuxKernel.packages.linux_6_1.perf # Linux tools to profile with performance counters
+      ltrace # tool that intercepts and records dynamic library calls
       nmap # tool for network discovery and security auditing
       sops # editor for encrypting/decrypting JSON, YAML, ini, etc
       stow # symlink tool
