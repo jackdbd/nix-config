@@ -117,6 +117,7 @@ in {
       nodePackages.node-gyp # Node.js native addon build tool
       nuclei # vulnerability scanner
       obsidian # notes / knowledge base
+      ocrmypdf # adds an OCR text layer to scanned PDF files, allowing them to be searched (e.g. with ripgrep-all)
       openshot-qt # video editor
       ouch #  compress/decompress files and directories
       newman # Postman collection runner
