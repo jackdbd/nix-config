@@ -9,6 +9,10 @@
       name = "aw-watcher-vscode";
       publisher = "ActivityWatch";
       version = "0.5.0";
+      # When you want to add a new extension or a new version of an existing extension, do this:
+      # 1. Set an empty SHA or a fake one (e.g. using lib.fakeSha256)
+      # 2. Run home-manager switch. This will fail because the SHA does not match. Take note of the correct SHA.
+      # 3. Replace the SHA with the correct one.
       # sha256 = lib.fakeSha256;
       sha256 = "sha256-OrdIhgNXpEbLXYVJAx/jpt2c6Qa5jf8FNxqrbu5FfFs=";
     };
@@ -94,6 +98,22 @@
     };
   };
 
+  # https://github.com/Pythagora-io/gpt-pilot
+  Pythagora-io.gpt-pilot = buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      name = "gpt-pilot-vs-code";
+      publisher = "PythagoraTechnologies";
+      version = "0.1.12";
+      sha256 = "sha256-f+XNo3NRstKk+nc9q4qBbTehbdteDvss2MqazrlwVOQ=";
+    };
+    meta = {
+      changelog = "https://marketplace.visualstudio.com/items/PythagoraTechnologies.gpt-pilot-vs-code/changelog";
+      downloadPage = "https://marketplace.visualstudio.com/items?itemName=PythagoraTechnologies.gpt-pilot-vs-code";
+      homepage = "https://github.com/Pythagora-io/gpt-pilot#readme";
+      license = lib.licenses.asl20;
+    };
+  };
+
   ronnidc.nunjucks = buildVscodeMarketplaceExtension {
     mktplcRef = {
       name = "nunjucks";
@@ -141,8 +161,8 @@
     mktplcRef = {
       name = "pretty-ts-errors";
       publisher = "yoavbls";
-      version = "0.5.2";
-      sha256 = "sha256-g6JIiXfjQKQEtdXZgsQsluKuJZO0MsD1ijy+QLYE1uY=";
+      version = "0.5.3";
+      sha256 = "sha256-JSCyTzz10eoUNu76wNUuvPVVKq4KaVKobS1CAPqgXUA=";
     };
     meta = {
       downloadPage = "https://marketplace.visualstudio.com/items?itemName=yoavbls.pretty-ts-errors";
@@ -155,8 +175,9 @@
     mktplcRef = {
       name = "vscode-webhint";
       publisher = "webhint";
-      version = "2.1.10";
-      sha256 = "sha256-I+mDpMb9SgGeh6+a2JePC98ZXZyU+WztmwyX4dWtySY="; # v2.1.10
+      version = "2.1.12";
+      sha256 = "sha256-gmdnU5OfHhWZ0yL3Af9blxDgO64Xbdmt8d6fDLVyPfc="; # v2.1.12
+      # sha256 = "sha256-I+mDpMb9SgGeh6+a2JePC98ZXZyU+WztmwyX4dWtySY="; # v2.1.10
       # Version 2.1.11 doesn't work. Nix is able to build it, but it doesn't install it in VS Code.
       # version = "2.1.11";
       # sha256 = "sha256-Ir+Dk63k+eE+1PKQnO9FkCEXIVcfj/p13RcwTOf7qdM="; # v2.1.11
@@ -176,6 +197,8 @@ in
     dtsvet.vscode-wasm # WebAssembly Toolkit for VSCode
     pflannery.vscode-versionlens
     pranaygp.vscode-css-peek
+    # PythagoraTechnologies.gpt-pilot-vs-code
+    Pythagora-io.gpt-pilot
     ronnidc.nunjucks
     ryan-heybourn.headwind
     stylelint.vscode-stylelint

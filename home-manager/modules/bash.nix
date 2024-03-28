@@ -37,6 +37,7 @@ in {
         gg = "gitg";
         gk = "gitk";
         hm = "home-manager --flake $HOME/repos/nix-config#$(whoami)@$(hostname)";
+        hmn = "${pkgs.home-manager}/bin/home-manager --extra-experimental-features nix-command --extra-experimental-features flakes --flake $HOME/repos/nix-config#$(whoami)@$(hostname) news";
         hms = "${pkgs.home-manager}/bin/home-manager --extra-experimental-features nix-command --extra-experimental-features flakes --flake $HOME/repos/nix-config#$(whoami)@$(hostname) switch";
         issue = "${pkgs.gh}/bin/gh issue create -a @me -l enhancement -t"; # e.g. issue "Issue title here"
         issues = "${pkgs.gh}/bin/gh issue list";
