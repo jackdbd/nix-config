@@ -125,4 +125,10 @@
     "editorRuler.foreground" = "#d3d3d3";
   };
   "workbench.colorTheme" = "Gruvbox Dark Medium";
+  # https://github.com/ziglang/vscode-zig/blob/master/package.json
+  "zig.checkForUpdate" = true;
+  "zig.initialSetupDone" = true;
+  "zig.path" = "/home/jack/bin/zig"; # I use zigup to install & manage my zig compilers. This path is a symlink created by zigup.
+  "zig.zls.checkForUpdate" = true;
+  "zig.zls.path" = "/home/jack/.nix-profile/bin/zls";
 }
