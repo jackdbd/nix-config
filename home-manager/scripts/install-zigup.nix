@@ -1,6 +1,6 @@
 {pkgs, ...}: let
   bb = "${pkgs.babashka}/bin/bb";
-  bbScript = pkgs.copyPathToStore ./some-babashka-script.clj;
+  bbScript = pkgs.copyPathToStore ./install-zigup.clj;
 in
   pkgs.writeShellScriptBin "demo-bb" ''
     # Launch a Babashka script

@@ -1,3 +1,6 @@
+# VS Code extension for Clojure
+.calva
+
 # Clojure/Babashka formatter
 .clj-kondo/
 

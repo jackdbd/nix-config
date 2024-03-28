@@ -189,6 +189,21 @@
       license = lib.licenses.asl20; # Apache License 2.0
     };
   };
+
+  ziglang.vscode-zig = buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      name = "vscode-zig";
+      publisher = "ziglang";
+      version = "0.5.4";
+      sha256 = "sha256-kczkVm847COmpNtUJI5lsZIuM7qAU6UgE8SCj8ZhIaA=";
+    };
+    meta = {
+      changelog = "https://marketplace.visualstudio.com/items/ziglang.vscode-zig/changelog";
+      downloadPage = "https://marketplace.visualstudio.com/items?itemName=ziglang.vscode-zig";
+      homepage = "https://github.com/ziglang/vscode-zig#readme";
+      license = lib.licenses.mit;
+    };
+  };
 in
   with pkgs.vscode-extensions; [
     activitywatch.aw-watcher-vscode
@@ -204,4 +219,5 @@ in
     stylelint.vscode-stylelint
     yoavbls.pretty-ts-errors
     webhint.vscode-webhint
+    ziglang.vscode-zig
   ]
