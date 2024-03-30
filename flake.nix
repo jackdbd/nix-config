@@ -54,6 +54,7 @@
     # define the list of allowed unfree here, so I can pass it to both
     # `sudo nixos-rebuild` and `home-manager`
     allowed-unfree-packages = [
+      "burpsuite"
       "google-chrome"
       "obsidian"
       "postman"

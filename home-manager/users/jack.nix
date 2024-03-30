@@ -58,8 +58,9 @@ in {
       babashka # Clojure interpreter for scripting
       baobab # disk usage utility
       bless # HEX editor
-      buildah # build OCI images (alternative to docker build)
       bruno # IDE for exploring/testing APIs (Postman/Insomnia alternative)
+      buildah # build OCI images (alternative to docker build)
+      burpsuite # suite of tools for web application security
       calibre # e-book reader
       clojure
       ctop # top-like interface for container metrics
