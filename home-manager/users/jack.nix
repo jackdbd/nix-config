@@ -104,6 +104,7 @@ in {
       jq # JSON processor
       killall # kill processes by name or list PIDs
       kitty # GPU-based terminal emulator
+      libreoffice # a variant of openoffice.org
       lm_sensors # tools for reading hardware sensors
       lshw # detailed information on the hardware configuration of the machine
       lsix # shows thumbnails in terminal using sixel graphics
