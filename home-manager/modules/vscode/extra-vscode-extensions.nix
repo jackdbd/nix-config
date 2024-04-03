@@ -157,6 +157,22 @@
     };
   };
 
+  # https://github.com/vuejs/language-tools
+  vuejs.language-tools = buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      name = "volar";
+      publisher = "Vue";
+      version = "2.0.8";
+      sha256 = "sha256-OBHMLSuOs7kuiY0zs6E9ZhGZ3xkuJtMv0jbMRJdT3u4=";
+    };
+    meta = {
+      changelog = "https://marketplace.visualstudio.com/items/Vue.volar/changelog";
+      downloadPage = "https://marketplace.visualstudio.com/items?itemName=Vue.volar";
+      homepage = "https://github.com/vuejs/language-tools#readme";
+      license = lib.licenses.mit;
+    };
+  };
+
   yoavbls.pretty-ts-errors = buildVscodeMarketplaceExtension {
     mktplcRef = {
       name = "pretty-ts-errors";
@@ -217,6 +233,7 @@ in
     ronnidc.nunjucks
     ryan-heybourn.headwind
     stylelint.vscode-stylelint
+    vuejs.language-tools
     yoavbls.pretty-ts-errors
     webhint.vscode-webhint
     ziglang.vscode-zig
