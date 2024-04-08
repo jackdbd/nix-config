@@ -17,13 +17,12 @@ with lib; {
     # If you really need to reclaim more space, consider manually trimming the generations with this script:
     # https://nixos.wiki/wiki/NixOS_Generations_Trimmer
     # https://www.reddit.com/r/NixOS/comments/16zli78/how_many_generations_do_you_have/
-    # TODO: is this really working?
     gc = {
       automatic = true;
       # https://www.freedesktop.org/software/systemd/man/latest/systemd.time.html#Calendar%20Events
       # https://wiki.archlinux.org/title/systemd/Timers
-      dates = "*-*-* 21:30:00 UTC";
-      options = "--delete-older-than 7d";
+      dates = "weekly";
+      options = "--delete-older-than 30d";
       persistent = true;
     };
 
