@@ -4,6 +4,10 @@
 }: let
   inherit (pkgs.vscode-utils) buildVscodeMarketplaceExtension;
 
+  # The `name` and `publisher` fields here can be found as the `Unique Identifier`
+  # in the Visual Studio Code Marketplace. For example:
+  # antfu.unocss => name = "unocss" and publisher = "antfu"
+
   activitywatch.aw-watcher-vscode = buildVscodeMarketplaceExtension {
     mktplcRef = {
       name = "aw-watcher-vscode";
@@ -157,6 +161,21 @@
     };
   };
 
+  # https://github.com/unocss/unocss
+  unocss.unocss = buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      name = "unocss";
+      publisher = "antfu"; # Anthony Fu
+      version = "0.59.2";
+      sha256 = "sha256-nfqvzKqpvEoRU9B5KNjj4vLK5evaftSA60keEPVtbRY=";
+    };
+    meta = {
+      downloadPage = "https://marketplace.visualstudio.com/items?itemName=antfu.unocss";
+      homepage = "https://github.com/unocss/unocss#readme";
+      license = lib.licenses.mit;
+    };
+  };
+
   # https://github.com/vuejs/language-tools
   vuejs.language-tools = buildVscodeMarketplaceExtension {
     mktplcRef = {
@@ -233,6 +252,7 @@ in
     ronnidc.nunjucks
     ryan-heybourn.headwind
     stylelint.vscode-stylelint
+    unocss.unocss
     vuejs.language-tools
     yoavbls.pretty-ts-errors
     webhint.vscode-webhint
