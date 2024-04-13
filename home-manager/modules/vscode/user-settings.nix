@@ -124,7 +124,7 @@
   "workbench.colorCustomizations" = {
     "editorRuler.foreground" = "#d3d3d3";
   };
-  "workbench.colorTheme" = "Gruvbox Dark Medium";
+  # "workbench.colorTheme" = "Gruvbox Dark Medium";
   # https://github.com/ziglang/vscode-zig/blob/master/package.json
   "zig.checkForUpdate" = true;
   "zig.initialSetupDone" = true;
