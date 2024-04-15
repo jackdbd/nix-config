@@ -239,6 +239,20 @@
       license = lib.licenses.mit;
     };
   };
+
+  zignd.html-css-class-completion = buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      name = "html-css-class-completion";
+      publisher = "zignd";
+      version = "1.20.0";
+      sha256 = "sha256-3BEppTBc+gjZW5XrYLPpYUcx3OeHQDPW8z7zseJrgsE=";
+    };
+    meta = {
+      changelog = "https://marketplace.visualstudio.com/items/Zignd.html-css-class-completion/changelog";
+      downloadPage = "https://marketplace.visualstudio.com/items?itemName=Zignd.html-css-class-completion";
+      license = lib.licenses.mit;
+    };
+  };
 in
   with pkgs.vscode-extensions; [
     activitywatch.aw-watcher-vscode
@@ -257,4 +271,5 @@ in
     yoavbls.pretty-ts-errors
     webhint.vscode-webhint
     ziglang.vscode-zig
+    zignd.html-css-class-completion
   ]
