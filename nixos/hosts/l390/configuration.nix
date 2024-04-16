@@ -24,6 +24,7 @@
     ../../modules/android.nix
     ../../modules/bluetooth.nix
     ../../modules/fonts.nix
+    ../../modules/hyprland.nix
     ../../modules/nix.nix
     ../../modules/pipewire.nix
     ../../modules/printing.nix

@@ -21,6 +21,7 @@ in {
       ../modules/flameshot.nix
       ../modules/git.nix
       ../modules/gnome-keyring.nix
+      ../modules/hyprland.nix
       ../modules/lockscreen.nix
       ../modules/rssguard
       ../modules/starship.nix
