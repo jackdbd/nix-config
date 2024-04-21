@@ -13,7 +13,6 @@
 in {
   imports =
     [
-      ../modules/activitywatch
       ../modules/atuin
       ../modules/bash.nix
       ../modules/chromium.nix
@@ -234,9 +233,23 @@ in {
 
   services.activitywatch = {
     enable = true;
-    client = {
-      client = {
-        commit_interval = 15;
+    # https://nix-community.github.io/home-manager/options.xhtml#opt-services.activitywatch.watchers
+    # https://docs.activitywatch.net/en/latest/configuration.html
+    watchers = {
+      aw-watcher-afk = {
+        package = pkgs.activitywatch;
+        settings = {
+          poll_time = 5;
+          timeout = 180;
+        };
+      };
+
+      aw-watcher-window = {
+        package = pkgs.activitywatch;
+        settings = {
+          exclude_title = false;
+          poll_time = 1;
+        };
       };
     };
   };
