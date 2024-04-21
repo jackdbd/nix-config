@@ -19,19 +19,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    # Bluetooth configuration for PipeWire
-    # https://nixos.wiki/wiki/PipeWire#Bluetooth_Configuration
-    environment.etc = mkIf config.services.pipewire.enable {
-      "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
-          bluez_monitor.properties = {
-         ["bluez5.enable-sbc-xq"] = true,
-         ["bluez5.enable-msbc"] = true,
-         ["bluez5.enable-hw-volume"] = true,
-         ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
-        }
-      '';
-    };
-
     environment.systemPackages = with pkgs; [
       bluez # bluetooth support for Linux
     ];
@@ -81,5 +68,18 @@ in {
     # For the Blueman applet to work, the blueman service must be enabled system-wide.
     # https://nixos.wiki/wiki/Bluetooth#Pairing_Bluetooth_devices
     services.blueman.enable = true;
+
+    # Bluetooth configuration for PipeWire
+    # https://nixos.wiki/wiki/PipeWire#Bluetooth_Configuration
+    services.pipewire.wireplumber.configPackages = [
+      (pkgs.writeTextDir "share/wireplumber/bluetooth.lua.d/51-bluez-config.lua" ''
+        bluez_monitor.properties = {
+        	["bluez5.enable-sbc-xq"] = true,
+        	["bluez5.enable-msbc"] = true,
+        	["bluez5.enable-hw-volume"] = true,
+        	["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
+        }
+      '')
+    ];
   };
 }
