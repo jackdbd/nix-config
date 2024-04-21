@@ -2,14 +2,14 @@
   description = "NixOS & Home Manager configuration for all of jackdbd's hosts";
 
   inputs = {
-    # Option 1: Get a release of nixpkgs from FlakeHub
-    # https://flakehub.com/flake/NixOS/nixpkgs
-    # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/*.tar.gz";
-    # Option 2: Get a release of nixpkgs from GitHub (see active branches)
+    # Option 1: Get a release of nixpkgs from GitHub (see active branches)
+    # Most likely you'll want nixos-unstable.
+    # https://discourse.nixos.org/t/differences-between-nix-channels/13998
     # https://github.com/NixOS/nixpkgs/branches
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    # Option 2: Get a release of nixpkgs from FlakeHub
+    # https://flakehub.com/flake/NixOS/nixpkgs
+    # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/*.tar.gz";
 
     alejandra.url = "github:kamadorueda/alejandra/3.0.0";
     # alejandra follows nixos-unstable-small
