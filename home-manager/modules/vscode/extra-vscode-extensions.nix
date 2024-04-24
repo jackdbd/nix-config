@@ -181,8 +181,8 @@
     mktplcRef = {
       name = "volar";
       publisher = "Vue";
-      version = "2.0.8";
-      sha256 = "sha256-OBHMLSuOs7kuiY0zs6E9ZhGZ3xkuJtMv0jbMRJdT3u4=";
+      version = "2.0.14";
+      sha256 = "sha256-UQGatAUuDCd5/sisp8UOTuP1gtNMxTpOHQLzO28eOYg=";
     };
     meta = {
       changelog = "https://marketplace.visualstudio.com/items/Vue.volar/changelog";
