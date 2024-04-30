@@ -26,6 +26,7 @@ in
       gitg # git GUI
       glxinfo # show information about the GLX implementation
       gnupg # GNU Privacy Guard
+      gpa # Graphical user interface for the GnuPG
       gparted # partition editor
       home-manager # Nix-based user environment configurator
       libnotify # send desktop notifications to a notification daemon
