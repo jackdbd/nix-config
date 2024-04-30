@@ -31,6 +31,7 @@ in
       libnotify # send desktop notifications to a notification daemon
       linuxKernel.packages.linux_6_1.perf # Linux tools to profile with performance counters
       ltrace # tool that intercepts and records dynamic library calls
+      minisign # tool for signing files and verifying signatures
       nmap # tool for network discovery and security auditing
       pinentry # GnuPG's interface to passphrase input
       sops # editor for encrypting/decrypting JSON, YAML, ini, etc

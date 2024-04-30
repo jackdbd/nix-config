@@ -24,6 +24,17 @@ in {
   # https://mynixos.com/nixpkgs/package/trezord
   # https://docs.trezor.io/trezor-user-env/development.html
   config = mkIf cfg.enable {
-    environment.systemPackages = [pkgs.trezord];
+    environment.systemPackages = with pkgs; [
+      trezord
+      trezor_agent # hardware-based SSH/GPG/age agent
+    ];
+
+    environment.sessionVariables = {
+      # This tells the trezor-agent that all private keys (e.g. GPG, SSH, age)
+      # are backed by my Trezor. Unset this environment variable if you wish to
+      # switch back to your software keys.
+      # https://github.com/romanz/trezor-agent/blob/master/doc/README-GPG.md
+      GNUPGHOME = "~/.gnupg/trezor";
+    };
   };
 }
