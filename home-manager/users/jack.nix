@@ -127,7 +127,7 @@ in {
       papirus-icon-theme
       pgadmin4
       pinta # image editor
-      # pitivi # video editor TODO: this failed to build on 2024/04/24
+      # pitivi # video editor TODO: this failed to build on 2024/04/24, 2024/04/30
       podman # docker run alternative
       poke # editor for binary data
       # postman # https://github.com/NixOS/nixpkgs/issues/259147

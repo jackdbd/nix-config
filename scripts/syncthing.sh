@@ -12,7 +12,7 @@ echo "Adding remote devices that can connect to device ID $DEVICE_ID ($DEVICE_NA
 
 # Override any devices added or deleted through the WebUI
 syncthing cli config options overwrite-remote-dev-names set true
-# TODO: how to override any folders added or deleted through the WebUI?
+# TODO: how to override any folders added or deleted through the Web UI?
 
 syncthing cli config devices add --name "Redmi Note 9S" \
   --device-id "7WJ47ZP-O776CHO-OELIPNH-GUOZHA4-UYYZ3WS-PL5BE6L-INDDN3D-FHKDDQQ"

@@ -59,7 +59,6 @@
       "obsidian"
       "postman"
       "vscode"
-      "vscode-1.85.1"
       "vscode-extension-github-copilot"
       "vscode-extension-github-copilot-chat"
     ];

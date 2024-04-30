@@ -25,12 +25,14 @@ in
       gitFull # git + graphical tools like gitk (see https://nixos.wiki/wiki/Git)
       gitg # git GUI
       glxinfo # show information about the GLX implementation
+      gnupg # GNU Privacy Guard
       gparted # partition editor
       home-manager # Nix-based user environment configurator
       libnotify # send desktop notifications to a notification daemon
       linuxKernel.packages.linux_6_1.perf # Linux tools to profile with performance counters
       ltrace # tool that intercepts and records dynamic library calls
       nmap # tool for network discovery and security auditing
+      pinentry # GnuPG's interface to passphrase input
       sops # editor for encrypting/decrypting JSON, YAML, ini, etc
       stow # symlink tool
       winetricks # script to install DLLs needed to work around problems in Wine

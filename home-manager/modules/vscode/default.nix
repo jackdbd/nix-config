@@ -84,7 +84,7 @@ in {
       # https://github.com/jackdbd/dotfiles/blob/main/Code/.config/Code/User/settings.json
       userSettings = import ./user-settings.nix {inherit lib pkgs;};
 
-      # TODO: configure stylelint and stylelint rules
+      # TODO: configure stylelint rules
       # https://github.com/stylelint/vscode-stylelint
       # https://github.com/stylelint/stylelint/blob/main/docs/user-guide/rules.md
 
