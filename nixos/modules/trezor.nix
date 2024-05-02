@@ -26,15 +26,14 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       trezord
-      trezor_agent # hardware-based SSH/GPG/age agent
+      trezor_agent # hardware-based agent for SSH/OpenPGP/age keys
     ];
 
     environment.sessionVariables = {
-      # This tells the trezor-agent that all private keys (e.g. GPG, SSH, age)
-      # are backed by my Trezor. Unset this environment variable if you wish to
-      # switch back to your software keys.
+      # This tells trezor-agent that all my private keys are backed by my Trezor.
+      # Unset this environment variable if you wish to switch back to your software keys.
       # https://github.com/romanz/trezor-agent/blob/master/doc/README-GPG.md
-      GNUPGHOME = "~/.gnupg/trezor";
+      GNUPGHOME = "$HOME/.gnupg/trezor";
     };
   };
 }
