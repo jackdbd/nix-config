@@ -66,6 +66,7 @@ in {
       ctop # top-like interface for container metrics
       curl
       darktable # virtual lighttable and darkroom for photographers
+      dbeaver # GUI for many SQL databases https://dbeaver.io/about/
       ddrescue # data recovery tool (I also use it to burn an ISO to a USB flash drive)
       ddrescueview # Graphical viewer for GNU ddrescue mapfiles
       (writeShellScriptBin "debug-home-manager" ''
