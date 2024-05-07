@@ -37,6 +37,7 @@ in
       pinentry # GnuPG's interface to passphrase input
       sops # editor for encrypting/decrypting JSON, YAML, ini, etc
       stow # symlink tool
+      unzip
       winetricks # script to install DLLs needed to work around problems in Wine
       wineWowPackages.stable # https://nixos.wiki/wiki/Wine
     ]
