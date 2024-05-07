@@ -61,7 +61,10 @@ in {
           mechatroner.rainbow-csv
           mhutchie.git-graph
           ms-azuretools.vscode-docker
-          # at the moment mtxr.sqltools is not available on nixpkgs (not even on
+          ms-python.python
+          ms-vscode-remote.remote-containers # Dev Containers
+          # mtxr.sqltools
+          # At the moment mtxr.sqltools is not available on nixpkgs (not even on
           # nixpkgs unstable) https://github.com/mtxr/vscode-sqltools
           tamasfe.even-better-toml
           usernamehw.errorlens
