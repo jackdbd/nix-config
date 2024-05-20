@@ -35,6 +35,7 @@ in
       minisign # tool for signing files and verifying signatures
       nmap # tool for network discovery and security auditing
       pinentry # GnuPG's interface to passphrase input
+      poppler_utils # Rendering library and utilities for PDF files (e.g. pdfunite)
       sops # editor for encrypting/decrypting JSON, YAML, ini, etc
       stow # symlink tool
       unzip
