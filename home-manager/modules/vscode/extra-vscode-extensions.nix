@@ -73,6 +73,21 @@
     };
   };
 
+  mtxr.sqltools = buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      name = "sqltools";
+      publisher = "mtxr";
+      version = "0.28.3";
+      sha256 = "sha256-bTrHAhj8uwzRIImziKsOizZf8+k3t+VrkOeZrFx7SH8=";
+    };
+    meta = {
+      changelog = "https://vscode-sqltools.mteixeira.dev/changelog";
+      downloadPage = "https://marketplace.visualstudio.com/items?itemName=mtxr.sqltools";
+      homepage = "https://vscode-sqltools.mteixeira.dev/";
+      license = lib.licenses.mit;
+    };
+  };
+
   pflannery.vscode-versionlens = buildVscodeMarketplaceExtension {
     mktplcRef = {
       name = "vscode-versionlens";
@@ -259,6 +274,7 @@ in
     bierner.color-info # Provides quick information about css colors
     chakrounanas.turbo-console-log
     dtsvet.vscode-wasm # WebAssembly Toolkit for VSCode
+    mtxr.sqltools # SQL formatter and query runner for many databases
     pflannery.vscode-versionlens
     pranaygp.vscode-css-peek
     # PythagoraTechnologies.gpt-pilot-vs-code
