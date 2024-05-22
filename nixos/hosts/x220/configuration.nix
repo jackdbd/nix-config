@@ -22,6 +22,7 @@
     }
     ../../modules/android.nix
     ../../modules/bluetooth.nix
+    ../../modules/dbt.nix
     ../../modules/fonts.nix
     ../../modules/nix.nix
     ../../modules/pipewire.nix
