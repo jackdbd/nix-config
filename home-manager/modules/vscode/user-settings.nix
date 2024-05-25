@@ -91,7 +91,7 @@
   # Prevent Gitlens from hijacking the "Generate Commit Message with Copilot" button.
   # https://github.com/microsoft/vscode/issues/200375#issuecomment-1847411013
   "gitlens.ai.experimental.generateCommitMessage.enabled" = false;
-  "gitlens.ai.experimental.openai.model" = "gpt-4-1106-preview";
+  "gitlens.ai.experimental.openai.model" = "gpt-4";
   "gitlens.ai.experimental.provider" = "openai";
   # Configure vscode-nix-ide to use nil as the language server for Nix expressions.
   # https://github.com/oxalica/nil?tab=readme-ov-file#vscodevscodium-with-nix-ide
