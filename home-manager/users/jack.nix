@@ -66,7 +66,7 @@ in {
       ctop # top-like interface for container metrics
       curl
       darktable # virtual lighttable and darkroom for photographers
-      dbeaver # GUI for many SQL databases https://dbeaver.io/about/
+      dbeaver-bin # GUI for many SQL databases https://dbeaver.io/about/
       ddrescue # data recovery tool (I also use it to burn an ISO to a USB flash drive)
       ddrescueview # Graphical viewer for GNU ddrescue mapfiles
       (writeShellScriptBin "debug-home-manager" ''
@@ -124,7 +124,7 @@ in {
       openshot-qt # video editor
       ouch #  compress/decompress files and directories
       newman # Postman collection runner
-      nodejs_21
+      nodejs_22
       papirus-icon-theme
       pgadmin4
       pinta # image editor
