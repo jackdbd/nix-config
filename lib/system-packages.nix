@@ -31,6 +31,7 @@ in
       home-manager # Nix-based user environment configurator
       libnotify # send desktop notifications to a notification daemon
       linuxKernel.packages.linux_6_1.perf # Linux tools to profile with performance counters
+      lmstudio # app for experimenting with local and open-source Large Language Models (LLMs) # TODO: nixos-rebuidl switch fails because of a hash mismatch
       ltrace # tool that intercepts and records dynamic library calls
       minisign # tool for signing files and verifying signatures
       nmap # tool for network discovery and security auditing

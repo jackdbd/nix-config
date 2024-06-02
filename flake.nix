@@ -56,6 +56,7 @@
     allowed-unfree-packages = [
       "burpsuite"
       "google-chrome"
+      "lmstudio"
       "obsidian"
       "postman"
       "vscode"
