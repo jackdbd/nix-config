@@ -76,6 +76,10 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."linkedin/trusted_client" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."npm-tokens/read_all_packages" = {
       inherit group mode owner;
     };

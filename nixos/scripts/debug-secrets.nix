@@ -41,6 +41,10 @@ in
     echo "secret found at ${secrets."hacker-news/credentials".path}"
     echo "secret is $(cat ${secrets."hacker-news/credentials".path})"
 
+    printf "\nlinkedin/trusted_client\n"
+    echo "secret found at ${secrets."linkedin/trusted_client".path}"
+    echo "secret is $(cat ${secrets."linkedin/trusted_client".path})"
+
     printf "\nnpm-tokens/read_all_packages\n"
     echo "secret found at ${secrets."npm-tokens/read_all_packages".path}"
     echo "secret is $(cat ${secrets."npm-tokens/read_all_packages".path})"
