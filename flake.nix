@@ -57,6 +57,7 @@
       "burpsuite"
       "google-chrome"
       "lmstudio"
+      "mongodb-compass"
       "obsidian"
       "postman"
       "vscode"

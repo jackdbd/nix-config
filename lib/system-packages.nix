@@ -35,6 +35,7 @@ in
       lmstudio # app for experimenting with local and open-source Large Language Models (LLMs) # TODO: nixos-rebuidl switch fails because of a hash mismatch
       ltrace # tool that intercepts and records dynamic library calls
       minisign # tool for signing files and verifying signatures
+      mongodb-compass # MongoDB GUI
       nmap # tool for network discovery and security auditing
       pinentry # GnuPG's interface to passphrase input
       poppler_utils # Rendering library and utilities for PDF files (e.g. pdfunite)
