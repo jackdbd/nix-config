@@ -21,6 +21,7 @@ in
     [
       bandwhich # display network utilization by process, connection and remote IP/hostname
       binutils # tools for manipulating binaries (nm, objdump, strip, etc...)
+      docker-compose # define and run multi-container applications with Docker
       duf # disk usage utility
       gitFull # git + graphical tools like gitk (see https://nixos.wiki/wiki/Git)
       gitg # git GUI
