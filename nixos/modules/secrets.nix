@@ -80,6 +80,10 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."ngrok/auth_token" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."npm-tokens/read_all_packages" = {
       inherit group mode owner;
     };
