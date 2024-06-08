@@ -53,6 +53,10 @@ in
     echo "secret found at ${secrets."ngrok/auth_token".path}"
     echo "secret is $(cat ${secrets."ngrok/auth_token".path})"
 
+    printf "\nnpm\n"
+    echo "secret found at ${secrets."npm".path}"
+    echo "secret is $(cat ${secrets."npm".path})"
+
     printf "\nnpm-tokens/read_all_packages\n"
     echo "secret found at ${secrets."npm-tokens/read_all_packages".path}"
     echo "secret is $(cat ${secrets."npm-tokens/read_all_packages".path})"
