@@ -9,9 +9,13 @@ in
     printf "=== DEBUG SECRETS ===\n"
     echo "defaultSopsFile is at ${config.sops.defaultSopsFile}"
 
-    printf "\n AWS configuration profile: default\n"
+    printf "\nAWS configuration profile: default\n"
     echo "secret found at ${secrets."aws/default".path}"
     echo "secret is $(cat ${secrets."aws/default".path})"
+
+    printf "\ncal\n"
+    echo "secret found at ${secrets."cal".path}"
+    echo "secret is $(cat ${secrets."cal".path})"
 
     printf "\ncloudflare_r2/personal\n"
     echo "secret found at ${secrets."cloudflare_r2/personal".path}"
@@ -69,7 +73,7 @@ in
     echo "secret found at ${secrets."reddit/trusted_client".path}"
     echo "secret is $(cat ${secrets."reddit/trusted_client".path})"
 
-    printf "\n GCP service account prj-kitchen-sink/sa-storage-uploader\n"
+    printf "\nGCP service account prj-kitchen-sink/sa-storage-uploader\n"
     echo "secret found at ${secrets."prj-kitchen-sink/sa-storage-uploader".path}"
     echo "secret is $(cat ${secrets."prj-kitchen-sink/sa-storage-uploader".path})"
 

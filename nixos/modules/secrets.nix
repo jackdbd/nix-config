@@ -50,6 +50,10 @@ in {
       sopsFile = ../../secrets/aws/default.sops.yaml;
     };
 
+    sops.secrets."cal" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."cloudflare_r2/personal" = {
       inherit group mode owner;
     };
