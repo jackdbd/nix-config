@@ -30,6 +30,7 @@ in
       gpa # Graphical user interface for the GnuPG
       gparted # partition editor
       home-manager # Nix-based user environment configurator
+      k6 # HTTP load testing tool
       libnotify # send desktop notifications to a notification daemon
       linuxKernel.packages.linux_6_1.perf # Linux tools to profile with performance counters
       lmstudio # app for experimenting with local and open-source Large Language Models (LLMs) # TODO: nixos-rebuidl switch fails because of a hash mismatch
