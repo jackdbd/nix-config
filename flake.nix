@@ -64,6 +64,7 @@
       "vscode-extension-github-copilot"
       "vscode-extension-github-copilot-chat"
       "vscode-extension-ms-vscode-remote-remote-containers" # Dev Containers
+      "vscode-extension-ms-vsliveshare-vsliveshare"
     ];
     permitted-insecure-pakages = [
       # Obsidian is built on Electron. I don't know why NixOS marks Electron as insecure.

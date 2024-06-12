@@ -56,6 +56,7 @@ in {
         repos = "cd ~/repos";
         rm = "${pkgs.trash-cli}/bin/trash-put";
         snr = "sudo nixos-rebuild switch --flake $HOME/repos/nix-config#$(hostname)";
+        steampipe_dk = "docker run --rm --mount $\"type=bind,source=/home/jack/steampipe/config,target=/home/steampipe/.steampipe/config\" --name steampipe turbot/steampipe:latest";
         # https://the.exa.website/features/tree-view
         "t2" = "${pkgs.eza}/bin/eza --tree --ignore-glob=node_modules --level=2";
         "t3" = "${pkgs.eza}/bin/eza --tree --ignore-glob=node_modules --level=3";

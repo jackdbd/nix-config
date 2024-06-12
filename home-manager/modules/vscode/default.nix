@@ -63,6 +63,7 @@ in {
           ms-azuretools.vscode-docker
           ms-python.python
           ms-vscode-remote.remote-containers # Dev Containers
+          ms-vsliveshare.vsliveshare # Live Share (real-time collaborative development)
           # mtxr.sqltools
           # At the moment mtxr.sqltools is not available on nixpkgs (not even on
           # nixpkgs unstable) https://github.com/mtxr/vscode-sqltools
