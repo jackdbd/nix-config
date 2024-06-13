@@ -62,6 +62,7 @@ in {
         core = {
           bare = false;
           editor = "${pkgs.neovim}/bin/nvim";
+          # excludesfile = "~/.gitignore";
         };
         # https://git-scm.com/docs/git-difftool
         difftool = {
@@ -84,7 +85,10 @@ in {
         };
       };
 
+      # .gitignore for this Linux user
       ignores = [
+        ".clj-kondo/"
+        ".lsp/"
         "*.direnv"
         "*.envrc"
       ];
