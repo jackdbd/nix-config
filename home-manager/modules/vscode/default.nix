@@ -69,6 +69,7 @@ in {
           # nixpkgs unstable) https://github.com/mtxr/vscode-sqltools
           tamasfe.even-better-toml
           usernamehw.errorlens
+          zhwu95.riscv # syntax highlighting and snippets for RISC-V assembly language
         ]
         ++ import ./extra-vscode-extensions.nix {
           inherit lib pkgs;

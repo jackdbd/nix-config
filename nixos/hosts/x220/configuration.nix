@@ -27,6 +27,7 @@
     ../../modules/nix.nix
     ../../modules/pipewire.nix
     ../../modules/printing.nix
+    ../../modules/riscv.nix
     ../../modules/secrets.nix
     ../../modules/syncthing.nix
     ../../modules/tailscale.nix
