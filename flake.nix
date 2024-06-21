@@ -83,6 +83,28 @@
   in {
     # TODO: consider writing a function like this one:
     # https://github.com/mitchellh/nixos-config/blob/main/lib/mksystem.nix
+    nixosConfigurations."l380-nixos" = nixpkgs.lib.nixosSystem {
+      inherit specialArgs system;
+
+      modules = [
+        {
+          environment.systemPackages = [alejandra.defaultPackage.${system}];
+        }
+        ./nixos/hosts/l380/configuration.nix
+        # Declare home-manager as a NixOS module, so that all the home-manager
+        # configuration will be deployed automatically when executing:
+        # `sudo nixos-rebuild switch --flake ./#l380-nixos`
+        # https://nixos-and-flakes.thiscute.world/nixos-with-flakes/start-using-home-manager#getting-started-with-home-manager
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.${user} = import ./home-manager/users/${user}.nix;
+          home-manager.extraSpecialArgs = extraSpecialArgs;
+        }
+      ];
+    };
+
     nixosConfigurations."l390-nixos" = nixpkgs.lib.nixosSystem {
       inherit specialArgs system;
 
@@ -91,10 +113,6 @@
           environment.systemPackages = [alejandra.defaultPackage.${system}];
         }
         ./nixos/hosts/l390/configuration.nix
-        # Declare home-manager as a NixOS module, so that all the home-manager
-        # configuration will be deployed automatically when executing:
-        # `sudo nixos-rebuild switch --flake ./#l390-nixos`
-        # https://nixos-and-flakes.thiscute.world/nixos-with-flakes/start-using-home-manager#getting-started-with-home-manager
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
@@ -131,6 +149,11 @@
         ./home-manager/users/${user}.nix
         ./home-manager/modules/syncthing.nix
       ];
+    };
+
+    homeConfigurations."${user}@l380-nixos" = home-manager.lib.homeManagerConfiguration {
+      inherit extraSpecialArgs pkgs;
+      modules = [./home-manager/users/${user}.nix];
     };
 
     homeConfigurations."${user}@l390-nixos" = home-manager.lib.homeManagerConfiguration {
