@@ -1,6 +1,6 @@
 # Setup a new generic Linux machine
 
-This document assumes that you have already installed a Linux distro in some way (e.g. using a USB stick).
+This document assumes that you have already installed a Linux distro in some way (e.g. [using a USB stick](./create-bootable-USB-stick.md)).
 
 ## SSH keypair
 

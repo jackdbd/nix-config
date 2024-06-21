@@ -29,21 +29,18 @@ home-manager switch \
 home-manager switch --flake .#jack@x220-nixos
 ```
 
-See also: [Setup a new NixOS machine](./docs/setup-new-nixos-machine.md).
-
-### Non-NixOS hosts
-
-See: [Setup a new generic Linux machine](./docs/setup-new-generic-linux-machine.md).
-
 ## Docs
 
+- [Create a bootable USB stick](./docs/create-bootable-USB-stick.md)
 - [Setup a new NixOS machine](./docs/setup-new-nixos-machine.md)
 - [Setup a new generic Linux machine](./docs/setup-new-generic-linux-machine.md)
 - [Useful commands](./docs//useful-commands.md)
 
 ## Credits
 
-I learned a lot by looking at other people's NixOS and Home Manager configurations. Here is a non exhaustive list of repositories I often look at for inspiration, and why I think they are worth mentioning.
+I owe a lot to [Vimjoyer](https://www.youtube.com/@vimjoyer/videos) and his excellent videos on NixOS and Home Manager.
+
+I also learned a lot by looking at other people's NixOS and Home Manager configurations. Here is a non exhaustive list of repositories I often look at for inspiration, and why I think they are worth mentioning.
 
 ### [cadey/nixos-configs](https://tulpa.dev/cadey/nixos-configs)
 
