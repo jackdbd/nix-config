@@ -47,7 +47,7 @@ in {
         excludes = [];
         nodump = true;
         # period is described in man systemd.time. Examples: "01:15", "hourly", "daily"
-        period = "daily";
+        period = "hourly";
         printStats = true;
         verbose = true;
       };
@@ -56,6 +56,8 @@ in {
         directories = [
           "/home/${user}/Music/shared-music/random-mix"
         ];
+        excludes = [];
+        period = "daily";
       };
 
       keyfile = "/home/${user}/tarsnap.key";
