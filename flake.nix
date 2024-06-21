@@ -60,6 +60,7 @@
       "mongodb-compass"
       "obsidian"
       "postman"
+      "tarsnap"
       "vscode"
       "vscode-extension-github-copilot"
       "vscode-extension-github-copilot-chat"
