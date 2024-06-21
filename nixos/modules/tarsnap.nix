@@ -41,12 +41,13 @@ in {
       # You can list all systemd system timers with this command:
       # systemctl --system list-timers
       archives.docs = {
+        cachedir = "/home/${user}/tarsnap-cache";
         directories = [
           "/home/${user}/Documents/shared-documents"
         ];
         excludes = [];
         nodump = true;
-        # period is described in man systemd.time. Examples: "01:15", "hourly", "daily"
+        # The time format for `period` is described in `man systemd.time`. Examples: "*:30", "01:15", "hourly", "daily"
         period = "hourly";
         printStats = true;
         verbose = true;
@@ -56,7 +57,6 @@ in {
         directories = [
           "/home/${user}/Music/shared-music/random-mix"
         ];
-        excludes = [];
         period = "daily";
       };
 
