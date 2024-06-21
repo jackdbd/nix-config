@@ -44,9 +44,7 @@
   boot.loader.systemd-boot.enable = true;
 
   environment.enableDebugInfo = false;
-
   environment.homeBinInPath = true;
-
   environment.systemPackages = import ../../../lib/system-packages.nix {inherit config pkgs;};
 
   # environment.xfce.excludePackages = with pkgs.xfce; [

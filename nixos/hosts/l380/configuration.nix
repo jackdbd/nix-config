@@ -1,34 +1,58 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  allowed-unfree-packages,
+  config,
+  fh,
+  inputs,
+  lib,
+  nil,
+  nixos-hardware,
+  permitted-insecure-pakages,
+  pkgs,
+  user,
+  ...
+}: {
+  imports = [
+    # There is no Nix module for the ThinkPad L380. Maybe find a similar model.
+    # nixos-hardware.nixosModules.lenovo-thinkpad-l380
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    {
+      environment.systemPackages = [fh.packages.x86_64-linux.default];
+    }
+    {
+      environment.systemPackages = [nil.packages.x86_64-linux.default];
+    }
+    ../../modules/android.nix
+    ../../modules/bluetooth.nix
+    ../../modules/dbt.nix
+    ../../modules/fonts.nix
+    ../../modules/hyprland.nix
+    ../../modules/nix.nix
+    ../../modules/pipewire.nix
+    ../../modules/printing.nix
+    ../../modules/riscv.nix
+    ../../modules/secrets.nix
+    ../../modules/syncthing.nix
+    ../../modules/tailscale.nix
+    ../../modules/trezor.nix
+    ../../modules/xserver.nix
+  ];
 
   boot.initrd.luks.devices."luks-d47fdf7e-ec01-48fc-95f4-9d76df0e09be".device = "/dev/disk/by-uuid/d47fdf7e-ec01-48fc-95f4-9d76df0e09be";
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.configurationLimit = 50;
+  boot.loader.systemd-boot.enable = true;
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+  environment.enableDebugInfo = false;
+  environment.homeBinInPath = true;
+  environment.systemPackages = import ../../../lib/system-packages.nix {inherit config pkgs;};
 
-  # Set your time zone.
-  time.timeZone = "Europe/Rome";
+  hardware.bluetooth.enable = true;
 
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
@@ -43,82 +67,35 @@
     LC_TIME = "it_IT.UTF-8";
   };
 
-  # Enable the X11 windowing system.
+  networking.hostName = "l380-nixos";
+
+  networking.networkmanager.enable = true;
+
+  nixpkgs.config = {
+    # allowUnfree = true;
+    allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
+    permittedInsecurePackages = permitted-insecure-pakages;
+  };
+
+  # On XFCE, there is no configuration tool for NetworkManager by default: by
+  # enabling programs.nm-applet.enable, the graphical applet will be installed
+  # and will launch automatically when the graphical session is started.
+  programs.nm-applet.enable = true;
+
+  services.pipewire.enable = true;
+  services.printing.enable = true;
+  services.syncthing.enable = true;
+  services.tailscale.enable = true;
+  services.trezord.enable = true;
   services.xserver.enable = true;
 
-  # Enable the XFCE Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.xfce.enable = true;
+  # Don't set sound.enable to true, as sound.enable is only meant for ALSA-based configurations
 
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.jack = {
-    isNormalUser = true;
-    description = "Giacomo Debidda";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
-  };
-
-  # Install firefox.
-  programs.firefox.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #  wget
-  ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  # I tried enabling automatic system upgrades and it broke my system. For now I prefer to manually upgrade.
+  # https://nixos.wiki/wiki/Automatic_system_upgrades
+  # https://mynixos.com/nixpkgs/option/system.autoUpgrade.enable
+  # https://www.reddit.com/r/NixOS/comments/yultt3/what_has_your_experience_been_with/
+  system.autoUpgrade.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -128,4 +105,18 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
 
+  time.timeZone = "Europe/Rome";
+
+  # First, define extra groups. Then, declare users as members of those groups.
+  # https://superuser.com/a/1352988
+  users.groups.skaters = {};
+  users.users.${user} = import ../../users/jack.nix {inherit config pkgs;};
+
+  virtualisation.docker = {
+    enable = true;
+    autoPrune = {
+      enable = true;
+      dates = "weekly";
+    };
+  };
 }
