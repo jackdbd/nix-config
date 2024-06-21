@@ -118,6 +118,7 @@ in {
       nix-index # locate packages containing certain nixpkgs (TODO: does it work with flakes?)
       nix-output-monitor # nom: monitor nix commands (TODO: does it work with flakes?)
       nodePackages.node-gyp # Node.js native addon build tool
+      nodePackages.wrangler # Cloudflare Workers CLI
       nuclei # vulnerability scanner
       obsidian # notes / knowledge base
       ocrmypdf # adds an OCR text layer to scanned PDF files, allowing them to be searched (e.g. with ripgrep-all)
