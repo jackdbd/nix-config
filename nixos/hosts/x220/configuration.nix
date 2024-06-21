@@ -31,6 +31,7 @@
     ../../modules/secrets.nix
     ../../modules/syncthing.nix
     ../../modules/tailscale.nix
+    ../../modules/tarsnap.nix
     ../../modules/trezor.nix
     ../../modules/xserver.nix
   ];
@@ -119,6 +120,7 @@
   services.printing.enable = true;
   services.syncthing.enable = true;
   services.tailscale.enable = true;
+  services.tarsnap.enable = true;
   services.trezord.enable = true;
   services.xserver.enable = true;
 

@@ -86,6 +86,7 @@
   services.printing.enable = true;
   services.syncthing.enable = true;
   services.tailscale.enable = true;
+  services.tarsnap.enable = true;
   services.trezord.enable = true;
   services.xserver.enable = true;
 
