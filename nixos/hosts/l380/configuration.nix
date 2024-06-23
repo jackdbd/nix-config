@@ -31,6 +31,7 @@
     ../../modules/fonts.nix
     ../../modules/hyprland.nix
     ../../modules/nix.nix
+    ../../modules/ollama.nix
     ../../modules/pipewire.nix
     ../../modules/printing.nix
     ../../modules/riscv.nix

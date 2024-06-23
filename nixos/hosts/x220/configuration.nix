@@ -25,6 +25,7 @@
     ../../modules/dbt.nix
     ../../modules/fonts.nix
     ../../modules/nix.nix
+    ../../modules/ollama.nix
     ../../modules/pipewire.nix
     ../../modules/printing.nix
     ../../modules/riscv.nix
