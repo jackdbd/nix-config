@@ -23,6 +23,7 @@ in
       binutils # tools for manipulating binaries (nm, objdump, strip, etc...)
       docker-compose # define and run multi-container applications with Docker
       duf # disk usage utility
+      gdb # GNU project debugger
       gitFull # git + graphical tools like gitk (see https://nixos.wiki/wiki/Git)
       gitg # git GUI
       glxinfo # show information about the GLX implementation
