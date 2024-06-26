@@ -29,6 +29,10 @@ in
     echo "secret found at ${secrets."elevenlabs/api_key".path}"
     echo "secret is $(cat ${secrets."elevenlabs/api_key".path})"
 
+    printf "\nfastly/api_token\n"
+    echo "secret found at ${secrets."fastly/api_token".path}"
+    echo "secret is $(cat ${secrets."fastly/api_token".path})"
+
     printf "\ngithub-tokens/semantic_release_bot\n"
     echo "secret found at ${secrets."github-tokens/semantic_release_bot".path}"
     echo "secret is $(cat ${secrets."github-tokens/semantic_release_bot".path})"

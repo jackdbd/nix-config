@@ -68,6 +68,10 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."fastly/api_token" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."github-tokens/semantic_release_bot" = {
       inherit group mode owner;
     };
