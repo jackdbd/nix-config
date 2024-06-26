@@ -12,14 +12,16 @@
     # - https://gist.github.com/michaelmrose/9595075b43f24aa903fa
     # - https://github.com/iAmMrinal0/nix-config/blob/master/config/zathura.nix
     options = {
+      # Open document in fit-width mode by default
+      adjust-open = "best-fit";
       default-bg = "#000000";
       default-fg = "#F7F7F6";
       font = "FiraCode Nerd Font 15";
-      "page-padding" = 10;
-      "pages-per-row" = 2;
+      page-padding = 10;
+      pages-per-row = 1;
 
-      # stop at page boundries
-      "scroll-page-aware" = true;
+      # stop at page boundaries
+      scroll-page-aware = true;
 
       # Defines the X clipboard into which mouse-selected data will be written.
       # When it is "clipboard",  selected  data will be written to the CLIPBOARD
@@ -27,7 +29,7 @@
       # When it is "primary", selected data  will be  written  to  the  PRIMARY
       # clipboard, and can be pasted using the middle mouse button, or the
       # Shift-Insert key combination.
-      "selection-clipboard" = "clipboard";
+      selection-clipboard = "clipboard";
     };
     # keybindings
     mappings = {
