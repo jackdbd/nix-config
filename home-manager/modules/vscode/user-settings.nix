@@ -91,8 +91,8 @@
   # Prevent Gitlens from hijacking the "Generate Commit Message with Copilot" button.
   # https://github.com/microsoft/vscode/issues/200375#issuecomment-1847411013
   "gitlens.ai.experimental.generateCommitMessage.enabled" = false;
-  "gitlens.ai.experimental.openai.model" = "gpt-4";
-  "gitlens.ai.experimental.provider" = "openai";
+  # "gitlens.ai.experimental.openai.model" = "gpt-4";
+  # "gitlens.ai.experimental.provider" = "openai";
   # Configure vscode-nix-ide to use nil as the language server for Nix expressions.
   # https://github.com/oxalica/nil?tab=readme-ov-file#vscodevscodium-with-nix-ide
   "nix.enableLanguageServer" = true;
@@ -128,7 +128,8 @@
   # https://github.com/ziglang/vscode-zig/blob/master/package.json
   "zig.checkForUpdate" = true;
   "zig.initialSetupDone" = true;
-  "zig.path" = "/home/jack/bin/zig"; # I use zigup to install & manage my zig compilers. This path is a symlink created by zigup.
+  "zig.path" = "zig"; # The string "zig" means lookup zig in PATH
   "zig.zls.checkForUpdate" = true;
-  "zig.zls.path" = "/home/jack/.nix-profile/bin/zls";
+  "zig.zls.path" = "zls"; # The string "zls" means lookup zls in PATH
+  # "zig.zls.path" = "/home/jack/.nix-profile/bin/zls";
 }
