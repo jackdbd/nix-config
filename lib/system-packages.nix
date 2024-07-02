@@ -23,6 +23,8 @@ in
       binutils # tools for manipulating binaries (nm, objdump, strip, etc...)
       docker-compose # define and run multi-container applications with Docker
       duf # disk usage utility
+      gcc # GNU Compiler Collection
+      libgcc # GNU Compiler Collection
       gdb # GNU project debugger
       gitFull # git + graphical tools like gitk (see https://nixos.wiki/wiki/Git)
       gitg # git GUI
@@ -40,6 +42,7 @@ in
       mongodb-compass # MongoDB GUI
       nmap # tool for network discovery and security auditing
       pinentry # GnuPG's interface to passphrase input
+      poetry # Python dependency management and packaging
       poppler_utils # Rendering library and utilities for PDF files (e.g. pdfunite)
       sops # editor for encrypting/decrypting JSON, YAML, ini, etc
       stow # symlink tool
