@@ -39,6 +39,7 @@
     ../../modules/syncthing.nix
     ../../modules/tailscale.nix
     ../../modules/trezor.nix
+    ../../modules/virtualbox.nix
     ../../modules/xserver.nix
   ];
 
