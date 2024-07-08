@@ -24,6 +24,7 @@ in
       docker-compose # define and run multi-container applications with Docker
       duf # disk usage utility
       gcc # GNU Compiler Collection
+      gcc-unwrapped # GNU Compiler Collection
       libgcc # GNU Compiler Collection
       gdb # GNU project debugger
       gitFull # git + graphical tools like gitk (see https://nixos.wiki/wiki/Git)
@@ -35,6 +36,7 @@ in
       home-manager # Nix-based user environment configurator
       k6 # HTTP load testing tool
       libnotify # send desktop notifications to a notification daemon
+      lief # Library to Instrument Executable Formats
       linuxKernel.packages.linux_6_1.perf # Linux tools to profile with performance counters
       lmstudio # app for experimenting with local and open-source Large Language Models (LLMs) # TODO: nixos-rebuidl switch fails because of a hash mismatch
       ltrace # tool that intercepts and records dynamic library calls
