@@ -32,6 +32,7 @@
     ../../modules/printing.nix
     ../../modules/riscv.nix
     ../../modules/secrets.nix
+    ../../modules/steam.nix
     ../../modules/syncthing.nix
     ../../modules/tailscale.nix
     ../../modules/tarsnap.nix
