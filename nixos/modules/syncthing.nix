@@ -8,6 +8,7 @@
 with lib; let
   cfg = config.services.syncthing;
   laptops = ["ThinkPad L380" "ThinkPad L390" "ThinkPad X220"];
+  phones = ["OnePlus 6" "Redmi Note 9S"];
 in {
   meta = {};
 
@@ -57,6 +58,9 @@ in {
       overrideFolders = true;
 
       settings.devices = {
+        "OnePlus 6" = {
+          id = "OO35EO2-3P3PHGG-7NDEN4O-AYECVHU-RDMFVYQ-N2C6PGD-EQ7KXZ2-C5PLGAO";
+        };
         "Redmi Note 9S" = {
           id = "7WJ47ZP-O776CHO-OELIPNH-GUOZHA4-UYYZ3WS-PL5BE6L-INDDN3D-FHKDDQQ";
         };
@@ -86,12 +90,12 @@ in {
         "mihyn-ggmuw" = {
           label = "Shared Docs";
           path = "/home/${user}/Documents/shared-documents";
-          devices = laptops ++ ["Redmi Note 9S"];
+          devices = laptops ++ phones;
         };
         "prz5n-egjgc" = {
           label = "Shared Music";
           path = "/home/${user}/Music/shared-music";
-          devices = laptops ++ ["Redmi Note 9S"];
+          devices = laptops ++ phones;
         };
         "ewwca-actnr" = {
           label = "Shared Pics";
@@ -102,6 +106,11 @@ in {
           label = "Shared Videos";
           path = "/home/${user}/Videos/shared-videos";
           devices = laptops;
+        };
+        "oneplus_a6003_qqhe-photos" = {
+          label = "OnePlus 6 Camera";
+          path = "/home/${user}/Pictures/oneplus-6-camera";
+          devices = laptops ++ ["OnePlus 6"];
         };
         "uusn3-urfng" = {
           label = "Redmi Note 9S Camera";
