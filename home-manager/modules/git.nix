@@ -45,10 +45,12 @@ in {
         dt = "difftool --tool difftastic";
         dtm = "difftool --tool meld";
         fp = "fetch --prune";
+        fu = "fetch upstream";
         hist = "log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short";
         lg = "log --oneline --graph --decorate";
         mt = "mergetool";
         pf = "push --force-with-lease";
+        pom = "push origin main";
         pum = "pull upstream main";
         ra = "rebase --abort";
         rc = "rebase --continue";
