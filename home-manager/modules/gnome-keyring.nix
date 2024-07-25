@@ -20,7 +20,7 @@ in {
 
   config = mkIf cfg.enable {
     home.packages = [
-      pkgs.gnome.seahorse # GUI for GNOME keyring (aka Passwords and Keys)
+      pkgs.seahorse # GUI for GNOME keyring (aka Passwords and Keys)
     ];
 
     # https://github.com/nix-community/home-manager/blob/master/modules/services/gnome-keyring.nix

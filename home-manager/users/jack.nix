@@ -80,7 +80,7 @@ in {
       '')
       difftastic # syntax-aware diff
       dive # explore the layers of a container image
-      emojione # open source emoji set
+      # emojione # open source emoji set TODO: this failed to build on 2024/07/25
       entr # file watcher
       exif # read and manipulate EXIF data in digital photographs
       eza # fork of exa, a better `ls`
@@ -129,7 +129,7 @@ in {
       papirus-icon-theme
       pgadmin4
       pinta # image editor
-      # pitivi # video editor TODO: this failed to build on 2024/04/24, 2024/04/30
+      pitivi # video editor
       podman # docker run alternative
       poke # editor for binary data
       # postman # https://github.com/NixOS/nixpkgs/issues/259147
@@ -166,10 +166,10 @@ in {
       stress # workload generator for POSIX systems (required by s-tui)
       stripe-cli
       supabase-cli
-      temurin-bin-18 # OpenJDK
+      temurin-bin # Eclipse Temurin, prebuilt OpenJDK binary
       thunderbird # email client
       tokei # display statistics about your code
-      transmission # BitTorrent client
+      transmission_3 # BitTorrent client
       trash-cli # alternative to rm
       # trashy # alternative to rm and trash-cli (not working?)
       unzrip # unzip replacement with parallel decompression

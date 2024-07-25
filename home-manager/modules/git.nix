@@ -21,7 +21,7 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       git
-      git-cola # git GUI
+      # git-cola # git GUI TODO: this failed to build on 2024/07/25
       lazygit # terminal UI for git commands
     ];
 
