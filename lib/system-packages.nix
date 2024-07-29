@@ -34,6 +34,7 @@ in
       gnupg # GNU Privacy Guard
       gpa # Graphical user interface for the GnuPG
       gparted # partition editor
+      hdparm # tool to get/set ATA/SATA drive parameters under Linux (e.g. for benchmarking disk performance)
       home-manager # Nix-based user environment configurator
       k6 # HTTP load testing tool
       libnotify # send desktop notifications to a notification daemon
