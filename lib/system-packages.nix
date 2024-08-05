@@ -48,6 +48,7 @@ in
       pinentry # GnuPG's interface to passphrase input
       poetry # Python dependency management and packaging
       poppler_utils # Rendering library and utilities for PDF files (e.g. pdfunite)
+      railway # CLI for Railway (Paas)
       sops # editor for encrypting/decrypting JSON, YAML, ini, etc
       stow # symlink tool
       unzip
