@@ -19,6 +19,7 @@ in
   # Packages available to all users, and automatically updated every time you
   # rebuild the system configuration.
     [
+      adrgen # CLI to manage Architecture Decision Records (ADR)
       bandwhich # display network utilization by process, connection and remote IP/hostname
       binutils # tools for manipulating binaries (nm, objdump, strip, etc...)
       devenv # Fast, Declarative, Reproducible, and Composable Developer Environments
