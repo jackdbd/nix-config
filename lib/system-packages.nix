@@ -22,6 +22,7 @@ in
       adrgen # CLI to manage Architecture Decision Records (ADR)
       bandwhich # display network utilization by process, connection and remote IP/hostname
       binutils # tools for manipulating binaries (nm, objdump, strip, etc...)
+      cmake
       devenv # Fast, Declarative, Reproducible, and Composable Developer Environments
       docker-compose # define and run multi-container applications with Docker
       duf # disk usage utility
