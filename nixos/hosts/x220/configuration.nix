@@ -34,6 +34,7 @@
     ../../modules/tailscale.nix
     ../../modules/tarsnap.nix
     ../../modules/trezor.nix
+    ../../modules/vscodium.nix
     ../../modules/xserver.nix
   ];
 

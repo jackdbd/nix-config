@@ -41,6 +41,7 @@
     ../../modules/tailscale.nix
     ../../modules/trezor.nix
     ../../modules/virtualbox.nix
+    ../../modules/vscodium.nix
     ../../modules/xserver.nix
   ];
 
