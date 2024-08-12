@@ -58,7 +58,6 @@
       "google-chrome"
       "lmstudio"
       "mongodb-compass"
-      "obsidian"
       "postman"
       "steam"
       "steam-original"
@@ -71,8 +70,6 @@
       "vscode-extension-ms-vsliveshare-vsliveshare"
     ];
     permitted-insecure-pakages = [
-      # Obsidian is built on Electron. I don't know why NixOS marks Electron as insecure.
-      "electron-25.9.0"
       # Some package (no idea which one) depends on v8-9.7.106.18, which nix marks as insecure.
       # Unfortunately the error nix gives us is not very actionable, as they say here:
       # https://github.com/NixOS/nixpkgs/issues/209804
