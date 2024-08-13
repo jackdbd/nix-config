@@ -81,12 +81,7 @@ in {
       # https://github.com/jackdbd/dotfiles/tree/main/Code/.config/Code/User/snippets
       globalSnippets = import ./global-snippets.nix;
 
-      keybindings = [
-        {
-          key = "f1";
-          command = "revealInExplorer";
-        }
-      ];
+      keybindings = import ./keybindings.nix;
 
       # https://code.visualstudio.com/docs/getstarted/settings
       # https://github.com/jackdbd/dotfiles/blob/main/Code/.config/Code/User/settings.json
