@@ -52,6 +52,7 @@ in
       poppler_utils # Rendering library and utilities for PDF files (e.g. pdfunite)
       railway # CLI for Railway (Paas)
       sops # editor for encrypting/decrypting JSON, YAML, ini, etc
+      statix # Nix linter
       stow # symlink tool
       unzip
       winetricks # script to install DLLs needed to work around problems in Wine
