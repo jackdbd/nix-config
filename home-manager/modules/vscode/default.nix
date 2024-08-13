@@ -61,7 +61,9 @@ in {
           mechatroner.rainbow-csv
           mhutchie.git-graph
           ms-azuretools.vscode-docker
-          ms-python.debugpy # Python debugger (debugpy) extension for VS Code
+          ms-python.black-formatter # Python formatter
+          ms-python.debugpy # Python debugger
+          ms-python.isort # Python import sorter
           ms-python.python
           ms-vscode-remote.remote-containers # Dev Containers
           ms-vsliveshare.vsliveshare # Live Share (real-time collaborative development)

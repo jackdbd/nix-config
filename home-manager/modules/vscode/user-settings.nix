@@ -19,6 +19,11 @@
   "[nix]"."editor.tabSize" = 2;
   "[postcss]"."editor.defaultFormatter" = "stylelint.vscode-stylelint";
   "[postcss]"."editor.formatOnSave" = true;
+  "[python]"."editor.defaultFormatter" = "ms-python.black-formatter";
+  "[python]"."editor.formatOnSave" = true;
+  "[python]"."editor.codeActionsOnSave" = {
+    "source.organizeImports" = "explicit";
+  };
   "alejandra.program" = "alejandra";
   # https://calva.io/customizing/
   # https://calva.io/emacs-keybindings/
@@ -93,6 +98,10 @@
   "gitlens.ai.experimental.generateCommitMessage.enabled" = false;
   # "gitlens.ai.experimental.openai.model" = "gpt-4";
   # "gitlens.ai.experimental.provider" = "openai";
+  "isort" = {
+    "args" = ["--profile" "black"];
+    "check" = true;
+  };
   # Configure vscode-nix-ide to use nil as the language server for Nix expressions.
   # https://github.com/oxalica/nil?tab=readme-ov-file#vscodevscodium-with-nix-ide
   "nix.enableLanguageServer" = true;
