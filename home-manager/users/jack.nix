@@ -114,6 +114,7 @@ in {
       monolith # save a web page as a single HTML file
       mtr # network diagnostics tool (basically traceroute + ping)
       ncdu # disk usage utility
+      neil # CLI to add common aliases and features to deps.edn-based projects (e.g. Clojure, ClojureScript)
       neofetch
       nix-index # locate packages containing certain nixpkgs (TODO: does it work with flakes?)
       nix-output-monitor # nom: monitor nix commands (TODO: does it work with flakes?)
