@@ -117,8 +117,10 @@
     };
   };
   "search.exclude" = {
+    "**/.calva" = true;
     "**/.direnv" = true;
     "**/.git" = true;
+    "**/dist" = true;
     "**/flake-inputs" = true;
     "**/node_modules" = true;
     "**/tmp" = true;
