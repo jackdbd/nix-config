@@ -54,6 +54,7 @@ in
       sops # editor for encrypting/decrypting JSON, YAML, ini, etc
       statix # Nix linter
       stow # symlink tool
+      typescript # TypeScript compiler
       unzip
       winetricks # script to install DLLs needed to work around problems in Wine
       wineWowPackages.stable # https://nixos.wiki/wiki/Wine
