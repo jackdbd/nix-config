@@ -70,6 +70,8 @@
       "vscode-extension-ms-vsliveshare-vsliveshare"
     ];
     permitted-insecure-pakages = [
+      # Matrix clients and Jitsi Meet use this library
+      "olm-3.2.16"
       # Some package (no idea which one) depends on v8-9.7.106.18, which nix marks as insecure.
       # Unfortunately the error nix gives us is not very actionable, as they say here:
       # https://github.com/NixOS/nixpkgs/issues/209804
