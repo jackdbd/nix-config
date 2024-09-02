@@ -42,7 +42,7 @@
     ../../modules/xserver.nix
   ];
 
-  # boot.initrd.luks.devices."luks-b3f9c76b-a5c8-4cde-ac71-535947e59429".device = "/dev/disk/by-uuid/b3f9c76b-a5c8-4cde-ac71-535947e59429";
+  boot.initrd.luks.devices."luks-5e372b2f-58e6-48ea-83c3-3b2a2b67e935".device = "/dev/disk/by-uuid/5e372b2f-58e6-48ea-83c3-3b2a2b67e935";
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.configurationLimit = 50;
