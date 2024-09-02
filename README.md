@@ -88,6 +88,12 @@ I also learned a lot by looking at other people's NixOS and Home Manager configu
 - it's well documented. There is a short README in almost any directory. This keeps the documentation focused on a small subset of the entire configuration. I really like this approach.
 - the author wrote this [NixOS & Flakes Book](https://nixos-and-flakes.thiscute.world/preface).
 
+### [TheMaxMur/NixOS-Configuration](https://github.com/TheMaxMur/NixOS-Configuration)
+
+- it uses [impermanence](https://nixos.wiki/wiki/Impermanence) (as a Home Manager module) to remove files/directories that are not specified in the nix config.
+- it uses [Disko](https://github.com/nix-community/disko) for declarative disk management: luks + lvm + btrfs.
+- it uses [Stylix](https://github.com/danth/stylix) to customize the theme for the entire system and the software you use.
+
 ### [thiagokokada/nix-configs](https://github.com/thiagokokada/nix-configs)
 
 - it's well documented.
