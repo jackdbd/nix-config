@@ -211,3 +211,21 @@ nix-env -e code
 nix-env -e git
 nix-env -e go
 ```
+
+## 8. Syncthing
+
+In the Syncthing web UI (http://127.0.0.1:8384/), go to `Actions` > `Show ID` and copy the ID of the new machine. Add/update this ID in the `config` section of the `nixos/modules/syncthing.nix`. For example:
+
+```txt
+settings.devices = {
+  "ThinkPad L390" = {
+    id = "KPVHYCY-WBF7QTW-UVEOQN4-BKQDYZB-QFBSYOQ-65SCSFR-LGIFVE4-ESN6GQQ";
+  };
+};
+```
+
+Double check that all Syncthing devices start syncing folders.
+
+## 9. FlowCrypt
+
+Configure [FlowCrypt](https://flowcrypt.com/) (PGP encryption for GMail).
