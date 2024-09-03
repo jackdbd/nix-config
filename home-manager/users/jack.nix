@@ -174,7 +174,7 @@ in {
       # trashy # alternative to rm and trash-cli (not working?)
       unzrip # unzip replacement with parallel decompression
       usbutils # tools for working with USB devices, such as lsusb
-      v8 # JavaScript engine used in Node.js, Chromium, etc
+      # v8 # JavaScript engine used in Node.js, Chromium, etc
       visidata # CLI for Exploratory Data Analysis
       vlc
       volta # JavaScript Tool Manager (nvm alternative)
