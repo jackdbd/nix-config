@@ -32,8 +32,8 @@
     mktplcRef = {
       name = "color-info";
       publisher = "bierner"; # Matt Bierner
-      version = "0.7.2";
       sha256 = "sha256-Bf0thdt4yxH7OsRhIXeqvaxD1tbHTrUc4QJcju7Hv90=";
+      version = "0.7.2";
     };
     meta = {
       changelog = "https://marketplace.visualstudio.com/items/bierner.color-info/changelog";
@@ -47,8 +47,8 @@
     mktplcRef = {
       name = "turbo-console-log";
       publisher = "ChakrounAnas";
-      version = "2.10.4";
       sha256 = "sha256-6CMnEGss4XkDau6Wn4equMJWoQtSjMgQ15Y7TK3mZvk=";
+      version = "2.10.4";
     };
     meta = {
       changelog = "https://marketplace.visualstudio.com/items/ChakrounAnas.turbo-console-log/changelog";
@@ -62,8 +62,8 @@
     mktplcRef = {
       name = "vscode-wasm";
       publisher = "dtsvet"; # WebAssembly Foundation
-      version = "1.4.1";
       sha256 = "sha256-zs7E3pxf4P8kb3J+5zLoAO2dvTeepuCuBJi5s354k0I=";
+      version = "1.4.1";
     };
     meta = {
       changelog = "https://marketplace.visualstudio.com/items/dtsvet.vscode-wasm/changelog";
@@ -77,8 +77,8 @@
     mktplcRef = {
       name = "sqltools";
       publisher = "mtxr";
-      version = "0.28.3";
       sha256 = "sha256-bTrHAhj8uwzRIImziKsOizZf8+k3t+VrkOeZrFx7SH8=";
+      version = "0.28.3";
     };
     meta = {
       changelog = "https://vscode-sqltools.mteixeira.dev/changelog";
@@ -92,8 +92,8 @@
     mktplcRef = {
       name = "vscode-versionlens";
       publisher = "pflannery";
-      version = "1.9.2";
       sha256 = "sha256-2wmdfvD6j/gQ3IEAn1vKOOzbqlmbWhVM5qXlLoBmg3c=";
+      version = "1.9.2";
     };
     meta = {
       changelog = "https://marketplace.visualstudio.com/items/pflannery.vscode-versionlens/changelog";
@@ -107,8 +107,8 @@
     mktplcRef = {
       name = "vscode-css-peek";
       publisher = "pranaygp";
-      version = "4.4.1";
       sha256 = "sha256-GX6J9DfIW9CLarSCfWhJQ9vvfUxy8QU0kh3cfRUZIaE=";
+      version = "4.4.1";
     };
     meta = {
       downloadPage = "https://marketplace.visualstudio.com/items?itemName=pranaygp.vscode-css-peek";
@@ -122,8 +122,8 @@
     mktplcRef = {
       name = "gpt-pilot-vs-code";
       publisher = "PythagoraTechnologies";
-      version = "0.1.12";
       sha256 = "sha256-f+XNo3NRstKk+nc9q4qBbTehbdteDvss2MqazrlwVOQ=";
+      version = "0.1.12";
     };
     meta = {
       changelog = "https://marketplace.visualstudio.com/items/PythagoraTechnologies.gpt-pilot-vs-code/changelog";
@@ -137,8 +137,8 @@
     mktplcRef = {
       name = "nunjucks";
       publisher = "ronnidc";
-      version = "0.3.1";
       sha256 = "sha256-7YfmRMhC+HFmYgYtyHWrzSi7PZS3tdDHly9S1kDMmjY=";
+      version = "0.3.1";
     };
     meta = {
       downloadPage = "https://marketplace.visualstudio.com/items?itemName=ronnidc.nunjucks";
@@ -151,8 +151,8 @@
     mktplcRef = {
       name = "headwind";
       publisher = "heybourn";
-      version = "1.7.0";
       sha256 = "sha256-yXsZoSuJQTdbHLjEERXX2zVheqNYmcPXs97/uQYa7og=";
+      version = "1.7.0";
     };
     meta = {
       downloadPage = "https://marketplace.visualstudio.com/items?itemName=heybourn.headwind";
@@ -165,8 +165,8 @@
     mktplcRef = {
       name = "vscode-stylelint";
       publisher = "Stylelint";
-      version = "1.3.0";
       sha256 = "sha256-JoCa2d0ayBEuCcQi3Z/90GJ4AIECVz8NCpd+i+9uMeA=";
+      version = "1.3.0";
     };
     meta = {
       changelog = "https://marketplace.visualstudio.com/items/stylelint.vscode-stylelint/changelog";
@@ -181,8 +181,8 @@
     mktplcRef = {
       name = "unocss";
       publisher = "antfu"; # Anthony Fu
-      version = "0.59.2";
       sha256 = "sha256-nfqvzKqpvEoRU9B5KNjj4vLK5evaftSA60keEPVtbRY=";
+      version = "0.59.2";
     };
     meta = {
       downloadPage = "https://marketplace.visualstudio.com/items?itemName=antfu.unocss";
@@ -196,8 +196,8 @@
     mktplcRef = {
       name = "volar";
       publisher = "Vue";
-      version = "2.0.14";
       sha256 = "sha256-UQGatAUuDCd5/sisp8UOTuP1gtNMxTpOHQLzO28eOYg=";
+      version = "2.0.14";
     };
     meta = {
       changelog = "https://marketplace.visualstudio.com/items/Vue.volar/changelog";
@@ -211,8 +211,8 @@
     mktplcRef = {
       name = "pretty-ts-errors";
       publisher = "yoavbls";
-      version = "0.5.3";
-      sha256 = "sha256-JSCyTzz10eoUNu76wNUuvPVVKq4KaVKobS1CAPqgXUA=";
+      sha256 = "sha256-cmleAs7EMXT1z0o8Uq5ne2LrthUt/vhcN+iqfAy/i/8=";
+      version = "0.6.0";
     };
     meta = {
       downloadPage = "https://marketplace.visualstudio.com/items?itemName=yoavbls.pretty-ts-errors";
@@ -225,12 +225,8 @@
     mktplcRef = {
       name = "vscode-webhint";
       publisher = "webhint";
-      version = "2.1.12";
       sha256 = "sha256-gmdnU5OfHhWZ0yL3Af9blxDgO64Xbdmt8d6fDLVyPfc="; # v2.1.12
-      # sha256 = "sha256-I+mDpMb9SgGeh6+a2JePC98ZXZyU+WztmwyX4dWtySY="; # v2.1.10
-      # Version 2.1.11 doesn't work. Nix is able to build it, but it doesn't install it in VS Code.
-      # version = "2.1.11";
-      # sha256 = "sha256-Ir+Dk63k+eE+1PKQnO9FkCEXIVcfj/p13RcwTOf7qdM="; # v2.1.11
+      version = "2.1.12";
     };
     meta = {
       changelog = "https://marketplace.visualstudio.com/items/webhint.vscode-webhint/changelog";
@@ -244,8 +240,8 @@
     mktplcRef = {
       name = "vscode-zig";
       publisher = "ziglang";
-      version = "0.5.4";
-      sha256 = "sha256-kczkVm847COmpNtUJI5lsZIuM7qAU6UgE8SCj8ZhIaA=";
+      sha256 = "sha256-tKDIGALQT4mgZ7u+LSbdzW2pdH0RhyUjpWyH4YHNR10=";
+      version = "0.5.9";
     };
     meta = {
       changelog = "https://marketplace.visualstudio.com/items/ziglang.vscode-zig/changelog";
@@ -259,8 +255,8 @@
     mktplcRef = {
       name = "html-css-class-completion";
       publisher = "zignd";
-      version = "1.20.0";
       sha256 = "sha256-3BEppTBc+gjZW5XrYLPpYUcx3OeHQDPW8z7zseJrgsE=";
+      version = "1.20.0";
     };
     meta = {
       changelog = "https://marketplace.visualstudio.com/items/Zignd.html-css-class-completion/changelog";
@@ -278,7 +274,7 @@ in
     pflannery.vscode-versionlens
     pranaygp.vscode-css-peek
     # PythagoraTechnologies.gpt-pilot-vs-code
-    Pythagora-io.gpt-pilot
+    # Pythagora-io.gpt-pilot
     ronnidc.nunjucks
     ryan-heybourn.headwind
     stylelint.vscode-stylelint

@@ -95,9 +95,13 @@ in {
         version = "2.0.0";
         tasks = [
           {
-            type = "shell";
-            label = "Hello task";
-            command = "hello";
+            label = "Compile TypeScript files";
+            type = "typescript";
+            tsconfig = "tsconfig.json";
+            problemMatcher = ["$tsc"];
+            group = {
+              kind = "build";
+            };
           }
         ];
       };
