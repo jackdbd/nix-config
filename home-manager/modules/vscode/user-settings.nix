@@ -68,7 +68,9 @@
   "files.exclude".".calva/" = false;
   "files.exclude".".clj-kondo/" = true;
   "files.exclude".".cpcache/" = true;
+  "files.exclude".".direnv/" = true;
   "files.exclude".".lsp/" = true;
+  "files.exclude".".turbo/" = true;
   "files.exclude"."**/node_modules/" = true;
 
   "github.copilot.enable" = {
