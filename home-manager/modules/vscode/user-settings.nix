@@ -29,7 +29,19 @@
   # https://calva.io/emacs-keybindings/
   # https://calva.io/paredit/#about-the-keyboard-shortcuts
   "calva.paredit.hijackVSCodeDefaults" = true;
+  # Jack-in connect sequences: https://calva.io/connect-sequences/
+  "calva.replConnectSequences" = [
+    {
+      "name" = "deps.edn :dev";
+      "projectType" = "deps.edn";
+      "cljsType" = "none";
+      "menuSelections" = {
+        "cljAliases" = ["dev"];
+      };
+    }
+  ];
   "calva.showCalvaSaysOnStart" = false;
+  "calva.showDocstringInParameterHelp" = true;
   "css.validate" = true;
   "editor.inlineSuggest.enabled" = true;
   "editor.minimap.enabled" = false;
@@ -53,9 +65,12 @@
   };
 
   # hide a few folders
+  "files.exclude".".calva/" = false;
   "files.exclude".".clj-kondo/" = true;
+  "files.exclude".".cpcache/" = true;
   "files.exclude".".lsp/" = true;
   "files.exclude"."**/node_modules/" = true;
+
   "github.copilot.enable" = {
     "*" = true;
     plaintext = false;
@@ -116,6 +131,7 @@
       };
     };
   };
+
   "search.exclude" = {
     "**/.calva" = true;
     "**/.direnv" = true;
@@ -125,6 +141,7 @@
     "**/node_modules" = true;
     "**/tmp" = true;
   };
+
   # "security.workspace.trust.untrustedFiles" = "open";
   "turboConsoleLog.includeFileNameAndLineNum" = false;
   # Open all NEW VS Code windows in full screen mode. The first window will
