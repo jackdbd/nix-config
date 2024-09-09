@@ -6,6 +6,3 @@
 
 # Language Server Protocol
 .lsp/
-
-# Environment variables
-.envrc

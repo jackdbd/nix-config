@@ -92,7 +92,6 @@ in {
         ".clj-kondo/"
         ".lsp/"
         "*.direnv"
-        "*.envrc"
       ];
 
       userEmail = "giacomo@giacomodebidda.com";
