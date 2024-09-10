@@ -101,6 +101,10 @@ in
     echo "secret found at ${secrets."telegram/personal_bot".path}"
     echo "secret is $(cat ${secrets."telegram/personal_bot".path})"
 
+    printf "\nGCP Application Default Credentials (ADC) virtual-machines/adc\n"
+    echo "secret found at ${secrets."virtual-machines/adc".path}"
+    echo "secret is $(cat ${secrets."virtual-machines/adc".path})"
+
     printf "\nwebmentions_io_token\n"
     echo "secret found at ${secrets."webmentions_io_token".path}"
     echo "secret is $(cat ${secrets."webmentions_io_token".path})"

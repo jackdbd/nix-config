@@ -137,6 +137,11 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."virtual-machines/adc" = {
+      inherit group mode owner;
+      sopsFile = ../../secrets/gcp/virtual-machines.sops.yaml;
+    };
+
     sops.secrets."webmentions_io_token" = {
       inherit group mode owner;
     };
