@@ -57,6 +57,10 @@ in
     echo "secret found at ${secrets."linkedin/trusted_client".path}"
     echo "secret is $(cat ${secrets."linkedin/trusted_client".path})"
 
+    printf "\nminiflux\n"
+    echo "secret found at ${secrets."miniflux".path}"
+    echo "secret is $(cat ${secrets."miniflux".path})"
+
     printf "\nngrok/auth_token\n"
     echo "secret found at ${secrets."ngrok/auth_token".path}"
     echo "secret is $(cat ${secrets."ngrok/auth_token".path})"
