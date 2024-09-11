@@ -84,6 +84,10 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."indiekit" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."linkedin/trusted_client" = {
       inherit group mode owner;
     };

@@ -49,6 +49,10 @@ in
     echo "secret found at ${secrets."hacker-news/credentials".path}"
     echo "secret is $(cat ${secrets."hacker-news/credentials".path})"
 
+    printf "\nindiekit\n"
+    echo "secret found at ${secrets."indiekit".path}"
+    echo "secret is $(cat ${secrets."indiekit".path})"
+
     printf "\nlinkedin/trusted_client\n"
     echo "secret found at ${secrets."linkedin/trusted_client".path}"
     echo "secret is $(cat ${secrets."linkedin/trusted_client".path})"
