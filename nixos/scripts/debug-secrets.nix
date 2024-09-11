@@ -57,6 +57,10 @@ in
     echo "secret found at ${secrets."linkedin/trusted_client".path}"
     echo "secret is $(cat ${secrets."linkedin/trusted_client".path})"
 
+    printf "\nmastodon\n"
+    echo "secret found at ${secrets."mastodon".path}"
+    echo "secret is $(cat ${secrets."mastodon".path})"
+
     printf "\nminiflux\n"
     echo "secret found at ${secrets."miniflux".path}"
     echo "secret is $(cat ${secrets."miniflux".path})"
