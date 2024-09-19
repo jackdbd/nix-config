@@ -54,8 +54,14 @@ in {
       inherit group mode owner;
     };
 
-    sops.secrets."cloudflare_r2/personal" = {
+    sops.secrets."cloudflare/r2" = {
       inherit group mode owner;
+      sopsFile = ../../secrets/cloudflare/default.sops.yaml;
+    };
+
+    sops.secrets."cloudflare/tokens" = {
+      inherit group mode owner;
+      sopsFile = ../../secrets/cloudflare/default.sops.yaml;
     };
 
     sops.secrets."cloudinary" = {

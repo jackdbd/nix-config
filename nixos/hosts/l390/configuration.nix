@@ -91,7 +91,7 @@
   services.printing.enable = true;
   services.syncthing.enable = true;
   services.tailscale.enable = true;
-  services.tarsnap.enable = true;
+  services.tarsnap.enable = false; # TODO: re-enable
   services.trezord.enable = true;
   services.xserver.enable = true;
 
