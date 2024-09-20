@@ -150,14 +150,7 @@
 
     # Standalone home-manager configuration entrypoint (available both for NixOS machines and non-NixOS machines)
     # Available through 'home-manager --flake .#your-username@your-hostname'
-    homeConfigurations."${user}@L380" = home-manager.lib.homeManagerConfiguration {
-      inherit extraSpecialArgs pkgs;
-      modules = [
-        ./home-manager/users/${user}.nix
-        ./home-manager/modules/syncthing.nix
-      ];
-    };
-
+   
     homeConfigurations."${user}@l380-nixos" = home-manager.lib.homeManagerConfiguration {
       inherit extraSpecialArgs pkgs;
       modules = [./home-manager/users/${user}.nix];
