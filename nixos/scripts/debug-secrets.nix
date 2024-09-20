@@ -97,6 +97,10 @@ in
     echo "secret found at ${secrets."reddit/trusted_client".path}"
     echo "secret is $(cat ${secrets."reddit/trusted_client".path})"
 
+    printf "\nGCP service account prj-kitchen-sink/sa-notifier\n"
+    echo "secret found at ${secrets."prj-kitchen-sink/sa-notifier".path}"
+    echo "secret is $(cat ${secrets."prj-kitchen-sink/sa-notifier".path})"
+
     printf "\nGCP service account prj-kitchen-sink/sa-storage-uploader\n"
     echo "secret found at ${secrets."prj-kitchen-sink/sa-storage-uploader".path}"
     echo "secret is $(cat ${secrets."prj-kitchen-sink/sa-storage-uploader".path})"
