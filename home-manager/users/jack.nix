@@ -268,6 +268,16 @@ in {
 
   # Restart systemd services on change
   systemd.user.startServices = "sd-switch";
+  
+  # This is a workaround to avoid the error "Unit tray.target not found" on some systemd units (e.g. blueman, flameshot)
+  # https://github.com/nix-community/home-manager/issues/2064#issuecomment-887300055
+  # TODO: remove this workaround as soon the issue is fixed
+  systemd.user.targets.tray = {
+		Unit = {
+			Description = "Home Manager System Tray";
+			Requires = [ "graphical-session-pre.target" ];
+		};
+	};
 
   # https://mipmip.github.io/home-manager-option-search/?query=xsession
   # https://github.com/nix-community/home-manager/blob/8b797c8eea1eba7dfb47f6964103e6e0d134255f/modules/xsession.nix#L165
