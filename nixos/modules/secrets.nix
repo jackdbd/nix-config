@@ -126,6 +126,16 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."prj-kitchen-sink/sa-firestore-user-test" = {
+      inherit group mode owner;
+      sopsFile = ../../secrets/gcp/prj-kitchen-sink.sops.yaml;
+    };
+
+    sops.secrets."prj-kitchen-sink/sa-firestore-viewer-test" = {
+      inherit group mode owner;
+      sopsFile = ../../secrets/gcp/prj-kitchen-sink.sops.yaml;
+    };
+
     sops.secrets."prj-kitchen-sink/sa-notifier" = {
       inherit group mode owner;
       sopsFile = ../../secrets/gcp/prj-kitchen-sink.sops.yaml;
