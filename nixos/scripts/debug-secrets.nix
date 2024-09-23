@@ -37,6 +37,10 @@ in
     echo "secret found at ${secrets."fastly/api_token".path}"
     echo "secret is $(cat ${secrets."fastly/api_token".path})"
 
+    printf "\nfly/tokens\n"
+    echo "secret found at ${secrets."fly/tokens".path}"
+    echo "secret is $(cat ${secrets."fly/tokens".path})"
+
     printf "\ngithub-tokens/semantic_release_bot\n"
     echo "secret found at ${secrets."github-tokens/semantic_release_bot".path}"
     echo "secret is $(cat ${secrets."github-tokens/semantic_release_bot".path})"

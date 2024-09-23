@@ -1,21 +1,16 @@
-# Secrets for my Cloudflare account
+# Secrets for my Fly.io account
 
-Encrypted YAML files for my Cloudflare secrets.
+Encrypted YAML files for my Fly.io secrets.
 
 ## Create a YAML file
 
 Create a YAML file that has the following structure.
 
 ```yaml
-cloudflare:
-    r2: |
-        {
-            "access_key_id": "<value>",
-            "secret_access_key": "<value>"
-        }
+fly:
     tokens: |
         {
-            "dns_edit": "<value>"
+            "deploy": "<value>"
         }
 ```
 
@@ -27,7 +22,7 @@ Update the `creation_rules` in [`.sops.yaml`](../.sops.yaml) and run this comman
 
 ```sh
 sops --config secrets/.sops.yaml \
-  --encrypt "secrets/cloudflare/default.yaml" > "secrets/cloudflare/default.sops.yaml"
+  --encrypt "secrets/fly/default.yaml" > "secrets/fly/default.sops.yaml"
 ```
 
 ## Remove the unencrypted YAML file
@@ -35,10 +30,10 @@ sops --config secrets/.sops.yaml \
 First, double check that you can decrypt the encrypted file using SOPS.
 
 ```sh
-sops secrets/cloudflare/default.sops.yaml
+sops secrets/fly/default.sops.yaml
 ```
 
-Then, remove `cloudflare/default.yaml` (unencrypted file) and commit `cloudflare/default.sops.yaml` (encrypted file).
+Then, remove `fly/default.yaml` (unencrypted file) and commit `fly/default.sops.yaml` (encrypted file).
 
 > [!IMPORTANT]  
 > Donm't forget to update the [`secrets.nix`](../../nixos/modules/secrets.nix) NixOS module and the [`debug-secrets.nix`](../../nixos/scripts/debug-secrets.nix) script.
