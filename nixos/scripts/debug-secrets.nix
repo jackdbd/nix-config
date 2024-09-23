@@ -137,6 +137,10 @@ in
     echo "secret found at ${secrets."telegram/personal_bot".path}"
     echo "secret is $(cat ${secrets."telegram/personal_bot".path})"
 
+    printf "\nturso/tweedler\n"
+    echo "secret found at ${secrets."turso/tweedler".path}"
+    echo "secret is $(cat ${secrets."turso/tweedler".path})"
+
     printf "\nGCP Application Default Credentials (ADC) virtual-machines/adc\n"
     echo "secret found at ${secrets."virtual-machines/adc".path}"
     echo "secret is $(cat ${secrets."virtual-machines/adc".path})"

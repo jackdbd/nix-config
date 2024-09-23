@@ -180,6 +180,10 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."turso/tweedler" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."virtual-machines/adc" = {
       inherit group mode owner;
       sopsFile = ../../secrets/gcp/virtual-machines.sops.yaml;
