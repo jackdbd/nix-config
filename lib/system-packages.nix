@@ -47,6 +47,7 @@ in
       minisign # tool for signing files and verifying signatures
       mongodb-compass # MongoDB GUI
       nmap # tool for network discovery and security auditing
+      ntfs3g # FUSE-based NTFS driver
       pinentry # GnuPG's interface to passphrase input
       poetry # Python dependency management and packaging
       poppler_utils # Rendering library and utilities for PDF files (e.g. pdfunite)
