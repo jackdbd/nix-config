@@ -29,6 +29,16 @@
   # https://calva.io/emacs-keybindings/
   # https://calva.io/paredit/#about-the-keyboard-shortcuts
   "calva.paredit.hijackVSCodeDefaults" = true;
+  # https://calva.io/customizing-jack-in-and-connect/#project-roots-search-globing
+  # https://github.com/BetterThanTomorrow/calva/blob/cfac06252fb445ff20231ca0216698f577997254/package.json#L807
+  # TODO: I would like to add .devenv to this list, but I think I would need to
+  # create a nix overlay for this. It's much more reasonable to make a PR to
+  # Calva and add .devenv there.
+  # "calva.projectRootsSearchExclude" =
+  #   pkgs.vscode-extensions.betterthantomorrow.calva.projectRootsSearchExclude.default
+  #   ++ [
+  #     ".devenv"
+  #   ];
   # Jack-in connect sequences: https://calva.io/connect-sequences/
   "calva.replConnectSequences" = [
     {
