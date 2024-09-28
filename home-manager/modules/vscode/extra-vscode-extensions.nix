@@ -58,6 +58,20 @@
     };
   };
 
+  djblue.portal = buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      name = "portal";
+      publisher = "djblue";
+      sha256 = "sha256-uFPEgx5R69ESwJreoDBm7HX6kAt5MRz/U4SU6sOlypE=";
+      version = "0.57.3";
+    };
+    meta = {
+      downloadPage = "https://marketplace.visualstudio.com/items?itemName=djblue.portal";
+      homepage = "https://github.com/djblue/portal#readme";
+      license = lib.licenses.mit;
+    };
+  };
+
   dtsvet.vscode-wasm = buildVscodeMarketplaceExtension {
     mktplcRef = {
       name = "vscode-wasm";
@@ -269,6 +283,7 @@ in
     activitywatch.aw-watcher-vscode
     bierner.color-info # Provides quick information about css colors
     chakrounanas.turbo-console-log
+    djblue.portal # A clojure tool to navigate through your data
     dtsvet.vscode-wasm # WebAssembly Toolkit for VSCode
     mtxr.sqltools # SQL formatter and query runner for many databases
     pflannery.vscode-versionlens
