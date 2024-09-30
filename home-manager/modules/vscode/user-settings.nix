@@ -43,11 +43,13 @@
   "calva.replConnectSequences" = [
     {
       "name" = "deps.edn :dev";
-      "projectType" = "deps.edn";
+      "autoSelectForJackIn" = true;
       "cljsType" = "none";
+      # "jackInEnv" = {};
       "menuSelections" = {
         "cljAliases" = ["dev"];
       };
+      "projectType" = "deps.edn";
     }
   ];
   "calva.showCalvaSaysOnStart" = false;

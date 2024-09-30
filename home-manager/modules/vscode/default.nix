@@ -55,6 +55,7 @@ in {
           github.copilot-chat
           github.vscode-github-actions
           github.vscode-pull-request-github
+          hbenl.vscode-test-explorer #  Run your tests in the VS Code sidebar
           jdinhlife.gruvbox # Gruvbox theme
           jnoortheen.nix-ide # Nix language support with formatting and error report
           kamadorueda.alejandra # Nix formatter
@@ -66,10 +67,9 @@ in {
           ms-python.isort # Python import sorter
           ms-python.python
           ms-vscode-remote.remote-containers # Dev Containers
+          ms-vscode.test-adapter-converter # Test Explorer UI (vscode-test-explorer) depends on Test Adapter Converter (ms-vscode.test-adapter-converter)
           ms-vsliveshare.vsliveshare # Live Share (real-time collaborative development)
-          # mtxr.sqltools
-          # At the moment mtxr.sqltools is not available on nixpkgs (not even on
-          # nixpkgs unstable) https://github.com/mtxr/vscode-sqltools
+          tailscale.vscode-tailscale # Share a port over the internet with Tailscale Funnel
           tamasfe.even-better-toml
           usernamehw.errorlens
           zhwu95.riscv # syntax highlighting and snippets for RISC-V assembly language
