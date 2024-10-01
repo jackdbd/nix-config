@@ -54,6 +54,10 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."clojars" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."cloudflare/r2" = {
       inherit group mode owner;
       sopsFile = ../../secrets/cloudflare/default.sops.yaml;

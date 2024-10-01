@@ -17,6 +17,10 @@ in
     echo "secret found at ${secrets."cal".path}"
     echo "secret is $(cat ${secrets."cal".path})"
 
+    printf "\nclojars\n"
+    echo "secret found at ${secrets."clojars".path}"
+    echo "secret is $(cat ${secrets."clojars".path})"
+
     printf "\ncloudflare/r2\n"
     echo "secret found at ${secrets."cloudflare/r2".path}"
     echo "secret is $(cat ${secrets."cloudflare/r2".path})"
