@@ -43,7 +43,6 @@
   "calva.replConnectSequences" = [
     {
       "name" = "deps.edn :dev";
-      "autoSelectForJackIn" = true;
       "cljsType" = "none";
       # "jackInEnv" = {};
       "menuSelections" = {
