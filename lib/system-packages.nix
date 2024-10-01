@@ -59,6 +59,7 @@ in
       unzip
       winetricks # script to install DLLs needed to work around problems in Wine
       wineWowPackages.stable # https://nixos.wiki/wiki/Wine
+      zip
     ]
     ++ matePackages
     ++ xfcePackages
