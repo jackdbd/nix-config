@@ -52,6 +52,7 @@ in
       poetry # Python dependency management and packaging
       poppler_utils # Rendering library and utilities for PDF files (e.g. pdfunite)
       railway # CLI for Railway (Paas)
+      signal-desktop # Private, simple, and secure messenger
       sops # editor for encrypting/decrypting JSON, YAML, ini, etc
       statix # Nix linter
       stow # symlink tool
