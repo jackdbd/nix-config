@@ -180,6 +180,14 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."telegram/jackdbd_github_bot" = {
+      inherit group mode owner;
+    };
+
+    sops.secrets."telegram/jackdbd_youtube_videos_bot" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."telegram/personal_bot" = {
       inherit group mode owner;
     };

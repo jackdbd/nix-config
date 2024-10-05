@@ -137,6 +137,14 @@ in
     echo "secret found at ${secrets."syncthing/gui_credentials".path}"
     echo "secret is $(cat ${secrets."syncthing/gui_credentials".path})"
 
+    printf "\ntelegram/jackdbd_github_bot\n"
+    echo "secret found at ${secrets."telegram/jackdbd_github_bot".path}"
+    echo "secret is $(cat ${secrets."telegram/jackdbd_github_bot".path})"
+
+    printf "\ntelegram/jackdbd_youtube_videos_bot\n"
+    echo "secret found at ${secrets."telegram/jackdbd_youtube_videos_bot".path}"
+    echo "secret is $(cat ${secrets."telegram/jackdbd_youtube_videos_bot".path})"
+
     printf "\ntelegram/personal_bot\n"
     echo "secret found at ${secrets."telegram/personal_bot".path}"
     echo "secret is $(cat ${secrets."telegram/personal_bot".path})"
