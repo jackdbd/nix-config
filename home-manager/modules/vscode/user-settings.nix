@@ -76,11 +76,13 @@
   };
 
   # hide a few folders
-  "files.exclude".".calva/" = false;
+  "files.exclude".".calva/" = true;
   "files.exclude".".clj-kondo/" = true;
   "files.exclude".".cpcache/" = true;
   "files.exclude".".direnv/" = true;
+  "files.exclude".".devenv/" = true;
   "files.exclude".".lsp/" = true;
+  "files.exclude".".portal/" = true;
   "files.exclude".".turbo/" = true;
   "files.exclude"."**/node_modules/" = true;
 
@@ -148,6 +150,7 @@
   "search.exclude" = {
     "**/.calva" = true;
     "**/.direnv" = true;
+    "**/.devenv" = true;
     "**/.git" = true;
     "**/dist" = true;
     "**/flake-inputs" = true;
