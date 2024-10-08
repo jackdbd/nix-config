@@ -28,7 +28,13 @@
   # https://calva.io/customizing/
   # https://calva.io/emacs-keybindings/
   # https://calva.io/paredit/#about-the-keyboard-shortcuts
+
+  # I don't find the Calva inspector particularly useful. Maybe I'll change my mind later.
+  # https://calva.io/inspector/
+  "calva.autoOpenInspector" = false;
+
   "calva.paredit.hijackVSCodeDefaults" = true;
+
   # https://calva.io/customizing-jack-in-and-connect/#project-roots-search-globing
   # https://github.com/BetterThanTomorrow/calva/blob/cfac06252fb445ff20231ca0216698f577997254/package.json#L807
   # TODO: I would like to add .devenv to this list, but I think I would need to
