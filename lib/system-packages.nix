@@ -53,6 +53,7 @@ in
       poppler_utils # Rendering library and utilities for PDF files (e.g. pdfunite)
       railway # CLI for Railway (Paas)
       signal-desktop # Private, simple, and secure messenger
+      skopeo # CLI for various operations on container images and image repositories
       sops # editor for encrypting/decrypting JSON, YAML, ini, etc
       statix # Nix linter
       stow # symlink tool
