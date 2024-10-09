@@ -45,6 +45,10 @@ in
     echo "secret found at ${secrets."fly/tokens".path}"
     echo "secret is $(cat ${secrets."fly/tokens".path})"
 
+    printf "\ngithub-tokens/github_packages_push\n"
+    echo "secret found at ${secrets."github-tokens/github_packages_push".path}"
+    echo "secret is $(cat ${secrets."github-tokens/github_packages_push".path})"
+
     printf "\ngithub-tokens/semantic_release_bot\n"
     echo "secret found at ${secrets."github-tokens/semantic_release_bot".path}"
     echo "secret is $(cat ${secrets."github-tokens/semantic_release_bot".path})"

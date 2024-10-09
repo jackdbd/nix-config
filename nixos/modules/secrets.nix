@@ -87,6 +87,10 @@ in {
       sopsFile = ../../secrets/fly/default.sops.yaml;
     };
 
+    sops.secrets."github-tokens/github_packages_push" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."github-tokens/semantic_release_bot" = {
       inherit group mode owner;
     };
