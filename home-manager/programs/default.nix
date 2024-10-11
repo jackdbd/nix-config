@@ -24,12 +24,7 @@ let
         };
       };
 
-      htop = {
-        enable = true;
-        settings = {
-          color_scheme = 6;
-        };
-      };
+      htop.enable = true;
 
       tealdeer = {
         enable = true;

@@ -57,7 +57,6 @@ in {
       awsume # utility for assuming AWS IAM roles from the command line
       babashka # Clojure interpreter for scripting
       baobab # disk usage utility
-      bless # HEX editor
       bruno # IDE for exploring/testing APIs (Postman/Insomnia alternative)
       buildah # build OCI images (alternative to docker build)
       burpsuite # suite of tools for web application security
@@ -101,6 +100,7 @@ in {
       google-cloud-sdk # Google Cloud Platform CLI (gcloud)
       graphviz
       hyperfine # command-line benchmarking tool
+      imhex # HEX editor
       inkscape # vector graphics editor
       jq # JSON processor
       killall # kill processes by name or list PIDs
@@ -268,16 +268,16 @@ in {
 
   # Restart systemd services on change
   systemd.user.startServices = "sd-switch";
-  
+
   # This is a workaround to avoid the error "Unit tray.target not found" on some systemd units (e.g. blueman, flameshot)
   # https://github.com/nix-community/home-manager/issues/2064#issuecomment-887300055
   # TODO: remove this workaround as soon the issue is fixed
   systemd.user.targets.tray = {
-		Unit = {
-			Description = "Home Manager System Tray";
-			Requires = [ "graphical-session-pre.target" ];
-		};
-	};
+    Unit = {
+      Description = "Home Manager System Tray";
+      Requires = ["graphical-session-pre.target"];
+    };
+  };
 
   # https://mipmip.github.io/home-manager-option-search/?query=xsession
   # https://github.com/nix-community/home-manager/blob/8b797c8eea1eba7dfb47f6964103e6e0d134255f/modules/xsession.nix#L165
