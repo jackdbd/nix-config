@@ -91,6 +91,10 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."github-tokens/indiekit_github_content_store" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."github-tokens/semantic_release_bot" = {
       inherit group mode owner;
     };
