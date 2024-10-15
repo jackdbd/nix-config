@@ -43,7 +43,10 @@ in {
         [
           bbenoist.nix # Nix language support for VS Code
           betterthantomorrow.calva # Clojure/Script interactive programming for VS Code
-          bradlc.vscode-tailwindcss # Tailwind CSS tooling for VS Code
+          # This extension consumes a lot of CPU and memory if you do NOT have
+          # Tailwind CSS installed. For now, I'm disabling it.
+          # https://github.com/tailwindlabs/tailwindcss-intellisense/issues/915
+          # bradlc.vscode-tailwindcss # Tailwind CSS tooling for VS Code
           christian-kohler.path-intellisense
           coolbear.systemd-unit-file # syntax highlighting for systemd unit files
           davidanson.vscode-markdownlint
