@@ -107,6 +107,7 @@ in {
       kitty # GPU-based terminal emulator
       libreoffice # a variant of openoffice.org
       lm_sensors # tools for reading hardware sensors
+      logseq # local-first, non-linear, outliner notebook for organizing and sharing your personal knowledge base
       lshw # detailed information on the hardware configuration of the machine
       lsix # shows thumbnails in terminal using sixel graphics
       luajitPackages.fennel # Lisp that compiles to Lua
@@ -131,6 +132,7 @@ in {
       pinta # image editor
       pitivi # video editor
       podman # docker run alternative
+      poedit # gettext catalogs (.po files) editor
       poke # editor for binary data
       # postman # https://github.com/NixOS/nixpkgs/issues/259147
       prettyping # a nicer ping
