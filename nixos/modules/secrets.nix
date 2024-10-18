@@ -176,6 +176,10 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."stripe/personal/live" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."stripe/personal/test" = {
       inherit group mode owner;
     };

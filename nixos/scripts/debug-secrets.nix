@@ -133,6 +133,10 @@ in
     echo "secret found at ${secrets."prj-kitchen-sink/sa-storage-uploader".path}"
     echo "secret is $(cat ${secrets."prj-kitchen-sink/sa-storage-uploader".path})"
 
+    printf "\nstripe/personal/live\n"
+    echo "secret found at ${secrets."stripe/personal/live".path}"
+    echo "secret is $(cat ${secrets."stripe/personal/live".path})"
+
     printf "\nstripe/personal/test\n"
     echo "secret found at ${secrets."stripe/personal/test".path}"
     echo "secret is $(cat ${secrets."stripe/personal/test".path})"
