@@ -139,6 +139,10 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."openai/personal_api_key" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."plausible/test_site" = {
       inherit group mode owner;
     };

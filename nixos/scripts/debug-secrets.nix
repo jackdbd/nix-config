@@ -101,6 +101,10 @@ in
     echo "secret found at ${secrets."npm-tokens/semantic_release_bot".path}"
     echo "secret is $(cat ${secrets."npm-tokens/semantic_release_bot".path})"
 
+    printf "\nopenai/personal_api_key\n"
+    echo "secret found at ${secrets."openai/personal_api_key".path}"
+    echo "secret is $(cat ${secrets."openai/personal_api_key".path})"
+
     printf "\nplausible/test_site\n"
     echo "secret found at ${secrets."plausible/test_site".path}"
     echo "secret is $(cat ${secrets."plausible/test_site".path})"
