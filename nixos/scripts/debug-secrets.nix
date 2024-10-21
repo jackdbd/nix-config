@@ -41,6 +41,14 @@ in
     echo "secret found at ${secrets."fastly/api_token".path}"
     echo "secret is $(cat ${secrets."fastly/api_token".path})"
 
+    printf "\nfly/indiekit\n"
+    echo "secret found at ${secrets."fly/indiekit".path}"
+    echo "secret is $(cat ${secrets."fly/indiekit".path})"
+
+    printf "\nfly/micropub\n"
+    echo "secret found at ${secrets."fly/micropub".path}"
+    echo "secret is $(cat ${secrets."fly/micropub".path})"
+
     printf "\nfly/tokens\n"
     echo "secret found at ${secrets."fly/tokens".path}"
     echo "secret is $(cat ${secrets."fly/tokens".path})"

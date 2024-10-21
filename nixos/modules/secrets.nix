@@ -82,6 +82,16 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."fly/indiekit" = {
+      inherit group mode owner;
+      sopsFile = ../../secrets/fly/default.sops.yaml;
+    };
+
+    sops.secrets."fly/micropub" = {
+      inherit group mode owner;
+      sopsFile = ../../secrets/fly/default.sops.yaml;
+    };
+
     sops.secrets."fly/tokens" = {
       inherit group mode owner;
       sopsFile = ../../secrets/fly/default.sops.yaml;
