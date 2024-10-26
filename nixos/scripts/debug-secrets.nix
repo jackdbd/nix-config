@@ -89,6 +89,10 @@ in
     echo "secret found at ${secrets."mastodon".path}"
     echo "secret is $(cat ${secrets."mastodon".path})"
 
+    printf "\nmicropub\n"
+    echo "secret found at ${secrets."micropub".path}"
+    echo "secret is $(cat ${secrets."micropub".path})"
+
     printf "\nminiflux\n"
     echo "secret found at ${secrets."miniflux".path}"
     echo "secret is $(cat ${secrets."miniflux".path})"

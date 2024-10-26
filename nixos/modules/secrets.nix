@@ -129,6 +129,10 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."micropub" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."miniflux" = {
       inherit group mode owner;
     };
