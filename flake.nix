@@ -55,13 +55,14 @@
     # `sudo nixos-rebuild` and `home-manager`
     allowed-unfree-packages = [
       "burpsuite"
+      "edl"
       "google-chrome"
       "lmstudio"
       "mongodb-compass"
       "postman"
       "steam"
-      "steam-original"
       "steam-run"
+      "steam-unwrapped"
       "tarsnap"
       "vscode"
       "vscode-extension-github-copilot"
@@ -70,12 +71,13 @@
       "vscode-extension-ms-vsliveshare-vsliveshare"
     ];
     permitted-insecure-pakages = [
+      "electron-27.3.11"
       # Matrix clients and Jitsi Meet use this library
-      "olm-3.2.16"
+      # "olm-3.2.16"
       # Some package (no idea which one) depends on v8-9.7.106.18, which nix marks as insecure.
       # Unfortunately the error nix gives us is not very actionable, as they say here:
       # https://github.com/NixOS/nixpkgs/issues/209804
-      "v8-9.7.106.18"
+      # "v8-9.7.106.18"
     ];
 
     # TODO: define the font stack available to a specific user on a specific system

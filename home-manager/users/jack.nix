@@ -138,8 +138,8 @@ in {
       prettyping # a nicer ping
       procs # a better `ps`
       pstree # show the set of running processes as a tree
-      pulumi # infrastructure as code
-      pulumiPackages.pulumi-language-nodejs
+      # pulumi # infrastructure as code
+      # pulumiPackages.pulumi-language-nodejs
       python3
       qemu # machine & userspace emulator and virtualizer
       remmina # remote desktop client
