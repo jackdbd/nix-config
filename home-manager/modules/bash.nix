@@ -49,7 +49,7 @@ in {
         loc = "tokei"; # count lines of code
         myip = "curl http://ipecho.net/plain; echo";
         # https://nixos-and-flakes.thiscute.world/nixos-with-flakes/update-the-system
-        nfu = "nix flake update $HOME/repos/nix-config";
+        nfu = "nix flake update --flake $HOME/repos/nix-config";
         pics = "cd ~/Pictures";
         pk = "pkill --signal SIGTERM --echo --count"; # e.g. pk chromium-browser
         repl = "rlwrap bb --repl";
