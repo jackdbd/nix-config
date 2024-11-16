@@ -113,6 +113,10 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."go-jamming" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."hacker-news/credentials" = {
       inherit group mode owner;
     };

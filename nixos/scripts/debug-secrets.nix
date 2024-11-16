@@ -73,6 +73,10 @@ in
     export GITHUB_TOKEN=$(cat ${secrets."github-tokens/workflow_developer".path})
     gh auth status
 
+    printf "\ngo-jamming\n"
+    echo "secret found at ${secrets."go-jamming".path}"
+    echo "secret is $(cat ${secrets."go-jamming".path})"
+
     printf "\nhacker-news/credentials\n"
     echo "secret found at ${secrets."hacker-news/credentials".path}"
     echo "secret is $(cat ${secrets."hacker-news/credentials".path})"
