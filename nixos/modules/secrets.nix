@@ -97,11 +97,11 @@ in {
       sopsFile = ../../secrets/fly/default.sops.yaml;
     };
 
-    sops.secrets."github-tokens/github_packages_push" = {
+    sops.secrets."github-tokens/crud_contents_api" = {
       inherit group mode owner;
     };
 
-    sops.secrets."github-tokens/indiekit_github_content_store" = {
+    sops.secrets."github-tokens/github_packages_push" = {
       inherit group mode owner;
     };
 
