@@ -87,20 +87,6 @@
     };
   };
 
-  hbenl.vscode-mocha-test-adapter = buildVscodeMarketplaceExtension {
-    mktplcRef = {
-      name = "vscode-mocha-test-adapter";
-      publisher = "hbenl"; # Holger Benl
-      sha256 = "sha256-3sbQFmLOQziwc/jzk7UjQXzFpe/+meoXkY7kDo6AvmI=";
-      version = "2.14.1";
-    };
-    meta = {
-      downloadPage = "https://marketplace.visualstudio.com/items?itemName=hbenl.vscode-mocha-test-adapter";
-      homepage = "https://github.com/hbenl/vscode-mocha-test-adapter";
-      license = lib.licenses.mit;
-    };
-  };
-
   mtxr.sqltools = buildVscodeMarketplaceExtension {
     mktplcRef = {
       name = "sqltools";
@@ -299,7 +285,6 @@ in
     chakrounanas.turbo-console-log
     djblue.portal # A clojure tool to navigate through your data
     dtsvet.vscode-wasm # WebAssembly Toolkit for VSCode
-    hbenl.vscode-mocha-test-adapter # Mocha Test Explorer (Mocha adapter for the Test Explorer extension)
     mtxr.sqltools # SQL formatter and query runner for many databases
     pflannery.vscode-versionlens
     pranaygp.vscode-css-peek
