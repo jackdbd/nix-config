@@ -67,6 +67,7 @@
       "vscode"
       "vscode-extension-github-copilot"
       "vscode-extension-github-copilot-chat"
+      "vscode-extension-mhutchie-git-graph"
       "vscode-extension-ms-vscode-remote-remote-containers" # Dev Containers
       "vscode-extension-ms-vsliveshare-vsliveshare"
     ];
@@ -152,7 +153,7 @@
 
     # Standalone home-manager configuration entrypoint (available both for NixOS machines and non-NixOS machines)
     # Available through 'home-manager --flake .#your-username@your-hostname'
-   
+
     homeConfigurations."${user}@l380-nixos" = home-manager.lib.homeManagerConfiguration {
       inherit extraSpecialArgs pkgs;
       modules = [./home-manager/users/${user}.nix];

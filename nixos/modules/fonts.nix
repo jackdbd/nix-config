@@ -23,19 +23,13 @@ with lib; {
       # Enable a few fonts from this list:
       # https://github.com/NixOS/nixpkgs/tree/master/pkgs/data/fonts
       alegreya
-      # NixOS contains only this subset of the entire Nerd Fonts package:
-      # https://github.com/NixOS/nixpkgs/blob/1b9f6e68c2f3ae68c94e6003bbcddb495161564e/pkgs/data/fonts/nerdfonts/shas.nix
+      # NixOS contains only this subset of the entire Nerd Fonts package.
       # Here we select only a subset of that subset.
-      # https://nixos.wiki/wiki/Fonts#Installing_specific_fonts_from_nerdfonts
-      (nerdfonts.override {
-        fonts = [
-          "DroidSansMono"
-          "FiraCode"
-          "JetBrainsMono"
-          "NerdFontsSymbolsOnly"
-          "SpaceMono"
-        ];
-      })
+      # https://nixos.wiki/wiki/Fonts#Installing_only_specific_nerdfonts
+      nerd-fonts.droid-sans-mono
+      nerd-fonts.fira-code
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.space-mono
       noto-fonts
       noto-fonts-cjk-sans # Chinese, Japanese, Korean
       noto-fonts-emoji # color emojis
