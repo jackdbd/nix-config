@@ -38,6 +38,12 @@ with lib; {
       weather-icons
     ];
 
-    fontconfig.enable = true;
+    # https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/config/fonts/fontconfig.nix
+    fontconfig = {
+      defaultFonts = {
+        emoji = ["Noto Color Emoji"];
+        monospace = ["JetBrainsMono Nerd Font"];
+      };
+    };
   };
 }
