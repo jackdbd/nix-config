@@ -58,6 +58,7 @@ in {
           github.copilot-chat
           github.vscode-github-actions
           github.vscode-pull-request-github
+          hashicorp.hcl # syntax highlighting for HCL files (Terraform, atlasgo.io)
           hbenl.vscode-test-explorer #  Run your tests in the VS Code sidebar
           jdinhlife.gruvbox # Gruvbox theme
           jnoortheen.nix-ide # Nix language support with formatting and error report
