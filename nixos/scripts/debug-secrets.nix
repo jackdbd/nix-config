@@ -181,6 +181,10 @@ in
     echo "secret found at ${secrets."telegram/personal_bot".path}"
     echo "secret is $(cat ${secrets."telegram/personal_bot".path})"
 
+    printf "\nturso/micropub\n"
+    echo "secret found at ${secrets."turso/micropub".path}"
+    echo "secret is $(cat ${secrets."turso/micropub".path})"
+
     printf "\nturso/tweedler\n"
     echo "secret found at ${secrets."turso/tweedler".path}"
     echo "secret is $(cat ${secrets."turso/tweedler".path})"

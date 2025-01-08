@@ -226,6 +226,10 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."turso/micropub" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."turso/tweedler" = {
       inherit group mode owner;
     };
