@@ -48,6 +48,10 @@ in {
         lock = "xflock4";
         loc = "tokei"; # count lines of code
         myip = "curl http://ipecho.net/plain; echo";
+        # See this video for other suggestions on how to delete old nix generations.
+        # https://youtu.be/jQzPRYgJw04?si=Gj7M4oZbYpoeROzT&t=195
+        ncg = "nix-collect-garbage --delete-older-than 15d";
+        # ncg = "nh clean all --keep 3";
         # https://nixos-and-flakes.thiscute.world/nixos-with-flakes/update-the-system
         nfu = "nix flake update --flake $HOME/repos/nix-config";
         pics = "cd ~/Pictures";
@@ -55,7 +59,11 @@ in {
         repl = "rlwrap bb --repl";
         repos = "cd ~/repos";
         rm = "${pkgs.trash-cli}/bin/trash-put";
-        snr = "sudo nixos-rebuild switch --flake $HOME/repos/nix-config#$(hostname)";
+        # See this video to understand the difference between: rebuilds, updates, rollbacks.
+        # https://youtu.be/jQzPRYgJw04?si=kZatJJ-n1Del8kvT&t=131
+        # Consider also rebuilding using 'test' instead of using 'switch', which pushes new configurations to the bootloader immediately.
+        snrs = "sudo nixos-rebuild switch --flake $HOME/repos/nix-config#$(hostname)";
+        snrsu = "sudo nixos-rebuild switch --flake $HOME/repos/nix-config#$(hostname) --upgrade";
         steampipe_dk = "docker run --rm --mount $\"type=bind,source=/home/jack/steampipe/config,target=/home/steampipe/.steampipe/config\" --name steampipe turbot/steampipe:latest";
         # https://the.exa.website/features/tree-view
         "t2" = "${pkgs.eza}/bin/eza --tree --ignore-glob=node_modules --level=2";
