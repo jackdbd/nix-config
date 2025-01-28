@@ -26,9 +26,9 @@ in
       devenv # Fast, Declarative, Reproducible, and Composable Developer Environments
       docker-compose # define and run multi-container applications with Docker
       duf # disk usage utility
+      foliate # GTK eBook reader
       gcc # GNU Compiler Collection
       gcc-unwrapped # GNU Compiler Collection
-      libgcc # GNU Compiler Collection
       gdb # GNU project debugger
       gitFull # git + graphical tools like gitk (see https://nixos.wiki/wiki/Git)
       gitg # git GUI
@@ -39,6 +39,7 @@ in
       hdparm # tool to get/set ATA/SATA drive parameters under Linux (e.g. for benchmarking disk performance)
       home-manager # Nix-based user environment configurator
       k6 # HTTP load testing tool
+      libgcc # GNU Compiler Collection
       libnotify # send desktop notifications to a notification daemon
       lief # Library to Instrument Executable Formats
       linuxKernel.packages.linux_6_1.perf # Linux tools to profile with performance counters
