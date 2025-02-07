@@ -101,6 +101,10 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."github-tokens/dispatch_to_personal_website" = {
+      inherit group mode owner;
+    };
+
     sops.secrets."github-tokens/github_packages_push" = {
       inherit group mode owner;
     };

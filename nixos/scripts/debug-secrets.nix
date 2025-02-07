@@ -57,6 +57,10 @@ in
     echo "secret found at ${secrets."github-tokens/crud_contents_api".path}"
     echo "secret is $(cat ${secrets."github-tokens/crud_contents_api".path})"
 
+    printf "\ngithub-tokens/dispatch_to_personal_website\n"
+    echo "secret found at ${secrets."github-tokens/dispatch_to_personal_website".path}"
+    echo "secret is $(cat ${secrets."github-tokens/dispatch_to_personal_website".path})"
+
     printf "\ngithub-tokens/github_packages_push\n"
     echo "secret found at ${secrets."github-tokens/github_packages_push".path}"
     echo "secret is $(cat ${secrets."github-tokens/github_packages_push".path})"
