@@ -33,6 +33,10 @@ in
     echo "secret found at ${secrets."cloudinary".path}"
     echo "secret is $(cat ${secrets."cloudinary".path})"
 
+    printf "\ncodecov/token\n"
+    echo "secret found at ${secrets."codecov/token".path}"
+    echo "secret is $(cat ${secrets."codecov/token".path})"
+
     printf "\nelevenlabs/api_key\n"
     echo "secret found at ${secrets."elevenlabs/api_key".path}"
     echo "secret is $(cat ${secrets."elevenlabs/api_key".path})"

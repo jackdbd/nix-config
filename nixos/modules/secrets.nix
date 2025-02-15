@@ -72,6 +72,10 @@ in {
       inherit group mode owner;
     };
 
+    sops.secrets."codecov/token" = {
+      inherit group mode owner;
+    };
+
     # The unencrypted value of this secret will be available at runtime at:
     # /run/secrets/elevenlabs/api_key
     sops.secrets."elevenlabs/api_key" = {
