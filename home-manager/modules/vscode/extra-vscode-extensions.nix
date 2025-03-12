@@ -235,21 +235,6 @@
     };
   };
 
-  webhint.vscode-webhint = buildVscodeMarketplaceExtension {
-    mktplcRef = {
-      name = "vscode-webhint";
-      publisher = "webhint";
-      sha256 = "sha256-gmdnU5OfHhWZ0yL3Af9blxDgO64Xbdmt8d6fDLVyPfc="; # v2.1.12
-      version = "2.1.12";
-    };
-    meta = {
-      changelog = "https://marketplace.visualstudio.com/items/webhint.vscode-webhint/changelog";
-      downloadPage = "https://marketplace.visualstudio.com/items?itemName=webhint.vscode-webhint";
-      homepage = "https://webhint.io/";
-      license = lib.licenses.asl20; # Apache License 2.0
-    };
-  };
-
   ziglang.vscode-zig = buildVscodeMarketplaceExtension {
     mktplcRef = {
       name = "vscode-zig";
@@ -296,7 +281,6 @@ in
     unocss.unocss
     vuejs.language-tools
     yoavbls.pretty-ts-errors
-    webhint.vscode-webhint
     ziglang.vscode-zig
     zignd.html-css-class-completion
   ]
