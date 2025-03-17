@@ -64,6 +64,7 @@
       "steam-run"
       "steam-unwrapped"
       "tarsnap"
+      "trezor-suite"
       "vscode"
       "vscode-extension-github-copilot"
       "vscode-extension-github-copilot-chat"

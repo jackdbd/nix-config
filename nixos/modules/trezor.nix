@@ -33,6 +33,7 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       trezord
+      trezor-suite # Desktop App for managing crypto
       # trezor_agent # hardware-based agent for SSH/OpenPGP/age keys
     ];
 
