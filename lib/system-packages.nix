@@ -38,6 +38,7 @@ in
       gparted # partition editor
       hdparm # tool to get/set ATA/SATA drive parameters under Linux (e.g. for benchmarking disk performance)
       home-manager # Nix-based user environment configurator
+      img2pdf # Convert images to PDF via direct JPEG inclusion
       k6 # HTTP load testing tool
       libgcc # GNU Compiler Collection
       libnotify # send desktop notifications to a notification daemon
