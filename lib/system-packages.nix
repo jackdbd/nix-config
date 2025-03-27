@@ -38,6 +38,7 @@ in
       gparted # partition editor
       hdparm # tool to get/set ATA/SATA drive parameters under Linux (e.g. for benchmarking disk performance)
       home-manager # Nix-based user environment configurator
+      imagemagick # Software suite to create, edit, compose, or convert bitmap images
       img2pdf # Convert images to PDF via direct JPEG inclusion
       k6 # HTTP load testing tool
       libgcc # GNU Compiler Collection
