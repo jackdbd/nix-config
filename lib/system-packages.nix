@@ -60,6 +60,7 @@ in
       sops # editor for encrypting/decrypting JSON, YAML, ini, etc
       statix # Nix linter
       stow # symlink tool
+      texliveMedium # TeX Live environment (I need this for pdfjam)
       typescript # TypeScript compiler
       unzip
       winetricks # script to install DLLs needed to work around problems in Wine
