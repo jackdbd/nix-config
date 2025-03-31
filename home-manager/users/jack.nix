@@ -52,6 +52,7 @@ in {
       age # encryption tool
       alacritty # Open GL terminal emulator
       asciinema # record the terminal
+      asunder # Graphical Audio CD ripper and encoder for Linux
       awscli2 # AWS CLI
       awsls # list command for AWS resources
       awsume # utility for assuming AWS IAM roles from the command line
