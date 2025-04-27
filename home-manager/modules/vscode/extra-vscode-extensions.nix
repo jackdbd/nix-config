@@ -175,6 +175,21 @@
     };
   };
 
+  scalameta.metals = buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      name = "metals";
+      publisher = "scalameta";
+      sha256 = "sha256-N9q3paNCSvBVmW4uPwlfBCYRKq8ka0py+Im2fZCn3GE=";
+      version = "1.49.3";
+    };
+    meta = {
+      changelog = "https://marketplace.visualstudio.com/items/scalameta.metals/changelog";
+      downloadPage = "https://marketplace.visualstudio.com/items?itemName=scalameta.metals";
+      homepage = "https://github.com/scalameta/metals-vscode";
+      license = lib.licenses.asl20;
+    };
+  };
+
   stylelint.vscode-stylelint = buildVscodeMarketplaceExtension {
     mktplcRef = {
       name = "vscode-stylelint";
@@ -277,6 +292,7 @@ in
     # Pythagora-io.gpt-pilot
     ronnidc.nunjucks
     ryan-heybourn.headwind
+    scalameta.metals
     stylelint.vscode-stylelint
     unocss.unocss
     vuejs.language-tools
