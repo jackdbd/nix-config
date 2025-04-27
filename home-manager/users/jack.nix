@@ -151,6 +151,7 @@ in {
       s-tui # Stress-Terminal UI monitoring tool (requires stress for some features)
       sakura # terminal emulator
       sameboy # Game Boy emulator
+      scala-cli # Command-line tool to interact with the Scala language
       screenkey # shows keypresses on screen
       sd # sed alternative
       (writeShellApplication {
