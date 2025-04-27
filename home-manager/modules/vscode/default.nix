@@ -73,6 +73,7 @@ in {
           ms-vscode-remote.remote-containers # Dev Containers
           ms-vscode.test-adapter-converter # Test Explorer UI (vscode-test-explorer) depends on Test Adapter Converter (ms-vscode.test-adapter-converter)
           ms-vsliveshare.vsliveshare # Live Share (real-time collaborative development)
+          scala-lang.scala # syntax highlighting for Scala 2 and Scala 3
           tailscale.vscode-tailscale # Share a port over the internet with Tailscale Funnel
           tamasfe.even-better-toml
           usernamehw.errorlens
