@@ -53,6 +53,7 @@ in
       nh # nix cli helper https://github.com/viperML/nh
       nmap # tool for network discovery and security auditing
       ntfs3g # FUSE-based NTFS driver
+      p7zip # 7z, 7za, 7zr
       pinentry # GnuPG's interface to passphrase input
       poetry # Python dependency management and packaging
       poppler_utils # Rendering library and utilities for PDF files (e.g. pdfunite)
