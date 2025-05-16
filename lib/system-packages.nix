@@ -65,6 +65,7 @@ in
       statix # Nix linter
       stow # symlink tool
       texliveMedium # TeX Live environment (I need this for pdfjam)
+      transmission_4 # BitTorrent client
       typescript # TypeScript compiler
       unzip
       winetricks # script to install DLLs needed to work around problems in Wine
