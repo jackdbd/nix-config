@@ -54,6 +54,9 @@
     # define the list of allowed unfree here, so I can pass it to both
     # `sudo nixos-rebuild` and `home-manager`
     allowed-unfree-packages = [
+      "1password"
+      "1password-cli"
+      "1password-gui"
       "burpsuite"
       "edl"
       "google-chrome"
