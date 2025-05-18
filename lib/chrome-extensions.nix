@@ -10,6 +10,8 @@
   enable-tmetric ? true,
 }:
 [
+  # 1Password
+  {id = "aeblfdkhhhdcdjpifhhbdiojplfjncoa";}
   # Lastpass
   {id = "hdokiejnpimakedhajhdlcegeplioahd";}
   # Modern for Hacker News
