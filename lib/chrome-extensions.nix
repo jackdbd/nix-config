@@ -12,8 +12,6 @@
 [
   # 1Password
   {id = "aeblfdkhhhdcdjpifhhbdiojplfjncoa";}
-  # Lastpass
-  {id = "hdokiejnpimakedhajhdlcegeplioahd";}
   # Modern for Hacker News
   {id = "dabkegjlekdcmefifaolmdhnhdcplklo";}
   # Vimium

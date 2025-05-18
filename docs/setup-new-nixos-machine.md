@@ -6,7 +6,7 @@ The whole process should take **a bit more than an hour**, excluding compilation
 
 ## 1. Install a password manager
 
-A fresh NixOS installation should have Firefox as the default browser. Install a password manager like LastPass as a Firefox extension.
+A fresh NixOS installation should have Firefox as the default browser. Install a password manager (e.g. 1Password, LastPass) as a Firefox extension.
 
 ## 2. Setup SSH
 
