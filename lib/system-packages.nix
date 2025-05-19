@@ -57,6 +57,7 @@ in
       pinentry # GnuPG's interface to passphrase input
       poetry # Python dependency management and packaging
       poppler_utils # Rendering library and utilities for PDF files (e.g. pdfunite)
+      popsicle # Multiple USB File Flasher. I was looking for Balena Etcher and found this: https://github.com/NixOS/nixpkgs/issues/371992#issuecomment-2576548039
       qpdf # library and set of programs that inspect and manipulate the structure of PDF files
       railway # CLI for Railway (Paas)
       signal-desktop # Private, simple, and secure messenger
