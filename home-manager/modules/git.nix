@@ -105,8 +105,8 @@ in {
       settings = {
         gui = {
           nerdFontsVersion = "3";
-          windowSize = "half"; # "normal" (default) | "half" | "full"
         };
+        screenMode = "half"; # "normal" (default) | "half" | "full"
       };
     };
   };

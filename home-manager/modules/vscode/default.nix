@@ -30,8 +30,8 @@ in {
 
     # https://mipmip.github.io/home-manager-option-search/?query=vscode
     programs.vscode = {
-      enableExtensionUpdateCheck = true;
-      enableUpdateCheck = true;
+      profiles.default.enableExtensionUpdateCheck = true;
+      profiles.default.enableUpdateCheck = true;
 
       # Do NOT declare VS Code extensions using a string: "esbenp.prettier-vscode"
       # Instead, search `vscode-extensions` on NixOS Search.
@@ -39,7 +39,7 @@ in {
       # https://github.com/NixOS/nixpkgs/tree/master/pkgs/applications/editors/vscode
       # VS Code themes
       # https://mynixos.com/search?q=vscode+theme
-      extensions = with pkgs.vscode-extensions;
+      profiles.default.extensions = with pkgs.vscode-extensions;
         [
           bbenoist.nix # Nix language support for VS Code
           betterthantomorrow.calva # Clojure/Script interactive programming for VS Code
@@ -84,19 +84,19 @@ in {
         };
 
       # https://github.com/jackdbd/dotfiles/tree/main/Code/.config/Code/User/snippets
-      globalSnippets = import ./global-snippets.nix;
+      profiles.default.globalSnippets = import ./global-snippets.nix;
 
-      keybindings = import ./keybindings.nix;
+      profiles.default.keybindings = import ./keybindings.nix;
 
       # https://code.visualstudio.com/docs/getstarted/settings
       # https://github.com/jackdbd/dotfiles/blob/main/Code/.config/Code/User/settings.json
-      userSettings = import ./user-settings.nix {inherit lib pkgs;};
+      profiles.default.userSettings = import ./user-settings.nix {inherit lib pkgs;};
 
       # TODO: configure stylelint rules
       # https://github.com/stylelint/vscode-stylelint
       # https://github.com/stylelint/stylelint/blob/main/docs/user-guide/rules.md
 
-      userTasks = {
+      profiles.default.userTasks = {
         version = "2.0.0";
         tasks = [
           {
