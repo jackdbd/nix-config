@@ -30,7 +30,7 @@ in
       gcc # GNU Compiler Collection
       gcc-unwrapped # GNU Compiler Collection
       gdb # GNU project debugger
-      # ghostty # terminal emulator
+      ghostty # terminal emulator
       gitFull # git + graphical tools like gitk (see https://nixos.wiki/wiki/Git)
       gitg # git GUI
       glxinfo # show information about the GLX implementation

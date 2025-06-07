@@ -188,7 +188,7 @@ in {
       wasmtime # WASI runtime
       wget
       wireshark
-      xsv # index/slice/analyze/split/join CSV files
+      # xsv # index/slice/analyze/split/join CSV files
       yarr # Yet another rss reader
       yt-dlp
       zathura # PDF viewer
