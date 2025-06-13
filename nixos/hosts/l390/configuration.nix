@@ -26,7 +26,7 @@
     ../../modules/bluetooth.nix
     ../../modules/dbt.nix
     ../../modules/fonts.nix
-    # ../../modules/hyprland.nix
+    ../../modules/hyprland.nix
     ../../modules/nix.nix
     ../../modules/ollama.nix
     ../../modules/pipewire.nix
