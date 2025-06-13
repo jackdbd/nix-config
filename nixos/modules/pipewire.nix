@@ -23,7 +23,7 @@ in {
       alsa-utils # Advanced Linux Sound Architecture utils
     ];
 
-    hardware.pulseaudio.enable = false;
+    services.pulseaudio.enable = false;
 
     # The PipeWire daemon can be configured to be both an audio server (with
     # PulseAudio and JACK features) and a video capture server.
