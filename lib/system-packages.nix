@@ -37,6 +37,7 @@ in
       gnupg # GNU Privacy Guard
       gpa # Graphical user interface for the GnuPG
       gparted # partition editor
+      grayjay # application to stream and download content from various sources
       hdparm # tool to get/set ATA/SATA drive parameters under Linux (e.g. for benchmarking disk performance)
       home-manager # Nix-based user environment configurator
       imagemagick # Software suite to create, edit, compose, or convert bitmap images

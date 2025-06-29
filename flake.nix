@@ -60,6 +60,7 @@
       "burpsuite"
       "edl"
       "google-chrome"
+      "grayjay"
       "lmstudio"
       "mongodb-compass"
       "postman"
