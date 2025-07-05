@@ -7,8 +7,8 @@
 }:
 with lib; let
   cfg = config.services.syncthing;
-  laptops = ["ThinkPad L380" "ThinkPad L390" "ThinkPad X220"];
-  phones = ["OnePlus 8 Pro" "Redmi Note 9S"];
+  laptops = ["ThinkPad L380" "ThinkPad L390"];
+  phones = ["Moto G34 5G" "OnePlus 8 Pro" "Redmi Note 9S"];
 in {
   meta = {};
 
@@ -58,6 +58,10 @@ in {
       overrideFolders = true;
 
       settings.devices = {
+        "Moto G34 5G" = {
+          id = "XJW2I7V-LB54BG2-XCOQNIV-OZU7QCE-EM6MRA2-MBAB2UA-7UHQS2K-QL6HTQY";
+          # autoAcceptFolders = true;
+        };
         "OnePlus 8 Pro" = {
           id = "BVEVAP2-FTIILE6-UFOGZJ6-NZ4HQHE-FHAMTAO-3J64DX6-TLFRCKE-PDSYIAH";
         };
@@ -69,10 +73,6 @@ in {
         };
         "ThinkPad L390" = {
           id = "KPVHYCY-WBF7QTW-UVEOQN4-BKQDYZB-QFBSYOQ-65SCSFR-LGIFVE4-ESN6GQQ";
-        };
-        "ThinkPad X220" = {
-          id = "WQ2BV2F-VOYX4RT-WBBI26I-U3KCTCV-JRGRQUZ-MNT44DV-COAMMYQ-JPF5EAN";
-          # autoAcceptFolders = true;
         };
       };
 
@@ -106,6 +106,11 @@ in {
           label = "Shared Videos";
           path = "/home/${user}/Videos/shared-videos";
           devices = laptops ++ ["OnePlus 8 Pro"];
+        };
+        "wgeu1-hreii" = {
+          label = "Moto G34 5G Camera";
+          path = "/home/${user}/Pictures/moto-g34-5g-camera";
+          devices = laptops ++ ["Moto G34 5G"];
         };
         "in2020_dyws-photos" = {
           label = "OnePlus 8 Pro Camera";
