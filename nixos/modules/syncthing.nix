@@ -8,7 +8,7 @@
 with lib; let
   cfg = config.services.syncthing;
   laptops = ["ThinkPad L380" "ThinkPad L390"];
-  phones = ["Moto G34 5G" "OnePlus 8 Pro" "Redmi Note 9S"];
+  phones = ["Moto G55 5G"];
 in {
   meta = {};
 
@@ -58,15 +58,9 @@ in {
       overrideFolders = true;
 
       settings.devices = {
-        "Moto G34 5G" = {
-          id = "XJW2I7V-LB54BG2-XCOQNIV-OZU7QCE-EM6MRA2-MBAB2UA-7UHQS2K-QL6HTQY";
+        "Moto G55 5G" = {
+          id = "E4UI7ZU-U6IAELP-QXZQGT2-LXYFHKF-YZALZYB-GAFDHXW-JKY46AS-ENJQFQR";
           # autoAcceptFolders = true;
-        };
-        "OnePlus 8 Pro" = {
-          id = "BVEVAP2-FTIILE6-UFOGZJ6-NZ4HQHE-FHAMTAO-3J64DX6-TLFRCKE-PDSYIAH";
-        };
-        "Redmi Note 9S" = {
-          id = "7WJ47ZP-O776CHO-OELIPNH-GUOZHA4-UYYZ3WS-PL5BE6L-INDDN3D-FHKDDQQ";
         };
         "ThinkPad L380" = {
           id = "O7TN5GB-HVEFBUW-C5N6F6A-JVQSECT-PT7EIQD-DDY25FD-RKHPSAG-TUPR2A7";
@@ -87,6 +81,11 @@ in {
           devices = laptops;
           # versioning.type = "simple"; # one of "external", "simple", "staggered", "trashcan"
         };
+        "moto_g55_5g_fq64-photos" = {
+          label = "Moto G55 5G Camera";
+          path = "/home/${user}/Pictures/moto-g55-5g-camera";
+          devices = laptops ++ ["Moto G55 5G"];
+        };
         "mihyn-ggmuw" = {
           label = "Shared Docs";
           path = "/home/${user}/Documents/shared-documents";
@@ -101,36 +100,6 @@ in {
           label = "Shared Pics";
           path = "/home/${user}/Pictures/shared-pictures";
           devices = laptops;
-        };
-        "bjahe-fyok2" = {
-          label = "Shared Videos";
-          path = "/home/${user}/Videos/shared-videos";
-          devices = laptops ++ ["OnePlus 8 Pro"];
-        };
-        "wgeu1-hreii" = {
-          label = "Moto G34 5G Camera";
-          path = "/home/${user}/Pictures/moto-g34-5g-camera";
-          devices = laptops ++ ["Moto G34 5G"];
-        };
-        "in2020_dyws-photos" = {
-          label = "OnePlus 8 Pro Camera";
-          path = "/home/${user}/Pictures/oneplus-8-pro-camera";
-          devices = laptops ++ ["OnePlus 8 Pro"];
-        };
-        "uusn3-urfng" = {
-          label = "Redmi Note 9S Camera";
-          path = "/home/${user}/Pictures/redmi-note-9s-camera";
-          devices = laptops ++ ["Redmi Note 9S"];
-        };
-        "mid9i-b3h7v" = {
-          label = "Redmi Note 9S Screenshots";
-          path = "/home/${user}/Pictures/redmi-note-9s-screenshots";
-          devices = laptops ++ ["Redmi Note 9S"];
-        };
-        "hjshj-uh7fa" = {
-          label = "Redmi Note 9S Movies";
-          path = "/home/${user}/Videos/redmi-note-9s-movies";
-          devices = laptops ++ ["Redmi Note 9S"];
         };
       };
 
