@@ -61,7 +61,7 @@
     mktplcRef = {
       name = "portal";
       publisher = "djblue";
-      sha256 = "sha256-uFPEgx5R69ESwJreoDBm7HX6kAt5MRz/U4SU6sOlypE=";
+      sha256 = "sha256-GSi5COZsg2sOM4C9+4+3CehHp85gY80hLug64B3aIYo=";
       version = "0.59.2";
     };
     meta = {
@@ -105,7 +105,7 @@
     mktplcRef = {
       name = "vscode-versionlens";
       publisher = "pflannery";
-      sha256 = "sha256-2wmdfvD6j/gQ3IEAn1vKOOzbqlmbWhVM5qXlLoBmg3c=";
+      sha256 = "sha256-gsMBB4veu4MWPEkW1sefHi5ZI6zDPNHicMdu0Z3c24Q=";
       version = "1.22.2";
     };
     meta = {
