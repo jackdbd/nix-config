@@ -1,8 +1,6 @@
 {
-  config,
   lib,
   pkgs,
-  user,
   ...
 }: {
   meta = {};
@@ -13,10 +11,42 @@
 
   config.home.packages = [];
 
+  # https://www.reddit.com/r/hyprland/comments/195g044/how_to_properly_make_the_screen_lock_suspend/
+  config.programs.hyprlock = {
+    enable = true;
+  };
+
+  config.services.hypridle = {
+    enable = true;
+    # Configuration for hypridle
+    # https://wiki.hypr.land/Hypr-Ecosystem/hypridle/
+    settings = {
+      general = {
+        lock_cmd = "hyprlock";
+      };
+
+      listener = [
+        # {
+        #   timeout = 150;
+        #   on-timeout = "brightnessctl -sd rgb:kbd_backlight set 0"; # turn off keyboard backlight
+        #   on-resume = "brightnessctl -rd rgb:kbd_backlight"; # turn on keyboard backlight
+        # }
+        {
+          timeout = 300;
+          on-timeout = "hyprlock";
+        }
+      ];
+    };
+  };
+
   # https://wiki.hyprland.org/Nix/Hyprland-on-Home-Manager/
   # https://nixos.wiki/wiki/Hyprland#Configuration
-  # https://home-manager-options.extranix.com/?query=wayland.windowManager&release=master
+  # https://home-manager-options.extranix.com/?query=wayland.windowManager
   # https://github.com/FlafyDev/nixos-config/blob/61ea9fea72db1cb449e7c0266cd28aac7c23d9af/modules/display/hyprland/default.nix
+
+  # vimjoyer videos about Hyprland configuration
+  # https://youtu.be/61wGzIv12Ds?si=aRxa2tHfh_uMaUbM&t=282
+  # https://youtu.be/zt3hgSBs11g?si=WR_Zwbxt3cmdh0cO
   config.wayland.windowManager.hyprland = {
     enable = true;
 
@@ -25,21 +55,27 @@
     extraConfig = ''
     '';
 
-    plugins = [];
+    plugins = [
+      # https://youtu.be/zt3hgSBs11g?si=nwcKtZmX8XgBz-Bd&t=199
+      # inputs.hyprland-plugins.packages."${pkgs.system}".borders-plus-plus
+    ];
 
     settings = {
       # https://wiki.hyprland.org/Configuring/Animations/
       animations = {
-        enabled = "yes";
+        enabled = "no";
       };
 
       # https://wiki.hyprland.org/Configuring/Binds/
       bind = [
-        "$mainMod, Q, exec, $terminal"
-        "$mainMod, C, killactive"
-        "$mainMod, M, exit"
-        "$mainMod, E, exec $fileManager"
+        "ALT, F4, killactive"
         "$mainMod, A, exec, rofi -show drun -show-icons"
+        "$mainMod, C, killactive"
+        # "$mainMod, E, exec $fileManager"
+        "$mainMod, L, exec, hyprlock"
+        "$mainMod, M, exit"
+
+        "$mainMod, T, exec, $terminal"
         # "$mainMod, S, exec, rofi -show drun -show-icons"
         # grave is the key with backtick/tilde
         # "$mainMod, grave, exec, rofi -show drun -show-icons"
@@ -50,6 +86,12 @@
         "$mainMod, up, movefocus, u"
         "$mainMod, down, movefocus, d"
 
+        "$mod, escape, exec, rofi -show drun -show-icons"
+        "$mod, Q, exec, rofi -show drun -show-icons"
+        "$mod, T, exec, $terminal"
+        "ALT, Tab, cyclenext" # change focus to another window
+        "$mod, Tab, cyclenext" # change focus to another window
+        "$mod, Tab, bringactivetotop" # bring it to the top
         # Special workspace (scratchpad)
         # "$mainMod, S, togglespecialworkspace, magic"
         # "$mainMod SHIFT, S, movetoworkspace, special:magic"
@@ -63,20 +105,20 @@
       ];
 
       # https://wiki.hyprland.org/Configuring/Variables/#decoration
-      decoration = {
-        blur = {
-          enabled = true;
-          passes = 1;
-          size = 3;
-        };
-        drop_shadow = "yes";
-        rounding = 10;
-        shadow_offset = "0 5";
-        shadow_range = 4;
-        shadow_render_power = 3;
-        # https://www.color-hex.com/
-        "col.shadow" = "rgba(8673fcee)";
-      };
+      # decoration = {
+      #   blur = {
+      #     enabled = true;
+      #     passes = 1;
+      #     size = 3;
+      #   };
+      #   drop_shadow = "yes";
+      #   rounding = 10;
+      #   shadow_offset = "0 5";
+      #   shadow_range = 4;
+      #   shadow_render_power = 3;
+      #   # https://www.color-hex.com/
+      #   "col.shadow" = "rgba(8673fcee)";
+      # };
 
       # https://wiki.hyprland.org/Configuring/Dwindle-Layout/
       dwindle = {
@@ -91,11 +133,11 @@
         # Tell Electron apps to use Wayland
         NIXOS_OZONE_WL = "1";
         # XCURSOR_SIZE = 24;
-        # XDG_SESSION_TYPE = "wayland";
+        # XDG_SESSION_TYPE = "wayland"; # Automatically set, so not needed.
       };
 
       # "$fileManager" = "/run/current-system/sw/bin/thunar";
-      "$fileManager" = "thunar";
+      # "$fileManager" = "thunar";
 
       # https://wiki.hyprland.org/Configuring/Variables/#general
       general = {
@@ -112,10 +154,8 @@
         workspace_swipe = "off";
       };
 
-      master = {
-        # https://wiki.hyprland.org/Configuring/Master-Layout/
-        new_is_master = true;
-      };
+      # https://wiki.hyprland.org/Configuring/Master-Layout/
+      master = {};
 
       # https://wiki.hyprland.org/Configuring/Keywords/
       "$mainMod" = "SUPER";
@@ -129,15 +169,21 @@
       "$mod" = "SUPER";
 
       # https://wiki.hyprland.org/Configuring/Monitors/
-      monitor = ",preferred,auto,1";
+      # monitor = [
+      #   "eDP-1,preferred,left,1"
+      #   "DP-1,preferred,right,1"
+      # ];
+      # monitor = "DP-1,preferred,right,1";
+      # monitor = ",preferred,auto,1";
       # monitor = "DP-1,1920x1080@144,0x0,1";
 
       "$terminal" = "alacritty";
       # "$terminal" = config.programs.alacritty;
+      # "$terminal" = "ghostty";
       # "$terminal" = "kitty";
 
       # https://wiki.hyprland.org/Configuring/Window-Rules/
-      windowrulev2 = "nomaximizerequest, class:.*";
+      # windowrulev2 = "nomaximizerequest, class:.*";
     };
 
     # https://wiki.hyprland.org/Configuring/XWayland/
@@ -151,7 +197,9 @@
     config = {
       common.default = "*";
     };
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
-    # extraPortals = [pkgs.xdg-desktop-portal-hyprland];
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
+    ];
   };
 }

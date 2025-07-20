@@ -33,12 +33,12 @@ in {
       profiles.default.enableExtensionUpdateCheck = true;
       profiles.default.enableUpdateCheck = true;
 
-      # Do NOT declare VS Code extensions using a string: "esbenp.prettier-vscode"
-      # Instead, search `vscode-extensions` on NixOS Search.
+      # Do NOT declare VS Code extensions using a string (e.g. "esbenp.prettier-vscode")
+      # Instead, search `vscode-extensions` on these websites:
       # https://search.nixos.org/packages
-      # https://github.com/NixOS/nixpkgs/tree/master/pkgs/applications/editors/vscode
-      # VS Code themes
-      # https://mynixos.com/search?q=vscode+theme
+      # https://mynixos.com/search
+      # VS Code themes are also extensions.
+      # If you can't find the VS Code extension you want on NixOS Search, add it
       profiles.default.extensions = with pkgs.vscode-extensions;
         [
           bbenoist.nix # Nix language support for VS Code
@@ -49,7 +49,7 @@ in {
           # bradlc.vscode-tailwindcss # Tailwind CSS tooling for VS Code
           christian-kohler.path-intellisense
           coolbear.systemd-unit-file # syntax highlighting for systemd unit files
-          davidanson.vscode-markdownlint
+          davidanson.vscode-markdownlint # Markdown linting and style checking
           dbaeumer.vscode-eslint # integrates ESLint into VS Code
           eamodio.gitlens
           esbenp.prettier-vscode
@@ -74,10 +74,14 @@ in {
           ms-vscode.test-adapter-converter # Test Explorer UI (vscode-test-explorer) depends on Test Adapter Converter (ms-vscode.test-adapter-converter)
           ms-vsliveshare.vsliveshare # Live Share (real-time collaborative development)
           scala-lang.scala # syntax highlighting for Scala 2 and Scala 3
+          scalameta.metals # Scala language server with rich IDE features
+          stylelint.vscode-stylelint # CSS linter
           tailscale.vscode-tailscale # Share a port over the internet with Tailscale Funnel
           tamasfe.even-better-toml
           usernamehw.errorlens
+          yoavbls.pretty-ts-errors # Make TypeScript errors prettier and human-readable
           zhwu95.riscv # syntax highlighting and snippets for RISC-V assembly language
+          ziglang.vscode-zig # Zig support for Visual Studio Code.
         ]
         ++ import ./extra-vscode-extensions.nix {
           inherit lib pkgs;

@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 with lib; let
@@ -26,13 +25,13 @@ in {
       # XFCE desktop environment
       # https://nixpkgs-manual-sphinx-markedown-example.netlify.app/configuration/xfce.xml
       # https://github.com/NixOS/nixpkgs/blob/nixos-23.11/nixos/modules/services/x11/desktop-managers/xfce.nix
-      desktopManager.xfce.enable = true;
-      desktopManager.xfce.enableScreensaver = false;
-      desktopManager.xfce.enableXfwm = true;
+      desktopManager.xfce.enable = false;
+      # desktopManager.xfce.enableScreensaver = false;
+      # desktopManager.xfce.enableXfwm = true;
 
       # LightDM display manager
       # https://github.com/NixOS/nixpkgs/blob/nixos-23.11/nixos/modules/services/x11/display-managers/lightdm.nix
-      displayManager.lightdm.enable = true;
+      displayManager.lightdm.enable = false;
       # https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/services/x11/display-managers/lightdm.nix
       # displayManager.lightdm.greeters.gtk.enable = true;
       # displayManager.lightdm.greeters.slick.enable = true;

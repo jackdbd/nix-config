@@ -1,6 +1,5 @@
 {
   config,
-  fetchFromGitHub,
   lib,
   pkgs,
   ...

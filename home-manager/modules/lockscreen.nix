@@ -1,16 +1,17 @@
 {
-  config,
+  # config,
   lib,
   pkgs,
   ...
 }:
 with lib; let
-  cfg = config.services.lockscreen;
+  cancel-cmd = "";
+  # cfg = config.services.lockscreen;
   idle-seconds-min = 10;
   idle-seconds-max = 3600;
   idle-seconds-default = 300;
-  lock-cmd = "xflock4"; # see xfconf.nix. Maybe accept this as an option
-  cancel-cmd = "";
+  # lock-cmd = "xflock4"; # see xfconf.nix. Maybe accept this as an option
+  lock-cmd = "pidof hyprlock || hyprlock"; # https://flarexes.com/hyprland-getting-started-configure-screen-lock-brightness-volume-authentication-and-more
 in {
   imports = [];
 
@@ -50,25 +51,25 @@ in {
   # https://github.com/nix-community/home-manager/blob/master/modules/services/xidlehook.nix
   # https://github.com/jD91mZM2/xidlehook
   # https://mipmip.github.io/home-manager-option-search/?query=xidlehook
-  config.services.xidlehook = {
-    enable = true;
-    detect-sleep = true;
-    not-when-audio =
-      if cfg.not-when-audio
-      then true
-      else false;
-    not-when-fullscreen =
-      if cfg.not-when-fullscreen
-      then true
-      else false;
-    timers = [
-      {
-        delay = cfg.idle-seconds;
-        command = lock-cmd;
-        canceller = cancel-cmd;
-      }
-    ];
-  };
+  # config.services.xidlehook = {
+  #   enable = true;
+  #   detect-sleep = true;
+  #   not-when-audio =
+  #     if cfg.not-when-audio
+  #     then true
+  #     else false;
+  #   not-when-fullscreen =
+  #     if cfg.not-when-fullscreen
+  #     then true
+  #     else false;
+  #   timers = [
+  #     {
+  #       delay = cfg.idle-seconds;
+  #       command = lock-cmd;
+  #       canceller = cancel-cmd;
+  #     }
+  #   ];
+  # };
 
   config.services.xscreensaver.enable = false;
 }

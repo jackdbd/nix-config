@@ -17,7 +17,6 @@
       # 1. Set an empty SHA or a fake one (e.g. using lib.fakeSha256)
       # 2. Run home-manager switch. This will fail because the SHA does not match. Take note of the correct SHA.
       # 3. Replace the SHA with the correct one.
-      # sha256 = lib.fakeSha256;
       sha256 = "sha256-OrdIhgNXpEbLXYVJAx/jpt2c6Qa5jf8FNxqrbu5FfFs=";
     };
     meta = {
@@ -48,7 +47,7 @@
       name = "turbo-console-log";
       publisher = "ChakrounAnas";
       sha256 = "sha256-6CMnEGss4XkDau6Wn4equMJWoQtSjMgQ15Y7TK3mZvk=";
-      version = "2.10.4";
+      version = "3.2.0";
     };
     meta = {
       changelog = "https://marketplace.visualstudio.com/items/ChakrounAnas.turbo-console-log/changelog";
@@ -63,7 +62,7 @@
       name = "portal";
       publisher = "djblue";
       sha256 = "sha256-uFPEgx5R69ESwJreoDBm7HX6kAt5MRz/U4SU6sOlypE=";
-      version = "0.57.3";
+      version = "0.59.2";
     };
     meta = {
       downloadPage = "https://marketplace.visualstudio.com/items?itemName=djblue.portal";
@@ -107,7 +106,7 @@
       name = "vscode-versionlens";
       publisher = "pflannery";
       sha256 = "sha256-2wmdfvD6j/gQ3IEAn1vKOOzbqlmbWhVM5qXlLoBmg3c=";
-      version = "1.9.2";
+      version = "1.22.2";
     };
     meta = {
       changelog = "https://marketplace.visualstudio.com/items/pflannery.vscode-versionlens/changelog";
@@ -128,22 +127,6 @@
       downloadPage = "https://marketplace.visualstudio.com/items?itemName=pranaygp.vscode-css-peek";
       homepage = "https://github.com/pranaygp/vscode-css-peek/blob/master/README.md";
       license = lib.licenses.mit;
-    };
-  };
-
-  # https://github.com/Pythagora-io/gpt-pilot
-  Pythagora-io.gpt-pilot = buildVscodeMarketplaceExtension {
-    mktplcRef = {
-      name = "gpt-pilot-vs-code";
-      publisher = "PythagoraTechnologies";
-      sha256 = "sha256-f+XNo3NRstKk+nc9q4qBbTehbdteDvss2MqazrlwVOQ=";
-      version = "0.1.12";
-    };
-    meta = {
-      changelog = "https://marketplace.visualstudio.com/items/PythagoraTechnologies.gpt-pilot-vs-code/changelog";
-      downloadPage = "https://marketplace.visualstudio.com/items?itemName=PythagoraTechnologies.gpt-pilot-vs-code";
-      homepage = "https://github.com/Pythagora-io/gpt-pilot#readme";
-      license = lib.licenses.asl20;
     };
   };
 
@@ -175,43 +158,12 @@
     };
   };
 
-  scalameta.metals = buildVscodeMarketplaceExtension {
-    mktplcRef = {
-      name = "metals";
-      publisher = "scalameta";
-      sha256 = "sha256-N9q3paNCSvBVmW4uPwlfBCYRKq8ka0py+Im2fZCn3GE=";
-      version = "1.49.3";
-    };
-    meta = {
-      changelog = "https://marketplace.visualstudio.com/items/scalameta.metals/changelog";
-      downloadPage = "https://marketplace.visualstudio.com/items?itemName=scalameta.metals";
-      homepage = "https://github.com/scalameta/metals-vscode";
-      license = lib.licenses.asl20;
-    };
-  };
-
-  stylelint.vscode-stylelint = buildVscodeMarketplaceExtension {
-    mktplcRef = {
-      name = "vscode-stylelint";
-      publisher = "Stylelint";
-      sha256 = "sha256-JoCa2d0ayBEuCcQi3Z/90GJ4AIECVz8NCpd+i+9uMeA=";
-      version = "1.3.0";
-    };
-    meta = {
-      changelog = "https://marketplace.visualstudio.com/items/stylelint.vscode-stylelint/changelog";
-      downloadPage = "https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint";
-      homepage = "https://github.com/stylelint/vscode-stylelint#readme";
-      license = lib.licenses.mit;
-    };
-  };
-
-  # https://github.com/unocss/unocss
   unocss.unocss = buildVscodeMarketplaceExtension {
     mktplcRef = {
       name = "unocss";
       publisher = "antfu"; # Anthony Fu
-      sha256 = "sha256-nfqvzKqpvEoRU9B5KNjj4vLK5evaftSA60keEPVtbRY=";
-      version = "0.59.2";
+      sha256 = "sha256-4bxxp4mtcnMhLdKL9D01VqMQKOAjaeWI8Q5He5HHhMQ=";
+      version = "66.3.3";
     };
     meta = {
       downloadPage = "https://marketplace.visualstudio.com/items?itemName=antfu.unocss";
@@ -220,47 +172,17 @@
     };
   };
 
-  # https://github.com/vuejs/language-tools
   vuejs.language-tools = buildVscodeMarketplaceExtension {
     mktplcRef = {
       name = "volar";
       publisher = "Vue";
-      sha256 = "sha256-UQGatAUuDCd5/sisp8UOTuP1gtNMxTpOHQLzO28eOYg=";
-      version = "2.0.14";
+      sha256 = "sha256-6iInkhGZ0r4xtJCiHrsTa6EMnNR4mXUARR4B9YXRm+I=";
+      version = "3.0.3";
     };
     meta = {
       changelog = "https://marketplace.visualstudio.com/items/Vue.volar/changelog";
       downloadPage = "https://marketplace.visualstudio.com/items?itemName=Vue.volar";
       homepage = "https://github.com/vuejs/language-tools#readme";
-      license = lib.licenses.mit;
-    };
-  };
-
-  yoavbls.pretty-ts-errors = buildVscodeMarketplaceExtension {
-    mktplcRef = {
-      name = "pretty-ts-errors";
-      publisher = "yoavbls";
-      sha256 = "sha256-cmleAs7EMXT1z0o8Uq5ne2LrthUt/vhcN+iqfAy/i/8=";
-      version = "0.6.0";
-    };
-    meta = {
-      downloadPage = "https://marketplace.visualstudio.com/items?itemName=yoavbls.pretty-ts-errors";
-      homepage = "https://github.com/yoavbls/pretty-ts-errors#readme";
-      license = lib.licenses.mit;
-    };
-  };
-
-  ziglang.vscode-zig = buildVscodeMarketplaceExtension {
-    mktplcRef = {
-      name = "vscode-zig";
-      publisher = "ziglang";
-      sha256 = "sha256-tKDIGALQT4mgZ7u+LSbdzW2pdH0RhyUjpWyH4YHNR10=";
-      version = "0.5.9";
-    };
-    meta = {
-      changelog = "https://marketplace.visualstudio.com/items/ziglang.vscode-zig/changelog";
-      downloadPage = "https://marketplace.visualstudio.com/items?itemName=ziglang.vscode-zig";
-      homepage = "https://github.com/ziglang/vscode-zig#readme";
       license = lib.licenses.mit;
     };
   };
@@ -288,15 +210,11 @@ in
     mtxr.sqltools # SQL formatter and query runner for many databases
     pflannery.vscode-versionlens
     pranaygp.vscode-css-peek
-    # PythagoraTechnologies.gpt-pilot-vs-code
-    # Pythagora-io.gpt-pilot
     ronnidc.nunjucks
     ryan-heybourn.headwind
     scalameta.metals
     stylelint.vscode-stylelint
     unocss.unocss
     vuejs.language-tools
-    yoavbls.pretty-ts-errors
-    ziglang.vscode-zig
     zignd.html-css-class-completion
   ]

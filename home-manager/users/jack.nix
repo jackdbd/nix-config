@@ -20,13 +20,13 @@ in {
       ../modules/flameshot.nix
       ../modules/git.nix
       ../modules/gnome-keyring.nix
-      ../modules/hyprland.nix
-      ../modules/lockscreen.nix
+      ../modules/hyprland
+      # ../modules/lockscreen.nix
       ../modules/rssguard
       ../modules/starship.nix
       ../modules/tmux
       ../modules/vscode
-      ../modules/xfconf.nix
+      # ../modules/xfconf.nix
     ]
     ++ lib.concatMap import [
       ../programs
@@ -51,6 +51,7 @@ in {
     packages = with pkgs; [
       age # encryption tool
       alacritty # Open GL terminal emulator
+      anki-bin # Spaced repetition flashcard program
       asciinema # record the terminal
       asunder # Graphical Audio CD ripper and encoder for Linux
       awscli2 # AWS CLI
@@ -65,7 +66,7 @@ in {
       clojure
       ctop # top-like interface for container metrics
       curl
-      darktable # virtual lighttable and darkroom for photographers
+      # darktable # virtual lighttable and darkroom for photographers
       dbeaver-bin # GUI for many SQL databases https://dbeaver.io/about/
       ddrescue # data recovery tool (I also use it to burn an ISO to a USB flash drive)
       ddrescueview # Graphical viewer for GNU ddrescue mapfiles
@@ -79,6 +80,7 @@ in {
         echo "configHome is ${configHome}"
       '')
       difftastic # syntax-aware diff
+      distrobox # Wrapper around podman or docker to create and start containers
       dive # explore the layers of a container image
       # emojione # open source emoji set TODO: this failed to build on 2024/07/25
       entr # file watcher
@@ -91,6 +93,7 @@ in {
       file # show the type of files
       firefox
       flyctl # Fly.io CLI
+      foliate # Simple and modern GTK eBook reader
       fx # JSON viewer
       gh # GitHub CLI
       gimp # image editor
@@ -106,18 +109,21 @@ in {
       jq # JSON processor
       killall # kill processes by name or list PIDs
       kitty # GPU-based terminal emulator
+      kubeswitch # Kubectx for operators, a drop-in replacement for kubectx
       libreoffice # a variant of openoffice.org
       lm_sensors # tools for reading hardware sensors
       logseq # local-first, non-linear, outliner notebook for organizing and sharing your personal knowledge base
       lshw # detailed information on the hardware configuration of the machine
       lsix # shows thumbnails in terminal using sixel graphics
       luajitPackages.fennel # Lisp that compiles to Lua
+      # lutris # Open Source gaming platform for GNU/Linux
       meld # visual diff and merge tool
       monolith # save a web page as a single HTML file
       mtr # network diagnostics tool (basically traceroute + ping)
       ncdu # disk usage utility
       neil # CLI to add common aliases and features to deps.edn-based projects (e.g. Clojure, ClojureScript)
       neofetch
+      nh # nix cli helper https://github.com/viperML/nh
       nix-index # locate packages containing certain nixpkgs (TODO: does it work with flakes?)
       nix-output-monitor # nom: monitor nix commands (TODO: does it work with flakes?)
       nodePackages.node-gyp # Node.js native addon build tool
@@ -130,6 +136,7 @@ in {
       nodejs_22
       papirus-icon-theme
       pgadmin4
+      pgcli # Command-line interface for PostgreSQL
       pinta # image editor
       pitivi # video editor
       podman # docker run alternative
@@ -268,8 +275,8 @@ in {
 
   services.gnome-keyring.enable = true;
 
-  services.lockscreen.not-when-audio = true;
-  services.lockscreen.not-when-fullscreen = true;
+  # services.lockscreen.not-when-audio = true;
+  # services.lockscreen.not-when-fullscreen = true;
 
   # Restart systemd services on change
   systemd.user.startServices = "sd-switch";

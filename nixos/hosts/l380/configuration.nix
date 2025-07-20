@@ -5,10 +5,9 @@
   allowed-unfree-packages,
   config,
   fh,
-  inputs,
   lib,
   nil,
-  nixos-hardware,
+  # nixos-hardware,
   permitted-insecure-pakages,
   pkgs,
   user,
@@ -25,19 +24,18 @@
     {
       environment.systemPackages = [nil.packages.x86_64-linux.default];
     }
-    ../../modules/1password.nix
+    ../../modules/1password/default.nix
     ../../modules/android.nix
     ../../modules/bluetooth.nix
     ../../modules/dbt.nix
     ../../modules/fonts.nix
-    ../../modules/hyprland.nix
+    ../../modules/hyprland/default.nix
     ../../modules/nix.nix
-    ../../modules/ollama.nix
     ../../modules/pipewire.nix
     ../../modules/printing.nix
     ../../modules/riscv.nix
     ../../modules/secrets.nix
-    ../../modules/steam.nix
+    ../../modules/steam/default.nix
     ../../modules/syncthing.nix
     ../../modules/tailscale.nix
     ../../modules/trezor.nix
