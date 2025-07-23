@@ -247,7 +247,7 @@ in {
   };
 
   services.activitywatch = {
-    enable = true;
+    enable = false;
     # https://nix-community.github.io/home-manager/options.xhtml#opt-services.activitywatch.watchers
     # https://docs.activitywatch.net/en/latest/configuration.html
     watchers = {

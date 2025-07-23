@@ -202,7 +202,7 @@
   };
 in
   with pkgs.vscode-extensions; [
-    activitywatch.aw-watcher-vscode
+    # activitywatch.aw-watcher-vscode
     bierner.color-info # Provides quick information about css colors
     chakrounanas.turbo-console-log
     djblue.portal # A clojure tool to navigate through your data
