@@ -55,6 +55,11 @@
     extraConfig = ''
     '';
 
+    # https://wiki.hypr.land/Configuring/Variables/#input
+    # input = {
+    #   kb_layout = "us";
+    # };
+
     plugins = [
       # https://youtu.be/zt3hgSBs11g?si=nwcKtZmX8XgBz-Bd&t=199
       # inputs.hyprland-plugins.packages."${pkgs.system}".borders-plus-plus
@@ -105,20 +110,20 @@
       ];
 
       # https://wiki.hyprland.org/Configuring/Variables/#decoration
-      # decoration = {
-      #   blur = {
-      #     enabled = true;
-      #     passes = 1;
-      #     size = 3;
-      #   };
-      #   drop_shadow = "yes";
-      #   rounding = 10;
-      #   shadow_offset = "0 5";
-      #   shadow_range = 4;
-      #   shadow_render_power = 3;
-      #   # https://www.color-hex.com/
-      #   "col.shadow" = "rgba(8673fcee)";
-      # };
+      decoration = {
+        # blur = {
+        #   enabled = true;
+        #   passes = 1;
+        #   size = 3;
+        # };
+        # drop_shadow = "yes";
+        rounding = 5;
+        # shadow_offset = "0 5";
+        # shadow_range = 4;
+        # shadow_render_power = 3;
+        # # https://www.color-hex.com/
+        # "col.shadow" = "rgba(8673fcee)";
+      };
 
       # https://wiki.hyprland.org/Configuring/Dwindle-Layout/
       dwindle = {
@@ -142,11 +147,11 @@
       # https://wiki.hyprland.org/Configuring/Variables/#general
       general = {
         # https://wiki.hyprland.org/Configuring/Tearing/
-        # allow_tearing = false;
-        border_size = 2;
-        gaps_in = 5;
-        gaps_out = 20;
-        layout = "dwindle";
+        allow_tearing = false;
+        border_size = 1;
+        gaps_in = 2;
+        gaps_out = 2;
+        layout = "master";
       };
 
       # https://wiki.hyprland.org/Configuring/Variables/#gestures
@@ -155,7 +160,10 @@
       };
 
       # https://wiki.hyprland.org/Configuring/Master-Layout/
-      master = {};
+      master = {
+        mfact = 0.70;
+        orientation = "left";
+      };
 
       # https://wiki.hyprland.org/Configuring/Keywords/
       "$mainMod" = "SUPER";
