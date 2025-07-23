@@ -16,6 +16,20 @@
     enable = true;
   };
 
+  config.programs.waybar = {
+    enable = true;
+
+    # https://github.com/Alexays/Waybar/wiki/Configuration
+    settings = {
+      mainBar = {
+        height = 30;
+        # mode = "overlay";
+        layer = "top";
+        position = "top";
+      };
+    };
+  };
+
   config.services.hypridle = {
     enable = true;
     # Configuration for hypridle
