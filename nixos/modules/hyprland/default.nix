@@ -27,7 +27,7 @@
       # https://github.com/LGFae/swww
       swww
 
-      # Highly customizable Wayland bar
+      # Highly customizable status bar for wlroots Wayland compositors
       # https://github.com/Alexays/Waybar
       waybar
     ];
@@ -38,13 +38,11 @@
 
     # https://wiki.hyprland.org/Nix/Hyprland-on-NixOS/
     # vimjoyer video about Hyprland configuration https://youtu.be/61wGzIv12Ds?si=Gjj4hJXHs2nujL0z
-    programs.hyprland = {
-      enable = true;
+    programs.hyprland.enable = true;
 
-      # If we want to run X applications on a machine that uses Wayland as its
-      # compositor, we need this compatibility layer.
-      xwayland.enable = true;
-    };
+    # If we want to run X applications on a machine that uses Wayland as its
+    # compositor, we need this compatibility layer.
+    programs.xwayland.enable = true;
 
     programs.waybar.enable = true;
 

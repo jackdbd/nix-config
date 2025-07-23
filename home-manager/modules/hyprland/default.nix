@@ -74,16 +74,18 @@
       # https://wiki.hyprland.org/Configuring/Binds/
       bind = [
         "ALT, F4, killactive"
-        "$mainMod, A, exec, rofi -show drun -show-icons"
+        # "$mainMod, A, exec, rofi -show drun -show-icons"
         "$mainMod, C, killactive"
         # "$mainMod, E, exec $fileManager"
         "$mainMod, L, exec, hyprlock"
         "$mainMod, M, exit"
 
-        "$mainMod, T, exec, $terminal"
+        # "$mainMod, T, exec, $terminal"
         # "$mainMod, S, exec, rofi -show drun -show-icons"
         # grave is the key with backtick/tilde
-        # "$mainMod, grave, exec, rofi -show drun -show-icons"
+        # asciitilde is the key with backtick/tilde
+        "$mod, grave, exec, rofi -show drun -show-icons"
+        "$mod, escape, exec, rofi -show drun -show-icons"
 
         # Move focus with mainMod + arrow keys
         "$mainMod, left, movefocus, l"
@@ -91,8 +93,6 @@
         "$mainMod, up, movefocus, u"
         "$mainMod, down, movefocus, d"
 
-        "$mod, escape, exec, rofi -show drun -show-icons"
-        "$mod, Q, exec, rofi -show drun -show-icons"
         "$mod, T, exec, $terminal"
         "ALT, Tab, cyclenext" # change focus to another window
         "$mod, Tab, cyclenext" # change focus to another window
@@ -168,9 +168,10 @@
       # https://wiki.hyprland.org/Configuring/Keywords/
       "$mainMod" = "SUPER";
 
-      # https://wiki.hyprland.org/Configuring/Variables/#misc
+      # https://wiki.hypr.land/Configuring/Variables/#misc
       misc = {
-        force_default_wallpaper = 0;
+        disable_hyprland_logo = false; # If true disables the random hyprland logo / anime girl background.
+        force_default_wallpaper = -1; # Set to 0 or 1 to disable the anime mascot wallpapers
       };
 
       # "$menu" = "wofi --show drun";
@@ -185,9 +186,9 @@
       # monitor = ",preferred,auto,1";
       # monitor = "DP-1,1920x1080@144,0x0,1";
 
-      "$terminal" = "alacritty";
-      # "$terminal" = config.programs.alacritty;
-      # "$terminal" = "ghostty";
+      # "$terminal" = "alacritty";
+      "$terminal" = "ghostty";
+      # "$terminal" = config.programs.ghostty;
       # "$terminal" = "kitty";
 
       # https://wiki.hyprland.org/Configuring/Window-Rules/
