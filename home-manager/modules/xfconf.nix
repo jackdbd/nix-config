@@ -44,13 +44,6 @@
         };
 
         # xfconf-query --channel xfce4-session --list --verbose
-        xfce4-session = {
-          # We can lock the screen by typing `xflock4` in a terminal.
-          # https://superuser.com/questions/1696415/lock-screen-from-command-line-in-xfce
-          # This would be the default command to lock the screeen. But we use betterlockscreen instead.
-          # "general/LockCommand" = "${pkgs.lightdm}/bin/dm-tool lock";
-          "general/LockCommand" = "${pkgs.betterlockscreen}/bin/betterlockscreen --lock";
-        };
 
         # xfconf-query --channel xfwm4 --list --verbose
         xfwm4 = {

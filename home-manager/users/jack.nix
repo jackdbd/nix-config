@@ -21,7 +21,6 @@ in {
       ../modules/git.nix
       ../modules/gnome-keyring.nix
       ../modules/hyprland
-      # ../modules/lockscreen.nix
       ../modules/rssguard
       ../modules/starship.nix
       ../modules/tmux
@@ -274,9 +273,6 @@ in {
   services.blueman-applet.enable = true;
 
   services.gnome-keyring.enable = true;
-
-  # services.lockscreen.not-when-audio = true;
-  # services.lockscreen.not-when-fullscreen = true;
 
   # Restart systemd services on change
   systemd.user.startServices = "sd-switch";
