@@ -72,8 +72,8 @@
     # https://wiki.hypr.land/Configuring/Variables/#input
     # input = {
     #   kb_layout = "us";
-    # };
 
+    # };
     plugins = [
       # https://youtu.be/zt3hgSBs11g?si=nwcKtZmX8XgBz-Bd&t=199
       # inputs.hyprland-plugins.packages."${pkgs.system}".borders-plus-plus
@@ -88,9 +88,7 @@
       # https://wiki.hyprland.org/Configuring/Binds/
       bind = [
         "ALT, F4, killactive"
-        # "$mainMod, A, exec, rofi -show drun -show-icons"
         "$mainMod, C, killactive"
-        # "$mainMod, E, exec $fileManager"
         "$mainMod, L, exec, hyprlock"
         "$mainMod, M, exit"
 
@@ -100,6 +98,9 @@
         # asciitilde is the key with backtick/tilde
         "$mod, grave, exec, rofi -show drun -show-icons"
         "$mod, escape, exec, rofi -show drun -show-icons"
+
+        # "$mod, H, exec $fileManager"
+        # "$mod, D, exec $fileManager, ~/Downloads"
 
         # Move focus with mainMod + arrow keys
         "$mainMod, left, movefocus, l"
@@ -156,7 +157,7 @@
       };
 
       # "$fileManager" = "/run/current-system/sw/bin/thunar";
-      # "$fileManager" = "thunar";
+      "$fileManager" = "thunar";
 
       # https://wiki.hyprland.org/Configuring/Variables/#general
       general = {

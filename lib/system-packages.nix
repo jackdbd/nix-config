@@ -3,6 +3,8 @@
     mate.atril # PDF viewer (it's a fork of evince)
   ];
   xfcePackages = with pkgs; [
+    xfce.thunar
+    xfce.thunar-volman
     xfce.xfce4-cpugraph-plugin
     xfce.xfce4-notes-plugin
     xfce.xfce4-terminal
