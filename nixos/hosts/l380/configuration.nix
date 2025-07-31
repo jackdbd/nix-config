@@ -29,7 +29,6 @@
     ../../modules/bluetooth.nix
     ../../modules/dbt.nix
     ../../modules/fonts.nix
-    ../../modules/hyprland/default.nix
     ../../modules/nix.nix
     ../../modules/pipewire.nix
     ../../modules/printing.nix
@@ -41,6 +40,7 @@
     ../../modules/trezor.nix
     ../../modules/virtualbox.nix
     ../../modules/vscodium.nix
+    ../../modules/wayland.nix
     ../../modules/xserver.nix
   ];
 
