@@ -20,11 +20,12 @@ in {
       ../modules/flameshot.nix
       ../modules/git.nix
       ../modules/gnome-keyring.nix
-      ../modules/hyprland
+      # ../modules/hyprland
       ../modules/rssguard
       ../modules/starship.nix
       ../modules/tmux
       ../modules/vscode
+      ../modules/wayfire.nix
       # ../modules/xfconf.nix
     ]
     ++ lib.concatMap import [

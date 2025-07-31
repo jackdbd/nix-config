@@ -38,7 +38,7 @@
 
     # https://wiki.hyprland.org/Nix/Hyprland-on-NixOS/
     # vimjoyer video about Hyprland configuration https://youtu.be/61wGzIv12Ds?si=Gjj4hJXHs2nujL0z
-    programs.hyprland.enable = true;
+    # programs.hyprland.enable = true;
 
     # If we want to run X applications on a machine that uses Wayland as its
     # compositor, we need this compatibility layer.
