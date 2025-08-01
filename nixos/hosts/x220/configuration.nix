@@ -101,7 +101,6 @@
   networking.hostName = "x220-nixos";
 
   # To facilitate network configuration, we use NetworkManager.
-  # https://nixpkgs-manual-sphinx-markedown-example.netlify.app/configuration/network-manager.xml.html#networkmanager
   networking.networkmanager.enable = true;
 
   # Instead of setting allowUnfree to true, I prefer explicitly list all the

@@ -15,9 +15,6 @@
     };
 
     environment.systemPackages = with pkgs; [
-      # Catppuccin Theme for SDDM
-      # catppuccin-sddm-corners
-
       # App launcher
       # https://youtu.be/61wGzIv12Ds?si=QiPrksKw9M3Hnbrh&t=222
       rofi-wayland
@@ -45,20 +42,8 @@
 
     programs.waybar.enable = true;
 
-    # Enable a Wayland-compatible display manager (SDDM is highly recommended)
-    # https://github.com/sddm/sddm
-    # If you want to autologin, see here:
-    # https://timothymiller.dev/posts/2024/auto-login-with-nixos-and-kde-plasma/
-    services.displayManager.sddm = {
-      enable = false;
-      # theme = "catppuccin-sddm-corners";
-      wayland.enable = true;
-    };
-
     # Keep xserver enabled to ensure XWayland compatibility within the
     # wayland-based compositor (e.g. Hyprland, Labwc) session.
-    services.xserver = {
-      enable = true;
-    };
+    services.xserver.enable = true;
   };
 }

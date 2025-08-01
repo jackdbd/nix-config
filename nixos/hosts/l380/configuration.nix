@@ -28,6 +28,8 @@
     ../../modules/android.nix
     ../../modules/bluetooth.nix
     ../../modules/dbt.nix
+    ../../modules/display-managers/lightdm.nix
+    # ../../modules/display-managers/sddm.nix
     ../../modules/fonts.nix
     ../../modules/nix.nix
     ../../modules/pipewire.nix
@@ -42,7 +44,6 @@
     ../../modules/vscodium.nix
     # ../../modules/wayland.nix
     ../../modules/xfce.nix
-    ../../modules/xserver.nix
   ];
 
   boot.initrd.luks.devices."luks-d47fdf7e-ec01-48fc-95f4-9d76df0e09be".device = "/dev/disk/by-uuid/d47fdf7e-ec01-48fc-95f4-9d76df0e09be";
