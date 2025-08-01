@@ -61,7 +61,7 @@
     services.xserver = {
       enable = true;
       desktopManager.xfce.enable = true;
-      displayManager.lightdm.enable = true;
+      displayManager.lightdm.enable = false;
       xkb.layout = "us,it";
       xkb.options = "grp:alt_space_toggle";
     };
