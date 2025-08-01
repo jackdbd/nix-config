@@ -40,8 +40,9 @@
     ../../modules/trezor.nix
     ../../modules/virtualbox.nix
     ../../modules/vscodium.nix
-    ../../modules/wayland.nix
-    # ../../modules/xserver.nix
+    # ../../modules/wayland.nix
+    ../../modules/xfce.nix
+    ../../modules/xserver.nix
   ];
 
   boot.initrd.luks.devices."luks-d47fdf7e-ec01-48fc-95f4-9d76df0e09be".device = "/dev/disk/by-uuid/d47fdf7e-ec01-48fc-95f4-9d76df0e09be";

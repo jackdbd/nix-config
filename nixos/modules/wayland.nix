@@ -50,20 +50,15 @@
     # If you want to autologin, see here:
     # https://timothymiller.dev/posts/2024/auto-login-with-nixos-and-kde-plasma/
     services.displayManager.sddm = {
-      enable = true;
+      enable = false;
       # theme = "catppuccin-sddm-corners";
       wayland.enable = true;
     };
 
-    # Keep xserver enabled to ensure XWayland compatibility.
-    # within the Hyprland session,
-    # Also keep enabled XFCE and LightDM.
+    # Keep xserver enabled to ensure XWayland compatibility within the
+    # wayland-based compositor (e.g. Hyprland, Labwc) session.
     services.xserver = {
       enable = true;
-      desktopManager.xfce.enable = true;
-      displayManager.lightdm.enable = false;
-      xkb.layout = "us,it";
-      xkb.options = "grp:alt_space_toggle";
     };
   };
 }

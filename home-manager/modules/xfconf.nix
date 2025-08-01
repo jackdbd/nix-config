@@ -20,7 +20,7 @@
           "commands/custom/<Super>d" = "thunar Downloads";
           "commands/custom/<Super>h" = "thunar";
           "commands/custom/<Super>k" = "xkill";
-          "commands/custom/<Super>l" = "xflock4";
+          "commands/custom/<Super>l" = "light-locker-command --lock"; # "xflock4";
           "commands/custom/<Super>m" = "thunar Music";
           "commands/custom/<Super>n" = "xfce4-notes";
           "commands/custom/<Super>p" = "thunar Pictures";
@@ -30,12 +30,6 @@
           # On XFCE this shortcut would call xflock4. I use it for other things, so I set it to null to remove it.
           "commands/default/<Primary><Alt>l" = null;
           "commands/default/Print" = "${pkgs.flameshot}/bin/flameshot gui";
-          # "xfwm4/default/<Super>Left" = "tile_left_key";
-          # "xfwm4/default/<Super>KP_Left" = "tile_left_key";
-          # "xfwm4/default/<Super>Right" = "tile_right_key";
-          # "xfwm4/default/<Super>KP_Right" = "tile_right_key";
-          # "xfwm4/default/<Alt>F11" = "fullscreen_key";
-          # "xfwm4/default/<Primary><Alt>d" = "show_desktop_key";
         };
 
         # xfconf-query --channel xfce4-notifyd --list --verbose
@@ -44,19 +38,6 @@
         };
 
         # xfconf-query --channel xfce4-session --list --verbose
-
-        # xfconf-query --channel xfwm4 --list --verbose
-        # xfwm4 = {
-        #   # TODO: how do I change theme?
-        #   # https://www.xfce-look.org/browse?cat=138&ord=latest
-        #   # https://www.xfce-look.org/browse?cat=135
-        #   # https://github.com/NixOS/nixpkgs/blob/nixos-23.11/pkgs/desktops/xfce/art/xfwm4-themes/default.nix#L18
-        #   # "general/theme" = "plano";
-        #   # "general/theme" = "tux";
-        #   "general/theme" = "Default";
-        #   "general/title_font" = "Sans Bold 9";
-        #   "general/use_compositing" = true;
-        # };
 
         # xfconf-query --channel xsettings --list --verbose
       };

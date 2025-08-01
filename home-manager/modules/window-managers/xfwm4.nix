@@ -30,6 +30,11 @@
           "general/theme" = "Default";
           "general/title_font" = "Sans Bold 9";
           "general/use_compositing" = true;
+          "general/workspace_count" = 1;
+          # "general/workspace_names" = [
+          #   "Workspace 1"
+          #   "Workspace 2"
+          # ];
         };
       };
     };

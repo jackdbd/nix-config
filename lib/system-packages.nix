@@ -2,14 +2,6 @@
   matePackages = with pkgs; [
     mate.atril # PDF viewer (it's a fork of evince)
   ];
-  xfcePackages = with pkgs; [
-    xfce.thunar
-    xfce.thunar-volman
-    xfce.xfce4-cpugraph-plugin
-    xfce.xfce4-notes-plugin
-    xfce.xfce4-terminal
-    xfce.xfwm4-themes
-  ];
   xorgPackages = with pkgs; [
     xorg.xkill
   ];
@@ -74,5 +66,4 @@ in
       zip
     ]
     ++ matePackages
-    ++ xfcePackages
     ++ xorgPackages
