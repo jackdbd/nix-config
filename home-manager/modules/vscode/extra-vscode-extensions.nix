@@ -213,7 +213,6 @@ in
     ronnidc.nunjucks
     ryan-heybourn.headwind
     scalameta.metals
-    stylelint.vscode-stylelint
     unocss.unocss
     vuejs.language-tools
     zignd.html-css-class-completion

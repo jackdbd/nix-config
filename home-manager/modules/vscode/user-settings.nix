@@ -1,7 +1,4 @@
-{
-  lib,
-  pkgs,
-}: {
+{...}: {
   "[css]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
   "[css]"."editor.formatOnSave" = true;
   "[git-commit]"."editor.rulers" = [50];
@@ -17,7 +14,6 @@
   "[nix]"."editor.defaultFormatter" = "kamadorueda.alejandra";
   "[nix]"."editor.formatOnSave" = true;
   "[nix]"."editor.tabSize" = 2;
-  "[postcss]"."editor.defaultFormatter" = "stylelint.vscode-stylelint";
   "[postcss]"."editor.formatOnSave" = true;
   "[python]"."editor.defaultFormatter" = "ms-python.black-formatter";
   "[python]"."editor.formatOnSave" = true;

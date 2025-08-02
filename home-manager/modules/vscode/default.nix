@@ -75,7 +75,6 @@ in {
           ms-vsliveshare.vsliveshare # Live Share (real-time collaborative development)
           scala-lang.scala # syntax highlighting for Scala 2 and Scala 3
           scalameta.metals # Scala language server with rich IDE features
-          stylelint.vscode-stylelint # CSS linter
           tailscale.vscode-tailscale # Share a port over the internet with Tailscale Funnel
           tamasfe.even-better-toml
           usernamehw.errorlens
@@ -95,10 +94,6 @@ in {
       # https://code.visualstudio.com/docs/getstarted/settings
       # https://github.com/jackdbd/dotfiles/blob/main/Code/.config/Code/User/settings.json
       profiles.default.userSettings = import ./user-settings.nix {inherit lib pkgs;};
-
-      # TODO: configure stylelint rules
-      # https://github.com/stylelint/vscode-stylelint
-      # https://github.com/stylelint/stylelint/blob/main/docs/user-guide/rules.md
 
       profiles.default.userTasks = {
         version = "2.0.0";
