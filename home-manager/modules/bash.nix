@@ -43,10 +43,9 @@ in {
         issues = "${pkgs.gh}/bin/gh issue list";
         keyring = "systemctl --user start gnome-keyring.service";
         l = "${pkgs.eza}/bin/eza --all --long";
-        lg = "lazygit";
+        lg = "${pkgs.lazygit}/bin/lazygit";
         ll = "ls -l";
-        lock = "xflock4";
-        loc = "tokei"; # count lines of code
+        loc = "${pkgs.tokei}/bin/tokei"; # count lines of code
         myip = "curl http://ipecho.net/plain; echo";
         # See this video for other suggestions on how to delete old nix generations.
         # https://youtu.be/jQzPRYgJw04?si=Gj7M4oZbYpoeROzT&t=195
@@ -69,7 +68,7 @@ in {
         "t2" = "${pkgs.eza}/bin/eza --tree --ignore-glob=node_modules --level=2";
         "t3" = "${pkgs.eza}/bin/eza --tree --ignore-glob=node_modules --level=3";
         # download only audio (no video), in mp3 format
-        "ytmp3" = "yt-dlp --ignore-errors --extract-audio --audio-format mp3";
+        "ytmp3" = "${pkgs.yt-dlp}/bin/yt-dlp --ignore-errors --extract-audio --audio-format mp3";
       };
     };
   };

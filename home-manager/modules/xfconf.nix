@@ -1,6 +1,6 @@
 {pkgs, ...}: let
-  # username = "jack";
-  # homeDirectory = "/home/${username}";
+  lockCommand = "${pkgs.lightlocker}/bin/light-locker-command --lock";
+  fileManager = "${pkgs.xfce.thunar}/bin/thunar";
 in {
   imports = [];
 
@@ -33,16 +33,16 @@ in {
           # grave is the key with backtick/tilde
           "commands/custom/<Super>grave" = "${pkgs.rofi}/bin/rofi -show drun";
           "commands/custom/<Super>space" = "${pkgs.rofi}/bin/rofi -show drun";
-          "commands/custom/<Super>d" = "thunar Downloads";
-          "commands/custom/<Super>h" = "thunar";
+          "commands/custom/<Super>d" = "${fileManager} Downloads";
+          "commands/custom/<Super>h" = "${fileManager}";
           "commands/custom/<Super>k" = "xkill";
-          "commands/custom/<Super>l" = "light-locker-command --lock"; # "xflock4";
-          "commands/custom/<Super>m" = "thunar Music";
+          "commands/custom/<Super>l" = lockCommand;
+          "commands/custom/<Super>m" = "${fileManager} Music";
           "commands/custom/<Super>n" = "xfce4-notes";
-          "commands/custom/<Super>p" = "thunar Pictures";
+          "commands/custom/<Super>p" = "${fileManager} Pictures";
           "commands/custom/<Super>s" = "${pkgs.flameshot}/bin/flameshot gui";
           "commands/custom/<Super>t" = "${pkgs.alacritty}/bin/alacritty";
-          "commands/custom/<Super>v" = "thunar Videos";
+          "commands/custom/<Super>v" = "${fileManager} Videos";
           # On XFCE this shortcut would call xflock4. I use it for other things, so I set it to null to remove it.
           "commands/default/<Primary><Alt>l" = null;
           "commands/default/Print" = "${pkgs.flameshot}/bin/flameshot gui";
@@ -54,8 +54,18 @@ in {
         };
 
         # xfconf-query --channel xfce4-session --list --verbose
+        xfce4-session = {
+          "general/LockCommand" = lockCommand;
+        };
 
         # xfconf-query --channel xsettings --list --verbose
+        xsettings = {
+          # "Gtk/CursorThemeName" = "";
+          # "Gtk/KeyThemeName" = "";
+          "Net/IconThemeName" = "Adwaita";
+          "Net/ThemeName" = "Adwaita";
+          # "Xfce/SyncThemes" = true;
+        };
       };
     };
   };
