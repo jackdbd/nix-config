@@ -107,20 +107,28 @@
   ];
   "githubPullRequests.queries" = [
     {
+      label = "Local Pull Request Branches";
+      query = "default";
+    }
+    {
       label = "Assigned To Me";
-      query = ''is:open assignee:''${user}'';
+      query = ''repo:''${owner}/''${repository} is:open assignee:''${user}'';
     }
     {
       label = "Created By Me";
-      query = ''is:open author:''${user}'';
+      query = ''repo:''${owner}/''${repository} is:open author:''${user}'';
     }
     {
       label = "Waiting For My Review";
-      query = ''is:open review-requested:''${user}'';
+      query = ''repo:''${owner}/''${repository} is:open review-requested:''${user}'';
     }
     {
       label = "WIP PRs";
-      query = "is:open";
+      query = ''repo:''${owner}/''${repository} is:open'';
+    }
+    {
+      label = "All Open";
+      query = "default";
     }
   ];
 
