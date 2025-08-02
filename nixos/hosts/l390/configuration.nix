@@ -13,6 +13,7 @@
   imports = [
     # There is no Nix module for the ThinkPad L390. Maybe find a similar model.
     # nixos-hardware.nixosModules.lenovo-thinkpad-l390
+    # This includes the results of the hardware scan.
     ./hardware-configuration.nix
     {
       environment.systemPackages = [fh.packages.x86_64-linux.default];
@@ -24,8 +25,9 @@
     ../../modules/android.nix
     ../../modules/bluetooth.nix
     ../../modules/dbt.nix
+    ../../modules/display-managers/lightdm.nix
+    # ../../modules/display-managers/sddm.nix
     ../../modules/fonts.nix
-    ../../modules/hyprland/default.nix
     ../../modules/nix.nix
     ../../modules/pipewire.nix
     ../../modules/printing.nix
@@ -34,11 +36,12 @@
     ../../modules/steam/default.nix
     ../../modules/syncthing.nix
     ../../modules/tailscale.nix
-    ../../modules/tarsnap.nix
+    # ../../modules/tarsnap.nix
     ../../modules/trezor.nix
     ../../modules/virtualbox.nix
     ../../modules/vscodium.nix
-    ../../modules/xserver.nix
+    # ../../modules/wayland.nix
+    ../../modules/xfce.nix
   ];
 
   boot.initrd.luks.devices."luks-5e372b2f-58e6-48ea-83c3-3b2a2b67e935".device = "/dev/disk/by-uuid/5e372b2f-58e6-48ea-83c3-3b2a2b67e935";
@@ -50,10 +53,6 @@
   environment.enableDebugInfo = false;
   environment.homeBinInPath = true;
   environment.systemPackages = import ../../../lib/system-packages.nix {inherit config pkgs;};
-
-  # environment.xfce.excludePackages = with pkgs.xfce; [
-  #   ristretto # image viewer.
-  # ];
 
   hardware.bluetooth.enable = true;
 

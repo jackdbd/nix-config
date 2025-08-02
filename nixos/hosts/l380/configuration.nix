@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   allowed-unfree-packages,
   config,
@@ -16,7 +13,7 @@
   imports = [
     # There is no Nix module for the ThinkPad L380. Maybe find a similar model.
     # nixos-hardware.nixosModules.lenovo-thinkpad-l380
-    # Include the results of the hardware scan.
+    # This includes the results of the hardware scan.
     ./hardware-configuration.nix
     {
       environment.systemPackages = [fh.packages.x86_64-linux.default];
@@ -39,6 +36,7 @@
     ../../modules/steam/default.nix
     ../../modules/syncthing.nix
     ../../modules/tailscale.nix
+    # ../../modules/tarsnap.nix
     ../../modules/trezor.nix
     ../../modules/virtualbox.nix
     ../../modules/vscodium.nix
