@@ -1,15 +1,6 @@
-{
-  config,
-  pkgs,
-}: let
+{pkgs, ...}: let
   matePackages = with pkgs; [
     mate.atril # PDF viewer (it's a fork of evince)
-  ];
-  xfcePackages = with pkgs; [
-    xfce.xfce4-cpugraph-plugin
-    xfce.xfce4-notes-plugin
-    xfce.xfce4-terminal
-    xfce.xfwm4-themes
   ];
   xorgPackages = with pkgs; [
     xorg.xkill
@@ -51,7 +42,7 @@ in
       ltrace # tool that intercepts and records dynamic library calls
       minisign # tool for signing files and verifying signatures
       mongodb-compass # MongoDB GUI
-      nh # nix cli helper https://github.com/viperML/nh
+      nixd # Feature-rich Nix language server
       nmap # tool for network discovery and security auditing
       ntfs3g # FUSE-based NTFS driver
       p7zip # 7z, 7za, 7zr
@@ -75,5 +66,4 @@ in
       zip
     ]
     ++ matePackages
-    ++ xfcePackages
     ++ xorgPackages

@@ -1,14 +1,10 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   allowed-unfree-packages,
   config,
   fh,
-  inputs,
   lib,
   nil,
-  nixos-hardware,
+  # nixos-hardware,
   permitted-insecure-pakages,
   pkgs,
   user,
@@ -17,7 +13,7 @@
   imports = [
     # There is no Nix module for the ThinkPad L380. Maybe find a similar model.
     # nixos-hardware.nixosModules.lenovo-thinkpad-l380
-    # Include the results of the hardware scan.
+    # This includes the results of the hardware scan.
     ./hardware-configuration.nix
     {
       environment.systemPackages = [fh.packages.x86_64-linux.default];
@@ -25,25 +21,27 @@
     {
       environment.systemPackages = [nil.packages.x86_64-linux.default];
     }
-    ../../modules/1password.nix
+    ../../modules/1password/default.nix
     ../../modules/android.nix
     ../../modules/bluetooth.nix
     ../../modules/dbt.nix
+    ../../modules/display-managers/lightdm.nix
+    # ../../modules/display-managers/sddm.nix
     ../../modules/fonts.nix
-    ../../modules/hyprland.nix
     ../../modules/nix.nix
-    ../../modules/ollama.nix
     ../../modules/pipewire.nix
     ../../modules/printing.nix
     ../../modules/riscv.nix
     ../../modules/secrets.nix
-    ../../modules/steam.nix
+    ../../modules/steam/default.nix
     ../../modules/syncthing.nix
     ../../modules/tailscale.nix
+    # ../../modules/tarsnap.nix
     ../../modules/trezor.nix
     ../../modules/virtualbox.nix
     ../../modules/vscodium.nix
-    ../../modules/xserver.nix
+    # ../../modules/wayland.nix
+    ../../modules/xfce.nix
   ];
 
   boot.initrd.luks.devices."luks-d47fdf7e-ec01-48fc-95f4-9d76df0e09be".device = "/dev/disk/by-uuid/d47fdf7e-ec01-48fc-95f4-9d76df0e09be";

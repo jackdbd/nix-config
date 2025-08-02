@@ -23,6 +23,13 @@
     # https://github.com/nix-community/home-manager/blob/4ee704cb13a5a7645436f400b9acc89a67b9c08a/flake.nix#L4C10-L4C17
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    hyprland.url = "github:hyprwm/Hyprland";
+
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     nil.url = "github:oxalica/nil";
     # nil follows nixpkgs-unstable
     # https://github.com/oxalica/nil/blob/059d33a24bb76d2048740bcce936362bf54b5bc9/flake.nix#L6
@@ -112,7 +119,7 @@
         # https://nixos-and-flakes.thiscute.world/nixos-with-flakes/start-using-home-manager#getting-started-with-home-manager
         home-manager.nixosModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
+          # home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.${user} = import ./home-manager/users/${user}.nix;
           home-manager.extraSpecialArgs = extraSpecialArgs;
@@ -130,7 +137,7 @@
         ./nixos/hosts/l390/configuration.nix
         home-manager.nixosModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
+          # home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.${user} = import ./home-manager/users/${user}.nix;
           home-manager.extraSpecialArgs = extraSpecialArgs;
@@ -148,7 +155,7 @@
         ./nixos/hosts/x220/configuration.nix
         home-manager.nixosModules.home-manager
         {
-          home-manager.useGlobalPkgs = true;
+          # home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.${user} = import ./home-manager/users/${user}.nix;
           home-manager.extraSpecialArgs = extraSpecialArgs;

@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   user,
@@ -25,6 +26,11 @@ with lib; {
       options = "--delete-older-than 30d";
       persistent = true;
     };
+
+    # Recommended configuration for nixd
+    # https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md
+    # https://youtu.be/M_zMoHlbZBY?si=GdjiJ4WitumJV8Eu&t=185
+    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
     optimise = {
       automatic = true;

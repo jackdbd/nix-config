@@ -1,10 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  user,
-  ...
-}: {
+{user, ...}: {
   meta = {};
 
   imports = [];
@@ -12,15 +6,16 @@
   options = {};
 
   config = {
-    # https://developer.1password.com/docs/cli/get-started/
-    # https://nixos.wiki/wiki/1Password
     programs._1password = {
       enable = true; # Enable the 1Password CLI
     };
 
     programs._1password-gui = {
       enable = true; # Enable the 1Password desktop app
-      # this makes system auth etc. work properly
+
+      # Certain 1Password features, including CLI integration and system
+      # authentication support, require enabling PolKit integration on some
+      # desktop environments.
       polkitPolicyOwners = [user];
     };
   };
