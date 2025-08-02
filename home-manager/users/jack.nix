@@ -10,6 +10,19 @@
   username = "jack";
   homeDirectory = "/home/${username}";
   configHome = "${homeDirectory}/.config"; # equivalent to config.xdg.configHome
+  # Option 1: fetch an image from a public URL. This is the declarative way to
+  # include external files in the Nix store. The SHA256 hash ensures integrity.
+  # backgroundImage = pkgs.fetchurl {
+  #   # https://github.com/orangci/walls-catppuccin-mocha (right click, copy image address)
+  #   url = "https://github.com/orangci/walls-catppuccin-mocha/blob/40912e6418737e93b59a38bcf189270cbf26656d/abandoned-trainstation.jpg?raw=true";
+  #   sha256 = "sha256-o63nf2+x3/FAOFlHEBpZuciT3CIxCZBfQn/bEPawmQQ=";
+  # };
+  # backgroundImage = pkgs.fetchurl {
+  #   url = "https://github.com/orangci/walls-catppuccin-mocha/blob/master/asian-village.png?raw=true";
+  #   sha256 = "sha256-9psT+yl6su4MU8wwNxxWVQulZMhl7ME3/DLQcpWMjvw=";
+  # };
+  # Option 2: use an image included in this repository.
+  backgroundImage = ../../assets/images/astronaut.png;
 in {
   imports =
     [
@@ -41,6 +54,9 @@ in {
     enableNixpkgsReleaseCheck = true;
 
     file = {
+      ".background-image".source = backgroundImage;
+      # Accessing /home is forbidden in pure evaluation mode. We can override using --impure
+      # ".background-image".source = "${homeDirectory}/repos/nix-config/assets/images/astronaut.png";
       "${config.xdg.configHome}/gcloud/configurations/config_calderone".source = ../../dotfiles/gcloud-configurations/config_calderone.ini;
       "${config.xdg.configHome}/gcloud/configurations/config_virtual_machines".source = ../../dotfiles/gcloud-configurations/config_virtual_machines.ini;
       "${config.xdg.configHome}/gcloud/configurations/config_website_audit".source = ../../dotfiles/gcloud-configurations/config_website_audit.ini;
@@ -75,9 +91,12 @@ in {
         echo "favorite-browser is ${favorite-browser}"
         echo "config.home.username is ${config.home.username}"
         echo "config.home.homeDirectory is ${config.home.homeDirectory}"
+        echo "config.xdg.configHome is ${config.xdg.configHome}"
         echo "username is ${username}"
         echo "homeDirectory is ${homeDirectory}"
         echo "configHome is ${configHome}"
+        echo "XDG_CONFIG_HOME is $XDG_CONFIG_HOME"
+        echo "XDG_DATA_HOME is $XDG_DATA_HOME"
       '')
       difftastic # syntax-aware diff
       distrobox # Wrapper around podman or docker to create and start containers

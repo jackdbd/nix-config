@@ -1,4 +1,7 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  # username = "jack";
+  # homeDirectory = "/home/${username}";
+in {
   imports = [];
 
   options = {};
@@ -10,6 +13,19 @@
       # https://wiki.archlinux.org/title/xfce
       # https://nix-community.github.io/home-manager/options.html#opt-xfconf.settings
       settings = {
+        # xfconf-query --channel xfce4-desktop --list --verbose
+        "xfce4-desktop" = {
+          "backdrop/screen0/monitor0/last-image" = "~/.background-image";
+          # This sets the style of the wallpaper (e.g., '5' for 'scaled')
+          "backdrop/screen0/monitor0/image-style" = 5;
+
+          # I don't use workspaces, so I guess setting the wallpaper for them is not necessary.
+          # "backdrop/screen0/monitor0/workspace0/last-image" = "${homeDirectory}/.background-image";
+          # "backdrop/screen0/monitor0/workspace0/image-style" = 5;
+          # "backdrop/screen0/monitorDP-1/workspace0/last-image" = "${homeDirectory}/.background-image";
+          # "backdrop/screen0/monitorDP-1/workspace0/image-style" = 5;
+        };
+
         # xfconf-query --channel xfce4-keyboard-shortcuts --list --verbose
         xfce4-keyboard-shortcuts = {
           # On a US keyboard layout:

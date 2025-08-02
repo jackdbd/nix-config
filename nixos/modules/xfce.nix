@@ -22,6 +22,8 @@ in {
       ++ xfcePackages;
 
     services.xserver = {
+      desktopManager.wallpaper.mode = "scale";
+
       # XFCE desktop environment
       # https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/services/x11/xserver.nix
       desktopManager.xfce.enable = true;
