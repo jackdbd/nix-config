@@ -51,11 +51,6 @@ with lib; {
       # https://nixos.wiki/wiki/Flakes#Enable_flakes_permanently_in_NixOS
       experimental-features = ["nix-command" "flakes"];
 
-      # Enable Cachix to avoid having to compile Hyprland.
-      # https://wiki.hyprland.org/Nix/Cachix/
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-
       trusted-users = ["root" user];
     };
   };

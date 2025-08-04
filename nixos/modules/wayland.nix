@@ -32,10 +32,6 @@
       graphics.enable = true;
     };
 
-    # https://wiki.hyprland.org/Nix/Hyprland-on-NixOS/
-    # vimjoyer video about Hyprland configuration https://youtu.be/61wGzIv12Ds?si=Gjj4hJXHs2nujL0z
-    # programs.hyprland.enable = true;
-
     # If we want to run X applications on a machine that uses Wayland as its
     # compositor, we need this compatibility layer.
     programs.xwayland.enable = true;
@@ -43,7 +39,7 @@
     programs.waybar.enable = true;
 
     # Keep xserver enabled to ensure XWayland compatibility within the
-    # wayland-based compositor (e.g. Hyprland, Labwc) session.
+    # wayland-based compositor (e.g. Labwc) session.
     services.xserver.enable = true;
   };
 }

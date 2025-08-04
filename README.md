@@ -75,7 +75,6 @@ I also learned a lot by looking at other people's NixOS and Home Manager configu
 
 - it's well documented.
 - it has a [modular Home Manager configuration](https://github.com/KiaraGrouwstra/cfg/tree/main/home-manager/kiara).
-- it has an extensive [hyprland configuration](https://github.com/KiaraGrouwstra/cfg/blob/main/home-manager/kiara/hyprland.nix).
 - it includes a [cachix configuration](https://github.com/KiaraGrouwstra/cfg/tree/main/cachix).
 
 ### [Misterio77/nix-starter-configs/minimal](https://github.com/Misterio77/nix-starter-configs/tree/main/minimal)
