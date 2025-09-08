@@ -98,7 +98,12 @@ in {
         "ewwca-actnr" = {
           label = "Shared Pics";
           path = "/home/${user}/Pictures/shared-pictures";
-          devices = laptops;
+          devices = laptops ++ ["Moto G55 5G"];
+        };
+        "vas43-ryr7l" = {
+          label = "Shared Videos";
+          path = "/home/${user}/Videos/shared-videos";
+          devices = laptops ++ ["Moto G55 5G"];
         };
       };
 

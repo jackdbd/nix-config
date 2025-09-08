@@ -1,12 +1,8 @@
 {
-  config,
   inputs,
-  lib,
-  pkgs,
   user,
   ...
-}:
-with lib; {
+}: {
   meta = {};
 
   imports = [];
@@ -26,6 +22,14 @@ with lib; {
       options = "--delete-older-than 30d";
       persistent = true;
     };
+    # 1. List all system timers:
+    # systemctl --system list-timers
+    # 2. Check the status of the nix-gc.timer:
+    # systemctl --system status nix-gc.timer
+    # 3. Check the activations of the nix-gc.service (triggered by nix-gc.timer):
+    # systemctl --system status nix-gc.service
+    # 4. Check the logs of the nix-gc.service (triggered by nix-gc.timer):
+    # journalctl --system --unit nix-gc.service
 
     # Recommended configuration for nixd
     # https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md
