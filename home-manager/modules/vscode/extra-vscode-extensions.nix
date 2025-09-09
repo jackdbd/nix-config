@@ -46,8 +46,8 @@
     mktplcRef = {
       name = "turbo-console-log";
       publisher = "ChakrounAnas";
-      sha256 = "sha256-6CMnEGss4XkDau6Wn4equMJWoQtSjMgQ15Y7TK3mZvk=";
-      version = "3.2.0";
+      sha256 = "sha256-0y+tCdqHwKX1odTx5nlw4iW9XtQAobEfo0o4zdjnmbY=";
+      version = "3.6.0";
     };
     meta = {
       changelog = "https://marketplace.visualstudio.com/items/ChakrounAnas.turbo-console-log/changelog";
