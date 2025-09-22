@@ -60,6 +60,7 @@ in
       texliveMedium # TeX Live environment (I need this for pdfjam)
       transmission_4 # BitTorrent client
       typescript # TypeScript compiler
+      unrar
       unzip
       winetricks # script to install DLLs needed to work around problems in Wine
       wineWowPackages.stable # https://nixos.wiki/wiki/Wine
