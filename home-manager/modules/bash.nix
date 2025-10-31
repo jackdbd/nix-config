@@ -26,6 +26,7 @@ in {
       shellAliases = {
         ".." = "cd ..";
         "..." = "cd ../..";
+        assets = "cd ~/assets";
         bug = "${pkgs.gh}/bin/gh issue create -a @me -l bug -t"; # e.g. bug "Thing X is broken when I do Y"
         chatgpt = "${pkgs.docker}/bin/docker run --rm --interactive --tty -v ${config.home.homeDirectory}/chatgpt/data/:/app/data -p 3000:3000 ghcr.io/cogentapps/chat-with-gpt:release";
         dk = "${pkgs.docker}/bin/docker";
