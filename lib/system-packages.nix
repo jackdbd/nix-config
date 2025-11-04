@@ -24,7 +24,6 @@ in
       ghostty # terminal emulator
       gitFull # git + graphical tools like gitk (see https://nixos.wiki/wiki/Git)
       gitg # git GUI
-      glxinfo # show information about the GLX implementation
       gnupg # GNU Privacy Guard
       gpa # Graphical user interface for the GnuPG
       gparted # partition editor
@@ -40,6 +39,7 @@ in
       linuxKernel.packages.linux_6_1.perf # Linux tools to profile with performance counters
       lmstudio # app for experimenting with local and open-source Large Language Models (LLMs) # TODO: nixos-rebuidl switch fails because of a hash mismatch
       ltrace # tool that intercepts and records dynamic library calls
+      mesa-demos # Collection of demos and test programs for OpenGL and Mesa (contains glxinfo)
       minisign # tool for signing files and verifying signatures
       mongodb-compass # MongoDB GUI
       nixd # Feature-rich Nix language server
