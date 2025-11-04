@@ -200,7 +200,6 @@ in {
       temurin-bin # Eclipse Temurin, prebuilt OpenJDK binary
       thunderbird # email client
       tokei # display statistics about your code
-      transmission_3 # BitTorrent client
       trash-cli # alternative to rm
       # trashy # alternative to rm and trash-cli (not working?)
       unzrip # unzip replacement with parallel decompression
