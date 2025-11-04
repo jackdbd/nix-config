@@ -46,7 +46,7 @@ in
       nmap # tool for network discovery and security auditing
       ntfs3g # FUSE-based NTFS driver
       p7zip # 7z, 7za, 7zr
-      pinentry # GnuPG's interface to passphrase input
+      pinentry-curses # GnuPG's interface to passphrase input
       poetry # Python dependency management and packaging
       poppler_utils # Rendering library and utilities for PDF files (e.g. pdfunite)
       popsicle # Multiple USB File Flasher. I was looking for Balena Etcher and found this: https://github.com/NixOS/nixpkgs/issues/371992#issuecomment-2576548039
