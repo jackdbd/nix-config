@@ -36,7 +36,6 @@ in
       libgcc # GNU Compiler Collection
       libnotify # send desktop notifications to a notification daemon
       lief # Library to Instrument Executable Formats
-      linuxKernel.packages.linux_6_1.perf # Linux tools to profile with performance counters
       lmstudio # app for experimenting with local and open-source Large Language Models (LLMs) # TODO: nixos-rebuidl switch fails because of a hash mismatch
       ltrace # tool that intercepts and records dynamic library calls
       mesa-demos # Collection of demos and test programs for OpenGL and Mesa (contains glxinfo)
@@ -46,9 +45,10 @@ in
       nmap # tool for network discovery and security auditing
       ntfs3g # FUSE-based NTFS driver
       p7zip # 7z, 7za, 7zr
+      perf # Linux tools to profile with performance counters
       pinentry-curses # GnuPG's interface to passphrase input
       poetry # Python dependency management and packaging
-      poppler_utils # Rendering library and utilities for PDF files (e.g. pdfunite)
+      poppler-utils # Rendering library and utilities for PDF files (e.g. pdfunite)
       popsicle # Multiple USB File Flasher. I was looking for Balena Etcher and found this: https://github.com/NixOS/nixpkgs/issues/371992#issuecomment-2576548039
       qpdf # library and set of programs that inspect and manipulate the structure of PDF files
       railway # CLI for Railway (Paas)

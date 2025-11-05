@@ -23,12 +23,6 @@
             ms-python.python
           ]
           ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-            {
-              name = "turbo-console-log";
-              publisher = "ChakrounAnas";
-              version = "2.10.4";
-              sha256 = "sha256-6CMnEGss4XkDau6Wn4equMJWoQtSjMgQ15Y7TK3mZvk=";
-            }
           ];
       })
     ];

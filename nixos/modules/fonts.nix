@@ -29,11 +29,10 @@ with lib; {
       nerd-fonts.jetbrains-mono
       nerd-fonts.space-mono
       noto-fonts
-      noto-fonts-color-emoji
       noto-fonts-cjk-sans # Chinese, Japanese, Korean
-      noto-fonts-emoji # color emojis
+      noto-fonts-color-emoji # color emojis
       source-code-pro
-      ubuntu_font_family
+      ubuntu-classic
       weather-icons
     ];
 

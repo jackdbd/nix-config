@@ -42,21 +42,6 @@
     };
   };
 
-  chakrounanas.turbo-console-log = buildVscodeMarketplaceExtension {
-    mktplcRef = {
-      name = "turbo-console-log";
-      publisher = "ChakrounAnas";
-      sha256 = "sha256-0y+tCdqHwKX1odTx5nlw4iW9XtQAobEfo0o4zdjnmbY=";
-      version = "3.6.0";
-    };
-    meta = {
-      changelog = "https://marketplace.visualstudio.com/items/ChakrounAnas.turbo-console-log/changelog";
-      downloadPage = "https://marketplace.visualstudio.com/items?itemName=ChakrounAnas.turbo-console-log";
-      homepage = "https://github.com/Chakroun-Anas/turbo-console-log#readme";
-      license = lib.licenses.mit;
-    };
-  };
-
   djblue.portal = buildVscodeMarketplaceExtension {
     mktplcRef = {
       name = "portal";
@@ -204,7 +189,6 @@ in
   with pkgs.vscode-extensions; [
     # activitywatch.aw-watcher-vscode
     bierner.color-info # Provides quick information about css colors
-    chakrounanas.turbo-console-log
     djblue.portal # A clojure tool to navigate through your data
     dtsvet.vscode-wasm # WebAssembly Toolkit for VSCode
     mtxr.sqltools # SQL formatter and query runner for many databases
