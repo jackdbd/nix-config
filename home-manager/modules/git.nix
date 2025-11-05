@@ -34,12 +34,7 @@ in {
         ".lsp/"
         "*.direnv"
       ];
-    };
 
-    programs.lazygit = {
-      enable = true;
-      # https://rycee.gitlab.io/home-manager/options.html#opt-programs.lazygit.settings
-      # https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
       settings = {
         # Other possibly useful aliases
         # https://gist.github.com/pksunkara/988716
@@ -72,9 +67,6 @@ in {
           rim = "rebase --interactive origin/main";
           st = "status";
         };
-        gui = {
-          nerdFontsVersion = "3";
-        };
         core = {
           bare = false;
           editor = "${pkgs.neovim}/bin/nvim";
@@ -99,11 +91,22 @@ in {
         mergetool = {
           prompt = true;
         };
-        screenMode = "half"; # "normal" (default) | "half" | "full"
         user = {
           email = "giacomo@giacomodebidda.com";
           name = "Giacomo Debidda";
         };
+      };
+    };
+
+    programs.lazygit = {
+      enable = true;
+      # https://rycee.gitlab.io/home-manager/options.html#opt-programs.lazygit.settings
+      # https://github.com/jesseduffield/lazygit/blob/master/docs/Config.md
+      settings = {
+        gui = {
+          nerdFontsVersion = "3";
+        };
+        screenMode = "half"; # "normal" (default) | "half" | "full"
       };
     };
   };
