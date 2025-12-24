@@ -58,7 +58,6 @@
       "1password-cli"
       "1password-gui"
       "burpsuite"
-      "displaylink"
       "edl"
       "google-chrome"
       "grayjay"
