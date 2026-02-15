@@ -42,7 +42,6 @@
     in [
       coc-json # validation support for CoC
       coc-nvim # autocompletion
-      coc-tsserver
       {
         plugin = ctrlp-vim;
         config = ''
