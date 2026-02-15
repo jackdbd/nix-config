@@ -92,15 +92,6 @@ home-manager switch \
 
 > ℹ️ I think the flags `--extra-experimental-features auto-allocate-uids` and `--extra-experimental-features configurable-impure-env` are required by the `google-chrome` package. You can omit those `--extra-experimental-features` if you set `experimental-features` in `nix.conf` (see above).
 
-## Nix code formatter
-
-Install [alejandra](https://github.com/kamadorueda/alejandra) downloading the `x86_64-unknown-linux-musl` [prebuilt binary](https://github.com/kamadorueda/alejandra?tab=readme-ov-file#prebuilt-binaries), making it executable and moving it to `/usr/bin`:
-
-```sh
-chmod +x alejandra-x86_64-unknown-linux-musl
-sudo mv alejandra-x86_64-unknown-linux-musl /usr/bin/alejandra
-```
-
 ## OpenGL issues
 
 If alacritty and kitty have some OpenGL issues, you might have to install/update [Mesa drivers](https://itsfoss.com/install-mesa-ubuntu/). It might be necessary to install [these libraries](https://github.com/alacritty/alacritty/issues/4744#issuecomment-1288973352).

@@ -11,11 +11,6 @@
     # https://flakehub.com/flake/NixOS/nixpkgs
     # nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/*.tar.gz";
 
-    alejandra.url = "github:kamadorueda/alejandra/3.0.0";
-    # alejandra follows nixos-unstable-small
-    # https://github.com/kamadorueda/alejandra/blob/e53c2c6c6c103dc3f848dbd9fbd93ee7c69c109f/flake.nix#L11C41-L11C61
-    alejandra.inputs.nixpkgs.follows = "nixpkgs";
-
     fh.url = "https://flakehub.com/f/DeterminateSystems/fh/*.tar.gz";
 
     home-manager.url = "github:nix-community/home-manager";
@@ -38,7 +33,6 @@
 
   # Define the alias `inputs` to let all Nix modules access all inputs.
   outputs = {
-    alejandra,
     fh,
     home-manager,
     nil,
@@ -105,7 +99,7 @@
 
       modules = [
         {
-          environment.systemPackages = [alejandra.defaultPackage.${system}];
+          environment.systemPackages = [];
         }
         ./nixos/hosts/l380/configuration.nix
         # Declare home-manager as a NixOS module, so that all the home-manager
@@ -127,7 +121,7 @@
 
       modules = [
         {
-          environment.systemPackages = [alejandra.defaultPackage.${system}];
+          environment.systemPackages = [];
         }
         ./nixos/hosts/l390/configuration.nix
         home-manager.nixosModules.home-manager
@@ -145,7 +139,7 @@
 
       modules = [
         {
-          environment.systemPackages = [alejandra.defaultPackage.${system}];
+          environment.systemPackages = [];
         }
         ./nixos/hosts/x220/configuration.nix
         home-manager.nixosModules.home-manager

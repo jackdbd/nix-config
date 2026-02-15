@@ -11,7 +11,6 @@
   "[markdown]"."editor.suggestOnTriggerCharacters" = false;
   "[markdown][nunjucks]"."editor.wordWrap" = "bounded";
   "[markdown][nunjucks]"."editor.wordWrapColumn" = 120;
-  "[nix]"."editor.defaultFormatter" = "kamadorueda.alejandra";
   "[nix]"."editor.formatOnSave" = true;
   "[nix]"."editor.tabSize" = 2;
   "[postcss]"."editor.formatOnSave" = true;
@@ -21,7 +20,6 @@
     "source.organizeImports" = "explicit";
   };
 
-  "alejandra.program" = "alejandra";
   # https://calva.io/customizing/
   # https://calva.io/emacs-keybindings/
   # https://calva.io/paredit/#about-the-keyboard-shortcuts
@@ -143,9 +141,6 @@
   "nix.serverPath" = "nixd";
   # nixd settings (vimjoyer): https://youtu.be/M_zMoHlbZBY?si=wBMp8UAnNyH8P1OJ&t=314
   "nix.serverSettings" = {
-    formatting = {
-      command = ["alejandra"];
-    };
     nixpks = {
       expr = "import <nixpkgs> {}";
     };

@@ -62,7 +62,6 @@ in {
           hbenl.vscode-test-explorer #  Run your tests in the VS Code sidebar
           jdinhlife.gruvbox # Gruvbox theme
           jnoortheen.nix-ide # Nix language support with formatting and error report
-          kamadorueda.alejandra # Nix formatter
           mechatroner.rainbow-csv
           mhutchie.git-graph
           ms-azuretools.vscode-docker
