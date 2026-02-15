@@ -27,6 +27,7 @@
     ../../modules/dbt.nix
     ../../modules/display-managers/lightdm.nix
     # ../../modules/display-managers/sddm.nix
+    ../../modules/filesystems.nix
     ../../modules/fonts.nix
     ../../modules/nix.nix
     ../../modules/pipewire.nix
