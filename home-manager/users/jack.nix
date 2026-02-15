@@ -159,7 +159,6 @@ in {
       pinta # image editor
       pitivi # video editor
       podman # docker run alternative
-      poedit # gettext catalogs (.po files) editor
       poke # editor for binary data
       # postman # https://github.com/NixOS/nixpkgs/issues/259147
       prettyping # a nicer ping
