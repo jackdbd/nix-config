@@ -2,9 +2,6 @@
   matePackages = with pkgs; [
     mate.atril # PDF viewer (it's a fork of evince)
   ];
-  xorgPackages = with pkgs; [
-    xorg.xkill
-  ];
 in
   with pkgs;
   # Packages available to all users, and automatically updated every time you
@@ -64,7 +61,7 @@ in
       unzip
       winetricks # script to install DLLs needed to work around problems in Wine
       wineWowPackages.stable # https://nixos.wiki/wiki/Wine
+      xkill
       zip
     ]
     ++ matePackages
-    ++ xorgPackages

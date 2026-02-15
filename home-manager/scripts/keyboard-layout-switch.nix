@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  xkbmap = "${pkgs.xorg.setxkbmap}/bin/setxkbmap";
+  xkbmap = "${pkgs.setxkbmap}/bin/setxkbmap";
   rg = "${pkgs.ripgrep}/bin/rg";
 in
   pkgs.writeShellScriptBin "kls" ''

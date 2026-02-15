@@ -1,13 +1,4 @@
-{pkgs, ...}: let
-  xfcePackages = with pkgs; [
-    xfce.thunar
-    xfce.thunar-volman
-    xfce.xfce4-cpugraph-plugin
-    xfce.xfce4-notes-plugin
-    xfce.xfce4-terminal
-    xfce.xfwm4-themes
-  ];
-in {
+{pkgs, ...}: {
   meta = {};
 
   imports = [];
@@ -18,8 +9,13 @@ in {
     environment.systemPackages = with pkgs;
       [
         lightlocker
-      ]
-      ++ xfcePackages;
+        thunar
+        thunar-volman
+        xfce4-cpugraph-plugin
+        xfce4-notes-plugin
+        xfce4-terminal
+        xfwm4-themes
+      ];
 
     services.xserver = {
       desktopManager.wallpaper.mode = "scale";

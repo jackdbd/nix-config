@@ -1,6 +1,6 @@
 {pkgs, ...}: let
   lockCommand = "${pkgs.lightlocker}/bin/light-locker-command --lock";
-  fileManager = "${pkgs.xfce.thunar}/bin/thunar";
+  fileManager = "${pkgs.thunar}/bin/thunar";
 in {
   imports = [];
 
