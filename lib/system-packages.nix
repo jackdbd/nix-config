@@ -60,7 +60,7 @@ in
       unrar
       unzip
       winetricks # script to install DLLs needed to work around problems in Wine
-      wineWowPackages.stable # https://nixos.wiki/wiki/Wine
+      wineWow64Packages.stable # https://nixos.wiki/wiki/Wine
       xkill
       zip
     ]
