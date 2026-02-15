@@ -25,9 +25,6 @@
       trueseeing
     ];
 
-    # https://nixos.wiki/wiki/Android
-    programs.adb.enable = true;
-
     # In order to use ADB and have the necessary permissions to operate on the
     # connected Android device, the user must be a member of these groups.
     # https://wiki.archlinux.org/title/Android_Debug_Bridge
