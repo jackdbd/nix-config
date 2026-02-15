@@ -112,10 +112,6 @@
       }
     ];
 
-    extraPackages = with pkgs; [
-      nixpkgs-fmt
-    ];
-
     viAlias = true;
     vimAlias = true;
   };
