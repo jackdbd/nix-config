@@ -1,5 +1,6 @@
 {
   inputs,
+  pkgs,
   user,
   ...
 }: {
@@ -8,6 +9,10 @@
   imports = [];
 
   options = {};
+
+  config.environment.systemPackages = with pkgs; [
+    nixfmt
+  ];
 
   config.nix = {
     # https://nixos-and-flakes.thiscute.world/nixos-with-flakes/other-useful-tips#reducing-disk-usage
