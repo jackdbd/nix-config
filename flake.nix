@@ -32,142 +32,166 @@
   };
 
   # Define the alias `inputs` to let all Nix modules access all inputs.
-  outputs = {
-    fh,
-    home-manager,
-    nil,
-    nixos-hardware,
-    nixpkgs,
-    self,
-    sops-nix,
-    ...
-  } @ inputs: let
-    system = "x86_64-linux";
-    user = "jack";
+  outputs =
+    {
+      fh,
+      home-manager,
+      nil,
+      nixos-hardware,
+      nixpkgs,
+      self,
+      sops-nix,
+      ...
+    }@inputs:
+    let
+      system = "x86_64-linux";
+      user = "jack";
 
-    # define the list of allowed unfree here, so I can pass it to both
-    # `sudo nixos-rebuild` and `home-manager`
-    allowed-unfree-packages = [
-      "1password"
-      "1password-cli"
-      "1password-gui"
-      "burpsuite"
-      "edl"
-      "google-chrome"
-      "grayjay"
-      "lmstudio"
-      "mongodb-compass"
-      "postman"
-      "steam"
-      "steam-run"
-      "steam-unwrapped"
-      "tarsnap"
-      "trezor-suite"
-      "unrar"
-      "vscode"
-      "vscode-extension-github-copilot"
-      "vscode-extension-github-copilot-chat"
-      "vscode-extension-mhutchie-git-graph"
-      "vscode-extension-ms-vscode-remote-remote-containers" # Dev Containers
-      "vscode-extension-ms-vsliveshare-vsliveshare"
-    ];
-    permitted-insecure-pakages = [
-      "electron-27.3.11"
-      # Matrix clients and Jitsi Meet use this library
-      # "olm-3.2.16"
-      "qtwebengine-5.15.19"
-      # Some package (no idea which one) depends on v8-9.7.106.18, which nix marks as insecure.
-      # Unfortunately the error nix gives us is not very actionable, as they say here:
-      # https://github.com/NixOS/nixpkgs/issues/209804
-      # "v8-9.7.106.18"
-    ];
-
-    # TODO: define the font stack available to a specific user on a specific system
-    favorite-browser = "google-chrome";
-
-    pkgs = nixpkgs.legacyPackages.${system};
-
-    # We can pass additional inputs to all NixOS modules using specialArgs.
-    specialArgs = {inherit allowed-unfree-packages fh inputs nil nixos-hardware permitted-insecure-pakages sops-nix user;};
-    # We can pass additional inputs to all Home Manager modules using extraSpecialArgs.
-    extraSpecialArgs = {inherit allowed-unfree-packages favorite-browser permitted-insecure-pakages user;};
-  in {
-    # TODO: consider writing a function like this one:
-    # https://github.com/mitchellh/nixos-config/blob/main/lib/mksystem.nix
-    nixosConfigurations."l380-nixos" = nixpkgs.lib.nixosSystem {
-      inherit specialArgs system;
-
-      modules = [
-        {
-          environment.systemPackages = [];
-        }
-        ./nixos/hosts/l380/configuration.nix
-        # Declare home-manager as a NixOS module, so that all the home-manager
-        # configuration will be deployed automatically when executing:
-        # `sudo nixos-rebuild switch --flake ./#l380-nixos`
-        # https://nixos-and-flakes.thiscute.world/nixos-with-flakes/start-using-home-manager#getting-started-with-home-manager
-        home-manager.nixosModules.home-manager
-        {
-          # home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.${user} = import ./home-manager/users/${user}.nix;
-          home-manager.extraSpecialArgs = extraSpecialArgs;
-        }
+      # define the list of allowed unfree here, so I can pass it to both
+      # `sudo nixos-rebuild` and `home-manager`
+      allowed-unfree-packages = [
+        "1password"
+        "1password-cli"
+        "1password-gui"
+        "brother-udev-rule-type1"
+        "brscan4"
+        "brscan4-etc-files"
+        "burpsuite"
+        "edl"
+        "google-chrome"
+        "grayjay"
+        "lmstudio"
+        "mongodb-compass"
+        "postman"
+        "steam"
+        "steam-run"
+        "steam-unwrapped"
+        "tarsnap"
+        "trezor-suite"
+        "unrar"
+        "vscode"
+        "vscode-extension-github-copilot"
+        "vscode-extension-github-copilot-chat"
+        "vscode-extension-mhutchie-git-graph"
+        "vscode-extension-ms-vscode-remote-remote-containers" # Dev Containers
+        "vscode-extension-ms-vsliveshare-vsliveshare"
       ];
-    };
-
-    nixosConfigurations."l390-nixos" = nixpkgs.lib.nixosSystem {
-      inherit specialArgs system;
-
-      modules = [
-        {
-          environment.systemPackages = [];
-        }
-        ./nixos/hosts/l390/configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          # home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.${user} = import ./home-manager/users/${user}.nix;
-          home-manager.extraSpecialArgs = extraSpecialArgs;
-        }
+      permitted-insecure-pakages = [
+        "electron-27.3.11"
+        # Matrix clients and Jitsi Meet use this library
+        # "olm-3.2.16"
+        "qtwebengine-5.15.19"
+        # Some package (no idea which one) depends on v8-9.7.106.18, which nix marks as insecure.
+        # Unfortunately the error nix gives us is not very actionable, as they say here:
+        # https://github.com/NixOS/nixpkgs/issues/209804
+        # "v8-9.7.106.18"
       ];
+
+      # TODO: define the font stack available to a specific user on a specific system
+      favorite-browser = "google-chrome";
+
+      pkgs = nixpkgs.legacyPackages.${system};
+
+      # We can pass additional inputs to all NixOS modules using specialArgs.
+      specialArgs = {
+        inherit
+          allowed-unfree-packages
+          fh
+          inputs
+          nil
+          nixos-hardware
+          permitted-insecure-pakages
+          sops-nix
+          user
+          ;
+      };
+      # We can pass additional inputs to all Home Manager modules using extraSpecialArgs.
+      extraSpecialArgs = {
+        inherit
+          allowed-unfree-packages
+          favorite-browser
+          permitted-insecure-pakages
+          user
+          ;
+      };
+    in
+    {
+      # TODO: consider writing a function like this one:
+      # https://github.com/mitchellh/nixos-config/blob/main/lib/mksystem.nix
+      nixosConfigurations."l380-nixos" = nixpkgs.lib.nixosSystem {
+        inherit specialArgs system;
+
+        modules = [
+          {
+            environment.systemPackages = [ ];
+          }
+          ./nixos/hosts/l380/configuration.nix
+          # Declare home-manager as a NixOS module, so that all the home-manager
+          # configuration will be deployed automatically when executing:
+          # `sudo nixos-rebuild switch --flake ./#l380-nixos`
+          # https://nixos-and-flakes.thiscute.world/nixos-with-flakes/start-using-home-manager#getting-started-with-home-manager
+          home-manager.nixosModules.home-manager
+          {
+            # home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.${user} = import ./home-manager/users/${user}.nix;
+            home-manager.extraSpecialArgs = extraSpecialArgs;
+          }
+        ];
+      };
+
+      nixosConfigurations."l390-nixos" = nixpkgs.lib.nixosSystem {
+        inherit specialArgs system;
+
+        modules = [
+          {
+            environment.systemPackages = [ ];
+          }
+          ./nixos/hosts/l390/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            # home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.${user} = import ./home-manager/users/${user}.nix;
+            home-manager.extraSpecialArgs = extraSpecialArgs;
+          }
+        ];
+      };
+
+      nixosConfigurations."x220-nixos" = nixpkgs.lib.nixosSystem {
+        inherit specialArgs system;
+
+        modules = [
+          {
+            environment.systemPackages = [ ];
+          }
+          ./nixos/hosts/x220/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            # home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.${user} = import ./home-manager/users/${user}.nix;
+            home-manager.extraSpecialArgs = extraSpecialArgs;
+          }
+        ];
+      };
+
+      # Standalone home-manager configuration entrypoint (available both for NixOS machines and non-NixOS machines)
+      # Available through 'home-manager --flake .#your-username@your-hostname'
+
+      homeConfigurations."${user}@l380-nixos" = home-manager.lib.homeManagerConfiguration {
+        inherit extraSpecialArgs pkgs;
+        modules = [ ./home-manager/users/${user}.nix ];
+      };
+
+      homeConfigurations."${user}@l390-nixos" = home-manager.lib.homeManagerConfiguration {
+        inherit extraSpecialArgs pkgs;
+        modules = [ ./home-manager/users/${user}.nix ];
+      };
+
+      homeConfigurations."${user}@x220-nixos" = home-manager.lib.homeManagerConfiguration {
+        inherit extraSpecialArgs pkgs;
+        modules = [ ./home-manager/users/${user}.nix ];
+      };
     };
-
-    nixosConfigurations."x220-nixos" = nixpkgs.lib.nixosSystem {
-      inherit specialArgs system;
-
-      modules = [
-        {
-          environment.systemPackages = [];
-        }
-        ./nixos/hosts/x220/configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          # home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.${user} = import ./home-manager/users/${user}.nix;
-          home-manager.extraSpecialArgs = extraSpecialArgs;
-        }
-      ];
-    };
-
-    # Standalone home-manager configuration entrypoint (available both for NixOS machines and non-NixOS machines)
-    # Available through 'home-manager --flake .#your-username@your-hostname'
-
-    homeConfigurations."${user}@l380-nixos" = home-manager.lib.homeManagerConfiguration {
-      inherit extraSpecialArgs pkgs;
-      modules = [./home-manager/users/${user}.nix];
-    };
-
-    homeConfigurations."${user}@l390-nixos" = home-manager.lib.homeManagerConfiguration {
-      inherit extraSpecialArgs pkgs;
-      modules = [./home-manager/users/${user}.nix];
-    };
-
-    homeConfigurations."${user}@x220-nixos" = home-manager.lib.homeManagerConfiguration {
-      inherit extraSpecialArgs pkgs;
-      modules = [./home-manager/users/${user}.nix];
-    };
-  };
 }

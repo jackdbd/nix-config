@@ -4,12 +4,14 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.services.printing;
-in {
-  meta = {};
+in
+{
+  meta = { };
 
-  imports = [];
+  imports = [ ];
 
   options = {
     services.printing = {
@@ -21,6 +23,24 @@ in {
   # CUPS: configure and add network printers via http://localhost:631
   # https://nixos.wiki/wiki/Printing
   config = mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      brscan4
+    ];
+
+    hardware.sane.enable = true;
+    hardware.sane.extraBackends = with pkgs; [
+      brscan4
+      sane-airscan
+    ];
+    hardware.sane.brscan4.enable = true;
+    hardware.sane.brscan4.netDevices = {
+      # "Brother_HL_L2445DW" = {
+      #   model = "HL-L2445DW";
+      #   # IP reserved in TP-Link Deco app > More > Advanced > Address Reservation
+      #   ip = "192.168.68.55";
+      # };
+    };
+
     # https://nixos.wiki/wiki/Printing#Enable_autodiscovery_of_network_printers
     services.avahi = {
       enable = true;
@@ -29,12 +49,19 @@ in {
     };
 
     # https://github.com/NixOS/nixpkgs/tree/master/nixos/modules/services/printing
-    # I have a Brother MFC-J6510DW
+    # https://nixos.wiki/wiki/Printing#Manually_supplying_printer_driver
     services.printing = {
-      # https://nixos.wiki/wiki/Printing#Manually_supplying_printer_driver
-      # pkgs.brgenml1lpr and pkgs.brgenml1cupswrapper — Generic drivers for more Brother printers
-      # https://github.com/pdewacht/brlaser
-      drivers = [pkgs.brlaser];
+      drivers = with pkgs; [
+        # CUPS driver for Brother laser printers
+        # https://github.com/pdewacht/brlaser
+        brlaser
+
+        ghostscript
+
+        # huge database of drivers for inkjet printers
+        gutenprint
+      ];
     };
+
   };
 }
