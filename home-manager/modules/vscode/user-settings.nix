@@ -1,7 +1,8 @@
-{...}: {
+{ ... }:
+{
   "[css]"."editor.defaultFormatter" = "esbenp.prettier-vscode";
   "[css]"."editor.formatOnSave" = true;
-  "[git-commit]"."editor.rulers" = [50];
+  "[git-commit]"."editor.rulers" = [ 50 ];
   "[html]"."editor.defaultFormatter" = "vscode.html-language-features";
   # This syntax seems not to work.
   # "[javascript][json][typescript]"."editor.defaultFormatter" = pkgs.vscode-extensions.esbenp.prettier-vscode;
@@ -11,6 +12,8 @@
   "[markdown]"."editor.suggestOnTriggerCharacters" = false;
   "[markdown][nunjucks]"."editor.wordWrap" = "bounded";
   "[markdown][nunjucks]"."editor.wordWrapColumn" = 120;
+  # https://github.com/nix-community/vscode-nix-ide
+  "[nix]"."editor.defaultFormatter" = "jnoortheen.nix-ide";
   "[nix]"."editor.formatOnSave" = true;
   "[nix]"."editor.tabSize" = 2;
   "[postcss]"."editor.formatOnSave" = true;
@@ -45,7 +48,7 @@
       "cljsType" = "none";
       # "jackInEnv" = {};
       "menuSelections" = {
-        "cljAliases" = ["dev"];
+        "cljAliases" = [ "dev" ];
       };
       "projectType" = "deps.edn";
     }
@@ -57,7 +60,10 @@
 
   "editor.inlineSuggest.enabled" = true;
   "editor.minimap.enabled" = false;
-  "editor.rulers" = [80 120];
+  "editor.rulers" = [
+    80
+    120
+  ];
 
   # https://www.michael1e.com/turning-on-emmet-for-nunjuck-files-on-vscode/
   "emmet.includeLanguages" = {
@@ -96,11 +102,11 @@
   "githubIssues.queries" = [
     {
       label = "Bugs";
-      query = ''repo:''${owner}/''${repository} sort:created-desc state:open label:bug'';
+      query = "repo:\${owner}/\${repository} sort:created-desc state:open label:bug";
     }
     {
       label = "Created By Me";
-      query = ''author:''${user} state:open repo:''${owner}/''${repository} sort:created-desc'';
+      query = "author:\${user} state:open repo:\${owner}/\${repository} sort:created-desc";
     }
   ];
   "githubPullRequests.queries" = [
@@ -110,19 +116,19 @@
     }
     {
       label = "Assigned To Me";
-      query = ''repo:''${owner}/''${repository} is:open assignee:''${user}'';
+      query = "repo:\${owner}/\${repository} is:open assignee:\${user}";
     }
     {
       label = "Created By Me";
-      query = ''repo:''${owner}/''${repository} is:open author:''${user}'';
+      query = "repo:\${owner}/\${repository} is:open author:\${user}";
     }
     {
       label = "Waiting For My Review";
-      query = ''repo:''${owner}/''${repository} is:open review-requested:''${user}'';
+      query = "repo:\${owner}/\${repository} is:open review-requested:\${user}";
     }
     {
       label = "WIP PRs";
-      query = ''repo:''${owner}/''${repository} is:open'';
+      query = "repo:\${owner}/\${repository} is:open";
     }
     {
       label = "All Open";
@@ -138,11 +144,14 @@
   # https://github.com/microsoft/vscode/issues/200375#issuecomment-1847411013
 
   "nix.enableLanguageServer" = true;
+  "nix.formatterPath" = "nixfmt";
   "nix.serverPath" = "nixd";
   # nixd settings (vimjoyer): https://youtu.be/M_zMoHlbZBY?si=wBMp8UAnNyH8P1OJ&t=314
   "nix.serverSettings" = {
-    nixpks = {
-      expr = "import <nixpkgs> {}";
+    "nixd" = {
+      "formatting" = {
+        "command" = [ "nixfmt" ]; # forces nixd to use nixfmt to format files
+      };
     };
   };
 
