@@ -6,7 +6,8 @@
   permitted-insecure-pakages,
   pkgs,
   ...
-}: let
+}:
+let
   username = "jack";
   homeDirectory = "/home/${username}";
   configHome = "${homeDirectory}/.config"; # equivalent to config.xdg.configHome
@@ -23,28 +24,28 @@
   # };
   # Option 2: use an image included in this repository.
   backgroundImage = ../../assets/images/astronaut.png;
-in {
-  imports =
-    [
-      ../modules/atuin
-      ../modules/bash.nix
-      ../modules/chromium.nix
-      ../modules/direnv.nix
-      ../modules/flameshot.nix
-      ../modules/git.nix
-      ../modules/gnome-keyring.nix
-      # ../modules/window-managers/labwc.nix
-      ../modules/window-managers/xfwm4.nix
-      ../modules/rssguard
-      ../modules/starship.nix
-      ../modules/tmux
-      ../modules/vscode
-      ../modules/xfconf.nix
-    ]
-    ++ lib.concatMap import [
-      ../programs
-      ../scripts
-    ];
+in
+{
+  imports = [
+    ../modules/atuin
+    ../modules/bash.nix
+    ../modules/chromium.nix
+    ../modules/direnv.nix
+    ../modules/flameshot.nix
+    ../modules/git.nix
+    ../modules/gnome-keyring.nix
+    # ../modules/window-managers/labwc.nix
+    ../modules/window-managers/xfwm4.nix
+    ../modules/rssguard
+    ../modules/starship.nix
+    ../modules/tmux
+    ../modules/vscode
+    ../modules/xfconf.nix
+  ]
+  ++ lib.concatMap import [
+    ../programs
+    ../scripts
+  ];
 
   home = {
     inherit homeDirectory username;
@@ -57,9 +58,12 @@ in {
       ".background-image".source = backgroundImage;
       # Accessing /home is forbidden in pure evaluation mode. We can override using --impure
       # ".background-image".source = "${homeDirectory}/repos/nix-config/assets/images/astronaut.png";
-      "${config.xdg.configHome}/gcloud/configurations/config_calderone".source = ../../dotfiles/gcloud-configurations/config_calderone.ini;
-      "${config.xdg.configHome}/gcloud/configurations/config_virtual_machines".source = ../../dotfiles/gcloud-configurations/config_virtual_machines.ini;
-      "${config.xdg.configHome}/gcloud/configurations/config_website_audit".source = ../../dotfiles/gcloud-configurations/config_website_audit.ini;
+      "${config.xdg.configHome}/gcloud/configurations/config_calderone".source =
+        ../../dotfiles/gcloud-configurations/config_calderone.ini;
+      "${config.xdg.configHome}/gcloud/configurations/config_virtual_machines".source =
+        ../../dotfiles/gcloud-configurations/config_virtual_machines.ini;
+      "${config.xdg.configHome}/gcloud/configurations/config_website_audit".source =
+        ../../dotfiles/gcloud-configurations/config_website_audit.ini;
       "${config.xdg.configHome}/neofetch/config.conf".source = ../../dotfiles/neofetch.conf;
       "${homeDirectory}/.npmrc".source = ../../dotfiles/npmrc.ini;
     };
@@ -131,7 +135,6 @@ in {
       kubeswitch # Kubectx for operators, a drop-in replacement for kubectx
       libreoffice # a variant of openoffice.org
       lm_sensors # tools for reading hardware sensors
-      logseq # local-first, non-linear, outliner notebook for organizing and sharing your personal knowledge base
       lshw # detailed information on the hardware configuration of the machine
       lsix # shows thumbnails in terminal using sixel graphics
       luajitPackages.fennel # Lisp that compiles to Lua
@@ -149,7 +152,7 @@ in {
       nuclei # vulnerability scanner
       ocrmypdf # adds an OCR text layer to scanned PDF files, allowing them to be searched (e.g. with ripgrep-all)
       openshot-qt # video editor
-      ouch #  compress/decompress files and directories
+      ouch # compress/decompress files and directories
       newman # Postman collection runner
       nodejs_22
       papirus-icon-theme
@@ -181,7 +184,10 @@ in {
       sd # sed alternative
       (writeShellApplication {
         name = "show-nixos-org";
-        runtimeInputs = [curl w3m];
+        runtimeInputs = [
+          curl
+          w3m
+        ];
         text = ''
           curl -s 'https://nixos.org' | w3m -dump -T text/html
         '';
@@ -300,7 +306,7 @@ in {
   systemd.user.targets.tray = {
     Unit = {
       Description = "Home Manager System Tray";
-      Requires = ["graphical-session-pre.target"];
+      Requires = [ "graphical-session-pre.target" ];
     };
   };
 
