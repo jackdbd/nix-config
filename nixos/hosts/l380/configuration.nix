@@ -9,19 +9,21 @@
   pkgs,
   user,
   ...
-}: {
+}:
+{
   imports = [
     # There is no Nix module for the ThinkPad L380. Maybe find a similar model.
     # nixos-hardware.nixosModules.lenovo-thinkpad-l380
     # This includes the results of the hardware scan.
     ./hardware-configuration.nix
     {
-      environment.systemPackages = [fh.packages.x86_64-linux.default];
+      environment.systemPackages = [ fh.packages.x86_64-linux.default ];
     }
     {
-      environment.systemPackages = [nil.packages.x86_64-linux.default];
+      environment.systemPackages = [ nil.packages.x86_64-linux.default ];
     }
     ../../modules/1password/default.nix
+    ../../modules/ai/default.nix
     ../../modules/android.nix
     ../../modules/bluetooth.nix
     ../../modules/dbt.nix
@@ -45,7 +47,8 @@
     ../../modules/xfce.nix
   ];
 
-  boot.initrd.luks.devices."luks-d47fdf7e-ec01-48fc-95f4-9d76df0e09be".device = "/dev/disk/by-uuid/d47fdf7e-ec01-48fc-95f4-9d76df0e09be";
+  boot.initrd.luks.devices."luks-d47fdf7e-ec01-48fc-95f4-9d76df0e09be".device =
+    "/dev/disk/by-uuid/d47fdf7e-ec01-48fc-95f4-9d76df0e09be";
 
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.grub.configurationLimit = 50;
@@ -53,7 +56,7 @@
 
   environment.enableDebugInfo = false;
   environment.homeBinInPath = true;
-  environment.systemPackages = import ../../../lib/system-packages.nix {inherit config pkgs;};
+  environment.systemPackages = import ../../../lib/system-packages.nix { inherit config pkgs; };
 
   hardware.bluetooth.enable = true;
 
@@ -114,8 +117,8 @@
 
   # First, define extra groups. Then, declare users as members of those groups.
   # https://superuser.com/a/1352988
-  users.groups.skaters = {};
-  users.users.${user} = import ../../users/jack.nix {inherit config pkgs;};
+  users.groups.skaters = { };
+  users.users.${user} = import ../../users/jack.nix { inherit config pkgs; };
 
   virtualisation.docker = {
     enable = true;
