@@ -34,11 +34,11 @@ in
     ];
     hardware.sane.brscan4.enable = true;
     hardware.sane.brscan4.netDevices = {
-      # "Brother_HL_L2445DW" = {
-      #   model = "HL-L2445DW";
-      #   # IP reserved in TP-Link Deco app > More > Advanced > Address Reservation
-      #   ip = "192.168.68.55";
-      # };
+      "Brother_HL_L2445DW" = {
+        model = "HL-L2445DW";
+        # IP reserved in TP-Link Deco app > More > Advanced > Address Reservation
+        ip = "192.168.68.55";
+      };
     };
 
     # https://nixos.wiki/wiki/Printing#Enable_autodiscovery_of_network_printers
