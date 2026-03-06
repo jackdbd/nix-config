@@ -109,6 +109,7 @@ in
       entr # file watcher
       exif # read and manipulate EXIF data in digital photographs
       eza # fork of exa, a better `ls`
+      fastfetch
       fd # a better `find`
       feh # image viewer
       ffmpeg
@@ -144,7 +145,6 @@ in
       mtr # network diagnostics tool (basically traceroute + ping)
       ncdu # disk usage utility
       neil # CLI to add common aliases and features to deps.edn-based projects (e.g. Clojure, ClojureScript)
-      neofetch
       nh # nix cli helper https://github.com/viperML/nh
       nix-index # locate packages containing certain nixpkgs (TODO: does it work with flakes?)
       nix-output-monitor # nom: monitor nix commands (TODO: does it work with flakes?)
