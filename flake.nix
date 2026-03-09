@@ -57,6 +57,7 @@
         "brscan4"
         "brscan4-etc-files"
         "burpsuite"
+        "claude-code"
         "edl"
         "google-chrome"
         "grayjay"
