@@ -3,12 +3,14 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.programs.vscode;
-in {
-  meta = {};
+in
+{
+  meta = { };
 
-  imports = [];
+  imports = [ ];
 
   options = {
     programs.vscode = {
@@ -26,7 +28,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [cfg.package];
+    home.packages = [ cfg.package ];
 
     # https://mipmip.github.io/home-manager-option-search/?query=vscode
     programs.vscode = {
@@ -39,7 +41,8 @@ in {
       # https://mynixos.com/search
       # VS Code themes are also extensions.
       # If you can't find the VS Code extension you want on NixOS Search, add it
-      profiles.default.extensions = with pkgs.vscode-extensions;
+      profiles.default.extensions =
+        with pkgs.vscode-extensions;
         [
           bbenoist.nix # Nix language support for VS Code
           betterthantomorrow.calva # Clojure/Script interactive programming for VS Code
@@ -59,7 +62,7 @@ in {
           github.vscode-github-actions
           github.vscode-pull-request-github
           hashicorp.hcl # syntax highlighting for HCL files (Terraform, atlasgo.io)
-          hbenl.vscode-test-explorer #  Run your tests in the VS Code sidebar
+          hbenl.vscode-test-explorer # Run your tests in the VS Code sidebar
           jdinhlife.gruvbox # Gruvbox theme
           jnoortheen.nix-ide # Nix language support with formatting and error report
           mechatroner.rainbow-csv
@@ -72,8 +75,6 @@ in {
           ms-vscode-remote.remote-containers # Dev Containers
           ms-vscode.test-adapter-converter # Test Explorer UI (vscode-test-explorer) depends on Test Adapter Converter (ms-vscode.test-adapter-converter)
           ms-vsliveshare.vsliveshare # Live Share (real-time collaborative development)
-          scala-lang.scala # syntax highlighting for Scala 2 and Scala 3
-          scalameta.metals # Scala language server with rich IDE features
           tailscale.vscode-tailscale # Share a port over the internet with Tailscale Funnel
           tamasfe.even-better-toml
           usernamehw.errorlens
@@ -92,7 +93,7 @@ in {
 
       # https://code.visualstudio.com/docs/getstarted/settings
       # https://github.com/jackdbd/dotfiles/blob/main/Code/.config/Code/User/settings.json
-      profiles.default.userSettings = import ./user-settings.nix {inherit lib pkgs;};
+      profiles.default.userSettings = import ./user-settings.nix { inherit lib pkgs; };
 
       profiles.default.userTasks = {
         version = "2.0.0";
@@ -101,7 +102,7 @@ in {
             label = "Compile TypeScript files";
             type = "typescript";
             tsconfig = "tsconfig.json";
-            problemMatcher = ["$tsc"];
+            problemMatcher = [ "$tsc" ];
             group = {
               kind = "build";
             };
