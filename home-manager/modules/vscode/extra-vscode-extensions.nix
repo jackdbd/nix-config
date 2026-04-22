@@ -1,31 +1,13 @@
 {
   lib,
   pkgs,
-}: let
+}:
+let
   inherit (pkgs.vscode-utils) buildVscodeMarketplaceExtension;
 
   # The `name` and `publisher` fields here can be found as the `Unique Identifier`
   # in the Visual Studio Code Marketplace. For example:
   # antfu.unocss => name = "unocss" and publisher = "antfu"
-
-  activitywatch.aw-watcher-vscode = buildVscodeMarketplaceExtension {
-    mktplcRef = {
-      name = "aw-watcher-vscode";
-      publisher = "ActivityWatch";
-      version = "0.5.0";
-      # When you want to add a new extension or a new version of an existing extension, do this:
-      # 1. Set an empty SHA or a fake one (e.g. using lib.fakeSha256)
-      # 2. Run home-manager switch. This will fail because the SHA does not match. Take note of the correct SHA.
-      # 3. Replace the SHA with the correct one.
-      sha256 = "sha256-OrdIhgNXpEbLXYVJAx/jpt2c6Qa5jf8FNxqrbu5FfFs=";
-    };
-    meta = {
-      changelog = "https://marketplace.visualstudio.com/items/activitywatch.aw-watcher-vscode/changelog";
-      downloadPage = "https://marketplace.visualstudio.com/items?itemName=activitywatch.aw-watcher-vscode";
-      homepage = "https://github.com/ActivityWatch/aw-watcher-vscode#readme";
-      license = lib.licenses.mpl20;
-    };
-  };
 
   bierner.color-info = buildVscodeMarketplaceExtension {
     mktplcRef = {
@@ -46,8 +28,8 @@
     mktplcRef = {
       name = "portal";
       publisher = "djblue";
-      sha256 = "sha256-GSi5COZsg2sOM4C9+4+3CehHp85gY80hLug64B3aIYo=";
-      version = "0.59.2";
+      sha256 = "sha256-SDmCNvZSLR/R+5HQ/7xUwi2qaInbP6KJc3epTm+MFJU=";
+      version = "0.64.1";
     };
     meta = {
       downloadPage = "https://marketplace.visualstudio.com/items?itemName=djblue.portal";
@@ -186,18 +168,16 @@
     };
   };
 in
-  with pkgs.vscode-extensions; [
-    # activitywatch.aw-watcher-vscode
-    bierner.color-info # Provides quick information about css colors
-    djblue.portal # A clojure tool to navigate through your data
-    dtsvet.vscode-wasm # WebAssembly Toolkit for VSCode
-    mtxr.sqltools # SQL formatter and query runner for many databases
-    pflannery.vscode-versionlens
-    pranaygp.vscode-css-peek
-    ronnidc.nunjucks
-    ryan-heybourn.headwind
-    scalameta.metals
-    unocss.unocss
-    vuejs.language-tools
-    zignd.html-css-class-completion
-  ]
+[
+  bierner.color-info # Provides quick information about css colors
+  djblue.portal # A clojure tool to navigate through your data
+  dtsvet.vscode-wasm # WebAssembly Toolkit for VSCode
+  mtxr.sqltools # SQL formatter and query runner for many databases
+  pflannery.vscode-versionlens
+  pranaygp.vscode-css-peek
+  ronnidc.nunjucks
+  ryan-heybourn.headwind
+  unocss.unocss
+  vuejs.language-tools
+  zignd.html-css-class-completion
+]
