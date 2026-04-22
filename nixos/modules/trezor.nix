@@ -1,24 +1,13 @@
 {
-  config,
-  lib,
   pkgs,
   ...
 }:
-with lib; let
-  cfg = config.services.trezord;
-in {
-  meta = {};
+{
+  meta = { };
 
-  imports = [];
+  imports = [ ];
 
-  options = {
-    services.trezord = {
-      # already declared here:
-      # https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/services/hardware/trezord.nix
-      # This will add all necessary udev rules and start Trezor Bridge.
-      # enable = mkEnableOption "Enable Trezor Bridge (daemon for the Trezor hardware wallet)";
-    };
-  };
+  options = { };
 
   # TODO: the overall support for hardware devices like the Trezor does not seem great among email clients:
   # - https://github.com/openpgpjs/openpgpjs/issues/362
@@ -30,9 +19,8 @@ in {
   # https://nixos.org/manual/nixos/stable/#trezor
   # https://mynixos.com/nixpkgs/package/trezord
   # https://docs.trezor.io/trezor-user-env/development.html
-  config = mkIf cfg.enable {
+  config = {
     environment.systemPackages = with pkgs; [
-      trezord
       trezor-suite # Desktop App for managing crypto
       # trezor_agent # hardware-based agent for SSH/OpenPGP/age keys
     ];
