@@ -177,6 +177,24 @@
         ];
       };
 
+      nixosConfigurations."x395-nixos" = nixpkgs.lib.nixosSystem {
+        inherit specialArgs system;
+
+        modules = [
+          {
+            environment.systemPackages = [ ];
+          }
+          ./nixos/hosts/x395/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            # home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.${user} = import ./home-manager/users/${user}.nix;
+            home-manager.extraSpecialArgs = extraSpecialArgs;
+          }
+        ];
+      };
+
       # Standalone home-manager configuration entrypoint (available both for NixOS machines and non-NixOS machines)
       # Available through 'home-manager --flake .#your-username@your-hostname'
 
@@ -191,6 +209,11 @@
       };
 
       homeConfigurations."${user}@x220-nixos" = home-manager.lib.homeManagerConfiguration {
+        inherit extraSpecialArgs pkgs;
+        modules = [ ./home-manager/users/${user}.nix ];
+      };
+
+      homeConfigurations."${user}@x395-nixos" = home-manager.lib.homeManagerConfiguration {
         inherit extraSpecialArgs pkgs;
         modules = [ ./home-manager/users/${user}.nix ];
       };
