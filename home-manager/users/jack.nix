@@ -148,7 +148,6 @@ in
       nh # nix cli helper https://github.com/viperML/nh
       nix-index # locate packages containing certain nixpkgs (TODO: does it work with flakes?)
       nix-output-monitor # nom: monitor nix commands (TODO: does it work with flakes?)
-      nodePackages.node-gyp # Node.js native addon build tool
       nuclei # vulnerability scanner
       ocrmypdf # adds an OCR text layer to scanned PDF files, allowing them to be searched (e.g. with ripgrep-all)
       openshot-qt # video editor
@@ -190,7 +189,6 @@ in
           curl -s 'https://nixos.org' | w3m -dump -T text/html
         '';
       })
-      silver-searcher # grep alternative
       simplescreenrecorder # screen recorder gui
       sqlite
       sqlitebrowser
