@@ -91,10 +91,6 @@
         '';
       }
       {
-        plugin = vim-highlightedyank;
-        config = "let g:highlightedyank_highlight_duration = 1000"; # in ms
-      }
-      {
         plugin = vim-move;
         config = "let g:move_key_modifier = 'C'"; # C means Ctrl => C-k, C-j, C-h, C-l
       }
