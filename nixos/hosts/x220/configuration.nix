@@ -9,36 +9,36 @@
   pkgs,
   user,
   ...
-}: {
+}:
+{
   imports = [
     nixos-hardware.nixosModules.lenovo-thinkpad-x220
     ./hardware-configuration.nix
     {
-      environment.systemPackages = [fh.packages.x86_64-linux.default];
+      environment.systemPackages = [ fh.packages.x86_64-linux.default ];
     }
     {
-      environment.systemPackages = [nil.packages.x86_64-linux.default];
+      environment.systemPackages = [ nil.packages.x86_64-linux.default ];
     }
-    ../../modules/android.nix
     ../../modules/bluetooth.nix
-    ../../modules/dbt.nix
     ../../modules/fonts.nix
     ../../modules/nix.nix
     ../../modules/pipewire.nix
     ../../modules/printing.nix
-    ../../modules/riscv.nix
     ../../modules/secrets.nix
     ../../modules/syncthing.nix
     ../../modules/tailscale.nix
     ../../modules/tarsnap.nix
-    ../../modules/trezor.nix
     ../../modules/vscodium.nix
     ../../modules/xserver.nix
   ];
 
-  boot.initrd.luks.devices."luks-318ded24-f80a-41ea-96ec-c12aacb3f155".keyFile = "/crypto_keyfile.bin";
-  boot.initrd.luks.devices."luks-8b9b15ff-cf4a-4e4a-8564-b577e7099437".keyFile = "/crypto_keyfile.bin";
-  boot.initrd.luks.devices."luks-8b9b15ff-cf4a-4e4a-8564-b577e7099437".device = "/dev/disk/by-uuid/8b9b15ff-cf4a-4e4a-8564-b577e7099437";
+  boot.initrd.luks.devices."luks-318ded24-f80a-41ea-96ec-c12aacb3f155".keyFile =
+    "/crypto_keyfile.bin";
+  boot.initrd.luks.devices."luks-8b9b15ff-cf4a-4e4a-8564-b577e7099437".keyFile =
+    "/crypto_keyfile.bin";
+  boot.initrd.luks.devices."luks-8b9b15ff-cf4a-4e4a-8564-b577e7099437".device =
+    "/dev/disk/by-uuid/8b9b15ff-cf4a-4e4a-8564-b577e7099437";
   # Setup keyfile
   boot.initrd.secrets = {
     "/crypto_keyfile.bin" = null;
@@ -70,7 +70,7 @@
   # https://nixos.org/manual/nixos/stable/options#opt-environment.sessionVariables
   # environment.sessionVariables = {};
 
-  environment.systemPackages = import ../../../lib/system-packages.nix {inherit config pkgs;};
+  environment.systemPackages = import ../../../lib/system-packages.nix { inherit config pkgs; };
 
   # environment variables set at shell initialisation
   # https://nixos.org/manual/nixos/stable/options#opt-environment.variables
@@ -144,8 +144,8 @@
 
   # First, define extra groups. Then, declare users as members of those groups.
   # https://superuser.com/a/1352988
-  users.groups.skaters = {};
-  users.users.${user} = import ../../users/jack.nix {inherit config pkgs;};
+  users.groups.skaters = { };
+  users.users.${user} = import ../../users/jack.nix { inherit config pkgs; };
 
   virtualisation.docker = {
     enable = true;

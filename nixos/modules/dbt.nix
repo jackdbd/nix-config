@@ -1,14 +1,13 @@
 {
-  config,
-  lib,
   pkgs,
   ...
-}: {
-  meta = {};
+}:
+{
+  meta = { };
 
-  imports = [];
+  imports = [ ];
 
-  options = {};
+  options = { };
 
   config = {
     environment.systemPackages = with pkgs; [
