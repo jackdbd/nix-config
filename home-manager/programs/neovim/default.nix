@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs.neovim = {
     enable = true;
 
@@ -21,7 +21,7 @@
         languageserver = {
           zls = {
             command = "zls";
-            filetypes = ["zig"];
+            filetypes = [ "zig" ];
           };
         };
       };
@@ -30,85 +30,41 @@
     extraConfig = "${builtins.readFile ./init.vim}";
 
     # https://rycee.gitlab.io/home-manager/options.html#opt-programs.neovim.plugins
-    plugins = with pkgs.vimPlugins; let
-      incsearch-fuzzy = pkgs.vimUtils.buildVimPlugin {
-        pname = "incsearch-fuzzy";
-        version = "2016-12-15";
-        src = fetchGit {
-          url = "https://github.com/haya14busa/incsearch-fuzzy.vim";
-          ref = "master";
-        };
-      };
-    in [
-      coc-json # validation support for CoC
-      coc-nvim # autocompletion
+    plugins = with pkgs.vimPlugins; [
+      coc-json
+      coc-nvim
+      gruvbox
+      vim-airline-themes
+      vim-nix
+
       {
         plugin = ctrlp-vim;
+        type = "viml";
         config = ''
           let g:ctrlp_map = '<c-p>'
           let g:ctrlp_cmd = 'CtrlP'
           let g:ctrlp_show_hidden = 1
         '';
       }
-      emmet-vim
-      {
-        plugin = far-vim;
-        # improve scrolling performance when navigating through large results
-        config = "set lazyredraw";
-      }
-      goyo-vim
-      gruvbox
-      # incsearch-fuzzy
-      {
-        plugin = limelight-vim;
-        config = "let g:limelight_conceal_ctermfg = 'gray'";
-      }
-      markdown-preview-nvim
-      {
-        plugin = nerdcommenter;
-        config = "let g:NERDCreateDefaultMappings = 1";
-      }
       {
         plugin = nerdtree;
+        type = "viml";
         config = ''
           let NERDTreeShowHidden = 1
           let g:NERDTreeIgnore = ['^\.git$', '^node_modules$', '^zig-cache$']
         '';
       }
-      vim-abolish
-      {
-        plugin = vim-airline;
-        config = "let g:airline#extensions#tabline#enabled = 1";
-      }
-      vim-airline-themes
-      vim-better-whitespace
-      vim-easymotion
-      {
-        plugin = vim-floaterm;
-        config = ''
-          let g:floaterm_keymap_new = '<Leader>ft'
-          let g:floaterm_keymap_toggle = '<Leader>t'
-        '';
-      }
-      {
-        plugin = vim-move;
-        config = "let g:move_key_modifier = 'C'"; # C means Ctrl => C-k, C-j, C-h, C-l
-      }
-      vim-nerdtree-syntax-highlight
-      vim-nix
-      {
-        plugin = vim-signify;
-        # default updatetime 4000ms is not good for async update
-        config = "set updatetime=100";
-      }
-      vim-startify
       {
         plugin = zig-vim;
+        type = "viml";
         config = "let g:zig_fmt_autosave = 1";
       }
     ];
 
     viAlias = true;
     vimAlias = true;
+    withRuby = false;
+    withPython3 = false;
+
   };
 }
