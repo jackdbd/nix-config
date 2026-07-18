@@ -37,7 +37,7 @@ with pkgs;
   ltrace # tool that intercepts and records dynamic library calls
   mesa-demos # Collection of demos and test programs for OpenGL and Mesa (contains glxinfo)
   minisign # tool for signing files and verifying signatures
-  mongodb-compass # MongoDB GUI
+  # mongodb-compass # MongoDB GUI
   nixd # Feature-rich Nix language server
   nmap # tool for network discovery and security auditing
   ntfs3g # FUSE-based NTFS driver
