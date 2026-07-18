@@ -3,7 +3,7 @@
   config,
   fh,
   lib,
-  # nixos-hardware,
+  nixos-hardware,
   permitted-insecure-pakages,
   pkgs,
   user,
@@ -11,10 +11,10 @@
 }:
 {
   imports = [
-    # There is no Nix module for the ThinkPad X395. Maybe find a similar model.
-    # nixos-hardware.nixosModules.lenovo-thinkpad-x395
     # This includes the results of the hardware scan.
     ./hardware-configuration.nix
+    nixos-hardware.nixosModules.common-cpu-amd
+    nixos-hardware.nixosModules.common-gpu-amd
     {
       environment.systemPackages = [ fh.packages.x86_64-linux.default ];
     }
