@@ -26,7 +26,6 @@
     ../../modules/ai/default.nix
     ../../modules/android.nix
     ../../modules/bluetooth.nix
-    ../../modules/dbt.nix
     ../../modules/display-managers/lightdm.nix
     # ../../modules/display-managers/sddm.nix
     ../../modules/filesystems.nix
@@ -47,8 +46,9 @@
     ../../modules/xfce.nix
   ];
 
-  boot.initrd.luks.devices."luks-0b9dac43-8a64-4836-af1a-519abebe5d6b".device = "/dev/disk/by-uuid/0b9dac43-8a64-4836-af1a-519abebe5d6b";
-  
+  boot.initrd.luks.devices."luks-0b9dac43-8a64-4836-af1a-519abebe5d6b".device =
+    "/dev/disk/by-uuid/0b9dac43-8a64-4836-af1a-519abebe5d6b";
+
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
 
@@ -75,7 +75,7 @@
   networking.hostName = "x395-nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
 
-   nixpkgs.config = {
+  nixpkgs.config = {
     # allowUnfree = true;
     allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
     permittedInsecurePackages = permitted-insecure-pakages;

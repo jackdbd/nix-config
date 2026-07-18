@@ -26,7 +26,6 @@
     ../../modules/ai/default.nix
     ../../modules/android.nix
     ../../modules/bluetooth.nix
-    # ../../modules/dbt.nix
     ../../modules/display-managers/lightdm.nix
     # ../../modules/display-managers/sddm.nix
     ../../modules/filesystems.nix
