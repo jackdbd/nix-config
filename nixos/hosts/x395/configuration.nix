@@ -3,7 +3,6 @@
   config,
   fh,
   lib,
-  nil,
   # nixos-hardware,
   permitted-insecure-pakages,
   pkgs,
@@ -20,7 +19,7 @@
       environment.systemPackages = [ fh.packages.x86_64-linux.default ];
     }
     {
-      environment.systemPackages = [ nil.packages.x86_64-linux.default ];
+      environment.systemPackages = [ pkgs.nil ];
     }
     ../../modules/1password/default.nix
     ../../modules/ai/default.nix
