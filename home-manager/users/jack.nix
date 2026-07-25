@@ -27,7 +27,6 @@ let
 in
 {
   imports = [
-    ../modules/atuin
     ../modules/bash.nix
     ../modules/chromium.nix
     ../modules/direnv.nix
@@ -234,7 +233,6 @@ in
     stateVersion = "22.11";
   };
 
-  programs.atuin.enable = true;
   programs.bash.enable = true;
 
   programs.chromium = {
