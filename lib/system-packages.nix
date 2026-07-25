@@ -44,7 +44,6 @@ with pkgs;
   p7zip # 7z, 7za, 7zr
   perf # Linux tools to profile with performance counters
   pinentry-curses # GnuPG's interface to passphrase input
-  poetry # Python dependency management and packaging
   poppler-utils # Rendering library and utilities for PDF files (e.g. pdfunite)
   popsicle # Multiple USB File Flasher. I was looking for Balena Etcher and found this: https://github.com/NixOS/nixpkgs/issues/371992#issuecomment-2576548039
   qpdf # library and set of programs that inspect and manipulate the structure of PDF files
