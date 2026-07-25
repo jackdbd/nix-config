@@ -4,14 +4,20 @@
   user,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.services.syncthing;
-  laptops = ["ThinkPad L380" "ThinkPad L390"];
-  phones = ["Moto G55 5G"];
-in {
-  meta = {};
+  laptops = [
+    "ThinkPad L380"
+    "ThinkPad L390"
+    "ThinkPad X395"
+  ];
+  phones = [ "Moto G55 5G" ];
+in
+{
+  meta = { };
 
-  imports = [];
+  imports = [ ];
 
   options = {
     services.syncthing = {
@@ -21,10 +27,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [cfg.package];
+    environment.systemPackages = [ cfg.package ];
 
     # The systemd unit for the Syncthing service can be found at:
     # /etc/systemd/system/syncthing.service
+    #
+    # https://wiki.nixos.org/wiki/Syncthing
     #
     # Useful commands:
     # systemctl --system status --user syncthing.service
@@ -51,6 +59,8 @@ in {
       # This causes an infinite recursion. Why?
       # guiAddress = cfg.guiAddress;
 
+      openDefaultPorts = true;
+
       # Override any devices added or deleted through the WebUI
       overrideDevices = true;
       # Overrides any folders added or deleted through the WebUI
@@ -66,6 +76,9 @@ in {
         };
         "ThinkPad L390" = {
           id = "KPVHYCY-WBF7QTW-UVEOQN4-BKQDYZB-QFBSYOQ-65SCSFR-LGIFVE4-ESN6GQQ";
+        };
+        "ThinkPad X395" = {
+          id = "M3QRDHU-SFO3MQ4-HNTO5ZZ-EBSVI22-E7YEYV4-6LUAZMO-ZLIPOQ5-TRLL2QB";
         };
       };
 
@@ -83,7 +96,7 @@ in {
         "moto_g55_5g_fq64-photos" = {
           label = "Moto G55 5G Camera";
           path = "/home/${user}/Pictures/moto-g55-5g-camera";
-          devices = laptops ++ ["Moto G55 5G"];
+          devices = laptops ++ [ "Moto G55 5G" ];
         };
         "mihyn-ggmuw" = {
           label = "Shared Docs";
@@ -98,12 +111,12 @@ in {
         "ewwca-actnr" = {
           label = "Shared Pics";
           path = "/home/${user}/Pictures/shared-pictures";
-          devices = laptops ++ ["Moto G55 5G"];
+          devices = laptops ++ [ "Moto G55 5G" ];
         };
         "vas43-ryr7l" = {
           label = "Shared Videos";
           path = "/home/${user}/Videos/shared-videos";
-          devices = laptops ++ ["Moto G55 5G"];
+          devices = laptops ++ [ "Moto G55 5G" ];
         };
       };
 
