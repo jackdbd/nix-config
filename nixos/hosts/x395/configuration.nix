@@ -45,6 +45,12 @@
     ../../modules/xfce.nix
   ];
 
+  # Fixes low volume and missing internal speaker routing caused by incorrect
+  # PCI Subsystem ID detection on ThinkPad x395 Realtek ALC257 chipset.
+  boot.extraModprobeConfig = ''
+    options snd-hda-intel model=alc257-max98707
+  '';
+
   boot.initrd.luks.devices."luks-0b9dac43-8a64-4836-af1a-519abebe5d6b".device =
     "/dev/disk/by-uuid/0b9dac43-8a64-4836-af1a-519abebe5d6b";
 
