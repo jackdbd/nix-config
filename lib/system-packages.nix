@@ -48,6 +48,7 @@ with pkgs;
   popsicle # Multiple USB File Flasher. I was looking for Balena Etcher and found this: https://github.com/NixOS/nixpkgs/issues/371992#issuecomment-2576548039
   qpdf # library and set of programs that inspect and manipulate the structure of PDF files
   railway # CLI for Railway (Paas)
+  ripgrep
   signal-desktop # Private, simple, and secure messenger
   skopeo # CLI for various operations on container images and image repositories
   sops # editor for encrypting/decrypting JSON, YAML, ini, etc
