@@ -93,11 +93,6 @@ in
           devices = laptops;
           # versioning.type = "simple"; # one of "external", "simple", "staggered", "trashcan"
         };
-        "moto_g55_5g_fq64-photos" = {
-          label = "Moto G55 5G Camera";
-          path = "/home/${user}/Pictures/moto-g55-5g-camera";
-          devices = laptops ++ [ "Moto G55 5G" ];
-        };
         "mihyn-ggmuw" = {
           label = "Shared Docs";
           path = "/home/${user}/Documents/shared-documents";
