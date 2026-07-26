@@ -93,6 +93,11 @@ in
           devices = laptops;
           # versioning.type = "simple"; # one of "external", "simple", "staggered", "trashcan"
         };
+        "tncee-nnpyf" = {
+          label = "Claude working directory";
+          path = "/home/${user}/Documents/claude-work";
+          devices = laptops;
+        };
         "mihyn-ggmuw" = {
           label = "Shared Docs";
           path = "/home/${user}/Documents/shared-documents";
