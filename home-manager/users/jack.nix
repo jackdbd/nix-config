@@ -152,7 +152,7 @@ in
       openshot-qt # video editor
       ouch # compress/decompress files and directories
       newman # Postman collection runner
-      nodejs_22
+      nodejs
       papirus-icon-theme
       pgadmin4
       pgcli # Command-line interface for PostgreSQL
