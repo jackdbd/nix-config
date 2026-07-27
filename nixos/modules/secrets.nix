@@ -3,7 +3,8 @@
   sops-nix,
   user,
   ...
-}: let
+}:
+let
   # The secret's owner. It can be either a user ID or a username.
   # To avoid misconfiguration, prefer using `config.users.users.<?name>.name`
   # instead of hardcoding it.
@@ -25,14 +26,15 @@
   # 1 - execute only (--x)
   # 0 - none (---)
   mode = "0400";
-in {
-  meta = {};
+in
+{
+  meta = { };
 
   imports = [
     sops-nix.nixosModules.sops
   ];
 
-  options = {};
+  options = { };
 
   config = {
     # The sops module of sops-nix has these configuration options:
@@ -51,6 +53,10 @@ in {
     };
 
     sops.secrets."cal" = {
+      inherit group mode owner;
+    };
+
+    sops.secrets."claude" = {
       inherit group mode owner;
     };
 
