@@ -33,6 +33,7 @@ with pkgs;
   libnotify # send desktop notifications to a notification daemon
   lief # Library to Instrument Executable Formats
   lmstudio # app for experimenting with local and open-source Large Language Models (LLMs) # TODO: nixos-rebuidl switch fails because of a hash mismatch
+  logseq
   ltrace # tool that intercepts and records dynamic library calls
   mesa-demos # Collection of demos and test programs for OpenGL and Mesa (contains glxinfo)
   minisign # tool for signing files and verifying signatures
@@ -41,6 +42,7 @@ with pkgs;
   nixd # Feature-rich Nix language server
   nmap # tool for network discovery and security auditing
   ntfs3g # FUSE-based NTFS driver
+  obsidian
   p7zip # 7z, 7za, 7zr
   perf # Linux tools to profile with performance counters
   pinentry-curses # GnuPG's interface to passphrase input

@@ -62,6 +62,7 @@
         "google-chrome"
         "lmstudio"
         "mongodb-compass"
+        "obsidian"
         "postman"
         "steam"
         "steam-run"
@@ -77,10 +78,10 @@
         "vscode-extension-ms-vsliveshare-vsliveshare"
       ];
       permitted-insecure-pakages = [
-        "electron-27.3.11"
+        "electron-39.8.10"
         # Matrix clients and Jitsi Meet use this library
         # "olm-3.2.16"
-        "qtwebengine-5.15.19"
+        # "qtwebengine-5.15.19"
         # Some package (no idea which one) depends on v8-9.7.106.18, which nix marks as insecure.
         # Unfortunately the error nix gives us is not very actionable, as they say here:
         # https://github.com/NixOS/nixpkgs/issues/209804
