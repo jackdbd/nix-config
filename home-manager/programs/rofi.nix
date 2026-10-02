@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs.rofi = {
     enable = true;
     # https://nix-community.github.io/home-manager/options.html#opt-programs.rofi.extraConfig
@@ -7,13 +7,14 @@
       # modi = "calc,drun,run,top";
       show-icons = true;
     };
-    font = "JetBrainsMono Nerd Font 14";
 
     # https://nix-community.github.io/home-manager/options.html#opt-programs.rofi.plugins
     plugins = [
       # pkgs.rofi-calc
       # pkgs.rofi-top
     ];
+
+    settings.font = "JetBrainsMono Nerd Font 14";
 
     # Available named themes can be viewed using the rofi-theme-selector tool.
     theme = "gruvbox-dark";

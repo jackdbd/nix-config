@@ -3,12 +3,13 @@
   pkgs,
   user,
   ...
-}: {
-  meta = {};
+}:
+{
+  meta = { };
 
-  imports = [];
+  imports = [ ];
 
-  options = {};
+  options = { };
 
   config.environment.systemPackages = with pkgs; [
     nixfmt
@@ -36,14 +37,9 @@
     # 4. Check the logs of the nix-gc.service (triggered by nix-gc.timer):
     # journalctl --system --unit nix-gc.service
 
-    # Recommended configuration for nixd
-    # https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md
-    # https://youtu.be/M_zMoHlbZBY?si=GdjiJ4WitumJV8Eu&t=185
-    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
-
     optimise = {
       automatic = true;
-      dates = ["weekly"];
+      dates = [ "weekly" ];
     };
 
     settings = {
@@ -58,9 +54,20 @@
       # Enable flakes, so we can avoid adding the flag --extra-experimental-features
       # every time we use the nix CLI (e.g. nix build, nix run, etc)
       # https://nixos.wiki/wiki/Flakes#Enable_flakes_permanently_in_NixOS
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
 
-      trusted-users = ["root" user];
+      # Recommended configuration for nixd
+      # https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md
+      # https://youtu.be/M_zMoHlbZBY?si=GdjiJ4WitumJV8Eu&t=185
+      nix-path = [ "nixpkgs=${inputs.nixpkgs}" ];
+
+      trusted-users = [
+        "root"
+        user
+      ];
     };
   };
 }
