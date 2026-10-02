@@ -34,7 +34,6 @@ with pkgs;
   lief # Library to Instrument Executable Formats
   lmstudio # app for experimenting with local and open-source Large Language Models (LLMs) # TODO: nixos-rebuidl switch fails because of a hash mismatch
   logseq
-  ltrace # tool that intercepts and records dynamic library calls
   mesa-demos # Collection of demos and test programs for OpenGL and Mesa (contains glxinfo)
   minisign # tool for signing files and verifying signatures
   mise # tool for configuring development environments
