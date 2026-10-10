@@ -153,7 +153,6 @@ in
       newman # Postman collection runner
       nodejs
       papirus-icon-theme
-      pgadmin4
       pgcli # Command-line interface for PostgreSQL
       pinta # image editor
       pitivi # video editor
