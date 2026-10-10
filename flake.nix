@@ -61,6 +61,7 @@
         "edl"
         "google-chrome"
         "lmstudio"
+        "lycheeslicer"
         "mongodb-compass"
         "obsidian"
         "postman"
