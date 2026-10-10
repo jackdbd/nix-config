@@ -57,7 +57,7 @@
       "name": ["Work", "Video editing"],
       "rule": {
         "type": "regex",
-        "regex": "Filmora|OpenShot|DaVinci Resolve"
+        "regex": "DaVinci Resolve|Filmora|OpenShot"
       },
       "data": {
         "color": "#7B64FF"

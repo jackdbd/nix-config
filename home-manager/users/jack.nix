@@ -149,7 +149,6 @@ in
       nix-output-monitor # nom: monitor nix commands (TODO: does it work with flakes?)
       nuclei # vulnerability scanner
       ocrmypdf # adds an OCR text layer to scanned PDF files, allowing them to be searched (e.g. with ripgrep-all)
-      openshot-qt # video editor
       ouch # compress/decompress files and directories
       newman # Postman collection runner
       nodejs
