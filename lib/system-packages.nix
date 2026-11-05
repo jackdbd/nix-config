@@ -43,6 +43,7 @@ with pkgs;
   nmap # tool for network discovery and security auditing
   ntfs3g # FUSE-based NTFS driver
   obsidian
+  openscad # 3D CAD modeler
   p7zip # 7z, 7za, 7zr
   perf # Linux tools to profile with performance counters
   pinentry-curses # GnuPG's interface to passphrase input
