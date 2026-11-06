@@ -10,6 +10,7 @@ with pkgs;
   atril # PDF viewer (it's a fork of evince)
   bandwhich # display network utilization by process, connection and remote IP/hostname
   binutils # tools for manipulating binaries (nm, objdump, strip, etc...)
+  blender
   cmake
   devenv # Fast, Declarative, Reproducible, and Composable Developer Environments
   docker-compose # define and run multi-container applications with Docker
