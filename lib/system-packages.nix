@@ -65,7 +65,9 @@ with pkgs;
   unzip
   winetricks # script to install DLLs needed to work around problems in Wine
   wineWow64Packages.stable # https://nixos.wiki/wiki/Wine
+  xclip
   xkill
+  xsel
   zip
 ]
 ++ matePackages
