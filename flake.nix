@@ -60,6 +60,7 @@
         "claude-code"
         "edl"
         "google-chrome"
+        "lightburn"
         "lmstudio"
         "lycheeslicer"
         "mongodb-compass"

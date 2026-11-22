@@ -33,6 +33,7 @@ with pkgs;
   libgcc # GNU Compiler Collection
   libnotify # send desktop notifications to a notification daemon
   lief # Library to Instrument Executable Formats
+  lightburn # Layout, editing, and control software for your laser cutter
   lmstudio # app for experimenting with local and open-source Large Language Models (LLMs) # TODO: nixos-rebuidl switch fails because of a hash mismatch
   logseq
   lycheeslicer
